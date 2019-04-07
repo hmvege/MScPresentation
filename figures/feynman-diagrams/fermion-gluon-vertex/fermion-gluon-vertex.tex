@@ -1,0 +1,30 @@
+\documentclass[12pt]{standalone}
+
+\usepackage{tikz} 
+\usepackage{amsmath}
+
+\newcommand{\A}{$a,\mu$}
+
+% \usetikzlibrary{shapes,arrows,positioning,automata,backgrounds,calc,er,patterns}
+
+\usepackage{tikz-feynman}
+
+% \tikzfeynmanset{compat=1.0.0}
+
+\begin{document}
+
+\feynmandiagram[baseline=(a.base), horizontal=b to a] {
+    i1 -- [fermion] a [dot] -- [fermion] i2,
+    a -- [gluon] b [particle=\A],
+    % f1 -- [fermion] b -- [fermion] f2,
+};
+% $
+%     \feynmandiagram[baseline=(a.base), horizontal=b to a] {
+%         i1 -- [fermion] a [dot] -- [fermion] i2,
+%         a -- [gluon] b [particle=\A],
+%         % f1 -- [fermion] b -- [fermion] f2,
+%     };
+%     = i g_s \gamma^{\mu} t^{a}
+% $
+
+\end{document}

@@ -1,0 +1,9 @@
+.DS_Store
+
+# Tex junk
+*.gz
+*.aux
+*.fdb_latexmk
+*.log
+*.fls
+*.xdf

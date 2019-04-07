@@ -1,0 +1,22 @@
+\documentclass[12pt]{standalone}
+
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+
+
+\begin{document}
+\begin{tikzpicture}
+\draw[
+    thick,
+    dashed,
+    ] 
+    (2,2) circle (1cm);
+\draw[
+    thick,
+    decoration={markings, mark=at position 0.0 with {\arrow[black, rotate=-22]{latex}}},
+    postaction={decorate}
+    ] 
+    (2-0.95,2+0.95) circle (0.25cm);
+\end{tikzpicture}
+\end{document}

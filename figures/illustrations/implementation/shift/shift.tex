@@ -1,0 +1,94 @@
+\documentclass[12pt,border=2mm]{standalone}
+
+\usepackage[rgb]{xcolor}
+\usepackage{tikz}
+
+\definecolor{bg-gray}{HTML}{f0f0f0}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{math}
+\usetikzlibrary{calc}
+
+% Commands for writing shorthand lattice operators
+\newcommand{\MU}{\hat{\mu}}
+\newcommand{\NU}{\hat{\nu}}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Position settings
+\tikzmath{
+    \NX = 8;
+    \NY = 8;
+    \CenterPadding = 0.5;
+}
+
+% Clips
+\clip (-2.1,-2.1) rectangle (2.1+\NX,2.1+\NY);
+
+% Center lattice
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding,-\CenterPadding) rectangle (\NX+\CenterPadding, \NY+\CenterPadding);
+
+% Lattice above
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding,\NY+3) rectangle (\NX+\CenterPadding, \NY+1);
+
+% Lattice below
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding,-1) rectangle (\NX+\CenterPadding, -3);
+
+% Lattice to the right
+\draw [fill=bg-gray, rounded corners] (1+\NX,-\CenterPadding) rectangle (3+\NX, \NY+\CenterPadding);
+
+% Lattice to the left
+\draw [fill=bg-gray, rounded corners] (-3,-\CenterPadding) rectangle (-1, \NY+\CenterPadding);
+
+% New lattice
+\draw [dashed, very thick, rounded corners] (-0.9*\CenterPadding+1,-0.9*\CenterPadding) rectangle (\NX+2*0.9*\CenterPadding+1, \NY+0.9*\CenterPadding);
+
+% Corners
+\draw [fill=bg-gray, rounded corners] (-3,-1) rectangle (-1, -3);
+\draw [fill=bg-gray, rounded corners] (1+\NX,-1) rectangle (3+\NX, -3);
+\draw [fill=bg-gray, rounded corners] (1+\NX,1+\NY) rectangle (3+\NX, 3+\NY);
+\draw [fill=bg-gray, rounded corners] (-1,1+\NY) rectangle (-3, 3+\NY);
+
+
+% Fills general matrix
+\foreach \x in {1,2,...,\NX}
+    \foreach \y in {0,1,...,\NY}
+        \fill[black] (\x, \y) circle (2pt);
+
+% Sets up empty lattice column to the right of the lattice
+\foreach \y in {0,1,...,\NY} {
+    \fill (-1-\CenterPadding, \y) circle (2pt);
+    \draw (0, \y) circle (2pt);
+    \draw [-latex] (-1-\CenterPadding, \y) to[out=60, in=120] (0-0.05, \y+0.05);
+}
+
+% Draws corners
+\fill (-1-\CenterPadding, -1-\CenterPadding) circle (2pt);
+\fill (\NX+1+\CenterPadding, -1-\CenterPadding) circle (2pt);
+\fill (\NX+1+\CenterPadding, \NX+1+\CenterPadding) circle (2pt);
+\fill (-1-\CenterPadding, \NY+1+\CenterPadding) circle (2pt);
+
+% Sets up row above and below the lattice
+\foreach \x in {0,...,\NX} {
+    \fill (\x, \NY+1+\CenterPadding) circle (2pt);
+    \fill (\x, -1-\CenterPadding) circle (2pt);
+}
+
+% Shifts top
+\foreach \x in {0,1,...,\NX-1} {
+    \foreach \y in {\NY} {
+        \draw [-latex](\x+0.05, \y+0.05) to[out=60, in=120] (\x+1-0.05,\y+0.05);
+    }
+}
+
+% Values being shifted into next matrix
+\foreach \y in {0,1,...,\NY} {
+    \draw (\NX+1+\CenterPadding, \y) circle (2pt);
+    \draw [-latex ](\NX, \y) to[out=60, in=120] (\NX+1+\CenterPadding-0.05,\y+0.05); 
+}
+
+% \draw [black,thick] (0,0) grid (\NX,\NY);
+
+\end{tikzpicture}
+\end{document}

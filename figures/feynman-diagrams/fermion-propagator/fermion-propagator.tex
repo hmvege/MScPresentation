@@ -1,0 +1,31 @@
+\documentclass[12pt]{standalone}
+
+\usepackage{amsmath}
+\usepackage{tikz-feynman}
+\usepackage{slashed}
+
+\newcommand{\A}{$a,\alpha$}
+\newcommand{\B}{$b,\beta$}
+\newcommand{\rhs}{$\frac{i\delta_j^i\delta^\alpha_\beta}{\slashed{p} - m + i\varepsilon}$}
+% \newcommand{\rhs}{$\langle \psi^{(i)}_{c\alpha}(x) \bar{\psi}^{(i)}_{d\beta} (y) \rangle$}
+% \newcommand{\rhs}{$\int \frac{d^4 k}{(2\pi)^4} \left( \frac{i}{\slashed{k} - m}\right)_{\alpha\beta}\delta_{ij} e^{-ik\cdot(x-y)}$}
+
+% Propagator
+%$\langle \psi_{i\alpha}(x) \bar{\psi}_{j\beta} (y) \rangle$ = \int \frac{d^4 k}{(2\pi)^4} \left( \frac{i}{\slashed{k} - m}\right)_{\alpha\beta}\delta_{ij} e^{-ik\cdot(x-y)}$
+
+% \tikzfeynmanset{compat=1.0.0}
+
+\begin{document}
+
+% $$
+%     \feynmandiagram[baseline=(i1.base), horizontal=i1 to f1] {
+%         i1 [particle=\A] -- [fermion] f1 [particle=\B],
+%     };
+%     $=$ \rhs
+% $$
+
+\feynmandiagram[baseline=(i1.base), horizontal=i1 to f1] {
+    i1 [particle=\A] -- [fermion] f1 [particle=\B],
+};
+
+\end{document}

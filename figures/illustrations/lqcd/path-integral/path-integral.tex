@@ -1,0 +1,67 @@
+\documentclass[12pt]{standalone}
+
+\usepackage{tikz}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{math}
+\usetikzlibrary{fadings}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Position settings
+\tikzmath{
+    \XMax = 8;
+    \YMax = 5;
+    % Path Y-center 
+    \YP = 2.5;
+}
+
+
+% Axes coordinates
+\coordinate (Origin)   at (0,0);
+\coordinate (XAxisMin) at (-0.1,0);
+\coordinate (XAxisMax) at (\XMax,0);
+\coordinate (YAxisMin) at (0,-0.1);
+\coordinate (YAxisMax) at (0,\YMax + 0.2);
+
+% Points to plot 
+\coordinate (X1) at (1,0);
+\coordinate (X2) at (2,0);
+\coordinate (X3) at (3,0);
+\coordinate (XN-1) at (\XMax - 1,0);
+\coordinate (XN) at (\XMax,0);
+
+
+\coordinate (XDots) at (4.35 ,0);
+\draw [black] (XDots) node [below=2pt] {$\cdots$};
+
+% Draws axes
+\draw [thin, black,-] (XAxisMin) -- (XAxisMax);
+\draw [thin, black,-latex] (YAxisMin) -- (YAxisMax);
+\draw [black,-latex] (XAxisMax) -- (\XMax,\YMax + 0.2);
+
+% Draw axes specifiers
+\draw [black] (YAxisMax) node [above left] {$x$};
+\draw [black] (Origin) node [below] {$t_0$};
+\draw [black] (XAxisMax) node [below] {$t_n$};
+
+% Draws lines paralell to the y-axis on the x-axis
+\foreach \x/\y/\lab in {{1,0}/{1,\YMax}/{$t_1$}, {2,0}/{2,\YMax}/{$t_2$}, {3,0}/{3,\YMax}/{$t_3$}, {\XMax-2,0}/{\XMax-2,\YMax}/{$t_{n-2}$}, {\XMax-1,0}/{\XMax-1,\YMax}/{$t_{n-1}$}} {
+    \draw [gray, thin, dotted] (\x) node [black,below] {\lab}-- (\y);
+};
+
+% Draws integration lines
+\draw [black, thick] (0,\YP-1) -- (1,\YP+0.4) -- (2,\YP+1) -- (3,\YP+1.1);
+\draw [black, thick, dashed, path fading=east] (3,\YP+1.1) -- (4,\YP+1.0);
+\draw [black, thick, dashed, path fading=west] (\XMax-3,\YP-1) -- (\XMax-2,\YP-1.2);
+\draw [black, thick] (\XMax-2,\YP-1.2) -- (\XMax-1, \YP-0.8) -- (\XMax, \YP+0.3);
+
+% Marks points
+\foreach \x/\y in {{1}/{\YP+0.4}, {2}/{\YP+1}, {3}/{\YP+1.1}, {\XMax-2}/{\YP-1.2}, {\XMax-1}/{\YP-0.8}} {
+    \draw [thick, black] (\x,\y-0.1) -- (\x,\y+0.1);
+}
+
+
+\end{tikzpicture}
+\end{document}

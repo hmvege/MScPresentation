@@ -1,0 +1,47 @@
+\documentclass[12pt]{standalone}
+
+\usepackage{tikz} 
+\usepackage{amsmath}
+
+\newcommand{\A}{$a,\mu$}
+\newcommand{\B}{$b,\nu$}
+\newcommand{\C}{$c,\rho$}
+
+\newcommand{\rhs}{
+    $
+    \begin{aligned}
+        g_s f^{abc}[  &g^{\mu\nu}(k - p)^{\rho} \\
+                    &+ g^{\nu\rho}(p - q)^{\mu} \\
+                    &+ g^{\rho\mu}(q - k)^{\nu}]
+    \end{aligned}
+    $
+}
+
+% \usetikzlibrary{shapes,arrows,positioning,automata,backgrounds,calc,er,patterns}
+
+\usepackage{tikz-feynman}
+
+% \tikzfeynmanset{compat=1.0.0}
+
+\begin{document}
+
+\feynmandiagram[baseline=(b.base), horizontal=b to a] {
+    i1 [particle=\B] -- [gluon, momentum=$p$] a [dot] -- [gluon, reversed momentum'=$q$] i2 [particle=\C],
+    a -- [gluon, reversed momentum'=$k$] b [particle=\A],
+};
+
+% $$
+%     \feynmandiagram[baseline=(b.base), horizontal=b to a] {
+%         i1 [particle=\B] -- [gluon, momentum=$p$] a [dot] -- [gluon, reversed momentum'=$q$] i2 [particle=\C],
+%         a -- [gluon, reversed momentum'=$k$] b [particle=\A],
+%     };
+%     $=$ \rhs
+% $$
+
+% \feynmandiagram[horizontal=a to b] {
+%     i1 [particle=$a,\mu$] -- [gluon, momentum=$k$] a -- [gluon, reversed momentum'=$p$] i2, [particle=$b,\nu$],
+%     a -- [gluon, reversed momentum'=$q$] b [particle=$c, \rho$],
+% };
+
+
+\end{document}

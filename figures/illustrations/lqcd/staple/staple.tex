@@ -1,0 +1,76 @@
+\documentclass[12pt]{standalone}
+
+\usepackage{tikz}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{math}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Position settings
+\tikzmath{
+    \LinkLength = 3;
+    \StapleXShift = 4.5 + \LinkLength;
+    \StapleYShift = -1;
+    \AxesShift = 1.3;
+}
+
+\coordinate (S1X0) at (0,0);
+\coordinate (S1X1) at (\LinkLength, 0);
+\coordinate (S1X2) at (\LinkLength, \LinkLength);
+\coordinate (S1X3) at (0, \LinkLength);
+
+\coordinate (S2X0) at (\StapleXShift, -\StapleYShift);
+\coordinate (S2X1) at (\LinkLength + \StapleXShift, -\StapleYShift);
+\coordinate (S2X2) at (\LinkLength + \StapleXShift, -\LinkLength - \StapleYShift);
+\coordinate (S2X3) at (\StapleXShift, -\LinkLength - \StapleYShift);
+
+% Draws first staple
+\draw [black, 
+    very thick,
+    fill] 
+    (S1X1) circle (2pt) node[below right=2.1pt] {$n+\hat{\mu}$} -- (S1X2) circle (2pt) node [above right] {$n+\hat{\mu}+\hat{\nu}$} -- (S1X3) circle (2pt) node [above left] {$n+\hat{\nu}$} -- (S1X0) circle (2pt) node [below left] {$n$};
+
+% Writing out links for first staple
+\draw [black, very thick, fill,
+    decoration={markings, mark=at position 1 with {\arrow[black,scale=1.25,rotate=90,xshift=2.33333pt]{latex}}},
+    postaction={decorate}] (\LinkLength,0.5*\LinkLength) node [right=6pt] {$U_\nu(n+\hat{\mu})$};
+\draw [black, very thick, fill,
+    decoration={markings, mark=at position 1 with {\arrow[black,scale=1.25,rotate=180,xshift=3.33333pt]{latex}}},
+    postaction={decorate}] (0.5*\LinkLength,\LinkLength) node [above=6pt] {$U^\dagger_\mu(n+\hat{\nu})$};
+\draw [black, very thick, fill,
+    decoration={markings, mark=at position 1 with {\arrow[black,scale=1.25,rotate=270,xshift=2.33333pt]{latex}}},
+    postaction={decorate}] (0,0.5*\LinkLength) node [left=6pt] {$U^\dagger_\nu(n)$};
+
+% Draws second staple
+\draw [black, 
+    very thick,
+    fill] 
+    (S2X1) circle (2pt) node[above right] {$n+\hat{\mu}$} -- (S2X2) circle (2pt) node [below right] {$n+\hat{\mu}-\hat{\nu}$} -- (S2X3) circle (2pt) node [below left] {$n-\hat{\nu}$} -- (S2X0) circle (2pt) node [above left=2.3pt] {$n$};
+
+% Adds plus sign
+\draw [black] (0.65*\StapleXShift,-0.5*\StapleYShift) node {$+$};
+
+% Writing out links for second staple
+\draw [black, very thick, fill,
+    decoration={markings, mark=at position 1 with {\arrow[black,scale=1.25,rotate=270,xshift=2.33333pt]{latex}}},
+    postaction={decorate}]
+    (\LinkLength + \StapleXShift, -0.5*\LinkLength - \StapleYShift) node [right=6pt] {$U^\dagger_\nu(n+\hat{\mu}-\hat{\nu})$};
+\draw [black, very thick, fill,
+    decoration={markings, mark=at position 1 with {\arrow[black,scale=1.25,rotate=180,xshift=3.33333pt]{latex}}},
+    postaction={decorate}]
+    (0.5*\LinkLength+\StapleXShift, -\LinkLength - \StapleYShift) node [below=6pt] {$U^\dagger_\mu(n-\hat{\nu})$};
+\draw [black, very thick, fill,
+    decoration={markings, mark=at position 1 with {\arrow[black,scale=1.25,rotate=90,xshift=2.33333pt]{latex}}},
+    postaction={decorate}]
+    (\StapleXShift, -0.5*\LinkLength - \StapleYShift) node [left=6pt] {$U_\nu(n-\hat{\nu})$};
+
+% Draws axis
+\draw [black, thick, -latex] (-2.1,-1.5-\AxesShift) -- (-1,-1.5-\AxesShift) node [right] {$\hat{\mu}$};
+\draw [black, thick, -latex] (-2,-1.6-\AxesShift) -- (-2,-0.5-\AxesShift) node [above] {$\hat{\nu}$};
+
+
+
+\end{tikzpicture}
+\end{document}

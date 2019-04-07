@@ -1,0 +1,25 @@
+\documentclass[12pt]{standalone}
+
+% main document, called main.tex \usepackage{tikz}
+% \usetikzlibrary{external}
+% \tikzexternalize % activate!
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings, arrows}
+
+
+\begin{document}
+\begin{tikzpicture}
+\draw[
+    thick,
+    dashed,
+    ] 
+    (2,2) circle (1cm);
+\draw[
+    thick,
+    decoration={markings, mark=at position 0.625 with {\arrow[black,rotate=-180]{latex}}},
+    postaction={decorate}
+    ] 
+    (2,2) circle (1.15cm);
+\end{tikzpicture}
+\end{document}

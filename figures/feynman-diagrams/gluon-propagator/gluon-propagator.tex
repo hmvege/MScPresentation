@@ -1,0 +1,30 @@
+\documentclass[12pt]{standalone}
+
+\usepackage{amsmath}
+\usepackage{tikz-feynman}
+\usepackage{slashed}
+
+\newcommand{\A}{$a,\mu$}
+\newcommand{\B}{$b,\nu$}
+\newcommand{\rhs}{$\langle A_\mu^a (x) A_\nu^b (y) \rangle$}
+
+% \usetikzlibrary{shapes,arrows,positioning,automata,backgrounds,calc,er,patterns}
+
+\usepackage{tikz-feynman}
+
+% \tikzfeynmanset{compat=1.0.0}
+
+\begin{document}
+
+% $$
+%     \feynmandiagram[baseline=(i1.base), horizontal=i1 to f1] {
+%         i1 [particle=\A] -- [gluon] f1 [particle=\B],
+%     };
+%     $=$ \rhs
+% $$
+
+\feynmandiagram[baseline=(i1.base), horizontal=i1 to f1] {
+    i1 [particle=\A] -- [gluon] f1 [particle=\B],
+};
+
+\end{document}

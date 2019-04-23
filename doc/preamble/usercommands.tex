@@ -1,0 +1,42 @@
+% For Feynman slashes
+\usepackage{slashed}
+
+\newcommand{\husk}[1]{\color{red}#1\color{black}}
+\newcommand{\expect}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\epsrnd}{\varepsilon_\mathrm{rnd}}
+
+% For fermi units
+\newcommand{\fm}{\mathrm{fm}}
+
+% Complex number notation
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+% Commands for writing shorthand lattice operators
+\newcommand{\MU}{\hat{\mu}}
+\newcommand{\NU}{\hat{\nu}}
+
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+% BEGIN COMMANDS FROM LATEX FOR PHYSICISTS
+% http://www.dfcd.net/articles/latex/latex.html
+\newcommand{\ket}[1]{\left| #1 \right\rangle} % for Dirac bras
+\newcommand{\bra}[1]{\left\langle #1 \right|} % for Dirac kets
+\newcommand{\bket}[1]{\right| #1 \right\rangle} % for Dirac bras
+\newcommand{\bbra}[1]{\left\langle #1 \left|} % for Dirac kets
+
+
+\newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
+\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++ }}}
+
+% For aligned undersets
+\usepackage{stackengine}
+\def\stacktype{L}
+\setstackgap{L}{1.2\normalbaselineskip}
+\stackMath

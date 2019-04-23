@@ -1,0 +1,208 @@
+\documentclass[10pt]{beamer}
+\usetheme[progressbar=frametitle]{metropolis}
+
+\usepackage{appendixnumberbeamer}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{units}
+% \usepackage{slashed}
+% \usepackage{booktabs}
+% \usepackage[scale=2]{ccicons}
+% \usepackage{braket}
+% \usepackage{xspace}
+% \usepackage{dsfont}
+% \usepackage{braket}
+% \usepackage{fontspec}
+% % \usepackage{xmpmulti}
+\usepackage{animate}
+
+\usepackage{pgfpages}
+\setbeamertemplate{note page}[plain]
+\setbeameroption{show notes on second screen=right}
+
+
+\usefonttheme[onlymath]{serif}
+
+\title{Solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice: a calculation of selected gauge observables with gradient flow}
+\date{\today}
+\author{Hans Mathias Mamen Vege}
+\institute{University of Oslo}
+
+% Loads command list
+\input{preamble/usercommands.tex}
+\tabularnewline
+
+\begin{document}
+
+\setbeamercolor{background canvas}{bg=white}
+\maketitle
+
+% \begin{frame}{Structure}
+%   % \setbeamertemplate{section in toc}[sections numbered]
+%   \tableofcontents[hideallsubsections]
+% \end{frame}
+
+\begin{frame}{Structure}
+    \begin{itemize}[<+->]
+        \item Motivation
+        \item Quantum Chromodynamics(QCD) % What is QCD and related topics
+        \item Lattice QCD 
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Motivation}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantum Chromodynamics(QCD)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The standard model}
+% Use the nice standard model picture
+\end{frame}
+
+\begin{frame}{QCD}
+% Asymptotic freedom
+% Confinement
+% Experimental proof?
+\note{Say hey}
+\end{frame}
+
+\begin{frame}{The path integral formalism}
+% Simply show how the path integral is written so one has something to relate to
+\end{frame}
+
+\begin{frame}{Topology in QCD}
+\end{frame}
+
+\begin{frame}{The Witten-Veneziano relation}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lattice Quantum Chromodynamics(LQCD)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Discretizing spacetime}
+\end{frame}
+
+\begin{frame}{Links}
+\end{frame}
+
+\begin{frame}{Pure gauge action}
+\end{frame}
+
+\begin{frame}{Recovering the continuum action action}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Developing a code for solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The numerical challenge in lattice QCD}
+\end{frame}
+
+\begin{frame}{The path integral}
+% Include 
+\end{frame}
+
+\begin{frame}{The Metropolis algorithm}
+\end{frame}
+
+\begin{frame}{GLAC}
+\end{frame}
+
+\begin{frame}{Link sharing}
+\end{frame}
+
+\begin{frame}{Shifts}
+\end{frame}
+
+\begin{frame}{Scaling}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Measuring observables on the lattice}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{How to measure}
+\end{frame}
+
+\begin{frame}{Topological charge}
+\end{frame}
+
+\begin{frame}{Energy}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gradient flow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{The flow equation}
+% Bad approx.: diffusion equation
+% Topological charge preserved and is more pronounced 
+% Why it is needed
+% Certain quantities becomes renormalizable
+\end{frame}
+
+\begin{frame}{Solving gradient flow on the lattice}
+% RK3 classical and then on the lattice
+\end{frame}
+
+\begin{frame}{Smearing the lattice}
+% LatViz animation
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Ensembles}
+% Include size and time
+\end{frame}
+
+\begin{frame}{Energy and the scale setting}
+\end{frame}
+
+\begin{frame}{Topological charge}
+\end{frame}
+
+\begin{frame}{Topological susceptibility}
+\end{frame}
+
+\begin{frame}{The fourth cumulant}
+\end{frame}
+
+\begin{frame}{The topological charge correlator}
+\end{frame}
+
+\begin{frame}{The effective glueball mass}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\end{frame}
+
+\begin{frame}
+Questions?
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% Disposition %%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction/overview of presentation: motivation, goal of thesis
+% QCD: what is qcd, qcd to pure gauge(max 2 slides), topology quickstart
+% LQCD: discretize lattice, links, introduce topological charge with clover, energy
+% Flow: introduce gradient flow, motivate
+% Latviz animation of Q in flow time and Euclidean time
+% Results: energy scale setting, topological charge, distributions, why D1 and D2 differs, top.sus., N_F, eff.mass, 
+% Conclusion: 
+% Questions?
+% Extra slides

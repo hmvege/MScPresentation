@@ -1,5 +1,4 @@
-\documentclass[10pt]{beamer}
-\usetheme[progressbar=frametitle]{metropolis}
+\documentclass[10pt,show notes on second screen]{beamer}
 
 \usepackage{appendixnumberbeamer}
 \usepackage[numbers,sort&compress]{natbib}
@@ -9,28 +8,19 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{units}
-% \usepackage{slashed}
-% \usepackage{booktabs}
-% \usepackage[scale=2]{ccicons}
-% \usepackage{braket}
-% \usepackage{xspace}
-% \usepackage{dsfont}
-% \usepackage{braket}
-% \usepackage{fontspec}
-% % \usepackage{xmpmulti}
 \usepackage{animate}
 
-% \usepackage{pdfcomment}
-% \newcommand{\pdfnote}[1]{\marginnote{\pdfcomment[icon=note]{#1}}}
+% \usetheme[progressbar=frametitle]{metropolis}
+\usetheme{metropolis}
 
-
+% For notes
 \usepackage{pgfpages}
 \setbeamertemplate{note page}[plain]
 \setbeameroption{show notes on second screen=bottom}
 
-
 \usefonttheme[onlymath]{serif}
 
+% Titles, date, ect.
 \title{Solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice: a calculation of selected gauge observables with gradient flow}
 \date{\today}
 \author{Hans Mathias Mamen Vege}
@@ -52,18 +42,33 @@
 
 \begin{frame}{Structure}
     \begin{itemize}[<+->]
-        \item Motivation
-        \item Quantum Chromodynamics(QCD) % What is QCD and related topics
-        \item Lattice QCD 
+        \item Quantum Chromodynamics(QCD).
+        \item Lattice QCD.
+        \item Gradient flow.
+        \item Developing a code for solving $\SU(3)$ Yang-Mills theory.
+        \item Results.
     \end{itemize}
+    \note{
+    \begin{itemize}[<+->]
+        \item \textbf{QCD.} We will go through and explain what QCD as well as motivate its existence.
+        \item \textbf{LQCD.} We will briefly show how one discretise the lattice and perform calculations on it.
+        \item \textbf{Gradient flow.} We will quickly introduce gradient flow and explain its effects.
+        \item \textbf{GLAC.} Will briefly present the code which we developed as well as some benchmarks. We will also present the Metropolis algorithm.
+        \item \textbf{Results.} We will present the results obtained from pure gauge calculations.
+    \end{itemize}
+    }
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Motivation}
-\end{frame}
+% \begin{frame}{Motivation}
+%     \begin{itemize}[<+->]
+%         \item Low-energy regime.
+%         \item 
+%     \end{itemize}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum Chromodynamics(QCD)}
@@ -71,23 +76,38 @@
 
 \begin{frame}{The standard model}
 % Use the nice standard model picture
+    \begin{center}
+        \includegraphics[width=1.0\textwidth]{../figures/illustrations/qcd/standard-model/sm.png}
+    \end{center}
+    \note{
+        \textbf{SM.} A pictorial illustration of the standard model of physics. Lattice QCD is all about exploring the QCD sector consisting of gluons and quarks. We will however focus on the gluons.
+    }
 \end{frame}
+
 
 \begin{frame}{QCD}
 % Asymptotic freedom
 % Confinement
 % Experimental proof?
-\note{Say hey}
 \end{frame}
 
 \begin{frame}{The path integral formalism}
 % Simply show how the path integral is written so one has something to relate to
+    \begin{itemize}[<+->]
+        \item A
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Topology in QCD}
+    \begin{itemize}[<+->]
+        \item A
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{The Witten-Veneziano relation}
+    \begin{itemize}[<+->]
+        \item A
+    \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,6 +115,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Discretizing spacetime}
+    \begin{itemize}[<+->]
+        \item A
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Links}
@@ -210,3 +233,5 @@ Questions?
 % Conclusion: 
 % Questions?
 % Extra slides
+
+\end{document}

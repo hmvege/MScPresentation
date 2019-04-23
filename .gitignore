@@ -11,3 +11,9 @@
 *.xdv
 *.upa
 *.pdfpc
+*.nav
+*.toc
+*.snm
+
+doc/test
+latexrun

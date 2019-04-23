@@ -31,6 +31,38 @@
 \newcommand{\bket}[1]{\right| #1 \right\rangle} % for Dirac bras
 \newcommand{\bbra}[1]{\left\langle #1 \left|} % for Dirac kets
 
+% Front page
+\setbeamertemplate{title page}{
+    \begin{minipage}[c][\paperheight]{\textwidth}
+        \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+        \vfill%
+        {
+        \centering
+        \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+        \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+        }
+        \usebeamertemplate*{title separator}
+        \begin{minipage}[t]{.5\textwidth}
+            \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+            \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+        \end{minipage}
+        \begin{minipage}[t]{.5\textwidth}
+            \vspace*{2em}
+            {\hspace{3.2em}\small Supervisor: \textit{Andrea Shindler} \par}
+            \vspace*{0.2em}
+            {\hspace{3.2em}\small Co-supervisor: \textit{Morten Hjorth-Jensen}}
+        \end{minipage}%
+
+        \begin{minipage}[t]{\textwidth}
+            \centering
+            \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+        \end{minipage}
+        \vfill
+        \vspace*{1mm}
+    \end{minipage}
+}
+
+
 
 \newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
 \def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++ }}}

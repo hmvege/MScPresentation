@@ -13,6 +13,17 @@
 % \usetheme[progressbar=frametitle]{metropolis}
 \usetheme{metropolis}
 
+% % For subtitles
+% \usepackage{blindtext}
+% \setbeamercolor{framesubtitle}{fg=mDarkTeal}
+% \addtobeamertemplate{frametitle}{}{%
+%   \ifx\insertframesubtitle\@empty\else%
+%   \usebeamerfont{framesubtitle}%
+%   \usebeamercolor[fg]{framesubtitle}%
+%   \insertframesubtitle%
+%   \fi%
+% }
+
 % For notes
 \usepackage{pgfpages}
 \setbeamertemplate{note page}[plain]
@@ -40,6 +51,10 @@
 %   \tableofcontents[hideallsubsections]
 % \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}{Structure}
     \begin{itemize}[<+->]
         \item Quantum Chromodynamics(QCD).
@@ -60,43 +75,130 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \begin{frame}{Motivation}
-%     \begin{itemize}[<+->]
-%         \item Low-energy regime.
-%         \item 
-%     \end{itemize}
-% \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum Chromodynamics(QCD)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{The standard model}
-% Use the nice standard model picture
-    \begin{center}
-        \includegraphics[width=1.0\textwidth]{../figures/illustrations/qcd/standard-model/sm.png}
-    \end{center}
-    \note{
-        \textbf{SM.} A pictorial illustration of the standard model of physics. Lattice QCD is all about exploring the QCD sector consisting of gluons and quarks. We will however focus on the gluons.
-    }
-\end{frame}
-
+% \begin{frame}{The standard model}
+% % Use the nice standard model picture
+%     \begin{figure}
+%         \includegraphics[width=1.0\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}
+%     \end{figure}
+%     \note{
+%         \textbf{SM.} A pictorial illustration of the standard model of physics. Lattice QCD is all about exploring the QCD sector consisting of gluons and quarks. We will however focus on the gluons.
+%     }
+% \end{frame}
 
 \begin{frame}{QCD}
+\begin{itemize}
+    \item <1->The standard model: Six quarks and eight gluons
+    \item <2->Asymptotic freedom
+    \item <3->Confinement
+    \item <4->Highly nonlinear due to gluon self-interactions
+\end{itemize}
+\note{
+\begin{itemize}[<+->]
+    \item \textbf{The standard model.} 
+    \item \textbf{Asymptotic freedom.} 
+    \item \textbf{Confinement.} 
+    \item \textbf{Nonlinearity.} 
+\end{itemize}
+}
+
+% \begin{center}
+% \includegraphics[width=0.5\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+% \end{center}
+
+% \begin{column}[r]{2cm}
+%     \begin{figure}
+%         % \includegraphics<1>[width=0.5\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}
+%         \includegraphics<2>[width=0.5\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+%         % \includegraphics<3>[width=0.5\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
+%     \end{figure}
+% \end{column}
+
+% \begin{block}
+%     \only <1> {\includegraphics[width=0.5\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}}
+%     \only <2> {
+        % \begin{center}
+        % \includegraphics[width=0.5\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+        % \end{center}
+%     }
+%     % \only <3> {
+%     %     \begin{center}
+%     %     \includegraphics[width=0.5\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
+%     %     \end{center}
+%     % }
+%     % \only <4> {
+%     %     \begin{align}
+%     %         \begin{align}
+%     %             \mathcal{L}_\mathrm{QCD} = \sum^{N_f}_{f=1} \bar{\psi}^{(f)} \left(i\slashed{D} - m^{(f)}\right) \psi^{(f)} - \frac{1}{4}G^a_{\mu\nu}G^{a\mu\nu},
+%     %             \label{eq:qcd-lagrangian}
+%     %         \end{align}
+%     %     \end{align}
+%     % }
+% \end{block}
+
+% \note{
+%     \textbf{SM.} A pictorial illustration of the standard model of physics. Lattice QCD is all about exploring the QCD sector consisting of gluons and quarks. We will however focus on the gluons.
+% }
+
 % Asymptotic freedom
 % Confinement
 % Experimental proof?
+% \begin{center}\includegraphics{../figures/illustrations/qcd/confinement/string-breaking.pdf}\end{center}
+% \begin{center}\includegraphics[width=0.5\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}\end{center}
+
+% \begin{overlayarea}{\textwidth}{0.3\textheight}
+%     \only <2> {\includegraphics[width=0.6\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}}
+%     \only <3> {\includegraphics[width=0.5\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}}
+% \end{overlayarea}
+
 \end{frame}
 
-\begin{frame}{The path integral formalism}
-% Simply show how the path integral is written so one has something to relate to
-    \begin{itemize}[<+->]
-        \item A
-    \end{itemize}
+\begin{frame}{The Standard Model}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}
+    \end{center}
+    \note{Consists of the innermost square of the six quarks and the gluons.}
 \end{frame}
+
+\begin{frame}{Asymptotic freedom}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+    \end{center}
+    \note{
+        \begin{itemize}
+            \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy
+            \item One of the experimental proofs of QCD along with triple $\gamma$ decay and muon cross section ration $R$.
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Confinement}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
+    \end{center}
+    \note{If we try to pull apart \textbf{two mesons}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
+\end{frame}
+
+\begin{frame}{The non-linearity of QCD}
+\begin{align*}
+    \mathcal{L}_\mathrm{QCD} = \sum^{N_f}_{f=1} \bar{\psi}^{(f)} \left(i\slashed{D} - m^{(f)}\right) \psi^{(f)} - \frac{1}{4}G^a_{\mu\nu}G^{a\mu\nu},
+\end{align*}
+
+\begin{align*}
+    \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
+    \includegraphics[scale=0.9]{../figures/feynman-diagrams/three-gluon-vertex/three-gluon-vertex.pdf} \quad
+    \includegraphics[scale=0.9]{../figures/feynman-diagrams/four-gluon-vertex/four-gluon-vertex.pdf}
+\end{align*}
+\end{frame}
+
+% \begin{frame}{The path integral formalism}
+% % Simply show how the path integral is written so one has something to relate to
+%     \begin{itemize}[<+->]
+%         \item A
+%     \end{itemize}
+% \end{frame}
 
 \begin{frame}{Topology in QCD}
     \begin{itemize}[<+->]

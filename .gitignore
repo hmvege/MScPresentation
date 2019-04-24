@@ -1,3 +1,4 @@
+# MacOS junk
 .DS_Store
 
 # Tex junk
@@ -15,5 +16,13 @@
 *.toc
 *.snm
 
+# Latex bib files
+*.bbl
+*.blg
+
+# For creating a mwe
 doc/test
+
+# For compiling latex
 latexrun
+

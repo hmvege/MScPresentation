@@ -10,19 +10,13 @@
 \usepackage{units}
 \usepackage{animate}
 
+\bibliographystyle{plainnat}
+
+% For including sub figures
+\usepackage{subcaption}
+
 % \usetheme[progressbar=frametitle]{metropolis}
 \usetheme{metropolis}
-
-% % For subtitles
-% \usepackage{blindtext}
-% \setbeamercolor{framesubtitle}{fg=mDarkTeal}
-% \addtobeamertemplate{frametitle}{}{%
-%   \ifx\insertframesubtitle\@empty\else%
-%   \usebeamerfont{framesubtitle}%
-%   \usebeamercolor[fg]{framesubtitle}%
-%   \insertframesubtitle%
-%   \fi%
-% }
 
 % For notes
 \usepackage{pgfpages}
@@ -201,15 +195,62 @@
 % \end{frame}
 
 \begin{frame}{Topology in QCD}
-    \begin{itemize}[<+->]
-        \item A
+\begin{itemize}
+    \item Instantons
+    \item Topological charge, $Q$
+    \item Winding number
+\end{itemize}
+
+\begin{figure}[h!tb]
+    \centering
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number1.pdf}
+        \caption{$\nu=+1$}
+    \end{subfigure}
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number-1.pdf}
+        \caption{$\nu=-1$}
+    \end{subfigure}
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number0.pdf}
+        \caption{$\nu=0$}
+    \end{subfigure}
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number+2.pdf}
+        \caption{$\nu=+2$}
+    \end{subfigure}
+    \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
+\end{figure}
+\note{
+    \begin{itemize}
+        \item \textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
+        \item Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
+        \item An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
     \end{itemize}
+}
 \end{frame}
 
 \begin{frame}{The Witten-Veneziano relation}
-    \begin{itemize}[<+->]
-        \item A
+A formula connecting pure gauge theory and full QCD.
+\begin{align}
+    m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
+\end{align}
+\begin{itemize}
+    \item Pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
+    \item $\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
+    \item $\chi_\mathrm{top}$ is the \textit{topological susceptibility}.
+\end{itemize}
+\note{
+    \begin{itemize}
+        \item We use the experimental values for the pion decay constant and the $\eta'$ mass.
+        \item Allows us to estimate the number of flavors in our theory $N_f$.
+        \item $\chi_\mathrm{top}$ is the topological susceptibility, calculated from the expectation value of $Q$.
     \end{itemize}
+}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -335,5 +376,8 @@ Questions?
 % Conclusion: 
 % Questions?
 % Extra slides
+
+\bibliography{bibliography/lib.bib}
+
 
 \end{document}

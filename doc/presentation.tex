@@ -10,14 +10,17 @@
 \usepackage{units}
 \usepackage{animate}
 
+% For nice algoritms
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
 % For coloring equations
 \usepackage{color}
 \makeatletter
 \def\mathcolor#1#{\@mathcolor{#1}}
 \def\@mathcolor#1#2#3{%
-  \protect\leavevmode
-  \begingroup\color#1{#2}#3\endgroup
-}
+\protect\leavevmode\begingroup\color#1{#2}#3\endgroup}
 \makeatother
 
 % % For proper referencing
@@ -27,6 +30,16 @@
     breaklinks={true},
 }
 \usepackage{cleveref}
+
+% For writing C++ in listings
+\usepackage{listings}
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
+}
 
 % For including sub figures
 \usepackage{subcaption}
@@ -192,7 +205,7 @@
 
 \begin{frame}{Confinement}
     \begin{center}
-        \includegraphics[width=0.5\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
+        \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
     \end{center}
     \note{If we try to pull apart \textbf{two mesons}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
 \end{frame}
@@ -358,7 +371,7 @@ The Wilson gauge action is given as
 \begin{align}
     S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - P_{\mu\nu}(n) \right],
 \end{align}
-with $\beta=6/g_S$.
+with $\beta=6/g_S^2$.
 \note{
     \begin{itemize}
         \item Using the definition of the link we saw earlier, we can reproduce the continuum action up to an discretization error of $\mathcal{O}(a^2)$.
@@ -376,7 +389,6 @@ with $\beta=6/g_S$.
     \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
 \end{align*}}
 \onslide<3->{$\rightarrow 8 \times 72N^3N_T$ bytes.}
-
 \note{
     \begin{itemize}
         \item The $\SU(3)$ matrices are $3\times 3$ matrices of nine complex numbers or 18 real numbers.
@@ -386,60 +398,182 @@ with $\beta=6/g_S$.
 }
 \end{frame}
 
-\begin{frame}{The Metropolis algorithm}
-Algorithm of choice when sampling gauge configurations.
-\end{frame}
-
-
 \begin{frame}{The path integral I}
 \only<1>{\begin{align*}
-    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}A \mathcal{D}\bar{\psi} \mathcal{D}\psi O[\psi,\bar{\psi},A] \e^{- S_G[A] - S_F[\psi,\bar{\psi},A]}.
+    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U O[\psi,\bar{\psi},U] \e^{- S_G[U] - S_F[\psi,\bar{\psi},U]}.
 \end{align*}}%
 \only<2>{\begin{align*}
-    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}A O[\psi,\bar{\psi},A] \e^{- S_G[A]}.
+    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U O[U] \e^{- S_G[U]}.
 \end{align*}}%
 \only<3>{\begin{align*}
-    \langle O \rangle = \mathcolor{red}{\frac{1}{Z} \int \mathcal{D}A} O[\psi,\bar{\psi},A] \mathcolor{red}{\e^{- S_G[A]}}.
+    \langle O \rangle = \mathcolor{red}{\frac{1}{Z}\int\mathcal{D}U} O[U] \mathcolor{red}{\e^{- S_G[U]}}.
 \end{align*}}%
 with 
 \only<1>{\begin{align*}
-Z = \int \mathcal{D}A \mathcal{D}\bar{\psi} \mathcal{D}\psi e^{- S_G[A] - S_F[\psi,\bar{\psi}, A]}.
+Z = \int \mathcal{D}U \mathcal{D}\bar{\psi} \mathcal{D}\psi e^{- S_G[U] - S_F[\psi,\bar{\psi}, U]}.
 \end{align*}}%
 \only<2->{\begin{align*}
-Z = \int \mathcal{D}A e^{- S_G[A]}.
+Z = \int \mathcal{D}U e^{- S_G[U]}.
 \end{align*}}%
 \end{frame}
 
 \begin{frame}{The path integral II}
-\begin{figure}[h!tb]
+\begin{figure}
     \centering
     \includegraphics[scale=1.0]{../figures/illustrations/lqcd/path-integral/path-integral-flattened}
 \end{figure}
 \note{An example of the discretized path integral, going from time $t_0$ to $t_{N_T}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
 \end{frame}
 
-\begin{frame}{GLAC (GLuon ACtion)}
+\begin{frame}{The Metropolis algorithm}
+\begin{algorithmic}
+    \Repeat
+        \State Randomly generate a candidate state $j$ with probability $T_{i\rightarrow i}$.
+        \State Calculate $A_{i\rightarrow j}$ which saw on previous slide.
+        \State Generate random number $u\in[0,1]$.
+        \If {$u \leq A_{i\rightarrow j}$}
+            \State Accept new state $j$.
+        \ElsIf {$u > A_{i\rightarrow j}$}
+            \State Reject new state $j$ and retain the old state $i$.
+        \EndIf
+    \Until {$N_\mathrm{MC}$ samples are generated.}
+\end{algorithmic}
+\note{
+\begin{itemize}
+    \item Generated state $j$ is a gauge configuration.
+    \item Algorithm of choice when sampling gauge configurations.
+    \item For generating $N_\mathrm{MC}$ Monte Carlo samples.
+\end{itemize}
+}
 \end{frame}
 
-\begin{frame}{Link sharing}
+\begin{frame}{The Metropolis algorithm on the lattice}
+A parameter $\epsilon_\mathrm{rnd}$ controls the spread of the candidate matrices.
+\begin{enumerate}
+    \item Initialize lattice with $\SU(3)$ matrices close to unity(\textit{hot start}) or at unity(\textit{cold start}).
+    \item Thermalize with $N_\mathrm{therm}$ sweeps.
+    \item Generate $N_\mathrm{MC}$ samples,
+    \begin{enumerate}[i]
+        \item Perform $N_\mathrm{corr}$ correlation updates.
+        \item At each update, perform $N_\mathrm{up}$ single link update for every lattice link.
+        \item Store configuration and/or apply gradient flow and sample observables on it.
+    \end{enumerate}
+\end{enumerate}
+\note{
+\begin{itemize}
+    \item We use \textbf{periodic boundary conditions} for all calculations.
+    \item $N_\mathrm{MC}$ is how many configurations we will generate.
+    \item $N_\mathrm{up}$ is how many single link updates we will perform.
+    \item $N_\mathrm{corr}$ is how many full sweeps we shall perform in between each sampling. Needed in order to reduce the autocorrelation between the configurations.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Parallelization}
+Two methods used:
+\begin{itemize}
+    \item Single link sharing used in the Metropolis algorithm.
+    \item \textit{shifts} used in in gradient flow and observable sampling
+\end{itemize}
+\note{
+\begin{itemize}
+    \item Tested out \textbf{halos}, but turned out to be problematic when generating.
+    \item We parallelized using MPI.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Shifts}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{../figures/illustrations/implementation/shift/shift}
+\end{figure}
+\note{
+\begin{itemize}
+    \item An illustration of the lattice shift. 
+    \item The links $U_\nu$ of the lattice are copied over to a temporary lattice shifted in direction $\hat{\mu}$. 
+    \item The face that is shifted over to an adjacent sub-lattice is shared through a non-blocking MPI call, while we copy the links to the temporary lattice.
+    \item Allows for a simplified syntax close to that of the equations we are working with.
+    \item Don't have to write out any loops over the lattice positions.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Scaling}
+We checked three types of scaling,
+\begin{itemize}[<+->]
+    \item \textbf{Strong scaling:} \textit{fixed problem} and a \textit{variable} $N_p$ \textit{cores}
+    \item \textbf{Weak scaling:} \textit{fixed problem per processor} and a \textit{variable} $N_p$ \textit{cores}.
+    \item \textbf{Speedup:} defined as $S(p) = \frac{t_{N_{p,0}}}{t_{N_p}}$.
+\end{itemize}
+\only<1>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.4]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
+\only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.4]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
+\only<3>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.4]{../../LQCD/LatticeAnalyser/figures/scaling/strong/speedup_strong_all}\end{center}}
+\note{
+\begin{itemize}
+\item <1->Strong scaling
+\item <2->Weak scaling
+\item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
+\end{itemize}
+We appear to have a plateau around 512 cores.
+}
+\end{frame}
+
+\begin{frame}{Optimizing the gauge configuration generation}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Measuring observables on the lattice}
+\section{Measuring gauge observables on the lattice}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{How to measure}
+The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
+\begin{align*}
+    \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
+\end{align*}
+\note{
+\begin{itemize}
+    \item We perform an average of the created configurations.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{The clover field strength definition}
+\begin{figure}[h!tb]
+    \centering
+    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover}
+\end{figure}
+\note{
+\begin{itemize}
+    \item We will use the clover field strength definition in gauge observables
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Topological charge}
+\begin{align*}
+    Q = a^4 \sum_{n\in\Lambda} q(n),
+\end{align*}
+with the charge density given by
+\begin{align*}
+    q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
+\end{align*}
+\note{
+\begin{itemize}
+    \item We will use the clover field strength definition.
+    \item Symmetries will allow us to reduce the effective number of clovers need to calculate from 24 to 6.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Energy}
+\begin{align*}
+    E &= \frac{a^4}{2|\Lambda|} \sum_{n\in\Lambda}\sum_{\mu,\nu} \left(F^\mathrm{clov}_{\mu\nu}(n)\right)^2 \\
+\end{align*}
+\note{
+\begin{itemize}
+    \item We can use this definition to set a scale.
+\end{itemize}
+}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -451,15 +585,36 @@ Z = \int \mathcal{D}A e^{- S_G[A]}.
 % Topological charge preserved and is more pronounced 
 % Why it is needed
 % Certain quantities becomes renormalizable
+The flow of the $\SU(3)$ gauge fields are denoted by $B_\mu(x,t_f)$ which are Lie algebra valued gauge fields,
+\begin{align}
+    &\frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), \label{eq:flow-continuum-diff-eq} \\
+    &D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], \label{eq:flow-cont-covariant-derivative} \\
+    &G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)], \label{eq:flow-field-strength-tensor}
+\end{align}
+with the initial condition of \vref{eq:flow-continuum-diff-eq} being the fundamental gauge field,
+\begin{align*}
+    B_\mu(x,t_f)|_{t_f=0} = A_\mu(x).
+\end{align*}
+\note{
+\begin{itemize}
+    \item Bad approx.: diffusion equation.
+    \item Topological charge preserved and is more pronounced.
+    \item Renormalizes the topological charge at non-zero flow time.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Solving gradient flow on the lattice}
 % RK3 classical and then on the lattice
 \end{frame}
 
+\begin{frame}{Verifying the integration}
+\end{frame}
+
 \begin{frame}{Smearing the lattice}
 % LatViz animation
 \end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -469,7 +624,10 @@ Z = \int \mathcal{D}A e^{- S_G[A]}.
 % Include size and time
 \end{frame}
 
-\begin{frame}{Energy and the scale setting}
+\begin{frame}{Energy}
+\end{frame}
+
+\begin{frame}{Scale setting}
 \end{frame}
 
 \begin{frame}{Topological charge}
@@ -497,7 +655,6 @@ Z = \int \mathcal{D}A e^{- S_G[A]}.
 Questions?
 \end{frame}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%% Disposition %%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction/overview of presentation: motivation, goal of thesis
 % QCD: what is qcd, qcd to pure gauge(max 2 slides), topology quickstart
@@ -509,7 +666,8 @@ Questions?
 % Questions?
 % Extra slides
 
+\begin{frame}
 \bibliography{bibliography/lib.bib}
-
+\end{frame}
 
 \end{document}

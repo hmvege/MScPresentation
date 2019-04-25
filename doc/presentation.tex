@@ -10,6 +10,16 @@
 \usepackage{units}
 \usepackage{animate}
 
+% For coloring equations
+\usepackage{color}
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup\color#1{#2}#3\endgroup
+}
+\makeatother
+
 % % For proper referencing
 \usepackage{varioref}
 \usepackage{hyperref}
@@ -361,24 +371,51 @@ with $\beta=6/g_S$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{The numerical challenge in lattice QCD}
-\only<1->{A lattice configuration consists of $\SU(3)$ matrices,}
-\only<2->{\begin{align*}
+\onslide<1->{A lattice configuration consists of $\SU(3)$ matrices,}
+\onslide<2->{\begin{align*}
     \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
 \end{align*}}
-\only<3->{Which is $\rightarrow 8 \times 72N^3N_T$ bytes.}
+\onslide<3->{$\rightarrow 8 \times 72N^3N_T$ bytes.}
+
 \note{
     \begin{itemize}
         \item The $\SU(3)$ matrices are $3\times 3$ matrices of nine complex numbers or 18 real numbers.
         \item This leads to an absolute \textbf{requirement of efficiency}, both in \textbf{calculations} and in \textbf{input/output}.
+        \item When returning to what ensembles of configurations we generated this will be evident.
     \end{itemize}
 }
 \end{frame}
 
-\begin{frame}{The path integral}
-% Include 
+\begin{frame}{The Metropolis algorithm}
+Algorithm of choice when sampling gauge configurations.
 \end{frame}
 
-\begin{frame}{The Metropolis algorithm}
+
+\begin{frame}{The path integral I}
+\only<1>{\begin{align*}
+    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}A \mathcal{D}\bar{\psi} \mathcal{D}\psi O[\psi,\bar{\psi},A] \e^{- S_G[A] - S_F[\psi,\bar{\psi},A]}.
+\end{align*}}%
+\only<2>{\begin{align*}
+    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}A O[\psi,\bar{\psi},A] \e^{- S_G[A]}.
+\end{align*}}%
+\only<3>{\begin{align*}
+    \langle O \rangle = \mathcolor{red}{\frac{1}{Z} \int \mathcal{D}A} O[\psi,\bar{\psi},A] \mathcolor{red}{\e^{- S_G[A]}}.
+\end{align*}}%
+with 
+\only<1>{\begin{align*}
+Z = \int \mathcal{D}A \mathcal{D}\bar{\psi} \mathcal{D}\psi e^{- S_G[A] - S_F[\psi,\bar{\psi}, A]}.
+\end{align*}}%
+\only<2->{\begin{align*}
+Z = \int \mathcal{D}A e^{- S_G[A]}.
+\end{align*}}%
+\end{frame}
+
+\begin{frame}{The path integral II}
+\begin{figure}[h!tb]
+    \centering
+    \includegraphics[scale=1.0]{../figures/illustrations/lqcd/path-integral/path-integral-flattened}
+\end{figure}
+\note{An example of the discretized path integral, going from time $t_0$ to $t_{N_T}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
 \end{frame}
 
 \begin{frame}{GLAC (GLuon ACtion)}

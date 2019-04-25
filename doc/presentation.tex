@@ -10,10 +10,20 @@
 \usepackage{units}
 \usepackage{animate}
 
-\bibliographystyle{plainnat}
+% % For proper referencing
+\usepackage{varioref}
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks={true},
+}
+\usepackage{cleveref}
 
 % For including sub figures
 \usepackage{subcaption}
+
+% For figures and graphics'n stuff
+\usepackage{graphicx}
+\usepackage{caption}
 
 % \usetheme[progressbar=frametitle]{metropolis}
 \usetheme{metropolis}
@@ -30,6 +40,8 @@
 \date{\today}
 \author{Hans Mathias Mamen Vege}
 \institute{University of Oslo}
+
+\bibliographystyle{plainnat}
 
 % Loads command list
 \input{preamble/usercommands.tex}
@@ -83,11 +95,11 @@
 % \end{frame}
 
 \begin{frame}{QCD}
-\begin{itemize}
-    \item <1->The standard model: Six quarks and eight gluons
-    \item <2->Asymptotic freedom
-    \item <3->Confinement
-    \item <4->Highly nonlinear due to gluon self-interactions
+\begin{itemize}[<+->]
+    \item The standard model: Six quarks and eight gluons
+    \item Asymptotic freedom
+    \item Confinement
+    \item Highly nonlinear due to gluon self-interactions
 \end{itemize}
 \note{
 \begin{itemize}[<+->]
@@ -176,9 +188,14 @@
 \end{frame}
 
 \begin{frame}{The non-linearity of QCD}
+The QCD Lagrangian
 \begin{align*}
     \mathcal{L}_\mathrm{QCD} = \sum^{N_f}_{f=1} \bar{\psi}^{(f)} \left(i\slashed{D} - m^{(f)}\right) \psi^{(f)} - \frac{1}{4}G^a_{\mu\nu}G^{a\mu\nu},
 \end{align*}
+with action
+\begin{align}
+    S = \int \dd^4 x \mathcal{L}_\mathrm{QCD}.
+\end{align}
 
 \begin{align*}
     \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
@@ -196,12 +213,13 @@
 
 \begin{frame}{Topology in QCD}
 \begin{itemize}
-    \item Instantons
-    \item Topological charge, $Q$
-    \item Winding number
+    \item <1->Instantons
+    \item <2->Topological charge, $Q$
+    \item <3->Winding number
 \end{itemize}
 
-\begin{figure}[h!tb]
+\begin{block}
+\only<3->\begin{figure}[h!tb]
     \centering
     \begin{subfigure}{0.22\textwidth}
         \centering
@@ -225,13 +243,15 @@
     \end{subfigure}
     \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
 \end{figure}
+\end{block}
 \note{
     \begin{itemize}
-        \item \textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
-        \item Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
-        \item An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
+        \item <1->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
+        \item <2->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
+        \item <3->An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
     \end{itemize}
 }
+
 \end{frame}
 
 \begin{frame}{The Witten-Veneziano relation}
@@ -258,18 +278,82 @@ A formula connecting pure gauge theory and full QCD.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Discretizing spacetime}
-    \begin{itemize}[<+->]
-        \item A
-    \end{itemize}
+\begin{enumerate}[<+->]
+    \item Divide spacetime into a cube of size $N^3\times N_T$.
+    \item Fermions live on the each \textit{point} in the cube.
+    \item The gauge fields live on the sites \textit{in between} the points, and is called links.
+\end{enumerate}
 \end{frame}
 
 \begin{frame}{Links}
+A link
+\begin{align*}
+    U_\mu(n) = \exp \left[ i a A_\mu (n) \right],
+\end{align*}
+connects one lattice site to another and is a $\SU(3)$ matrix.
+\begin{figure}[h!tb]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/lqcd/links/link}
+        \label{fig:lqcd:link}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/lqcd/links/link-inverse}
+        \label{fig:lqcd:link-inverse}
+    \end{subfigure}
+    \centering
+\end{figure}
+where $U_{-\mu}(n) = U_\mu(n - \hat{\mu})^\dagger$.
+
+\note{
+    \begin{itemize}
+        \item Defined from the gauge transporter.
+        \item A link in the positive $\MU$ direction is shown in the figure to the left.
+        \item A link in the negative $\MU$ direction is shown in the figure to the right.
+    \end{itemize}
+}
 \end{frame}
 
-\begin{frame}{Pure gauge action}
+\begin{frame}{Gauge invariance on the lattice}
+\begin{block}
+    \only<1->{Links gauge transform as}
+    \only<1->{\begin{align*}
+            U_\mu(n) &\rightarrow U_\mu'(n) = \Omega(n) U_\mu(n) \Omega(n+\hat{\mu})^\dagger, \\
+            U_{-\mu}(n) &\rightarrow U_{-\mu}'(n) = \Omega(n) U_{\mu}(n-\hat{\mu})^\dagger \Omega(n-\hat{\mu})^\dagger.
+        \end{align*}}
+    \only<2->{Two main types of gauge invariant objects,}
+    \begin{itemize}
+        \item<3-> Fully connected gauge invariant objects.
+        \item<3-> Objects with fermions $\psi$, $\bar{\psi}$ as end points.
+    \end{itemize}
+\end{block}
 \end{frame}
 
-\begin{frame}{Recovering the continuum action action}
+\begin{frame}{The plaquette}
+The simplest gauge invariant object,
+\begin{align*}
+    P_{\mu\nu}(n) &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{-\mu}(n+\hat{\mu}+\hat{\nu}) U_{-\nu} (n+\hat{\nu}) \nonumber \\
+    &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{\mu}(n+\hat{\nu})^\dagger U_{\nu} (n)^\dagger,
+\end{align*}
+\begin{figure}[h!tb]
+    \centering
+    \includegraphics[scale=1]{../figures/illustrations/lqcd/plaquette/plaquette}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The Wilson gauge action}
+The Wilson gauge action is given as
+\begin{align}
+    S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - P_{\mu\nu}(n) \right],
+\end{align}
+with $\beta=6/g_S$.
+\note{
+    \begin{itemize}
+        \item Using the definition of the link we saw earlier, we can reproduce the continuum action up to an discretization error of $\mathcal{O}(a^2)$.
+    \end{itemize}
+}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -277,6 +361,17 @@ A formula connecting pure gauge theory and full QCD.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{The numerical challenge in lattice QCD}
+\only<1->{A lattice configuration consists of $\SU(3)$ matrices,}
+\only<2->{\begin{align*}
+    \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
+\end{align*}}
+\only<3->{Which is $\rightarrow 8 \times 72N^3N_T$ bytes.}
+\note{
+    \begin{itemize}
+        \item The $\SU(3)$ matrices are $3\times 3$ matrices of nine complex numbers or 18 real numbers.
+        \item This leads to an absolute \textbf{requirement of efficiency}, both in \textbf{calculations} and in \textbf{input/output}.
+    \end{itemize}
+}
 \end{frame}
 
 \begin{frame}{The path integral}
@@ -286,7 +381,7 @@ A formula connecting pure gauge theory and full QCD.
 \begin{frame}{The Metropolis algorithm}
 \end{frame}
 
-\begin{frame}{GLAC}
+\begin{frame}{GLAC (GLuon ACtion)}
 \end{frame}
 
 \begin{frame}{Link sharing}

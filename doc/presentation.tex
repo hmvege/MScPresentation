@@ -425,6 +425,19 @@ Z = \int \mathcal{D}U e^{- S_G[U]}.
 \note{An example of the discretized path integral, going from time $t_0$ to $t_{N_T}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
 \end{frame}
 
+\begin{frame}{How to measure}
+The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
+\begin{align*}
+    \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
+\end{align*}
+\onslide<1->We now need to generate configurations...
+\note{
+\begin{itemize}
+    \item We perform an average of the created configurations.
+\end{itemize}
+}
+\end{frame}
+
 \begin{frame}{The Metropolis algorithm}
 \begin{algorithmic}
     \Repeat
@@ -515,66 +528,44 @@ We checked three types of scaling,
 \item <2->Weak scaling
 \item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
 \end{itemize}
-We appear to have a plateau around 512 cores.
+\onslide<3->We appear to have a plateau around 512 cores.
 }
 \end{frame}
 
 \begin{frame}{Optimizing the gauge configuration generation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Measuring gauge observables on the lattice}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{How to measure}
-The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
-\begin{align*}
-    \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
-\end{align*}
-\note{
-\begin{itemize}
-    \item We perform an average of the created configurations.
-\end{itemize}
-}
-\end{frame}
-
-\begin{frame}{The clover field strength definition}
-\begin{figure}[h!tb]
+\onslide<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
+\begin{block}
+\onslide<2>{\begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover}
-\end{figure}
+    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}
+\end{figure}}
+\onslide<3>{\begin{figure}[htbp]
+    \centering
+    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}
+\end{figure}}
+\end{block}
 \note{
 \begin{itemize}
-    \item We will use the clover field strength definition in gauge observables
-\end{itemize}
-}
+    \item We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.
+    \item <1> The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.
+    \item <2> The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.
+\end{itemize}}
 \end{frame}
 
-\begin{frame}{Topological charge}
-\begin{align*}
-    Q = a^4 \sum_{n\in\Lambda} q(n),
-\end{align*}
-with the charge density given by
-\begin{align*}
-    q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
-\end{align*}
-\note{
-\begin{itemize}
-    \item We will use the clover field strength definition.
-    \item Symmetries will allow us to reduce the effective number of clovers need to calculate from 24 to 6.
-\end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Energy}
-\begin{align*}
-    E &= \frac{a^4}{2|\Lambda|} \sum_{n\in\Lambda}\sum_{\mu,\nu} \left(F^\mathrm{clov}_{\mu\nu}(n)\right)^2 \\
-\end{align*}
-\note{
-\begin{itemize}
-    \item We can use this definition to set a scale.
-\end{itemize}
-}
-\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Measuring gauge observables on the lattice}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{How to measure}
+% The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
+% \begin{align*}
+%     \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
+% \end{align*}
+% \note{
+% \begin{itemize}
+%     \item We perform an average of the created configurations.
+% \end{itemize}
+% }
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gradient flow}
@@ -624,10 +615,49 @@ with the initial condition of \vref{eq:flow-continuum-diff-eq} being the fundame
 % Include size and time
 \end{frame}
 
+\begin{frame}{The clover field strength definition}
+\begin{figure}[h!tb]
+    \centering
+    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover}
+\end{figure}
+\note{
+\begin{itemize}
+    \item We will use the clover field strength definition in gauge observables
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Energy definition}
+\begin{align*}
+    E &= \frac{a^4}{2|\Lambda|} \sum_{n\in\Lambda}\sum_{\mu,\nu} \left(F^\mathrm{clov}_{\mu\nu}(n)\right)^2 \\
+\end{align*}
+\note{
+\begin{itemize}
+    \item We can use this definition to set a scale.
+\end{itemize}
+}
+\end{frame}
+
 \begin{frame}{Energy}
 \end{frame}
 
 \begin{frame}{Scale setting}
+\end{frame}
+
+\begin{frame}{Topological charge definition}
+\begin{align*}
+    Q = a^4 \sum_{n\in\Lambda} q(n),
+\end{align*}
+with the charge density given by
+\begin{align*}
+    q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
+\end{align*}
+\note{
+\begin{itemize}
+    \item We will use the clover field strength definition.
+    \item Symmetries will allow us to reduce the effective number of clovers need to calculate from 24 to 6.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Topological charge}

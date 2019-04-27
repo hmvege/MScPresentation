@@ -8,6 +8,8 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{units}
+
+% For LatViz animations
 \usepackage{animate}
 
 % For nice algoritms
@@ -43,6 +45,9 @@
 
 % For including sub figures
 \usepackage{subcaption}
+
+% For nice tables
+\usepackage{booktabs}
 
 % For figures and graphics'n stuff
 \usepackage{graphicx}
@@ -533,17 +538,9 @@ We checked three types of scaling,
 \end{frame}
 
 \begin{frame}{Optimizing the gauge configuration generation}
-\onslide<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
-\begin{block}
-\onslide<2>{\begin{figure}[htbp]
-    \centering
-    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}
-\end{figure}}
-\onslide<3>{\begin{figure}[htbp]
-    \centering
-    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}
-\end{figure}}
-\end{block}
+\only<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
+\only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}\end{center}}
+\only<3>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
 \note{
 \begin{itemize}
     \item We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.
@@ -577,33 +574,133 @@ We checked three types of scaling,
 % Why it is needed
 % Certain quantities becomes renormalizable
 The flow of the $\SU(3)$ gauge fields are denoted by $B_\mu(x,t_f)$ which are Lie algebra valued gauge fields,
-\begin{align}
-    &\frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), \label{eq:flow-continuum-diff-eq} \\
-    &D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], \label{eq:flow-cont-covariant-derivative} \\
-    &G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)], \label{eq:flow-field-strength-tensor}
-\end{align}
-with the initial condition of \vref{eq:flow-continuum-diff-eq} being the fundamental gauge field,
+\onslide<1->{\begin{align}
+    \frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), \label{eq:flow-continuum-diff-eq}
+\end{align}}
+\onslide<2->{\begin{align}
+    D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], \label{eq:flow-cont-covariant-derivative} \\
+\end{align}}
+\onslide<3->{\begin{align}
+    G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)], \label{eq:flow-field-strength-tensor}
+\end{align}}
+\onslide<4->{with the initial condition of \vref{eq:flow-continuum-diff-eq} being the fundamental gauge field,
 \begin{align*}
     B_\mu(x,t_f)|_{t_f=0} = A_\mu(x).
+\end{align*}}
+\only<5->{
+A bad approximation: \textit{the diffusion equation}, 
+\begin{align*}
+    \frac{\partial}{\partial t_f} B_\mu(x,t_f) \approx \partial^2 B_\mu(x,t_f)
 \end{align*}
+}
+\only<6->{
+    The smearing radius increases as $\sqrt{8t_f}$.
+}
 \note{
 \begin{itemize}
-    \item Bad approx.: diffusion equation.
-    \item Topological charge preserved and is more pronounced.
-    \item Renormalizes the topological charge at non-zero flow time.
+    \item <1->The flow equation in the continuum is defined by this differential equation.
+    \item <2->With the covariant derivative given by following, with the $\cdot$ being the derivative with respect to flow time.
+    \item <3->The field strength tensor of the flown fields is given in the regular format.
+    \item <4->The initial condition is the un-flowed gauge field, $A_\mu$.
+    \item <5->Bad approx.: diffusion equation.
+    \item <6->Topological charge preserved and is more pronounced.
+    \item <6->Renormalizes the topological charge at non-zero flow time.
 \end{itemize}
 }
 \end{frame}
 
-\begin{frame}{Solving gradient flow on the lattice}
+\begin{frame}{Gradient flow on the lattice}
 % RK3 classical and then on the lattice
+\onslide<1->{\begin{align*}
+    \dot{V}_{t_f}(x,\mu) = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f}(x,\mu),
+\end{align*}}
+\onslide<2->{with initial condition,
+\begin{align*}
+    V_{t_f}(x,\mu)|_{t_f=0} = U(x,\mu)
+\end{align*}}
+\onslide<3->{Note: need to find the action derivative $S_G[V_{t_f}]$.}
+\note{
+\begin{itemize}
+    \item <1->On the lattice, the flow equation takes the shape in terms of the link variables.
+    \item <2->Initial conditions similar to the continuum case.
+    \item <3->The action derivative is also needed, but that is a minor task we will not cover here.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Solving gradient flow with Runge-Kutta 3}
+\onslide<1->{With
+\begin{align*}
+    \dot{V}_{t_f} = Z(V_{t_f}) V_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f},
+\end{align*}
+we get}
+\onslide<2->{\begin{align*}
+    \begin{split}
+        &W_0 = V_{t_f}, \\
+        &W_1 = \exp\left[\frac{1}{4}Z_0\right]W_0, \\
+        &W_2 = \exp\left[\frac{8}{9}Z_1 - \frac{17}{36}Z_0\right]W_1, \\
+        &V_{t_f + \epsilon_f} = \exp\left[\frac{3}{4}Z_2 - \frac{8}{9}Z_1 + \frac{17}{36}Z_0\right]W_2, \\
+    \end{split}
+\end{align*}
+with coefficients from \citet{luscher_properties_2010}.}
+\note{
+\begin{itemize}
+    \item <1-> We rewrite the equations slightly,
+    \item <2-> and use a structure preserving integrator with coefficients from \citet{luscher_properties_2010}.
+    \item <3-> We control the accuracy of this integrator by $\epsilon_f$.
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Verifying the integration}
+\only<1>{Testing the integrator for different values of $\epsilon_f$.
+\begin{table}[h!tb]
+    \centering
+    \begin{tabular}{c c c c c c c c c c c}
+    \toprule
+    $\epsilon_f$ & $0.001$ & $0.005$ & $0.007$ & $0.009$ & $0.01$ & $0.02$ & $0.03$ & $0.05$ & $0.1$ & $0.5$ \\ \bottomrule
+    \end{tabular}
+\end{table}}
+\only<2>{Lattice size $N^3\times N_T = 24^3 \times 48$ with $\beta=6.0$.
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy}
+\end{figure}}
+\only<3>{The absolute difference between the smallest flow time $\epsilon_f=0.001$ and those shown previously.
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy_diff_absolute}
+\end{figure}}
+\note{
+\begin{itemize}
+    \item<1-> The values we will test the integrator against.
+    \item<2-> The energy flowed for different the different $\epsilon_f$ values.
+    \item<3-> The absolute difference between the smallest flow time $\epsilon_f=0.001$ and those listed in previous table.
+    \item<3-> The reason for \textbf{only having two points} is due to the fact that we are only \textbf{comparing points} that are \textbf{close to each other in flow time}. If we were to have more points, we would have to double the number of flow time steps for the smallest lattices.
+    \item<4-> An \textbf{example} of the flowing, can be seen by observing the \textbf{energy evolving over flow time}.
+\end{itemize}}
 \end{frame}
 
-\begin{frame}{Smearing the lattice}
-% LatViz animation
+\begin{frame}{Smearing the lattice: topological charge I}
+\begin{center}
+    \animategraphics[loop,controls,width=\linewidth,scale=0.6]{15}{../figures/latviz/topc_TE21/flowTime_TE21-}{0}{60}
+\end{center}
+\note{
+\begin{itemize}
+    \item Me and Giovanni Pederiva created a program for visualizing the gauge field.
+    \item Shows how the flow "removes noise" from the lattice, and only leaves large scale structures intact.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Smearing the lattice: topological charge II}
+\begin{center}
+    \animategraphics[loop,controls,width=\linewidth,scale=0.7]{15}{../figures/latviz/topc_TE27/flowTime_TE27-}{0}{60}
+\end{center}
+\end{frame}
+
+\begin{frame}{Smearing the lattice: topological charge III}
+\begin{center}
+    \animategraphics[loop,controls,width=\linewidth,scale=0.7]{15}{../figures/latviz/topc_TF500/euclideanTime_tf500--}{0}{63}
+\end{center}
 \end{frame}
 
 

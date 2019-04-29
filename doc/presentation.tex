@@ -913,9 +913,16 @@ with the charge density given by
 \end{frame}
 
 \begin{frame}{Topological susceptibility}
-\begin{align*}
+\onslide<1->{\begin{align*}
     \chi_\mathrm{top}^{1/4} = \frac{1}{V^{1/4}}\expect{Q^2}^{1/4}
-\end{align*}
+\end{align*}}
+\onslide<2->{\begin{align*}
+    m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
+\end{align*}}
+\note{\begin{itemize}[<+->]
+    \item We can use the Witten-Veneziano formula in order to extract an estimate for $N_f$ using the topological susceptibility 
+    \item This can help us understand the "quality" of the ensemble, as we would expect to be around $N_f=3$.
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Topological susceptibility}
@@ -1101,45 +1108,67 @@ From this, we can also measure the ratio $R$,
 
 \begin{frame}{The topological charge correlator}
 % Equations, how to extract mass.
-\end{frame}
+A general correlator is given as,
+\begin{align*}
+    C(n_t) = \expect{\hat{O}_2(\vec{0}, n_t) \hat{O}_1(\vec{0},0)} = \sum_k \bra{0}\hat{O}_2\ket{k}\bra{k}\hat{O}_1\ket{0}\e^{-n_t E_k}
+\end{align*}
+where $n_t$ is the Euclidean time in which the correlator is taken and $E_k$ is states of energy.
 
+The \textbf{topological charge correlator}
+\begin{align*}
+    C(n_t) = \expect{q(n_t)q(0)},
+\end{align*}
+$q(0)$ is the \textit{source} and $q(n_t)$ is the \textit{sink}.
+\note{\begin{itemize}
+    \item $q(0)$ is not required to be at $n_t=0$.
+\end{itemize}}
+\end{frame}
 
 \begin{frame}{The topological charge correlator}
 % Two figures for main ensembles
+\only<1>{\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/qtq0e/slices/te0000/post_analysis_qtq0e_bootstrap_time_series_tf0_6000.pdf}
+\end{figure}}
+\only<3->{\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/beta645-32xx4/qtq0e/tflow0.6000/te0000/qtq0e_bootstrap_Nbs500_beta6_45.pdf}
+\end{figure}}
+\note{\begin{itemize}
+    \item<1-> The topological charge correlator for all of the ensembles except $D_1$. The $x$-axis contains the sink-source separation, as the source $q(0)$ is placed at $t_e=0$ fm, and the sink $q(t_e)$ is taken at $t_e$.
+    \item<2-> We since the ensembles are of different lattice sizes, we plot th $D_1$ separately.
+    \item<3-> The topological charge correlator for the $D_1$. The source $q(0)$ is placed at $t_e=0$ fm and the sink $q(t_e)$ is taken at $t_e$.
+\end{itemize}}
 \end{frame}
 
-% \begin{figure}[htbp]
-%     \centering
-%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/qtq0e/slices/te0000/post_analysis_qtq0e_bootstrap_time_series_tf0_6000.pdf}
-%     \caption{The topological charge correlator for all of the ensembles except $D_1$ seen in \vref{tab:results:production-runs}. The $x$-axis contains the sink-source separation, as the source $q(0)$ is placed at $t_e=0$ fm, and the sink $q(t_e)$ is taken at $t_e$.}
-%     \label{fig:results:topc-correlator}
-% \end{figure}
-% \begin{figure}[htbp]
-%     \centering
-%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures/data11/beta645-32xx4/qtq0e/tflow0.6000/te0000/qtq0e_bootstrap_Nbs500_beta6_45.pdf}
-%     \caption{The topological charge correlator for the $D_1$ ensembles seen in \vref{tab:results:production-runs}. The source $q(0)$ is placed at $t_e=0$ fm and the sink $q(t_e)$ is taken at $t_e$.}
-%     \label{fig:results:topc-correlator-b645-32xx4}
-% \end{figure}
+\begin{frame}{The effective glueball mass}
+The ground state in the correlator is given as
+\begin{align*}
+    C(n_t) = A_0 \e^{-n_t E_0} + A_1 \e^{-n_t E_1} + \dots
+\end{align*}
+which can be extracted as
+\begin{align*}
+    a m_\mathrm{eff} = \log \left(\frac{C(n_t)}{C(n_t + 1)}\right),
+\end{align*}
+\end{frame}
 
 \begin{frame}{The effective glueball mass}
 % Figure of final flow time with overlay
 % Figure of four flow times
+\only<1>{\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/slices/post_analysis_qtq0eff_bootstrap_tf0_6_ma_overlay.pdf}
+\end{figure}}
+\only<2->{\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
+\end{figure}
+The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
+\note{\begin{itemize}[<+->]
+    \item The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.
+    \item Low statistics and critical slowdown $\rightarrow$ poor signal.
+\end{itemize}}
 \end{frame}
-
-% \begin{figure}[htbp]
-%     \centering
-%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/slices/post_analysis_qtq0eff_bootstrap_tf0_6_ma_overlay.pdf}
-%     \caption{The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.}
-%     \label{fig:results:glueball-am-mass}
-% \end{figure}
-
-% \begin{figure}[htbp]
-%     \centering
-%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
-%     \caption{The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
-%     \label{fig:results:glueball-am-mass-four-flow-times}
-% \end{figure}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   ____                 _           _
@@ -1154,7 +1183,10 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}
+\vline{5.0pt}
+\begin{center}
 Questions?
+\end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Disposition %%%%%%%%%%%%%%%%%%%%%%%%

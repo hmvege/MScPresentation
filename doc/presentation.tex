@@ -478,9 +478,9 @@ We checked three types of scaling,
     \item \textbf{Weak scaling:} \textit{fixed problem per processor} and a \textit{variable} $N_p$ \textit{cores}.
     \item \textbf{Speedup:} defined as $S(p) = \frac{t_{N_{p,0}}}{t_{N_p}}$.
 \end{itemize}
-\only<1>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.4]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
-\only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.4]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
-\only<3>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.4]{../../LQCD/LatticeAnalyser/figures/scaling/strong/speedup_strong_all}\end{center}}
+\only<1>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
+\only<2>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
+\only<3>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/speedup_strong_all}\end{center}}
 \note{
 \begin{itemize}
 \item <1->Strong scaling
@@ -575,7 +575,7 @@ A bad approximation: \textit{the diffusion equation},
 \begin{frame}{Solving gradient flow with Runge-Kutta 3}
 \onslide<1->{With
 \begin{align*}
-    \dot{V}_{t_f} = Z(V_{t_f}) V_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f},
+    \dot{V}_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f} = Z(V_{t_f}) V_{t_f},
 \end{align*}}
 \onslide<2->{we get
 \begin{align*}
@@ -599,17 +599,21 @@ with coefficients from \citet{luscher_properties_2010}.}
 \only<1>{Testing the integrator for different integration steps $\epsilon_f$.
 \begin{table}
     \centering
+    \resizebox{0.8\columnwidth}{!}{%
     \begin{tabular}{c c c c c c c c c c c}
     \toprule
     $\epsilon_f$ & $0.001$ & $0.005$ & $0.007$ & $0.009$ & $0.01$ & $0.02$ & $0.03$ & $0.05$ & $0.1$ & $0.5$ \\ \bottomrule
     \end{tabular}
+    }
 \end{table}}
 \only<2>{Lattice size $N^3\times N_T = 24^3 \times 48$ with $\beta=6.0$.
+\vspace{-10.0pt}
 \begin{figure}
     \centering
     \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy}
 \end{figure}}
 \only<3->{The absolute difference between the smallest flow time $\epsilon_f=0.001$ and those shown previously.
+\vspace{-10.0pt}
 \begin{figure}
     \centering
     \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy_diff_absolute}
@@ -661,18 +665,22 @@ with coefficients from \citet{luscher_properties_2010}.}
 % Include size and time
 \begin{table}
     \centering
-    \begin{tabular}{l r r r r r r r r}
+    \begin{tabular}{l r r r r r r}
         \toprule
-        Ensemble & $\beta$ & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $N_\mathrm{corr}$ & $N_\mathrm{up}$ & $\epsilon_\mathrm{flow}$ & Config. size$[$GB$]$ \\ 
+        Ensemble & $\beta$ & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $\epsilon_\mathrm{flow}$ & Config. size$[$GB$]$ \\ 
         \midrule
-        $A$ & 6.0 & 24 & 48 & 1000 & 600 & 30 & 0.01 & 0.356 \\
-        $B$ & 6.1 & 28 & 56 & 1000 & 600 & 30 & 0.01 & 0.659 \\
-        $C$ & 6.2 & 32 & 64 & 2000 & 600 & 30 & 0.01 & 1.125 \\
-        $D_1$ & 6.45 & 32 & 32 & 1000 & 1600 & 30 & 0.02 & 0.563 \\
-        $D_2$ & 6.45 & 48 & 96 & 250 & 1600 & 30 & 0.02 & 5.695 \\
+        $A$   & 6.0  & 24 & 48 & 1000 & 0.01 & 0.356 \\
+        $B$   & 6.1  & 28 & 56 & 1000 & 0.01 & 0.659 \\
+        $C$   & 6.2  & 32 & 64 & 2000 & 0.01 & 1.125 \\
+        $D_1$ & 6.45 & 32 & 32 & 1000 & 0.02 & 0.563 \\
+        $D_2$ & 6.45 & 48 & 96 & 250  & 0.02 & 5.695 \\
         \bottomrule
     \end{tabular}
 \end{table}
+\begin{itemize}[<+->]
+    \item We use $N_\mathrm{corr}=1600$ for $\beta=6.45$ ensembles, $N_\mathrm{corr}=600$ for the rest.
+    \item $N_\mathrm{up}=30$.
+\end{itemize}
 \note{
 \begin{itemize}
     \item The main ensembles made for this thesis. 
@@ -711,44 +719,90 @@ with coefficients from \citet{luscher_properties_2010}.}
 \end{frame}
 
 \begin{frame}{Energy}
+\vspace{-10.0pt}
 \begin{figure}
     \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_zoomed.pdf}
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.5cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_zoomed.pdf}
 \end{figure}
 \end{frame}
 
 \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-\only<1>{
-\begin{table}
+\only<1>{\begin{table}
     \centering
-    \begin{tabular}{l r r r r r r}
+    \begin{tabular}{l r r r}
         \toprule
-        Ensemble     & $t_0$[fm$^2$]   & $t_0/a^2$       & $t_0/r_0^2$     & $L/a$           & $L$ $[\fm]$        & $a$ $[\fm]$        \\ \midrule
-        $A$          & $0.02780(2)$    & $3.20(3)$       & $0.11121(9)$    & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
-        $B$          & $0.02769(2)$    & $4.43(4)$       & $0.11075(10)$   & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
-        $C$          & $0.02775(2)$    & $6.01(6)$       & $0.11099(8)$    & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
-        $D_1$        & $0.02779(5)$    & $12.2(1)$       & $0.1112(2)$     & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
-        $D_2$        & $0.02794(9)$    & $12.2(1)$       & $0.1117(3)$     & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
+        Ensemble     & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     \\ \midrule
+        $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
+        $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
+        $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
+        $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
+        $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+}
+\only<2->{\begin{table}
+    \centering
+    \begin{tabular}{l r r r}
+        \toprule
+        Ensemble     & $t_0$[fm$^2$]   & $t_0/a^2$       & $t_0/r_0^2$     \\ \midrule
+        $A$          & $0.02780(2)$    & $3.20(3)$       & $0.11121(9)$    \\ 
+        $B$          & $0.02769(2)$    & $4.43(4)$       & $0.11075(10)$   \\ 
+        $C$          & $0.02775(2)$    & $6.01(6)$       & $0.11099(8)$    \\ 
+        $D_1$        & $0.02779(5)$    & $12.2(1)$       & $0.1112(2)$     \\ 
+        $D_2$        & $0.02794(9)$    & $12.2(1)$       & $0.1117(3)$     \\ 
         \bottomrule
     \end{tabular}
 \end{table}}
-\only<2-3>{
-Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
-\end{figure}
-}
-\only<4->{
-    This matches the values retrieved by \citet{luscher_properties_2010}.
-}
+% \only<3->{
+% \vspace{-15.0pt}
+% \begin{figure}
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
+% \end{figure}
+% }
+% \only<4->{Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
+% \only<5->{This matches the values retrieved by \citet{luscher_properties_2010}.}
 \note{
 \begin{itemize}
-    \item <1->Extrapolation results for $t_0$, where we retrieved the exact point of intersection between $t_f^2 \expect{E}$ and $0.3$ using $N_\mathrm{bs}=500$ bootstrap fits. Extrapolating to the continuum gives us $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.
-    \item <2->The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.
-    \item <3->$r_0=0.5$ fm.
+    \item <2->Extrapolation results for $t_0$, where we retrieved the exact point of intersection between $t_f^2 \expect{E}$ and $0.3$ using $N_\mathrm{bs}=500$ bootstrap fits. Extrapolating to the continuum gives us $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.
+    % \item <3->The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.
+    % \item <4->$r_0=0.5$ fm.
 \end{itemize}
 }
+\end{frame}
+
+\begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
+\onslide<1->{
+\vspace{-5.0pt}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.5cm 0.2cm 1.2cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
+\end{figure}
+}
+\onslide<2->{\vspace{-5.0pt}Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
+\onslide<3->{This matches the values retrieved by \citet{luscher_properties_2010}.}
+\note{
+\begin{itemize}
+    \item <1->The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.
+    \item <2->$r_0=0.5$ fm.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
+\onslide<1->{Extrapolations for different ensemble-combinations
+\begin{table}
+    \centering
+    \begin{tabular}{l r r}
+        \toprule
+        Ensembles               & $\frac{t_{0,\mathrm{cont}}}{r_0^2}$   & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+        $A$, $B$, $C$, $D_2$    & $0.11087(50)$                         & $7.51$ \\
+        $B$, $C$, $D_2$         & $0.1115(3)$                           & $0.41$ \\
+        $A$, $B$, $C$, $D_1$    & $0.1119(6)$                           & $0.88$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}}
 \end{frame}
 
 \begin{frame}{Scale setting \texorpdfstring{$w_0$}{w0}}
@@ -758,12 +812,26 @@ Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\ma
     &W(t) \equiv t_f \frac{\dd}{\dd t_f} \left\{t^2_f \expect{E}\right\}.
 \end{align*}
 }
-\only<2->{
-    
-}
+\onslide<2->{\begin{table}
+    \centering
+    \begin{tabular}{l r r}
+        \toprule
+        Ensembles               & $w_{0\mathrm{cont}}$[fm]  & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+        $A$, $B$, $C$, $D_2$    & $0.1695(5)$               & $7.12$ \\
+        $B$, $C$, $D_2$         & $0.1702(3)$               & $0.53$ \\
+        $A$, $B$, $C$, $D_1$    & $0.1706(6)$               & $0.86$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}}
+\onslide<3->{Comparable to \citet{borsanyi_high-precision_2012} which included dynamical fermions, with $w_{0,\mathrm{cont}}=0.1755(18)(04)$ fm.}
 \end{frame}
 
 \begin{frame}{Autocorrelation in the energy}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_autocorr.pdf}
+\end{figure}
+\note{The autocorrelation of the energy. A value of $\tau_\mathrm{int}=0.5$ indicates that we have zero autocorrelation.}
 \end{frame}
 
 \begin{frame}{Topological charge definition}
@@ -783,26 +851,305 @@ with the charge density given by
 \end{frame}
 
 \begin{frame}{Topological charge}
+\vspace{-5.0pt}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topc/post_analysis_topc_bootstrap.pdf}
+\end{figure}
+\note{\begin{itemize}
+    \item Topological charge $Q$ as evolved in flow time for the five main ensembles.
+    \item Bootstrapped data with $N_\mathrm{bs}=500$ bootstrap samples.
+    \item Corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Additional ensembles}
+\begin{table}
+    \centering
+    \resizebox{0.8\columnwidth}{!}{%
+    \begin{tabular}{l r r r r r r r}
+        \toprule
+        Ensemble & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $N_\mathrm{corr}$ & $N_\mathrm{up}$ & $a$ $[\fm]$ & $L$ $[\fm]$ \\ 
+        \midrule
+        $E$ & 8 & 16 & 8135 & 600 & 30 & 0.0931(4) & 0.745(3) \\
+        $F$ & 12 & 24 & 1341 & 200 & 20 & 0.0931(4) & 1.118(5) \\
+        $G$ & 16 & 32 & 2000 & 400 & 20 & 0.0790(3) & 1.265(6) \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
+\note{\begin{itemize}
+    \item Additional ensembles made in order to illuminate additional aspects of the topological charge.
+    \item Supporting ensembles made on Smaug. All ensembles were flown $N_\mathrm{flow}=1000$ steps with $\epsilon_\mathrm{flow}=0.01$.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Topological charge distribution}
+\vspace{-5.0pt}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/beta61_16x32_run/topc/topc_multihistogram_beta6_1}
+\end{figure}
+\note{Histograms for the topological charge for ensemble $G$ with a lattice of size $N^3\times N_T=16^3\times 32$ with $\beta=6.1$, taken at different flow times $t_f/a^2=0.0$, $1.0$, $4.0$ fm.}
+\end{frame}
+
+\begin{frame}{Topological charge distribution in flow time}
+\vspace{-5.0pt}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/topc_modes_analysis/topc_modes_tf250.pdf}
+\end{figure}
+\note{Histograms of topological charge for the supporting ensembles seen at $t_f/a^2=0.25$ fm.}
 \end{frame}
 
 \begin{frame}{Topological charge autocorrelation}
+\vspace{-5.0pt}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topc/post_analysis_topc_bootstrap_autocorr.pdf}
+\end{figure}
+\note{The integrated autocorrelation $\tau_\mathrm{int}$ for topological charge for the five main ensembles.}
 \end{frame}
 
 \begin{frame}{Topological susceptibility}
+\begin{align*}
+    \chi_\mathrm{top}^{1/4} = \frac{1}{V^{1/4}}\expect{Q^2}^{1/4}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Topological susceptibility}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topsus/post_analysis_topsus_bootstrap.pdf}
+\end{figure}
+\note{\begin{itemize}
+    \item The topological susceptibility $\chi^{1/4}_{t_f}$ of the main ensembles.
+    \item Bootstrapped $N_\mathrm{bs}=500$ times.
+    \item Corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Topological susceptibility continuum extrapolation}
+\begin{table}
+    \centering
+    \begin{tabular}{l r r r}
+        \toprule
+        Ensemble     & $\chi_{t_f}^{1/4}$ [GeV] & $\chi_{t_f}^{1/4}$ [GeV], corrected & $\sqrt{2\tau_\mathrm{int}}$\\
+        \midrule
+        $A$          & $0.1877(23)$ & $0.1877(24)$  & $1.028(46)$  \\
+        $B$          & $0.1880(21)$ & $0.1880(29)$  & $1.346(81)$  \\
+        $C$          & $0.1853(14)$ & $0.1853(24)$  & $1.762(104)$ \\
+        $D_1$        & $0.1971(22)$ & $0.1971(101)$ & $4.523(675)$ \\
+        $D_2$        & $0.1656(33)$ & $0.1656(86)$  & $2.624(441)$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
+\note{The topological susceptibility for the main ensembles together with the correction factor from the integrated autocorrelation time. The second column have not had its results corrected by $\sqrt{2\tau_\mathrm{int}}$. None of the results have been analyzed with bootstrapping.}
+\end{frame}
+
+\begin{frame}{Topological susceptibility continuum extrapolation}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/topsus/post_analysis_extrapmethodbootstrap_topsus_continuum06_bootstrap.pdf}
+\end{figure}
+\note{\begin{itemize}
+    \item A continuum extrapolation of the topological susceptibility $\chi^{1/4}_{t_f}$ for the main ensembles excluding the $D_1$ ensemble.
+    \item The points for $\chi^{1/4}_{t_f}$ is taken at $\sqrt{8t_{f,0}}=0.6$ fm. 
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Topological susceptibility continuum extrapolation}
+\begin{table}
+    \centering
+    \begin{tabular}{l r r r}
+        \toprule
+        Ensembles               & $\chi_{t_f}^{1/4}\left( \expect{Q^2} \right)$ [GeV]   & $N_f$         & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+        $A$, $B$, $C$, $D_2$    & $0.179(10)$                                           & $3.75(29)$    & $2.38$ \\
+        $A$, $B$, $C$, $D_1$    & $0.186(6)$                                            & $3.21(25)$    & $0.83$ \\
+        $B$, $C$, $D_1$         & $0.187(24)$                                           & $3.18(24)$    & $1.63$ \\ 
+        $B$, $C$, $D_2$         & $0.166(24)$                                           & $5.06(39)$    & $2.05$ \\ 
+        $A$, $B$, $C$           & $0.184(6)$                                            & $3.37(26)$    & $0.33$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 \end{frame}
 
 \begin{frame}{The fourth cumulant}
+\begin{align*}
+    \expect{Q^4}_c = \frac{1}{V^2}\left(\expect{Q^4} - 3\expect{Q^2}^2\right).
+\end{align*}
+From this, we can also measure the ratio $R$,
+\begin{align*}
+    R = \frac{\expect{Q^4}_c}{\frac{1}{V}\expect{Q^2}} = \frac{1}{V}\frac{\expect{Q^4} - 3\expect{Q^2}^2}{\expect{Q^2}},
+\end{align*}
+\end{frame}
+
+\begin{frame}{The fourth cumulant}
+% Plot goes here
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topcr/post_analysis_topcr_bootstrap.pdf}
+\end{figure}
+\note{\begin{itemize}
+    \item The fourth cumulant ratio $R=\expect{Q^4}_C/\expect{Q^2}$.
+    \item The results was analyzed using $N_\mathrm{bs}=500$ bootstrap samples, with the error corrected for by $\sqrt{2\tau_\mathrm{int}}$.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{The fourth cumulant at reference flow times}
+% Tables
+\begin{table}
+    \centering
+    \begin{tabular}{l r r r r r r}
+        \toprule
+        Ensemble & $L/a$ & $t_0/a^2$ & $\langle Q^2 \rangle$ & $\langle Q^4 \rangle$ & $\langle Q^4 \rangle_C$ & $R$             \\
+        \midrule
+        $A$      & $2.24$ & $3.20(3)$ & $0.78(4)$             & $2.13(27)$            & $0.282(67)$             & $0.359(65)$     \\ 
+        $B$      & $2.21$ & $4.43(4)$ & $0.81(5)$             & $1.98(23)$            & $0.036(11)$             & $0.044(11)$     \\ 
+        $C$      & $2.17$ & $6.01(6)$ & $0.77(4)$             & $1.6(2)$              & $-0.174(40)$            & $-0.226(64)$    \\ 
+        $D_1$    & $1.53$ & $12.2(1)$ & $1.00(20)$            & $3.01(1.07)$          & $0.03(12)$              & $0.03(12)$      \\ 
+        $D_2$    & $2.29$ & $12.2(1)$ & $0.497(100)$          & $0.64(20)$            & $-0.103(95)$            & $-0.21(23)$     \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+\note{The fourth cumulant is taken at their individual reference scales seen in the third column. The data were analyzed with using a bootstrap analysis of $N_{bs}=500$ samples, with error corrected by the integrated autocorrelation, $\sqrt{2\tau_\mathrm{int}}$.}
+\end{frame}
+
+\begin{frame}{Comparing fourth cumulant}
+\only<1>{\begin{table}
+    \centering
+    \begin{tabular}{l r r r r r r r}
+        \toprule
+        Ensemble        & $\beta$         & $L/a$           & $L$ $[\fm]$        & $a$ $[\fm]$        & $t_0/{a^2}$     & $t_0/{r_0^2}$ & $N_\mathrm{cfg}$  \\
+        \midrule
+        % $A_1$           & $5.96$          & $10$            & $1.02$          & $0.102$         & $2.995(4)$      & $0.1195(9)$     \\ 
+        % $B_1$           &                 & $12$            & $1.224$         & $0.102$         & $2.7984(9)$     & $0.1117(9)$     \\ 
+        % $C_1$           &                 & $13$            & $1.326$         & $0.102$         & $2.7908(5)$     & $0.1114(9)$     \\ 
+        % $\tilde{D}_1$   &                 & $14$            & $1.428$         & $0.102$         & $2.7889(3)$     & $0.1113(9)$     \\ 
+        % $E_1$           &                 & $15$            & $1.53$          & $0.102$         & $2.7889(2)$     & $0.1113(9)$     \\ 
+        $F_1$           & $5.96$          & $16$            & $1.632$         & $0.102$         & $2.7887(2)$     & $0.1113(9)$   & 1 440 000 \\
+        \addlinespace
+        $B_2$           & $6.05$          & $14$            & $1.218$         & $0.087$         & $3.7960(12)$    & $0.1114(9)$   & 144 000 \\ 
+        $\tilde{D}_2$   &                 & $17$            & $1.479$         &                 & $3.7825(8)$     & $0.1110(9)$   &         \\
+        \addlinespace
+        $B_3$           & $6.13$          & $16$            & $1.232$         & $0.077$         & $4.8855(15)$    & $0.1113(10)$  & 144 000 \\ 
+        $\tilde{D}_3$   &                 & $19$            & $1.463$         &                 & $4.8722(11)$    & $0.1110(10)$  &         \\
+        \addlinespace
+        $B_4$           & $6.21$          & $18$            & $1.224$         & $0.068$         & $6.2191(20)$    & $0.1115(11)$  & 144 000 \\ 
+        $\tilde{D}_4$   &                 & $21$            & $1.428$         &                 & $6.1957(14)$    & $0.1111(11)$  &         \\ 
+        \bottomrule
+    \end{tabular}
+    \label{tab:topcr-article-parameters}
+\end{table}}
+\only<2>{\begin{table}
+    \centering
+    \begin{tabular}{l r r r r} % Quantity Flow-time Article-Value My-Value Article-Me-Ratio
+        \toprule
+        Ensemble        & $\langle Q^2 \rangle_\text{normed}$ & $\langle Q^4 \rangle_\text{normed}$ & $\langle Q^4 \rangle_{C,\text{normed}}$ & $R_\text{normed}$ \\
+        \midrule
+        % $A_1$           & $0.648(6)$      & $1.494(34)$     & $0.235(13)$     & $0.363(16)$     \\ 
+        % $B_1$           & $0.720(3)$      & $1.618(14)$     & $0.061(2)$      & $0.084(3)$      \\ 
+        % $C_1$           & $0.726(2)$      & $1.622(10)$     & $0.041(2)$      & $0.057(3)$      \\ 
+        % $\tilde{D}_1$   & $0.728(1)$      & $1.627(8)$      & $0.037(2)$      & $0.050(2)$      \\ 
+        % $E_1$           & $0.727(1)$      & $1.611(6)$      & $0.027(1)$      & $0.037(2)$      \\ 
+        $F_1$           & $0.728(1)$      & $1.608(4)$      & $0.016(1)$      & $0.022(1)$      \\
+        \addlinespace
+        $B_2$           & $0.772(3)$      & $1.873(19)$     & $0.085(4)$      & $0.110(5)$      \\ 
+        $\tilde{D}_2$   & $0.770(3)$      & $1.817(17)$     & $0.037(4)$      & $0.048(5)$      \\
+        \addlinespace
+        $B_3$           & $0.760(3)$      & $1.805(17)$     & $0.074(3)$      & $0.097(4)$      \\ 
+        $\tilde{D}_3$   & $0.769(3)$      & $1.801(14)$     & $0.027(1)$      & $0.035(1)$      \\
+        \addlinespace
+        $B_4$           & $0.776(3)$      & $1.874(18)$     & $0.069(3)$      & $0.089(4)$      \\ 
+        $\tilde{D}_4$   & $0.785(3)$      & $1.891(17)$     & $0.040(4)$      & $0.052(5)$      \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}}
+\only<3>{\begin{table}
+    \centering
+    \begin{tabular}{l l r r r r} % Quantity Flow-time Article-Value My-Value Article-Me-Ratio
+        \toprule
+        Article          & Thesis & $\text{Ratio}(\langle Q^2 \rangle)$ & $\text{Ratio}(\langle Q^4 \rangle)$ & $\text{Ratio}(\langle Q^4 \rangle_C)$ & $\text{Ratio}(R)$ \\
+        \midrule
+        $F_1$           & $A$             & $1.08(6)$       & $1.34(18)$      & $19.03(5.81)$   & $17.64(4.48)$   \\ 
+        \addlinespace
+        $B_2$           & $A$             & $1.02(5)$       & $1.15(15)$      & $3.60(1.09)$    & $3.54(90)$      \\ 
+                        & $B$             & $1.04(6)$       & $1.06(11)$      & $0.480(74)$     & $0.46(4)$       \\ 
+        \addlinespace
+        $\tilde{D}_2$   & $A$             & $1.02(5)$       & $1.19(15)$      & $8.31(1.99)$    & $8.15(1.56)$    \\ 
+                        & $B$             & $1.05(6)$       & $1.10(12)$      & $1.1(1)$        & $1.06(3)$       \\ 
+        \addlinespace
+        $B_3$           & $B$             & $1.06(6)$       & $1.10(12)$      & $0.550(86)$     & $0.52(5)$       \\ 
+        \addlinespace
+        $\tilde{D}_3$   & $B$             & $1.05(6)$       & $1.11(12)$      & $1.51(23)$      & $1.4(1)$        \\ 
+        \addlinespace
+        $B_4$           & $C$             & $0.99(5)$       & $0.86(8)$       & $-2.32(46)$     & $-2.35(59)$     \\ 
+        \addlinespace
+        $\tilde{D}_4$   & $C$             & $0.98(5)$       & $0.85(8)$       & $-3.95(96)$     & $-4.05(1.19)$   \\
+        \bottomrule
+    \end{tabular}
+    \label{tab:topcr-comparison}
+\end{table}}
+\note{\begin{itemize}[<+->]
+    \item Parameters of the ensembles presented by \citet{ce_non-gaussianities_2015}. The first column is the ensemble name from the article. The letter indicates the volume, while the subindex indicates the $\beta$ value. Ensembles of similar letters keep approximately the same length $L$.
+    \item Results as presented by \citet{ce_non-gaussianities_2015}, normalized by the lattice volume.
+    \item A comparison between the results obtained in this thesis on the fourth cumulant, and by those similar in volume form \citet{ce_non-gaussianities_2015}. \textit{Ratio} indicates that we are dividing our results by the ones in previous table.
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{The topological charge correlator}
+% Equations, how to extract mass.
 \end{frame}
+
+
+\begin{frame}{The topological charge correlator}
+% Two figures for main ensembles
+\end{frame}
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/qtq0e/slices/te0000/post_analysis_qtq0e_bootstrap_time_series_tf0_6000.pdf}
+%     \caption{The topological charge correlator for all of the ensembles except $D_1$ seen in \vref{tab:results:production-runs}. The $x$-axis contains the sink-source separation, as the source $q(0)$ is placed at $t_e=0$ fm, and the sink $q(t_e)$ is taken at $t_e$.}
+%     \label{fig:results:topc-correlator}
+% \end{figure}
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures/data11/beta645-32xx4/qtq0e/tflow0.6000/te0000/qtq0e_bootstrap_Nbs500_beta6_45.pdf}
+%     \caption{The topological charge correlator for the $D_1$ ensembles seen in \vref{tab:results:production-runs}. The source $q(0)$ is placed at $t_e=0$ fm and the sink $q(t_e)$ is taken at $t_e$.}
+%     \label{fig:results:topc-correlator-b645-32xx4}
+% \end{figure}
 
 \begin{frame}{The effective glueball mass}
+% Figure of final flow time with overlay
+% Figure of four flow times
 \end{frame}
 
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/slices/post_analysis_qtq0eff_bootstrap_tf0_6_ma_overlay.pdf}
+%     \caption{The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.}
+%     \label{fig:results:glueball-am-mass}
+% \end{figure}
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=1.0]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
+%     \caption{The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
+%     \label{fig:results:glueball-am-mass-four-flow-times}
+% \end{figure}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   ____                 _           _
+%  / ___|___  _ __   ___| |_   _ ___(_) ___  _ __
+% | |   / _ \| '_ \ / __| | | | / __| |/ _ \| '_ \
+% | |__| (_) | | | | (__| | |_| \__ \ | (_) | | | |
+%  \____\___/|_| |_|\___|_|\__,_|___/_|\___/|_| |_|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Conclusion}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \end{frame}
 

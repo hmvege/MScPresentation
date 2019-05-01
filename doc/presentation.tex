@@ -153,7 +153,7 @@
     \note{
         \begin{itemize}
             \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy
-            \item One of the experimental proofs of QCD along with triple $\gamma$ decay and muon cross section ration $R$.
+            \item One of the experimental proofs of QCD along with triple $\gamma$ decay and muon cross section ratio $R$. \husk{LEGGE TIL MER HER!! EVT FJERNE. OPPSUMMER MER!}
         \end{itemize}
     }
 \end{frame}
@@ -162,7 +162,7 @@
     \begin{center}
         \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
     \end{center}
-    \note{If we try to pull apart \textbf{two mesons}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
+    \note{If we try to pull apart \textbf{two quarks in a meson}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
 \end{frame}
 
 \begin{frame}{The non-linearity of QCD}
@@ -189,8 +189,7 @@ with action
     \item <3->Winding number
 \end{itemize}
 
-\begin{block}
-\only<3->\begin{figure}
+\onslide<3->{\begin{figure}
     \centering
     \begin{subfigure}{0.22\textwidth}
         \centering
@@ -213,8 +212,7 @@ with action
         \caption{$\nu=+2$}
     \end{subfigure}
     \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
-\end{figure}
-\end{block}
+\end{figure}}
 \note{
     \begin{itemize}
         \item <1->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
@@ -236,6 +234,7 @@ A formula connecting pure gauge theory and full QCD.
     \item $\chi_\mathrm{top}$ is the \textit{topological susceptibility}.
 \end{itemize}
 \note{
+    \husk{MORE ON WV FORMULA. CLARIFY WHAT IT IS AND WHAT IT EXPLAINS.}
     \begin{itemize}
         \item We use the experimental values for the pion decay constant and the $\eta'$ mass.
         \item Allows us to estimate the number of flavors in our theory $N_f$.
@@ -355,7 +354,7 @@ with $\beta=6/g_S^2$.
         \item When returning to what ensembles of configurations we generated this will be evident.
     \end{itemize}
 }
-\end{frame}
+\end{frame} 
 
 \begin{frame}{The path integral I}
 \only<1>{\begin{align*}
@@ -364,6 +363,7 @@ with $\beta=6/g_S^2$.
 \only<2>{\begin{align*}
     \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U O[U] \e^{- S_G[U]}.
 \end{align*}}%
+\husk{MOVE PATH INTEGRAL FIGURE TO THIS LOCATION TO ILLUSTRATE WHAT A PATH INTEGRAL IS!}
 \only<3>{\begin{align*}
     \langle O \rangle = \mathcolor{red}{\frac{1}{Z}\int\mathcal{D}U} O[U] \mathcolor{red}{\e^{- S_G[U]}}.
 \end{align*}}%
@@ -374,14 +374,16 @@ Z = \int \mathcal{D}U \mathcal{D}\bar{\psi} \mathcal{D}\psi e^{- S_G[U] - S_F[\p
 \only<2->{\begin{align*}
 Z = \int \mathcal{D}U e^{- S_G[U]}.
 \end{align*}}%
+\husk{PRESENT METROPOLIS ALGORITH AFTER SHOWING THE PATH INTEGRAL?}
 \end{frame}
 
 \begin{frame}{The path integral II}
+\husk{MOVE THIS FIGURE TO BEING THE FIRST SLIDE WHEN PRESENTING PATH INTEGRALS, AS IT REALLY DOES NOT SHOW LATTICE PATH INTEGRALS}
 \begin{figure}
     \centering
     \includegraphics[scale=1.0]{../figures/illustrations/lqcd/path-integral/path-integral-flattened}
 \end{figure}
-\note{An example of the discretized path integral, going from time $t_0$ to $t_{N_T}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
+\note{An example of the discretized path integral, going from time $t_0$ to $t_{n}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
 \end{frame}
 
 \begin{frame}{How to measure}
@@ -398,6 +400,7 @@ The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 \end{frame}
 
 \begin{frame}{The Metropolis algorithm}
+\husk{MAYBE SKIP SLIDE THIS??}
 \begin{algorithmic}
     \Repeat
         \State Randomly generate a candidate state $j$ with probability $T_{i\rightarrow i}$.
@@ -437,6 +440,7 @@ A parameter $\epsilon_\mathrm{rnd}$ controls the spread of the candidate matrice
     \item $N_\mathrm{MC}$ is how many configurations we will generate.
     \item $N_\mathrm{up}$ is how many single link updates we will perform.
     \item $N_\mathrm{corr}$ is how many full sweeps we shall perform in between each sampling. Needed in order to reduce the autocorrelation between the configurations.
+    \item We checked that our choice for the matrix generation parameter $\epsilon_\mathrm{rnd}$ minimizes the autocorrelation.
 \end{itemize}
 }
 \end{frame}
@@ -481,26 +485,35 @@ We checked three types of scaling,
 \only<1>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
 \only<2>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
 \only<3>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/speedup_strong_all}\end{center}}
-\note{
-\begin{itemize}
-\item <1->Strong scaling
-\item <2->Weak scaling
-\item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
-\end{itemize}
-\onslide<3->We appear to have a plateau around 512 cores.
-}
+\onslide<3->{We appear to have a plateau around 512 cores.}
+\note{\begin{itemize}
+    \item <1->Strong scaling
+    \item <2->Weak scaling
+    \item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
+    \item <4->The IO was optimized later to be a factor of ten or more faster.
+\end{itemize}}
+\husk{FIX THE SLIDES HERE! FINAL <3-> is redundant!!}
 \end{frame}
 
 \begin{frame}{Optimizing the gauge configuration generation}
 \only<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
 \only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}\end{center}}
-\only<3>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
+\only<3->{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
 \note{
 \begin{itemize}
-    \item We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.
-    \item <1> The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.
-    \item <2> The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.
+    \item <1>We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.
+    \item <1>The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.
+    \item <2>The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.
+    \item <3->What we see is that increasing $N_\mathrm{up}$ is a cheaper alternative compared to using $N_\mathrm{corr}$
 \end{itemize}}
+\end{frame}
+
+\begin{frame}{Verifying the code}
+\begin{itemize}[<+->]
+    \item \textbf{Unit testing.} $\SU(3)$, $\SU(2)$ multiplications.
+    \item \textbf{Integration testing.} Random matrix generation, lattice objects, parallelization, ect.
+    \item \textbf{Validation testing.} Cross checking results with a configuration from Chroma.
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -984,6 +997,7 @@ Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \
 \end{frame}
 
 \begin{frame}{The fourth cumulant}
+\husk{WHAT DO THE R RATIO INDICATE WHEN AWAY FROM ZERO?!}
 \begin{align*}
     \expect{Q^4}_c = \frac{1}{V^2}\left(\expect{Q^4} - 3\expect{Q^2}^2\right).
 \end{align*}
@@ -1006,6 +1020,7 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}{The fourth cumulant at reference flow times}
+\husk{SCALE THE TABLES}
 % Tables
 \begin{table}
     \centering
@@ -1025,6 +1040,7 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}{Comparing fourth cumulant}
+\husk{WHAT ARTICLE?! SCALE TABLE}
 \only<1>{\begin{table}
     \centering
     \begin{tabular}{l r r r r r r r}
@@ -1107,6 +1123,8 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}{The topological charge correlator}
+\husk{CLEAN UP! REMOVE GENERAL EXPRESSION(ITS JUST MORE CONFUSING!)}
+\husk{EXPLAIN HERE WHAT SOURCE/SINK IS}
 % Equations, how to extract mass.
 A general correlator is given as,
 \begin{align*}
@@ -1163,6 +1181,7 @@ which can be extracted as
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
 \end{figure}
+\husk{CLEAN UP COMMENT ON FRAME!}
 The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
 \note{\begin{itemize}[<+->]
     \item The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.
@@ -1180,12 +1199,48 @@ The effective mass of the glueball seen at four different flow times, $\sqrt{8t_
 
 \section{Conclusion, future developments and final thoughts}
 \begin{frame}{Conclusion}
+\begin{itemize}
+    \item <1->Scaling and parameter optimizations % SCALING RUNS, N_UP COULD BE INCREASED, COMPARABLE TO OTHER CODES 
+    \begin{itemize}
+        \item <2->Room for increased processors.
+        \item <3->$N_\mathrm{up} > N_\mathrm{corr}$
+        \item <4->Machine precision accuracy when comparing with Chroma.
+    \end{itemize}
+    \item <5->$t_0$ and $w_0$ match other papers, e.g. \citet{luscher_properties_2010} and \citet{ce_non-gaussianities_2015}.% REFERENCE SCALE T0 - close to what is found by Luscher, REFERENCE SCALE W0 - close to what is found in paper
+    \item <6->$\expect{Q} \neq 0$ for some ensembles. % CHARGE - not zero!
+    \item <7->The topological susceptibility $\expect{\chi^{1/4}_f}$ and $N_f$ % TOPSUS AND N_F - compare ts-bootstrap and bootstrap. Re-iterate main results.
+    \item <8->$\expect{Q^4}_C$ and $R$. Sensitive quantities - need large statistics.% 4th CUMULANT - quite off. Larger beta than article. Perhaps just poor statistics.
+    \item <9->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass. % CORRELATOR AND GLUEBALL MASS
+    \item <10->Statistics, autocorrelation and critical slowdown.% STATISTICS AND CRITICAL SLOWDOWN
+\end{itemize}
+\note{\begin{itemize}
+    \item <1->Checked scaling and parameter optimization.
+    \item <2->We checked \textbf{strong}, \textbf{weak} and \textbf{speedup}, where we appeared to have a plateauing around 512 processors but with room for optimization.
+    \item <3->$N_\mathrm{up}$ could be increased, as it has a smaller impact than $N_\mathrm{corr}$.
+    \item <4->Same results as Chroma down to machine precision.
+    \item <4->We also checked the $\epsilon_\mathrm{rnd}$ for matrix generation parameter that it minimized the autocorrelation, and the integration step $\epsilon_f$ .
+    \item <5->$t_0$ and $w_0$ match other papers.
+    \item <6->$\expect{Q}$
+    \item <7->$\chi^{1/4}_f$. Matches well with other papers
+    \item <8->$\expect{Q^4}_C$ and $R$. Sensitive quantity, matches well of first and second moment.
+    \item <9->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass.
+    \item <10->Critical slowdown, which makes transitioning to a new, independent configuration difficult. This inhibits the gathering of statistics, and helps us explain why we for larger $\beta$ values have fewer independent gauge configurations.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Future developments and final thoughts}
+\begin{itemize}[<+->]
+    \item Better statistics.
+    \item Better utilization of support ensembles $E$, $F$ and $G$.
+    \item Improve autocorrelation with larger $N_\mathrm{up}$.
+    \item Implement better actions with and operators containing errors.
+    \item Fermions and HMC(Hybrid Monte Carlo).
+\end{itemize}
 \end{frame}
 
 \begin{frame}
+\husk{FIX THIS!}
 \vline{5.0pt}
 \begin{center}
 Questions?
@@ -1204,6 +1259,7 @@ Questions?
 % Extra slides
 
 \begin{frame}
+\husk{MAKE THIS SMALLER!}
 \bibliography{bibliography/lib.bib}
 \end{frame}
 

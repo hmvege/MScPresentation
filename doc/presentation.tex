@@ -143,26 +143,7 @@
     \begin{center}
         \includegraphics[width=0.8\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}
     \end{center}
-    \note{Consists of the innermost square of the six quarks and the gluons.}
-\end{frame}
-
-\begin{frame}{Asymptotic freedom}
-    \begin{center}
-        \includegraphics[width=0.8\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
-    \end{center}
-    \note{
-        \begin{itemize}
-            \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy
-            \item One of the experimental proofs of QCD along with triple $\gamma$ decay and muon cross section ratio $R$. \husk{LEGGE TIL MER HER!! EVT FJERNE. OPPSUMMER MER!}
-        \end{itemize}
-    }
-\end{frame}
-
-\begin{frame}{Confinement}
-    \begin{center}
-        \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
-    \end{center}
-    \note{If we try to pull apart \textbf{two quarks in a meson}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
+    \note{Consists of the innermost square of the \textbf{six quarks} and the \textit{eight gluons}.}
 \end{frame}
 
 \begin{frame}{The non-linearity of QCD}
@@ -172,74 +153,45 @@ The QCD Lagrangian
 \end{align*}
 with action
 \begin{align}
-    S = \int \dd^4 x \mathcal{L}_\mathrm{QCD}.
+    S = \int \dd^4 x \mathcal{L}_\mathrm{QCD},
 \end{align}
+is invariant under a $\SU(3)$ symmetry.
 
 \begin{align*}
     \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
     \includegraphics[scale=0.9]{../figures/feynman-diagrams/three-gluon-vertex/three-gluon-vertex.pdf} \quad
     \includegraphics[scale=0.9]{../figures/feynman-diagrams/four-gluon-vertex/four-gluon-vertex.pdf}
 \end{align*}
-\end{frame}
-
-\begin{frame}{Topology in QCD}
-\begin{itemize}
-    \item <1->Instantons
-    \item <2->Topological charge, $Q$
-    \item <3->Winding number
-\end{itemize}
-\onslide<3->{\begin{figure}
-    \centering
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number1.pdf}
-        \caption{$\nu=+1$}
-    \end{subfigure}
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number-1.pdf}
-        \caption{$\nu=-1$}
-    \end{subfigure}
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number0.pdf}
-        \caption{$\nu=0$}
-    \end{subfigure}
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number+2.pdf}
-        \caption{$\nu=+2$}
-    \end{subfigure}
-    \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
-\end{figure}}
 \note{
     \begin{itemize}
-        \item <1->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
-        \item <2->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
-        \item <3->An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
+        \item \textit{Gluon self-interaction.}
+        \item This central aspect is mostly covered in the pure-gauge/Yang-Mills section of the theory.
     \end{itemize}
 }
 \end{frame}
 
-\begin{frame}{The Witten-Veneziano relation}
-A formula connecting pure gauge theory and full QCD.
-\begin{align}
-    m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
-\end{align}
-\begin{itemize}
-    \item Pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
-    \item $\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
-    \item $\chi_\mathrm{top}=\expect{Q^2}$ is the \textit{topological susceptibility}.
-\end{itemize}
-\note{
-    \husk{MORE ON WV FORMULA. CLARIFY WHAT IT IS AND WHAT IT EXPLAINS.}
-    \begin{itemize}
-        \item We use the experimental values for the pion decay constant and the $\eta'$ mass.
-        \item R.h.s. is full QCD and l.h.s is from pure gauge theory.
-        \item Allows us to estimate the number of flavors in our theory $N_f$.
-        \item $\chi_\mathrm{top}$ is the topological susceptibility, calculated from the expectation value of $Q$.
-    \end{itemize}
-}
+\begin{frame}{Asymptotic freedom}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+    \end{center}
+    \note{
+        \begin{itemize}
+            \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy.
+            \item Also serves as an \textit{experimental proof} of QCD.
+            \item Other lines of \textit{evidence}: triple $\gamma$ decay and muon cross section ratio $R$.
+            \begin{itemize}
+                \item Triple $\gamma$ decay: the number of colors is included in the cross section, which can be measured experimentally.
+                \item Muon cross section ratio $R$: the ratio is dependent on having three colors.
+            \end{itemize}
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Confinement}
+    \begin{center}
+        \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
+    \end{center}
+    \note{If we try to pull apart \textbf{two quarks in a meson}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -257,6 +209,7 @@ A formula connecting pure gauge theory and full QCD.
     \item Fermions live on the each \textit{point} in the cube.
     \item The gauge fields live on the sites \textit{in between} the points, and is called links.
 \end{enumerate}
+\only<4->{Goal: \textit{maintain gauge invariance.}}
 \end{frame}
 
 \begin{frame}{Links}
@@ -322,6 +275,8 @@ The Wilson gauge action is given as
     S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - P_{\mu\nu}(n) \right],
 \end{align}
 with $\beta=6/g_S^2$.
+
+Continuum action recovered when $a \rightarrow 0$!
 \note{
     \begin{itemize}
         \item Using the definition of the link we saw earlier, we can reproduce the continuum action up to an discretization error of $\mathcal{O}(a^2)$.
@@ -338,9 +293,13 @@ with $\beta=6/g_S^2$.
 %                              |_|            |___/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Developing a code for solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice}
-
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< YOU ARE HERE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 \begin{frame}{The numerical challenge in lattice QCD}
-\onslide<1->{A lattice configuration consists of $\SU(3)$ matrices,}
+\onslide<1->{A lattice configuration consists of $3\times 3$ $\SU(3)$ matrices,}
 \onslide<2->{\begin{align*}
     \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
 \end{align*}}
@@ -352,39 +311,48 @@ with $\beta=6/g_S^2$.
         \item When returning to what ensembles of configurations we generated this will be evident.
     \end{itemize}
 }
-\end{frame} 
+\end{frame}
 
-\begin{frame}{The path integral I}
+\begin{frame}{The path integral}
 \only<1>{\begin{align*}
     \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U O[\psi,\bar{\psi},U] \e^{- S_G[U] - S_F[\psi,\bar{\psi},U]}.
 \end{align*}}%
 \only<2>{\begin{align*}
     \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U O[U] \e^{- S_G[U]}.
 \end{align*}}%
-\husk{MOVE PATH INTEGRAL FIGURE TO THIS LOCATION TO ILLUSTRATE WHAT A PATH INTEGRAL IS!}
-\only<3>{\begin{align*}
-    \langle O \rangle = \mathcolor{red}{\frac{1}{Z}\int\mathcal{D}U} O[U] \mathcolor{red}{\e^{- S_G[U]}}.
-\end{align*}}%
-with 
 \only<1>{\begin{align*}
 Z = \int \mathcal{D}U \mathcal{D}\bar{\psi} \mathcal{D}\psi e^{- S_G[U] - S_F[\psi,\bar{\psi}, U]}.
 \end{align*}}%
-\only<2->{\begin{align*}
+\only<2>{\begin{align*}
 Z = \int \mathcal{D}U e^{- S_G[U]}.
 \end{align*}}%
-\husk{PRESENT METROPOLIS ALGORITH AFTER SHOWING THE PATH INTEGRAL?}
 \end{frame}
 
-\begin{frame}{The path integral II}
-\husk{MOVE THIS FIGURE TO BEING THE FIRST SLIDE WHEN PRESENTING PATH INTEGRALS, AS IT REALLY DOES NOT SHOW LATTICE PATH INTEGRALS}
+\begin{frame}{The path integral}
+\only<1>{
 \begin{figure}
     \centering
     \includegraphics[scale=1.0]{../figures/illustrations/lqcd/path-integral/path-integral-flattened}
-\end{figure}
-\note{An example of the discretized path integral, going from time $t_0$ to $t_{n}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
+\end{figure}}
+\only<2->{\begin{align*}
+    \langle O \rangle = \mathcolor{red}{\frac{1}{Z}\int\mathcal{D}U} O[U] \mathcolor{red}{\e^{- S_G[U]}}.
+\end{align*}
+with 
+\begin{align*}
+Z = \int \mathcal{D}U e^{- S_G[U]}.
+\end{align*}}
+\onslide <3->{We will use the \textit{Metropolis algorithm} to create configurations of the lattice.}
+\note{
+    \begin{itemize}
+        \item<1->{An example of the discretized path integral, going from time $t_0$ to $t_{n}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
+        \item<2->{We will use the parts marked in red as a probability distribution which we will create configurations from.}
+        \item<3->{This can be used in the \textit{Metropolis algorithm.}}
+        \item<4->{Since a path integral integrates over all possible configurations, our job us to generate enough configurations to properly represent the statistics.}
+    \end{itemize}
+}
 \end{frame}
 
-\begin{frame}{How to measure}
+\begin{frame}{Measurements on the lattice}
 The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 \begin{align*}
     \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
@@ -397,62 +365,66 @@ The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 }
 \end{frame}
 
-\begin{frame}{The Metropolis algorithm}
-\husk{MAYBE SKIP SLIDE THIS??}
-\begin{algorithmic}
-    \Repeat
-        \State Randomly generate a candidate state $j$ with probability $T_{i\rightarrow i}$.
-        \State Calculate $A_{i\rightarrow j}$ which saw on previous slide.
-        \State Generate random number $u\in[0,1]$.
-        \If {$u \leq A_{i\rightarrow j}$}
-            \State Accept new state $j$.
-        \ElsIf {$u > A_{i\rightarrow j}$}
-            \State Reject new state $j$ and retain the old state $i$.
-        \EndIf
-    \Until {$N_\mathrm{MC}$ samples are generated.}
-\end{algorithmic}
-\note{
-\begin{itemize}
-    \item Generated state $j$ is a gauge configuration.
-    \item Algorithm of choice when sampling gauge configurations.
-    \item For generating $N_\mathrm{MC}$ Monte Carlo samples.
-\end{itemize}
-}
-\end{frame}
+% \begin{frame}{The Metropolis algorithm}
+% \begin{algorithmic}
+%     \Repeat
+%         \State Randomly generate a candidate state $j$ with probability $T_{i\rightarrow i}$.
+%         \State Calculate $A_{i\rightarrow j}$ which saw on previous slide.
+%         \State Generate random number $u\in[0,1]$.
+%         \If {$u \leq A_{i\rightarrow j}$}
+%             \State Accept new state $j$.
+%         \ElsIf {$u > A_{i\rightarrow j}$}
+%             \State Reject new state $j$ and retain the old state $i$.
+%         \EndIf
+%     \Until {$N_\mathrm{MC}$ samples are generated.}
+% \end{algorithmic}
+% \note{
+% \begin{itemize}
+%     \item Generated state $j$ is a gauge configuration.
+%     \item Algorithm of choice when sampling gauge configurations.
+%     \item For generating $N_\mathrm{MC}$ Monte Carlo samples.
+% \end{itemize}
+% }
+% \end{frame}
 
-\begin{frame}{The Metropolis algorithm on the lattice}
-A parameter $\epsilon_\mathrm{rnd}$ controls the spread of the candidate matrices.
-\begin{enumerate}
-    \item Initialize lattice with $\SU(3)$ matrices close to unity(\textit{hot start}) or at unity(\textit{cold start}).
-    \item Thermalize with $N_\mathrm{therm}$ sweeps.
-    \item Generate $N_\mathrm{MC}$ samples,
-    \begin{enumerate}[i]
-        \item Perform $N_\mathrm{corr}$ correlation updates.
-        \item At each update, perform $N_\mathrm{up}$ single link update for every lattice link.
-        \item Store configuration and/or apply gradient flow and sample observables on it.
-    \end{enumerate}
-\end{enumerate}
-\note{
-\begin{itemize}
-    \item We use \textbf{periodic boundary conditions} for all calculations.
-    \item $N_\mathrm{MC}$ is how many configurations we will generate.
-    \item $N_\mathrm{up}$ is how many single link updates we will perform.
-    \item $N_\mathrm{corr}$ is how many full sweeps we shall perform in between each sampling. Needed in order to reduce the autocorrelation between the configurations.
-    \item We checked that our choice for the matrix generation parameter $\epsilon_\mathrm{rnd}$ minimizes the autocorrelation.
-\end{itemize}
-}
-\end{frame}
+% \begin{frame}{The Metropolis algorithm on the lattice}
+% A parameter $\epsilon_\mathrm{rnd}$ controls the spread of the candidate matrices.
+% \begin{enumerate}
+%     \item Initialize lattice with $\SU(3)$ matrices close to unity(\textit{hot start}) or at unity(\textit{cold start}).
+%     \item Thermalize with $N_\mathrm{therm}$ sweeps.
+%     \item Generate $N_\mathrm{MC}$ samples,
+%     \begin{enumerate}[i]
+%         \item Perform $N_\mathrm{corr}$ correlation updates.
+%         \item At each update, perform $N_\mathrm{up}$ single link update for every lattice link.
+%         \item Store configuration and/or apply gradient flow and sample observables on it.
+%     \end{enumerate}
+% \end{enumerate}
+% \note{
+% \begin{itemize}
+%     \item We use \textbf{periodic boundary conditions} for all calculations.
+%     \item $N_\mathrm{MC}$ is how many configurations we will generate.
+%     \item $N_\mathrm{up}$ is how many single link updates we will perform.
+%     \item $N_\mathrm{corr}$ is how many full sweeps we shall perform in between each sampling. Needed in order to reduce the autocorrelation between the configurations.
+%     \item We checked that our choice for the matrix generation parameter $\epsilon_\mathrm{rnd}$ minimizes the autocorrelation.
+% \end{itemize}
+% }
+% \end{frame}
 
 \begin{frame}{Parallelization}
-Two methods used:
+\onslide<1->{The lattice now is a 4D hypercube, with four links associated to each lattice site \rightarrow need to parallelize!
+
+
+}%
+\onslide<2->{Two methods used:}
 \begin{itemize}
-    \item Single link sharing used in the Metropolis algorithm.
-    \item \textit{shifts} used in in gradient flow and observable sampling
+    \item<3->{ Single link sharing used in the Metropolis algorithm.}
+    \item<4->{ \textit{shifts} used in in gradient flow and observable sampling}
 \end{itemize}
 \note{
-\begin{itemize}
+\begin{itemize}[<+->]
+    \item Due to the size of the lattice, we need to parallelize!.
+    \item We parallelized using \textbf{MPI}.
     \item Tested out \textbf{halos}, but turned out to be problematic when generating.
-    \item We parallelized using MPI.
 \end{itemize}
 }
 \end{frame}
@@ -483,26 +455,26 @@ We checked three types of scaling,
 \only<1>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
 \only<2>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
 \only<3>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/speedup_strong_all}\end{center}}
-\onslide<3->{We appear to have a plateau around 512 cores.}
+\only<5>{We appear to have a plateau around 512 cores.}
 \note{\begin{itemize}
     \item <1->Strong scaling
     \item <2->Weak scaling
     \item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
     \item <4->The IO was optimized later to be a factor of ten or more faster.
 \end{itemize}}
-\husk{FIX THE SLIDES HERE! FINAL <3-> is redundant!!}
+\husk{TODO: FIX THE SLIDES HERE! FINAL <3-> is redundant!!}
 \end{frame}
 
 \begin{frame}{Optimizing the gauge configuration generation}
 \only<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
 \only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}\end{center}}
-\only<3->{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
+\only<3>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
 \note{
 \begin{itemize}
-    \item <1>We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.
-    \item <1>The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.
-    \item <2>The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.
-    \item <3->What we see is that increasing $N_\mathrm{up}$ is a cheaper alternative compared to using $N_\mathrm{corr}$
+    \item <1>{We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.}
+    \item <1>{The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.}
+    \item <2>{The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
+    \item <3>{What we see is that increasing $N_\mathrm{up}$ is a cheaper alternative compared to using $N_\mathrm{corr}$}
 \end{itemize}}
 \end{frame}
 
@@ -600,9 +572,9 @@ A bad approximation: \textit{the diffusion equation},
 with coefficients from \citet{luscher_properties_2010}.}
 \note{
 \begin{itemize}
-    \item <1-> We rewrite the equations slightly,
-    \item <2-> and use a structure preserving integrator with coefficients from \citet{luscher_properties_2010}.
-    \item <3-> We control the accuracy of this integrator by $\epsilon_f$.
+    \item <1->{ We rewrite the equations slightly,}
+    \item <2->{ and use a structure preserving integrator with coefficients from \citet{luscher_properties_2010}.}
+    \item <3->{ We control the accuracy of this integrator by $\epsilon_f$.}
 \end{itemize}}
 \end{frame}
 
@@ -845,6 +817,46 @@ with coefficients from \citet{luscher_properties_2010}.}
 \note{The autocorrelation of the energy. A value of $\tau_\mathrm{int}=0.5$ indicates that we have zero autocorrelation.}
 \end{frame}
 
+\begin{frame}{Topology in QCD}
+\husk{TODO: Flytte den delen til der jeg presenterer topologisk ladning.}
+\begin{itemize}
+    \item <1->Instantons
+    \item <2->Topological charge, $Q$
+    \item <3->Winding number
+\end{itemize}
+\onslide<3->{\begin{figure}
+    \centering
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number1.pdf}
+        \caption{$\nu=+1$}
+    \end{subfigure}
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number-1.pdf}
+        \caption{$\nu=-1$}
+    \end{subfigure}
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number0.pdf}
+        \caption{$\nu=0$}
+    \end{subfigure}
+    \begin{subfigure}{0.22\textwidth}
+        \centering
+        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number+2.pdf}
+        \caption{$\nu=+2$}
+    \end{subfigure}
+    \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
+\end{figure}}
+\note{
+    \begin{itemize}
+        \item <1->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
+        \item <2->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
+        \item <3->An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
+    \end{itemize}
+}
+\end{frame}
+
 \begin{frame}{Topological charge definition}
 \begin{align*}
     Q = a^4 \sum_{n\in\Lambda} q(n),
@@ -978,6 +990,28 @@ Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \
 \end{itemize}}
 \end{frame}
 
+\begin{frame}{The Witten-Veneziano relation}
+\husk{TODO: Flytte den delen til der jeg presenterer Witten-Veneziano-formelen.}
+A formula connecting pure gauge theory and full QCD.
+\begin{align}
+    m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
+\end{align}
+\begin{itemize}
+    \item Pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
+    \item $\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
+    \item $\chi_\mathrm{top}=\expect{Q^2}$ is the \textit{topological susceptibility}.
+\end{itemize}
+\note{
+    \husk{TODO: MORE ON WV FORMULA. CLARIFY WHAT IT IS AND WHAT IT EXPLAINS.}
+    \begin{itemize}
+        \item We use the experimental values for the pion decay constant and the $\eta'$ mass.
+        \item R.h.s. is full QCD and l.h.s is from pure gauge theory.
+        \item Allows us to estimate the number of flavors in our theory $N_f$.
+        \item $\chi_\mathrm{top}$ is the topological susceptibility, calculated from the expectation value of $Q$.
+    \end{itemize}
+}
+\end{frame}
+
 \begin{frame}{Topological susceptibility continuum extrapolation}
 \begin{table}
     \centering
@@ -995,7 +1029,7 @@ Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \
 \end{frame}
 
 \begin{frame}{The fourth cumulant}
-\husk{WHAT DO THE R RATIO INDICATE WHEN AWAY FROM ZERO?!}
+\husk{TODO: WHAT DO THE R RATIO INDICATE WHEN AWAY FROM ZERO?!}
 \begin{align*}
     \expect{Q^4}_c = \frac{1}{V^2}\left(\expect{Q^4} - 3\expect{Q^2}^2\right).
 \end{align*}
@@ -1018,7 +1052,7 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}{The fourth cumulant at reference flow times}
-\husk{SCALE THE TABLES}
+\husk{TODO: SCALE THE TABLES}
 % Tables
 \begin{table}
     \centering
@@ -1026,11 +1060,11 @@ From this, we can also measure the ratio $R$,
         \toprule
         Ensemble & $L/a$ & $t_0/a^2$ & $\langle Q^2 \rangle$ & $\langle Q^4 \rangle$ & $\langle Q^4 \rangle_C$ & $R$             \\
         \midrule
-        $A$      & $2.24$ & $3.20(3)$ & $0.78(4)$             & $2.13(27)$            & $0.282(67)$             & $0.359(65)$     \\ 
-        $B$      & $2.21$ & $4.43(4)$ & $0.81(5)$             & $1.98(23)$            & $0.036(11)$             & $0.044(11)$     \\ 
-        $C$      & $2.17$ & $6.01(6)$ & $0.77(4)$             & $1.6(2)$              & $-0.174(40)$            & $-0.226(64)$    \\ 
-        $D_1$    & $1.53$ & $12.2(1)$ & $1.00(20)$            & $3.01(1.07)$          & $0.03(12)$              & $0.03(12)$      \\ 
-        $D_2$    & $2.29$ & $12.2(1)$ & $0.497(100)$          & $0.64(20)$            & $-0.103(95)$            & $-0.21(23)$     \\ 
+        $A$      & $2.24$ & $3.20(3)$ & $0.78(4)$             & $2.13(27)$            & $0.282(67)$            & $0.359(65)$     \\ 
+        $B$      & $2.21$ & $4.43(4)$ & $0.81(5)$             & $1.98(23)$            & $0.036(11)$            & $0.044(11)$     \\ 
+        $C$      & $2.17$ & $6.01(6)$ & $0.77(4)$             & $1.6(2)$              & $-0.174(40)$           & $-0.226(64)$    \\ 
+        $D_1$    & $1.53$ & $12.2(1)$ & $1.00(20)$            & $3.01(1.07)$          & $0.03(12)$             & $0.03(12)$      \\ 
+        $D_2$    & $2.29$ & $12.2(1)$ & $0.497(100)$          & $0.64(20)$            & $-0.103(95)$           & $-0.21(23)$     \\ 
         \bottomrule
     \end{tabular}
 \end{table}
@@ -1038,12 +1072,12 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}{Comparing fourth cumulant}
-\husk{WHAT ARTICLE?! SCALE TABLE}
+\husk{TODO: WHAT ARTICLE?! SCALE TABLE}
 \only<1>{\begin{table}
     \centering
     \begin{tabular}{l r r r r r r r}
         \toprule
-        Ensemble        & $\beta$         & $L/a$           & $L$ $[\fm]$        & $a$ $[\fm]$        & $t_0/{a^2}$     & $t_0/{r_0^2}$ & $N_\mathrm{cfg}$  \\
+        Ensemble        & $\beta$         & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     & $t_0/{a^2}$     & $t_0/{r_0^2}$ & $N_\mathrm{cfg}$  \\
         \midrule
         % $A_1$           & $5.96$          & $10$            & $1.02$          & $0.102$         & $2.995(4)$      & $0.1195(9)$     \\ 
         % $B_1$           &                 & $12$            & $1.224$         & $0.102$         & $2.7984(9)$     & $0.1117(9)$     \\ 
@@ -1121,8 +1155,8 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}{The topological charge correlator}
-\husk{CLEAN UP! REMOVE GENERAL EXPRESSION(ITS JUST MORE CONFUSING!)}
-\husk{EXPLAIN HERE WHAT SOURCE/SINK IS}
+\husk{TODO: CLEAN UP! REMOVE GENERAL EXPRESSION(ITS JUST MORE CONFUSING!)}
+\husk{TODO: EXPLAIN HERE WHAT SOURCE/SINK IS}
 % Equations, how to extract mass.
 A general correlator is given as,
 \begin{align*}
@@ -1179,7 +1213,7 @@ which can be extracted as
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
 \end{figure}
-\husk{CLEAN UP COMMENT ON FRAME!}
+\husk{TODO: CLEAN UP COMMENT ON FRAME!}
 The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
 \note{\begin{itemize}[<+->]
     \item The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.
@@ -1238,7 +1272,7 @@ The effective mass of the glueball seen at four different flow times, $\sqrt{8t_
 \end{frame}
 
 \begin{frame}
-\husk{FIX THIS!}
+\husk{TODO: FIX THIS!}
 \vline{5.0pt}
 \begin{center}
 Questions?
@@ -1257,7 +1291,7 @@ Questions?
 % Extra slides
 
 \begin{frame}
-\husk{MAKE THIS SMALLER!}
+\husk{TODO: MAKE THIS SMALLER!}
 \bibliography{bibliography/lib.bib}
 \end{frame}
 

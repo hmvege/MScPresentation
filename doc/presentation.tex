@@ -889,7 +889,7 @@ Now we are going to look at another important quantity in pure gauge lattice the
 \begin{frame}{Topological charge}
 We will use the \textit{clover field strength definition} instead of the plaquette for the field strength.
 \begin{figure}
-    \includegraphics{../figures/illustrations/lqcd/clover/clover.pdf}
+    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover.pdf}
 \end{figure}
 \note{
 \begin{itemize}
@@ -900,7 +900,7 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 \end{frame}
 
 \begin{frame}{Topological charge}
-\vspace{-5.0pt}
+\vspace{-5.0pt} 
 \begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topc/post_analysis_topc_bootstrap.pdf}
@@ -940,7 +940,7 @@ We will use the \textit{clover field strength definition} instead of the plaquet
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/beta61_16x32_run/topc/topc_multihistogram_beta6_1}
 \end{figure}
-\note{Histograms for the topological charge for ensemble $G$ with a lattice of size $N^3\times N_T=16^3\times 32$ with $\beta=6.1$, taken at different flow times $t_f/a^2=0.0$, $1.0$, $4.0$ fm.}
+\note{Histograms for the $Q$ for ensemble $G$ with a lattice of size $N^3\times N_T=16^3\times 32$ with $\beta=6.1$, taken at different flow times $t_f/a^2=0.0$, $1.0$, $4.0$ fm.}
 \end{frame}
 
 \begin{frame}{Topological charge distribution in flow time}
@@ -958,19 +958,47 @@ We will use the \textit{clover field strength definition} instead of the plaquet
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topc/post_analysis_topc_bootstrap_autocorr.pdf}
 \end{figure}
-\note{The integrated autocorrelation $\tau_\mathrm{int}$ for topological charge for the five main ensembles.}
+\note{
+\begin{itemize}
+    \item The integrated autocorrelation $\tau_\mathrm{int}$ for topological charge for the five main ensembles.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Critical slowdown}
+\only<1->{\textbf{Critical slowdown} is the phenomena where we as the lattice spacing $a$ \textit{decreases} the required energy to tunnel from one state to another \textit{increase}.}
+\only<2->{$\rightarrow$ many more lattice updates are required in order to have independent gauge configurations.}
+\note{
+\begin{itemize}
+    \item <2->That is, going from one instanton sector to another requires many more updates and becomes an inherent problem in all LQCD calculations.
+    \item <3->In the continuum it would require an infinite amount of energy to go from one instanton sector to another. Thus as we $a$ approaches the continuum, the amount of effort required to generate independent gauge configurations increases.
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Topological susceptibility}
-\onslide<1->{\begin{align*}
+\onslide<1->{
+The \textit{topological susceptibility} is given by
+\begin{align*}
     \chi_\mathrm{top}^{1/4} = \frac{1}{V^{1/4}}\expect{Q^2}^{1/4}
-\end{align*}}
-\onslide<2->{\begin{align*}
+\end{align*}
+with $V$ being the lattice volume and $\expect{Q}$ is the second momenta of the charge.}
+
+\onslide<2->{
+The \textit{Witten-Veneziano relation} is given by
+\begin{align*}
     m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
-\end{align*}}
-\note{\begin{itemize}[<+->]
-    \item We can use the Witten-Veneziano formula in order to extract an estimate for $N_f$ using the topological susceptibility 
-    \item This can help us understand the "quality" of the ensemble, as we would expect to be around $N_f=3$.
+\end{align*}
+with
+\begin{itemize}
+    \item pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
+    \item $\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
+    \item $N_f$ is the number of flavors(i.e. quark species involved in $\eta'$.).
+\end{itemize}}
+\onslide<4->{We expect $N_f=3$.}
+\note{\begin{itemize}
+    \item <2->R.h.s. is full QCD and l.h.s is from pure gauge theory.
+    \item <3->We can use the Witten-Veneziano formula in order to extract an estimate for $N_f$ using the topological susceptibility.
+    \item <4->This can help us understand the "quality" of the ensemble, as we would expect to be around $N_f=3$.
 \end{itemize}}
 \end{frame}
 
@@ -1002,7 +1030,12 @@ We will use the \textit{clover field strength definition} instead of the plaquet
     \end{tabular}
 \end{table}
 Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
-\note{The topological susceptibility for the main ensembles together with the correction factor from the integrated autocorrelation time. The second column have not had its results corrected by $\sqrt{2\tau_\mathrm{int}}$. None of the results have been analyzed with bootstrapping.}
+\note{
+\begin{itemize}
+    \item Values extracted at a smearing radius of hadronic scales.
+    \item The topological susceptibility for the main ensembles together with the correction factor from the integrated autocorrelation time. The second column have not had its results corrected by $\sqrt{2\tau_\mathrm{int}}$. None of the results have been analyzed with bootstrapping.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Topological susceptibility continuum extrapolation}
@@ -1016,27 +1049,25 @@ Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The Witten-Veneziano relation}
-\husk{TODO: Flytte den delen til der jeg presenterer Witten-Veneziano-formelen.}
-A formula connecting pure gauge theory and full QCD.
-\begin{align}
-    m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
-\end{align}
-\begin{itemize}
-    \item Pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
-    \item $\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
-    \item $\chi_\mathrm{top}=\expect{Q^2}$ is the \textit{topological susceptibility}.
-\end{itemize}
-\note{
-    \husk{TODO: MORE ON WV FORMULA. CLARIFY WHAT IT IS AND WHAT IT EXPLAINS.}
-    \begin{itemize}
-        \item We use the experimental values for the pion decay constant and the $\eta'$ mass.
-        \item R.h.s. is full QCD and l.h.s is from pure gauge theory.
-        \item Allows us to estimate the number of flavors in our theory $N_f$.
-        \item $\chi_\mathrm{top}$ is the topological susceptibility, calculated from the expectation value of $Q$.
-    \end{itemize}
-}
-\end{frame}
+% \begin{frame}{The Witten-Veneziano relation}
+% A formula connecting pure gauge theory and full QCD.
+% \begin{align}
+%     m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
+% \end{align}
+% \begin{itemize}
+%     \item Pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
+%     \item $\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
+%     \item $\chi_\mathrm{top}=\expect{Q^2}$ is the \textit{topological susceptibility}.
+% \end{itemize}
+% \note{
+%     \begin{itemize}
+%         \item We use the experimental values for the pion decay constant and the $\eta'$ mass.
+%         \item R.h.s. is full QCD and l.h.s is from pure gauge theory.
+%         \item Allows us to estimate the number of flavors in our theory $N_f$.
+%         \item $\chi_\mathrm{top}$ is the topological susceptibility, calculated from the expectation value of $Q$.
+%     \end{itemize}
+% }
+% \end{frame}
 
 \begin{frame}{Topological susceptibility continuum extrapolation}
 \begin{table}
@@ -1055,7 +1086,6 @@ A formula connecting pure gauge theory and full QCD.
 \end{frame}
 
 \begin{frame}{The fourth cumulant}
-\husk{TODO: WHAT DO THE R RATIO INDICATE WHEN AWAY FROM ZERO?!}
 \begin{align*}
     \expect{Q^4}_c = \frac{1}{V^2}\left(\expect{Q^4} - 3\expect{Q^2}^2\right).
 \end{align*}
@@ -1063,6 +1093,13 @@ From this, we can also measure the ratio $R$,
 \begin{align*}
     R = \frac{\expect{Q^4}_c}{\frac{1}{V}\expect{Q^2}} = \frac{1}{V}\frac{\expect{Q^4} - 3\expect{Q^2}^2}{\expect{Q^2}},
 \end{align*}
+\note{
+    \begin{itemize}
+        \item Highly unstable, as we shall see.
+        \item Will provide insight into the goodness of our ensembles.
+        \item An $R$-value away from 1 will indicate that QCD cannot be described by the dilute instanton gas model.
+    \end{itemize}
+}
 \end{frame}
 
 \begin{frame}{The fourth cumulant}
@@ -1078,9 +1115,9 @@ From this, we can also measure the ratio $R$,
 \end{frame}
 
 \begin{frame}{The fourth cumulant at reference flow times}
-\husk{TODO: SCALE THE TABLES}
 % Tables
 \begin{table}
+    \scalebox{0.85}{
     \centering
     \begin{tabular}{l r r r r r r}
         \toprule
@@ -1092,24 +1129,20 @@ From this, we can also measure the ratio $R$,
         $D_1$    & $1.53$ & $12.2(1)$ & $1.00(20)$            & $3.01(1.07)$          & $0.03(12)$             & $0.03(12)$      \\ 
         $D_2$    & $2.29$ & $12.2(1)$ & $0.497(100)$          & $0.64(20)$            & $-0.103(95)$           & $-0.21(23)$     \\ 
         \bottomrule
-    \end{tabular}
+    \end{tabular}}
 \end{table}
 \note{The fourth cumulant is taken at their individual reference scales seen in the third column. The data were analyzed with using a bootstrap analysis of $N_{bs}=500$ samples, with error corrected by the integrated autocorrelation, $\sqrt{2\tau_\mathrm{int}}$.}
 \end{frame}
 
 \begin{frame}{Comparing fourth cumulant}
-\husk{TODO: WHAT ARTICLE?! SCALE TABLE}
-\only<1>{\begin{table}
+\only<1>{We can compare with article by \citet{ce_non-gaussianities_2015}}
+\only<2>{\begin{table}
     \centering
+    \scalebox{0.85}{
     \begin{tabular}{l r r r r r r r}
         \toprule
         Ensemble        & $\beta$         & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     & $t_0/{a^2}$     & $t_0/{r_0^2}$ & $N_\mathrm{cfg}$  \\
         \midrule
-        % $A_1$           & $5.96$          & $10$            & $1.02$          & $0.102$         & $2.995(4)$      & $0.1195(9)$     \\ 
-        % $B_1$           &                 & $12$            & $1.224$         & $0.102$         & $2.7984(9)$     & $0.1117(9)$     \\ 
-        % $C_1$           &                 & $13$            & $1.326$         & $0.102$         & $2.7908(5)$     & $0.1114(9)$     \\ 
-        % $\tilde{D}_1$   &                 & $14$            & $1.428$         & $0.102$         & $2.7889(3)$     & $0.1113(9)$     \\ 
-        % $E_1$           &                 & $15$            & $1.53$          & $0.102$         & $2.7889(2)$     & $0.1113(9)$     \\ 
         $F_1$           & $5.96$          & $16$            & $1.632$         & $0.102$         & $2.7887(2)$     & $0.1113(9)$   & 1 440 000 \\
         \addlinespace
         $B_2$           & $6.05$          & $14$            & $1.218$         & $0.087$         & $3.7960(12)$    & $0.1114(9)$   & 144 000 \\ 
@@ -1121,20 +1154,16 @@ From this, we can also measure the ratio $R$,
         $B_4$           & $6.21$          & $18$            & $1.224$         & $0.068$         & $6.2191(20)$    & $0.1115(11)$  & 144 000 \\ 
         $\tilde{D}_4$   &                 & $21$            & $1.428$         &                 & $6.1957(14)$    & $0.1111(11)$  &         \\ 
         \bottomrule
-    \end{tabular}
+    \end{tabular}}
     \label{tab:topcr-article-parameters}
 \end{table}}
-\only<2>{\begin{table}
+\only<3>{\begin{table}
     \centering
+    \scalebox{0.85}{
     \begin{tabular}{l r r r r} % Quantity Flow-time Article-Value My-Value Article-Me-Ratio
         \toprule
         Ensemble        & $\langle Q^2 \rangle_\text{normed}$ & $\langle Q^4 \rangle_\text{normed}$ & $\langle Q^4 \rangle_{C,\text{normed}}$ & $R_\text{normed}$ \\
         \midrule
-        % $A_1$           & $0.648(6)$      & $1.494(34)$     & $0.235(13)$     & $0.363(16)$     \\ 
-        % $B_1$           & $0.720(3)$      & $1.618(14)$     & $0.061(2)$      & $0.084(3)$      \\ 
-        % $C_1$           & $0.726(2)$      & $1.622(10)$     & $0.041(2)$      & $0.057(3)$      \\ 
-        % $\tilde{D}_1$   & $0.728(1)$      & $1.627(8)$      & $0.037(2)$      & $0.050(2)$      \\ 
-        % $E_1$           & $0.727(1)$      & $1.611(6)$      & $0.027(1)$      & $0.037(2)$      \\ 
         $F_1$           & $0.728(1)$      & $1.608(4)$      & $0.016(1)$      & $0.022(1)$      \\
         \addlinespace
         $B_2$           & $0.772(3)$      & $1.873(19)$     & $0.085(4)$      & $0.110(5)$      \\ 
@@ -1146,10 +1175,11 @@ From this, we can also measure the ratio $R$,
         $B_4$           & $0.776(3)$      & $1.874(18)$     & $0.069(3)$      & $0.089(4)$      \\ 
         $\tilde{D}_4$   & $0.785(3)$      & $1.891(17)$     & $0.040(4)$      & $0.052(5)$      \\ 
         \bottomrule
-    \end{tabular}
+    \end{tabular}}
 \end{table}}
-\only<3>{\begin{table}
+\only<4->{\begin{table}
     \centering
+    \scalebox{0.85}{
     \begin{tabular}{l l r r r r} % Quantity Flow-time Article-Value My-Value Article-Me-Ratio
         \toprule
         Article          & Thesis & $\text{Ratio}(\langle Q^2 \rangle)$ & $\text{Ratio}(\langle Q^4 \rangle)$ & $\text{Ratio}(\langle Q^4 \rangle_C)$ & $\text{Ratio}(R)$ \\
@@ -1170,31 +1200,28 @@ From this, we can also measure the ratio $R$,
         \addlinespace
         $\tilde{D}_4$   & $C$             & $0.98(5)$       & $0.85(8)$       & $-3.95(96)$     & $-4.05(1.19)$   \\
         \bottomrule
-    \end{tabular}
+    \end{tabular}}
     \label{tab:topcr-comparison}
 \end{table}}
-\note{\begin{itemize}[<+->]
-    \item Parameters of the ensembles presented by \citet{ce_non-gaussianities_2015}. The first column is the ensemble name from the article. The letter indicates the volume, while the subindex indicates the $\beta$ value. Ensembles of similar letters keep approximately the same length $L$.
-    \item Results as presented by \citet{ce_non-gaussianities_2015}, normalized by the lattice volume.
-    \item A comparison between the results obtained in this thesis on the fourth cumulant, and by those similar in volume form \citet{ce_non-gaussianities_2015}. \textit{Ratio} indicates that we are dividing our results by the ones in previous table.
+\note{\begin{itemize}
+    \item <2>Parameters of the ensembles presented by \citet{ce_non-gaussianities_2015}. The first column is the ensemble name from the article. The letter indicates the volume, while the subindex indicates the $\beta$ value. Ensembles of similar letters keep approximately the same length $L$.
+    \item <3>Results as presented by \citet{ce_non-gaussianities_2015}, normalized by the lattice volume.
+    \item <4>A comparison between the results obtained in this thesis on the fourth cumulant, and by those similar in volume form \citet{ce_non-gaussianities_2015}. \textit{Ratio} indicates that we are dividing our results by the ones in previous table.
 \end{itemize}}
 \end{frame}
 
 \begin{frame}{The topological charge correlator}
-\husk{TODO: CLEAN UP! REMOVE GENERAL EXPRESSION(ITS JUST MORE CONFUSING!)}
-\husk{TODO: EXPLAIN HERE WHAT SOURCE/SINK IS}
-% Equations, how to extract mass.
-A general correlator is given as,
-\begin{align*}
-    C(n_t) = \expect{\hat{O}_2(\vec{0}, n_t) \hat{O}_1(\vec{0},0)} = \sum_k \bra{0}\hat{O}_2\ket{k}\bra{k}\hat{O}_1\ket{0}\e^{-n_t E_k}
-\end{align*}
-where $n_t$ is the Euclidean time in which the correlator is taken and $E_k$ is states of energy.
-
+% % Equations, how to extract mass.
+% A general correlator is given as,
+% \begin{align*}
+%     C(n_t) = \expect{\hat{O}_2(\vec{0}, n_t) \hat{O}_1(\vec{0},0)} = \sum_k \bra{0}\hat{O}_2\ket{k}\bra{k}\hat{O}_1\ket{0}\e^{-n_t E_k}
+% \end{align*}
+% where $n_t$ is the Euclidean time in which the correlator is taken and $E_k$ is states of energy.
 The \textbf{topological charge correlator}
 \begin{align*}
     C(n_t) = \expect{q(n_t)q(0)},
 \end{align*}
-$q(0)$ is the \textit{source} and $q(n_t)$ is the \textit{sink}.
+$q(0)$ is the \textit{source} placed at a fixed Euclidean time, and $q(n_t)$ is the \textit{sink} which is summed across all Euclidean times.
 \note{\begin{itemize}
     \item $q(0)$ is not required to be at $n_t=0$.
 \end{itemize}}
@@ -1202,7 +1229,7 @@ $q(0)$ is the \textit{source} and $q(n_t)$ is the \textit{sink}.
 
 \begin{frame}{The topological charge correlator}
 % Two figures for main ensembles
-\only<1>{\begin{figure}
+\only<1->{\begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/qtq0e/slices/te0000/post_analysis_qtq0e_bootstrap_time_series_tf0_6000.pdf}
 \end{figure}}
@@ -1229,8 +1256,7 @@ which can be extracted as
 \end{frame}
 
 \begin{frame}{The effective glueball mass}
-% Figure of final flow time with overlay
-% Figure of four flow times
+\vspace{-0.5cm}
 \only<1>{\begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/slices/post_analysis_qtq0eff_bootstrap_tf0_6_ma_overlay.pdf}
@@ -1238,9 +1264,9 @@ which can be extracted as
 \only<2->{\begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
-\end{figure}
-\husk{TODO: CLEAN UP COMMENT ON FRAME!}
-The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
+\end{figure}}
+% \husk{TODO: CLEAN UP COMMENT ON FRAME!}
+% The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.
 \note{\begin{itemize}[<+->]
     \item The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.
     \item Low statistics and critical slowdown $\rightarrow$ poor signal.

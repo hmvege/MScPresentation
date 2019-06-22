@@ -205,11 +205,13 @@ is invariant under a $\SU(3)$ symmetry.
 
 \begin{frame}{Discretizing spacetime}
 \begin{enumerate}[<+->]
+    \item Go from Minkowski spacetime to Euclidean spacetime
     \item Divide spacetime into a cube of size $N^3\times N_T$.
     \item Fermions live on the each \textit{point} in the cube.
     \item The gauge fields live on the sites \textit{in between} the points, and is called links.
 \end{enumerate}
 \only<4->{Goal: \textit{maintain gauge invariance.}}
+\note{Make a quick drawing perhaps of a lattice?}
 \end{frame}
 
 \begin{frame}{Links}
@@ -293,11 +295,6 @@ Continuum action recovered when $a \rightarrow 0$!
 %                              |_|            |___/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Developing a code for solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice}
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< YOU ARE HERE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 \begin{frame}{The numerical challenge in lattice QCD}
 \onslide<1->{A lattice configuration consists of $3\times 3$ $\SU(3)$ matrices,}
 \onslide<2->{\begin{align*}
@@ -446,7 +443,7 @@ The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 \end{frame}
 
 \begin{frame}{Scaling}
-We checked three types of scaling,
+We checked three types of scaling, \husk{TODO: the following 3 slides might be completely redundant - move to the end as extra material?}
 \begin{itemize}[<+->]
     \item \textbf{Strong scaling:} \textit{fixed problem} and a \textit{variable} $N_p$ \textit{cores}
     \item \textbf{Weak scaling:} \textit{fixed problem per processor} and a \textit{variable} $N_p$ \textit{cores}.
@@ -462,20 +459,18 @@ We checked three types of scaling,
     \item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
     \item <4->The IO was optimized later to be a factor of ten or more faster.
 \end{itemize}}
-\husk{TODO: FIX THE SLIDES HERE! FINAL <3-> is redundant!!}
 \end{frame}
 
 \begin{frame}{Optimizing the gauge configuration generation}
 \only<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
 \only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}\end{center}}
-\only<3>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
+\only<3->{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
 \note{
-\begin{itemize}
-    \item <1>{We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.}
-    \item <1>{The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.}
-    \item <2>{The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
-    \item <3>{What we see is that increasing $N_\mathrm{up}$ is a cheaper alternative compared to using $N_\mathrm{corr}$}
-\end{itemize}}
+<1>{We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.}
+<1>{The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.}
+<2>{The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
+<3->{What we see is that increasing $N_\mathrm{up}$ is a cheaper alternative compared to using $N_\mathrm{corr}$}
+}
 \end{frame}
 
 \begin{frame}{Verifying the code}
@@ -538,7 +533,8 @@ A bad approximation: \textit{the diffusion equation},
 
 \begin{frame}{Gradient flow on the lattice}
 % RK3 classical and then on the lattice
-\onslide<1->{\begin{align*}
+\onslide<1->{Lattice definition given by
+\begin{align*}
     \dot{V}_{t_f}(x,\mu) = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f}(x,\mu),
 \end{align*}}
 \onslide<2->{with initial condition,
@@ -673,6 +669,24 @@ with coefficients from \citet{luscher_properties_2010}.}
 }
 \end{frame}
 
+\begin{frame}{Lattice sizes}
+\begin{table}
+    \centering
+    \begin{tabular}{l r r r}
+        \toprule
+        Ensemble     & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     \\ \midrule
+        $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
+        $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
+        $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
+        $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
+        $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+Charge radius of a proton: $\~0.85$ fm. \husk{Include this for perhaps the uninitiated?}
+\note{The lattice sizes.}
+\end{frame}
+
 \begin{frame}{The clover field strength definition}
 \begin{figure}
     \centering
@@ -709,51 +723,40 @@ with coefficients from \citet{luscher_properties_2010}.}
 \end{figure}
 \end{frame}
 
-\begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-\only<1>{\begin{table}
-    \centering
-    \begin{tabular}{l r r r}
-        \toprule
-        Ensemble     & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     \\ \midrule
-        $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
-        $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
-        $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
-        $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
-        $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
-        \bottomrule
-    \end{tabular}
-\end{table}
-}
-\only<2->{\begin{table}
-    \centering
-    \begin{tabular}{l r r r}
-        \toprule
-        Ensemble     & $t_0$[fm$^2$]   & $t_0/a^2$       & $t_0/r_0^2$     \\ \midrule
-        $A$          & $0.02780(2)$    & $3.20(3)$       & $0.11121(9)$    \\ 
-        $B$          & $0.02769(2)$    & $4.43(4)$       & $0.11075(10)$   \\ 
-        $C$          & $0.02775(2)$    & $6.01(6)$       & $0.11099(8)$    \\ 
-        $D_1$        & $0.02779(5)$    & $12.2(1)$       & $0.1112(2)$     \\ 
-        $D_2$        & $0.02794(9)$    & $12.2(1)$       & $0.1117(3)$     \\ 
-        \bottomrule
-    \end{tabular}
-\end{table}}
-% \only<3->{
-% \vspace{-15.0pt}
-% \begin{figure}
+% \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
+% \only<1>{\begin{table}
 %     \centering
-%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.0cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
-% \end{figure}
+%     \begin{tabular}{l r r r}
+%         \toprule
+%         Ensemble     & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     \\ \midrule
+%         $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
+%         $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
+%         $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
+%         $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
+%         $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
 % }
-% \only<4->{Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
-% \only<5->{This matches the values retrieved by \citet{luscher_properties_2010}.}
-\note{
-\begin{itemize}
-    \item <2->Extrapolation results for $t_0$, where we retrieved the exact point of intersection between $t_f^2 \expect{E}$ and $0.3$ using $N_\mathrm{bs}=500$ bootstrap fits. Extrapolating to the continuum gives us $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.
-    % \item <3->The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.
-    % \item <4->$r_0=0.5$ fm.
-\end{itemize}
-}
-\end{frame}
+% \only<2->{\begin{table} % Not needed since I present the continuum extrapolation in the next figure.
+%     \centering
+%     \begin{tabular}{l r r r}
+%         \toprule
+%         Ensemble     & $t_0$[fm$^2$]   & $t_0/a^2$       & $t_0/r_0^2$     \\ \midrule
+%         $A$          & $0.02780(2)$    & $3.20(3)$       & $0.11121(9)$    \\ 
+%         $B$          & $0.02769(2)$    & $4.43(4)$       & $0.11075(10)$   \\ 
+%         $C$          & $0.02775(2)$    & $6.01(6)$       & $0.11099(8)$    \\ 
+%         $D_1$        & $0.02779(5)$    & $12.2(1)$       & $0.1112(2)$     \\ 
+%         $D_2$        & $0.02794(9)$    & $12.2(1)$       & $0.1117(3)$     \\ 
+%         \bottomrule
+%     \end{tabular}
+% \end{table}}
+% \note{
+% \begin{itemize}
+%     \item <2->Extrapolation results for $t_0$, where we retrieved the exact point of intersection between $t_f^2 \expect{E}$ and $0.3$ using $N_\mathrm{bs}=500$ bootstrap fits. Extrapolating to the continuum gives us $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.
+% \end{itemize}
+% }
+% \end{frame}
 
 \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
 \onslide<1->{
@@ -779,13 +782,18 @@ with coefficients from \citet{luscher_properties_2010}.}
     \centering
     \begin{tabular}{l r r}
         \toprule
-        Ensembles               & $\frac{t_{0,\mathrm{cont}}}{r_0^2}$   & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+        Ensembles               & $t_{0,\mathrm{cont}}/r_0^2$   & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
         $A$, $B$, $C$, $D_2$    & $0.11087(50)$                         & $7.51$ \\
         $B$, $C$, $D_2$         & $0.1115(3)$                           & $0.41$ \\
         $A$, $B$, $C$, $D_1$    & $0.1119(6)$                           & $0.88$ \\
         \bottomrule
     \end{tabular}
 \end{table}}
+\note{
+    \begin{itemize}
+        \item Notice the $\chi^2/\text{d.o.f.}$ of the extrapolation versus the two other extrapolations.
+    \end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Scale setting \texorpdfstring{$w_0$}{w0}}
@@ -794,12 +802,13 @@ with coefficients from \citet{luscher_properties_2010}.}
     &W(t)|_{t=w_0^2} = 0.3, \\
     &W(t) \equiv t_f \frac{\dd}{\dd t_f} \left\{t^2_f \expect{E}\right\}.
 \end{align*}
+First presented by \citet{borsanyi_high-precision_2012}.
 }
 \onslide<2->{\begin{table}
     \centering
     \begin{tabular}{l r r}
         \toprule
-        Ensembles               & $w_{0\mathrm{cont}}$[fm]  & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+        Ensembles               & $w_{0,\mathrm{cont}}$[fm]  & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
         $A$, $B$, $C$, $D_2$    & $0.1695(5)$               & $7.12$ \\
         $B$, $C$, $D_2$         & $0.1702(3)$               & $0.53$ \\
         $A$, $B$, $C$, $D_1$    & $0.1706(6)$               & $0.86$ \\
@@ -817,14 +826,23 @@ with coefficients from \citet{luscher_properties_2010}.}
 \note{The autocorrelation of the energy. A value of $\tau_\mathrm{int}=0.5$ indicates that we have zero autocorrelation.}
 \end{frame}
 
-\begin{frame}{Topology in QCD}
-\husk{TODO: Flytte den delen til der jeg presenterer topologisk ladning.}
+
+\begin{frame}{HERE}
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< YOU ARE HERE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+\end{frame}
+
+
+\begin{frame}{Topological charge}
 \begin{itemize}
-    \item <1->Instantons
-    \item <2->Topological charge, $Q$
-    \item <3->Winding number
+    \item <1->Gauge fields can be classified by their topological properties, such as their \textbf{winding number}.
+    \item <2->\textbf{Instantons} are local minimums of the Yang-Mills action in Euclidean space.
+    \item <3->\textbf{Topological charge} $Q$ can be viewed as a ``measure'' of instantons or the winding number.
 \end{itemize}
-\onslide<3->{\begin{figure}
+\only<1>{\begin{figure}
     \centering
     \begin{subfigure}{0.22\textwidth}
         \centering
@@ -848,23 +866,31 @@ with coefficients from \citet{luscher_properties_2010}.}
     \end{subfigure}
     \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
 \end{figure}}
+\only<3->{
+    \begin{align*}
+        Q = a^4 \sum_{n\in\Lambda} q(n),
+    \end{align*}
+    with the charge density given by
+    \begin{align*}
+        q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
+    \end{align*}
+}
 \note{
-    \begin{itemize}
-        \item <1->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
-        \item <2->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
-        \item <3->An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
-    \end{itemize}
+Now we are going to look at another important quantity in pure gauge lattice theory, namely topological charge. In order to appreciate the results, let me first introduce what is meant by topological charge.
+\begin{itemize}
+    \item <1->An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
+    \item <2->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
+    \item <2->Instantons are significant because of \textit{critical slowdown} which we will return to later.
+    \item <3->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
+\end{itemize}
 }
 \end{frame}
 
-\begin{frame}{Topological charge definition}
-\begin{align*}
-    Q = a^4 \sum_{n\in\Lambda} q(n),
-\end{align*}
-with the charge density given by
-\begin{align*}
-    q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
-\end{align*}
+\begin{frame}{Topological charge}
+We will use the \textit{clover field strength definition} instead of the plaquette for the field strength.
+\begin{figure}
+    \includegraphics{../figures/illustrations/lqcd/clover/clover.pdf}
+\end{figure}
 \note{
 \begin{itemize}
     \item We will use the clover field strength definition.

@@ -210,6 +210,7 @@ is invariant under a $\SU(3)$ symmetry.
     \item Fermions live on the each \textit{point} in the cube.
     \item The gauge fields live on the sites \textit{in between} the points, and is called links.
 \end{enumerate}
+\husk{TODO: fikse på formattering!}
 \only<4->{Goal: \textit{maintain gauge invariance.}}
 \note{Make a quick drawing perhaps of a lattice?}
 \end{frame}
@@ -244,7 +245,7 @@ where $U_{-\mu}(n) = U_\mu(n - \hat{\mu})^\dagger$.
 }
 \end{frame}
 
-\begin{frame}{Gauge invariance on the lattice}
+\begin{frame}{Gauge invariance on the lattice} \husk{TODO: Dont need to show the gauge transformation!}
 \begin{block}
     \only<1->{Links gauge transform as}
     \only<1->{\begin{align*}
@@ -260,7 +261,7 @@ where $U_{-\mu}(n) = U_\mu(n - \hat{\mu})^\dagger$.
 \end{frame}
 
 \begin{frame}{The plaquette}
-The simplest gauge invariant object,
+The simplest gauge invariant object,\husk{TODO: drop the equatioN!?!}
 \begin{align*}
     P_{\mu\nu}(n) &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{-\mu}(n+\hat{\mu}+\hat{\nu}) U_{-\nu} (n+\hat{\nu}) \nonumber \\
     &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{\mu}(n+\hat{\nu})^\dagger U_{\nu} (n)^\dagger,
@@ -442,12 +443,13 @@ The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 }
 \end{frame}
 
+\husk{TODO: Remove scaling and optimization slides!!}
 \begin{frame}{Scaling}
 We checked three types of scaling, \husk{TODO: the following 3 slides might be completely redundant - move to the end as extra material?}
 \begin{itemize}[<+->]
     \item \textbf{Strong scaling:} \textit{fixed problem} and a \textit{variable} $N_p$ \textit{cores}
     \item \textbf{Weak scaling:} \textit{fixed problem per processor} and a \textit{variable} $N_p$ \textit{cores}.
-    \item \textbf{Speedup:} defined as $S(p) = \frac{t_{N_{p,0}}}{t_{N_p}}$.
+    \item \textbf{Speedup:} defined as $S(p) = \frac{t_{N_{p}}}{t_{N_p,0}}$.
 \end{itemize}
 \only<1>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
 \only<2>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
@@ -557,7 +559,7 @@ A bad approximation: \textit{the diffusion equation},
     \dot{V}_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f} = Z(V_{t_f}) V_{t_f},
 \end{align*}}
 \onslide<2->{we get
-\begin{align*}
+\begin{align*} \husk{TODO: where is epsilon_f?!?!}
     \begin{split}
         &W_0 = V_{t_f}, \\
         &W_1 = \exp\left[\frac{1}{4}Z_0\right]W_0, \\
@@ -687,7 +689,7 @@ Charge radius of a proton: $\~0.85$ fm. \husk{Include this for perhaps the unini
 \note{The lattice sizes.}
 \end{frame}
 
-\begin{frame}{The clover field strength definition}
+\begin{frame}{The clover field strength definition} \husk{TODO: move this to the next slide?!}
 \begin{figure}
     \centering
     \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover}
@@ -715,7 +717,7 @@ Charge radius of a proton: $\~0.85$ fm. \husk{Include this for perhaps the unini
 }
 \end{frame}
 
-\begin{frame}{Energy}
+\begin{frame}{Energy} \husk{TODO: fixe cutoff på bunn!!}
 \vspace{-10.0pt}
 \begin{figure}
     \centering
@@ -818,7 +820,7 @@ First presented by \citet{borsanyi_high-precision_2012}.
 \onslide<3->{Comparable to \citet{borsanyi_high-precision_2012} which included dynamical fermions, with $w_{0,\mathrm{cont}}=0.1755(18)(04)$ fm.}
 \end{frame}
 
-\begin{frame}{Autocorrelation in the energy}
+\begin{frame}{Autocorrelation in the energy} \husk{TODO: Maybe remove?}
 \begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_autocorr.pdf}
@@ -827,17 +829,17 @@ First presented by \citet{borsanyi_high-precision_2012}.
 \end{frame}
 
 
-\begin{frame}{HERE}
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< YOU ARE HERE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-\end{frame}
+% \begin{frame}{HERE}
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< YOU ARE HERE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+% \end{frame}
 
 
-\begin{frame}{Topological charge}
-\begin{itemize}
+\begin{frame}{Topological charge} \husk{TODO: fikse formattering! må holde seg på samme plass}
+\begin{itemize} \husk{TODO: winding numbers: kanskje fjerne? Gir ikke så mye ekstra!!}
     \item <1->Gauge fields can be classified by their topological properties, such as their \textbf{winding number}.
     \item <2->\textbf{Instantons} are local minimums of the Yang-Mills action in Euclidean space.
     \item <3->\textbf{Topological charge} $Q$ can be viewed as a ``measure'' of instantons or the winding number.
@@ -886,7 +888,7 @@ Now we are going to look at another important quantity in pure gauge lattice the
 }
 \end{frame}
 
-\begin{frame}{Topological charge}
+\begin{frame}{Topological charge} \husk{TODO: redundant!!}
 We will use the \textit{clover field strength definition} instead of the plaquette for the field strength.
 \begin{figure}
     \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover.pdf}
@@ -899,7 +901,7 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 }
 \end{frame}
 
-\begin{frame}{Topological charge}
+\begin{frame}{Topological charge} \husk{TODO: WHY is Q expected to be zero?!}
 \vspace{-5.0pt} 
 \begin{figure}
     \centering
@@ -913,7 +915,7 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 }
 \end{frame}
 
-\begin{frame}{Additional ensembles}
+\begin{frame}{Additional ensembles} \husk{TODO: maybe redundant!?!?!}
 \begin{table}
     \centering
     \resizebox{0.8\columnwidth}{!}{%
@@ -952,7 +954,7 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 \note{Histograms of topological charge for the supporting ensembles seen at $t_f/a^2=0.25$ fm.}
 \end{frame}
 
-\begin{frame}{Topological charge autocorrelation}
+\begin{frame}{Topological charge autocorrelation} \husk{TODO: move this slide up, or move the charge dist. plots forwards?!}
 \vspace{-5.0pt}
 \begin{figure}
     \centering
@@ -965,7 +967,8 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 }
 \end{frame}
 
-\begin{frame}{Critical slowdown}
+\begin{frame}{Critical slowdown} \husk{TODO: move this to when I talk about instantons?!}
+\husk{TODO: clean up! Make it so that stuff doesn't move when introducing new elements!}
 \only<1->{\textbf{Critical slowdown} is the phenomena where we as the lattice spacing $a$ \textit{decreases} the required energy to tunnel from one state to another \textit{increase}.}
 \only<2->{$\rightarrow$ many more lattice updates are required in order to have independent gauge configurations.}
 \note{
@@ -975,7 +978,7 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{Topological susceptibility}
+\begin{frame}{Topological susceptibility} \husk{TODO: snakke om divergensen her!!!}
 \onslide<1->{
 The \textit{topological susceptibility} is given by
 \begin{align*}
@@ -1210,7 +1213,7 @@ From this, we can also measure the ratio $R$,
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The topological charge correlator}
+\begin{frame}{The topological charge correlator} 
 % % Equations, how to extract mass.
 % A general correlator is given as,
 % \begin{align*}
@@ -1227,7 +1230,8 @@ $q(0)$ is the \textit{source} placed at a fixed Euclidean time, and $q(n_t)$ is 
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The topological charge correlator}
+\begin{frame}{The topological charge correlator} \husk{TODO: fikse formattering}
+\husk{TODO: ha med mer om hva vi forventer og hvorfor det ikke er sånn!}
 % Two figures for main ensembles
 \only<1->{\begin{figure}
     \centering
@@ -1244,7 +1248,7 @@ $q(0)$ is the \textit{source} placed at a fixed Euclidean time, and $q(n_t)$ is 
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The effective glueball mass}
+\begin{frame}{The effective glueball mass} \husk{TODO: mention what a glue ball mass is!}
 The ground state in the correlator is given as
 \begin{align*}
     C(n_t) = A_0 \e^{-n_t E_0} + A_1 \e^{-n_t E_1} + \dots

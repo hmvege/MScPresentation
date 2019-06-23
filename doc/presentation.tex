@@ -166,6 +166,7 @@ is invariant under a $\SU(3)$ symmetry.
     \begin{itemize}
         \item \textit{Gluon self-interaction.}
         \item This central aspect is mostly covered in the pure-gauge/Yang-Mills section of the theory.
+        \item \textbf{Two important features}: \textit{confinement} and \textit{asymptotic freedom}.
     \end{itemize}
 }
 \end{frame}
@@ -204,23 +205,22 @@ is invariant under a $\SU(3)$ symmetry.
 \section{Lattice Quantum Chromodynamics(LQCD)}
 
 \begin{frame}{Discretizing spacetime}
-\begin{enumerate}[<+->]
-    \item Go from Minkowski spacetime to Euclidean spacetime
-    \item Divide spacetime into a cube of size $N^3\times N_T$.
-    \item Fermions live on the each \textit{point} in the cube.
-    \item The gauge fields live on the sites \textit{in between} the points, and is called links.
+\begin{block}{}
+\begin{enumerate}
+    \item <1->Divide spacetime into a cube of size $N^3\times N_T$.
+    \item <2->Fermions live on the each \textit{point} in the cube.
+    \item <3->The gauge fields live on the sites \textit{in between} the points, and is called links.
 \end{enumerate}
-\husk{TODO: fikse på formattering!}
-\only<4->{Goal: \textit{maintain gauge invariance.}}
+\end{block}
+\onslide<4->{Goal: \textit{maintain gauge invariance.}}
 \note{Make a quick drawing perhaps of a lattice?}
 \end{frame}
 
 \begin{frame}{Links}
-A link
-\begin{align*}
-    U_\mu(n) = \exp \left[ i a A_\mu (n) \right],
-\end{align*}
-connects one lattice site to another and is a $\SU(3)$ matrix.
+% \begin{align*}
+%     U_\mu(n) = \exp \left[ i a A_\mu (n) \right],
+% \end{align*}
+A link connects one lattice site to another and is a $\SU(3)$ matrix.
 \begin{figure}
     \centering
     \begin{subfigure}{0.48\textwidth}
@@ -245,27 +245,27 @@ where $U_{-\mu}(n) = U_\mu(n - \hat{\mu})^\dagger$.
 }
 \end{frame}
 
-\begin{frame}{Gauge invariance on the lattice} \husk{TODO: Dont need to show the gauge transformation!}
+\begin{frame}{Gauge invariance on the lattice} %\husk{TODO: Don't need to show the gauge transformation!?}
 \begin{block}
-    \only<1->{Links gauge transform as}
-    \only<1->{\begin{align*}
+    \only<1->{Links constructed such that we maintain gauge invariance in the action,}
+    \only<2->{\begin{align*}
             U_\mu(n) &\rightarrow U_\mu'(n) = \Omega(n) U_\mu(n) \Omega(n+\hat{\mu})^\dagger, \\
             U_{-\mu}(n) &\rightarrow U_{-\mu}'(n) = \Omega(n) U_{\mu}(n-\hat{\mu})^\dagger \Omega(n-\hat{\mu})^\dagger.
         \end{align*}}
-    \only<2->{Two main types of gauge invariant objects,}
+    \only<3->{Two main types of gauge invariant objects,}
     \begin{itemize}
-        \item<3-> Fully connected gauge invariant objects.
-        \item<3-> Objects with fermions $\psi$, $\bar{\psi}$ as end points.
+        \item<4-> Objects with fermions $\psi$, $\bar{\psi}$ as end points.
+        \item<5-> Fully connected gauge invariant objects(i.e. ``loops'').
     \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}{The plaquette}
-The simplest gauge invariant object,\husk{TODO: drop the equatioN!?!}
-\begin{align*}
-    P_{\mu\nu}(n) &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{-\mu}(n+\hat{\mu}+\hat{\nu}) U_{-\nu} (n+\hat{\nu}) \nonumber \\
-    &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{\mu}(n+\hat{\nu})^\dagger U_{\nu} (n)^\dagger,
-\end{align*}
+The simplest gauge invariant object,
+% \begin{align*}
+%     P_{\mu\nu}(n) &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{-\mu}(n+\hat{\mu}+\hat{\nu}) U_{-\nu} (n+\hat{\nu}) \nonumber \\
+%     &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{\mu}(n+\hat{\nu})^\dagger U_{\nu} (n)^\dagger,
+% \end{align*}
 \begin{figure}
     \centering
     \includegraphics[scale=1]{../figures/illustrations/lqcd/plaquette/plaquette}
@@ -443,46 +443,6 @@ The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 }
 \end{frame}
 
-\husk{TODO: Remove scaling and optimization slides!!}
-\begin{frame}{Scaling}
-We checked three types of scaling, \husk{TODO: the following 3 slides might be completely redundant - move to the end as extra material?}
-\begin{itemize}[<+->]
-    \item \textbf{Strong scaling:} \textit{fixed problem} and a \textit{variable} $N_p$ \textit{cores}
-    \item \textbf{Weak scaling:} \textit{fixed problem per processor} and a \textit{variable} $N_p$ \textit{cores}.
-    \item \textbf{Speedup:} defined as $S(p) = \frac{t_{N_{p}}}{t_{N_p,0}}$.
-\end{itemize}
-\only<1>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
-\only<2>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
-\only<3>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/speedup_strong_all}\end{center}}
-\only<5>{We appear to have a plateau around 512 cores.}
-\note{\begin{itemize}
-    \item <1->Strong scaling
-    \item <2->Weak scaling
-    \item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
-    \item <4->The IO was optimized later to be a factor of ten or more faster.
-\end{itemize}}
-\end{frame}
-
-\begin{frame}{Optimizing the gauge configuration generation}
-\only<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
-\only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}\end{center}}
-\only<3->{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
-\note{
-<1>{We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.}
-<1>{The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.}
-<2>{The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
-<3->{What we see is that increasing $N_\mathrm{up}$ is a cheaper alternative compared to using $N_\mathrm{corr}$}
-}
-\end{frame}
-
-\begin{frame}{Verifying the code}
-\begin{itemize}[<+->]
-    \item \textbf{Unit testing.} $\SU(3)$, $\SU(2)$ multiplications.
-    \item \textbf{Integration testing.} Random matrix generation, lattice objects, parallelization, ect.
-    \item \textbf{Validation testing.} Cross checking results with a configuration from Chroma.
-\end{itemize}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   ____               _ _            _      __ _
 %  / ___|_ __ __ _  __| (_) ___ _ __ | |_   / _| | _____      __
@@ -558,8 +518,8 @@ A bad approximation: \textit{the diffusion equation},
 \begin{align*}
     \dot{V}_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f} = Z(V_{t_f}) V_{t_f},
 \end{align*}}
-\onslide<2->{we get
-\begin{align*} \husk{TODO: where is epsilon_f?!?!}
+\onslide<2->{and $Z_i=\epsilon_fZ(W_i)$ we get
+\begin{align*}
     \begin{split}
         &W_0 = V_{t_f}, \\
         &W_1 = \exp\left[\frac{1}{4}Z_0\right]W_0, \\
@@ -685,21 +645,10 @@ with coefficients from \citet{luscher_properties_2010}.}
         \bottomrule
     \end{tabular}
 \end{table}
-Charge radius of a proton: $\~0.85$ fm. \husk{Include this for perhaps the uninitiated?}
+Charge radius of a proton: $\sim 0.85$ fm.
 \note{The lattice sizes.}
 \end{frame}
 
-\begin{frame}{The clover field strength definition} \husk{TODO: move this to the next slide?!}
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover}
-\end{figure}
-\note{
-\begin{itemize}
-    \item We will use the clover field strength definition in gauge observables.
-\end{itemize}
-}
-\end{frame}
 
 \begin{frame}{Energy definition}
 \onslide<1->{\begin{align*}
@@ -712,12 +661,27 @@ Charge radius of a proton: $\~0.85$ fm. \husk{Include this for perhaps the unini
 }
 \note{
 \begin{itemize}
+    \item Defined as the field strength tensor squared averaged over all lattice points and directions.
     \item We can use this definition to set a scale.
 \end{itemize}
 }
 \end{frame}
 
-\begin{frame}{Energy} \husk{TODO: fixe cutoff på bunn!!}
+\begin{frame}{The clover field strength definition}
+$F_{\mu \nu}^\mathrm{clov}(n)$ is given by
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover}
+\end{figure}
+\note{
+\begin{itemize}
+    \item We will use the clover field strength definition in gauge observables.
+    \item \textbf{Symmetries} will allow us to \textbf{reduce} the effective \textbf{number of clovers} need to \textbf{calculate from 24 to 6}.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Energy}
 \vspace{-10.0pt}
 \begin{figure}
     \centering
@@ -765,7 +729,7 @@ Charge radius of a proton: $\~0.85$ fm. \husk{Include this for perhaps the unini
 \vspace{-5.0pt}
 \begin{figure}
     \centering
-    \includegraphics[trim={0.2cm 0.5cm 0.2cm 1.2cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
+    \includegraphics[trim={0.2cm 0.25cm 0.2cm 1.2cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
 \end{figure}
 }
 \onslide<2->{\vspace{-5.0pt}Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
@@ -820,15 +784,6 @@ First presented by \citet{borsanyi_high-precision_2012}.
 \onslide<3->{Comparable to \citet{borsanyi_high-precision_2012} which included dynamical fermions, with $w_{0,\mathrm{cont}}=0.1755(18)(04)$ fm.}
 \end{frame}
 
-\begin{frame}{Autocorrelation in the energy} \husk{TODO: Maybe remove?}
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_autocorr.pdf}
-\end{figure}
-\note{The autocorrelation of the energy. A value of $\tau_\mathrm{int}=0.5$ indicates that we have zero autocorrelation.}
-\end{frame}
-
-
 % \begin{frame}{HERE}
 % <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 % <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -838,37 +793,39 @@ First presented by \citet{borsanyi_high-precision_2012}.
 % \end{frame}
 
 
-\begin{frame}{Topological charge} \husk{TODO: fikse formattering! må holde seg på samme plass}
-\begin{itemize} \husk{TODO: winding numbers: kanskje fjerne? Gir ikke så mye ekstra!!}
-    \item <1->Gauge fields can be classified by their topological properties, such as their \textbf{winding number}.
-    \item <2->\textbf{Instantons} are local minimums of the Yang-Mills action in Euclidean space.
-    \item <3->\textbf{Topological charge} $Q$ can be viewed as a ``measure'' of instantons or the winding number.
+\begin{frame}{Topological charge}
+\begin{block}{}
+\begin{itemize}
+    \item <1->{Gauge fields can be classified by their topological properties.}
+    \item <2->{\textbf{Topological charge} $Q$ can be viewed as a ``measure'' of instantons.}
+    \item <3->{\textbf{Instantons} are local minimums of the Yang-Mills action in Euclidean space.}
 \end{itemize}
-\only<1>{\begin{figure}
-    \centering
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number1.pdf}
-        \caption{$\nu=+1$}
-    \end{subfigure}
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number-1.pdf}
-        \caption{$\nu=-1$}
-    \end{subfigure}
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number0.pdf}
-        \caption{$\nu=0$}
-    \end{subfigure}
-    \begin{subfigure}{0.22\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/qcd/winding-number/winding-number+2.pdf}
-        \caption{$\nu=+2$}
-    \end{subfigure}
-    \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
-\end{figure}}
-\only<3->{
+\end{block}
+% \only<1>{\begin{figure}
+%     \centering
+%     \begin{subfigure}{0.22\textwidth}
+%         \centering
+%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number1.pdf}
+%         \caption{$\nu=+1$}
+%     \end{subfigure}
+%     \begin{subfigure}{0.22\textwidth}
+%         \centering
+%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number-1.pdf}
+%         \caption{$\nu=-1$}
+%     \end{subfigure}
+%     \begin{subfigure}{0.22\textwidth}
+%         \centering
+%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number0.pdf}
+%         \caption{$\nu=0$}
+%     \end{subfigure}
+%     \begin{subfigure}{0.22\textwidth}
+%         \centering
+%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number+2.pdf}
+%         \caption{$\nu=+2$}
+%     \end{subfigure}
+%     \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
+% \end{figure}}
+\onslide<4->{
     \begin{align*}
         Q = a^4 \sum_{n\in\Lambda} q(n),
     \end{align*}
@@ -877,64 +834,38 @@ First presented by \citet{borsanyi_high-precision_2012}.
         q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
     \end{align*}
 }
+\onslide<5->{
+\begin{align*}
+    \expect{Q} = 0
+\end{align*}
+}
 \note{
-Now we are going to look at another important quantity in pure gauge lattice theory, namely topological charge. In order to appreciate the results, let me first introduce what is meant by topological charge.
+% Now we are going to look at another important quantity in pure gauge lattice theory, namely topological charge. In order to appreciate the results, let me first introduce what is meant by topological charge.
 \begin{itemize}
-    \item <1->An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
-    \item <2->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
-    \item <2->Instantons are significant because of \textit{critical slowdown} which we will return to later.
-    \item <3->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
+    % \item <1->An illustration of how one can view the winding number given a function $f$ that parametrizes a path around a circle $S^1$. Given that it starts and ends at the same point, we have that the number of times it wraps around the circle gives us the winding number.
+    \item <2->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
+    \item <3->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
+    \item <3->Instantons are significant in LQCD because of \textit{critical slowdown} which we will return to later.
+    \item <4->The charge is a \textbf{sum over the local charge} at every point in the gauge field. 
+    \item <4->Can in a very crude manner be viewed as the ``curl'' of the gauge fields.
+    \item <5->The \textbf{expectation value} of \textbf{$Q$ is zero} due to it being \textbf{parity odd}.
 \end{itemize}
 }
 \end{frame}
 
-\begin{frame}{Topological charge} \husk{TODO: redundant!!}
-We will use the \textit{clover field strength definition} instead of the plaquette for the field strength.
-\begin{figure}
-    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover.pdf}
-\end{figure}
-\note{
-\begin{itemize}
-    \item We will use the clover field strength definition.
-    \item Symmetries will allow us to reduce the effective number of clovers need to calculate from 24 to 6.
-\end{itemize}
-}
-\end{frame}
+% \begin{frame}{Topological charge}
+% We will use the \textit{clover field strength definition} instead of the plaquette for the field strength.
+% \begin{figure}
+%     \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover.pdf}
+% \end{figure}
+% \note{
+% \begin{itemize}
+%     \item We will use the clover field strength definition.
+%     \item Symmetries will allow us to reduce the effective number of clovers need to calculate from 24 to 6.
+% \end{itemize}
+% }
+% \end{frame}
 
-\begin{frame}{Topological charge} \husk{TODO: WHY is Q expected to be zero?!}
-\vspace{-5.0pt} 
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topc/post_analysis_topc_bootstrap.pdf}
-\end{figure}
-\note{\begin{itemize}
-    \item Topological charge $Q$ as evolved in flow time for the five main ensembles.
-    \item Bootstrapped data with $N_\mathrm{bs}=500$ bootstrap samples.
-    \item Corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
-\end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Additional ensembles} \husk{TODO: maybe redundant!?!?!}
-\begin{table}
-    \centering
-    \resizebox{0.8\columnwidth}{!}{%
-    \begin{tabular}{l r r r r r r r}
-        \toprule
-        Ensemble & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $N_\mathrm{corr}$ & $N_\mathrm{up}$ & $a$ $[\fm]$ & $L$ $[\fm]$ \\ 
-        \midrule
-        $E$ & 8 & 16 & 8135 & 600 & 30 & 0.0931(4) & 0.745(3) \\
-        $F$ & 12 & 24 & 1341 & 200 & 20 & 0.0931(4) & 1.118(5) \\
-        $G$ & 16 & 32 & 2000 & 400 & 20 & 0.0790(3) & 1.265(6) \\
-        \bottomrule
-    \end{tabular}
-    }
-\end{table}
-\note{\begin{itemize}
-    \item Additional ensembles made in order to illuminate additional aspects of the topological charge.
-    \item Supporting ensembles made on Smaug. All ensembles were flown $N_\mathrm{flow}=1000$ steps with $\epsilon_\mathrm{flow}=0.01$.
-\end{itemize}}
-\end{frame}
 
 \begin{frame}{Topological charge distribution}
 \vspace{-5.0pt}
@@ -954,7 +885,38 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 \note{Histograms of topological charge for the supporting ensembles seen at $t_f/a^2=0.25$ fm.}
 \end{frame}
 
-\begin{frame}{Topological charge autocorrelation} \husk{TODO: move this slide up, or move the charge dist. plots forwards?!}
+
+\begin{frame}{Topological charge for our main ensembles}
+\vspace{-5.0pt} 
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topc/post_analysis_topc_bootstrap.pdf}
+\end{figure}
+\note{\begin{itemize}[<+->]
+    \item Topological charge $Q$ as evolved in flow time for the five main ensembles.
+    \item The ensemble $D_1$ is okay to include, as the topological charge becomes independent of the volume around a side length of $\sim 1.2$-$1.3$ fermi.
+    \item Bootstrapped data with $N_\mathrm{bs}=500$ bootstrap samples.
+    \item Corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+\vspace{5.0pt}
+\begin{center}
+Why is the charge not centered around zero for certain ensembles?
+\end{center}
+\end{frame}
+
+\begin{frame}{Autocorrelation in the energy}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_autocorr.pdf}
+\end{figure}
+\note{The autocorrelation of the energy. A value of $\tau_\mathrm{int}=0.5$ indicates that we have zero autocorrelation.}
+\end{frame}
+
+\begin{frame}{Topological charge autocorrelation}
 \vspace{-5.0pt}
 \begin{figure}
     \centering
@@ -967,42 +929,65 @@ We will use the \textit{clover field strength definition} instead of the plaquet
 }
 \end{frame}
 
-\begin{frame}{Critical slowdown} \husk{TODO: move this to when I talk about instantons?!}
-\husk{TODO: clean up! Make it so that stuff doesn't move when introducing new elements!}
-\only<1->{\textbf{Critical slowdown} is the phenomena where we as the lattice spacing $a$ \textit{decreases} the required energy to tunnel from one state to another \textit{increase}.}
-\only<2->{$\rightarrow$ many more lattice updates are required in order to have independent gauge configurations.}
+% \begin{frame}{Additional ensembles}
+% \begin{table}
+%     \centering
+%     \resizebox{0.8\columnwidth}{!}{%
+%     \begin{tabular}{l r r r r r r r}
+%         \toprule
+%         Ensemble & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $N_\mathrm{corr}$ & $N_\mathrm{up}$ & $a$ $[\fm]$ & $L$ $[\fm]$ \\ 
+%         \midrule
+%         $E$ & 8 & 16 & 8135 & 600 & 30 & 0.0931(4) & 0.745(3) \\
+%         $F$ & 12 & 24 & 1341 & 200 & 20 & 0.0931(4) & 1.118(5) \\
+%         $G$ & 16 & 32 & 2000 & 400 & 20 & 0.0790(3) & 1.265(6) \\
+%         \bottomrule
+%     \end{tabular}
+%     }
+% \end{table}
+% \note{\begin{itemize}
+%     \item Additional ensembles made in order to illuminate additional aspects of the topological charge.
+%     \item Supporting ensembles made on Smaug. All ensembles were flown $N_\mathrm{flow}=1000$ steps with $\epsilon_\mathrm{flow}=0.01$.
+% \end{itemize}}
+% \end{frame}
+
+\begin{frame}{Critical slowdown}
+\onslide<1->{\textbf{Critical slowdown} is the phenomena where we as the lattice spacing $a$ \textit{decreases} the required energy to tunnel from one state to another \textit{increase}. \\}
+\onslide<2->{$\rightarrow$ many more lattice updates are required in order to have independent gauge configurations.}
 \note{
 \begin{itemize}
     \item <2->That is, going from one instanton sector to another requires many more updates and becomes an inherent problem in all LQCD calculations.
-    \item <3->In the continuum it would require an infinite amount of energy to go from one instanton sector to another. Thus as we $a$ approaches the continuum, the amount of effort required to generate independent gauge configurations increases.
+    \item <3->In the continuum it would require an \textbf{infinite amount of energy} to go from \textbf{one instanton sector to another}. Thus as we \textbf{$a$ approaches the continuum}, the amount of \textbf{effort}(number of updates ect.) required to generate \textbf{independent} gauge configurations \textbf{increases}.
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{Topological susceptibility} \husk{TODO: snakke om divergensen her!!!}
+\begin{frame}{Topological susceptibility}
 \onslide<1->{
 The \textit{topological susceptibility} is given by
 \begin{align*}
     \chi_\mathrm{top}^{1/4} = \frac{1}{V^{1/4}}\expect{Q^2}^{1/4}
 \end{align*}
-with $V$ being the lattice volume and $\expect{Q}$ is the second momenta of the charge.}
-
+with $V$ being the lattice volume and $\expect{Q^2}$ is the second momenta of the charge. \\}
 \onslide<2->{
 The \textit{Witten-Veneziano relation} is given by
 \begin{align*}
     m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
-\end{align*}
-with
+\end{align*}}
+\onslide<3->{with}
+\begin{block}{}
 \begin{itemize}
-    \item pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
-    \item $\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
-    \item $N_f$ is the number of flavors(i.e. quark species involved in $\eta'$.).
-\end{itemize}}
-\onslide<4->{We expect $N_f=3$.}
-\note{\begin{itemize}
+    \item <3->pion decay constant $f_\pi=0.130(5)/\sqrt{2}$ GeV.
+    \item <4->$\eta'$ meson mass $m_{\eta'}=0.95778(6)$ GeV.
+    \item <5->$N_f$ is the number of flavors(i.e. quark species involved in $\eta'$.).
+\end{itemize}
+\end{block}
+\onslide<6->{We expect $N_f=3$.}
+\note{
+\begin{itemize}
     \item <2->R.h.s. is full QCD and l.h.s is from pure gauge theory.
     \item <3->We can use the Witten-Veneziano formula in order to extract an estimate for $N_f$ using the topological susceptibility.
-    \item <4->This can help us understand the "quality" of the ensemble, as we would expect to be around $N_f=3$.
-\end{itemize}}
+    \item <6->This can help us understand the "quality" of the ensemble, as we would expect to be around $N_f=3$.
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Topological susceptibility}
@@ -1011,9 +996,10 @@ with
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/topsus/post_analysis_topsus_bootstrap.pdf}
 \end{figure}
 \note{\begin{itemize}
-    \item The topological susceptibility $\chi^{1/4}_{t_f}$ of the main ensembles.
-    \item Bootstrapped $N_\mathrm{bs}=500$ times.
-    \item Corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
+    \item The topological susceptibility $\chi^{1/4}_{t_f}$ of the \textbf{main ensembles}.
+    \item We have a \textbf{UV divergence at zeroth flow time}, hence to need for gradient flow which renormalizes this quantity.
+    \item \textbf{Bootstrapped} $N_\mathrm{bs}=500$ times.
+    \item \textbf{Corrected for autocorrelations} with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
 \end{itemize}}
 \end{frame}
 
@@ -1208,7 +1194,7 @@ From this, we can also measure the ratio $R$,
 \end{table}}
 \note{\begin{itemize}
     \item <2>Parameters of the ensembles presented by \citet{ce_non-gaussianities_2015}. The first column is the ensemble name from the article. The letter indicates the volume, while the subindex indicates the $\beta$ value. Ensembles of similar letters keep approximately the same length $L$.
-    \item <3>Results as presented by \citet{ce_non-gaussianities_2015}, normalized by the lattice volume.
+    \item <3>Results as presented by \citet{ce_non-gaussianities_2015}, \textbf{normalized by the lattice volume}.
     \item <4>A comparison between the results obtained in this thesis on the fourth cumulant, and by those similar in volume form \citet{ce_non-gaussianities_2015}. \textit{Ratio} indicates that we are dividing our results by the ones in previous table.
 \end{itemize}}
 \end{frame}
@@ -1230,10 +1216,9 @@ $q(0)$ is the \textit{source} placed at a fixed Euclidean time, and $q(n_t)$ is 
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The topological charge correlator} \husk{TODO: fikse formattering}
-\husk{TODO: ha med mer om hva vi forventer og hvorfor det ikke er sånn!}
+\begin{frame}{The topological charge correlator}
 % Two figures for main ensembles
-\only<1->{\begin{figure}
+\only<1-2>{\begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/qtq0e/slices/te0000/post_analysis_qtq0e_bootstrap_time_series_tf0_6000.pdf}
 \end{figure}}
@@ -1245,18 +1230,24 @@ $q(0)$ is the \textit{source} placed at a fixed Euclidean time, and $q(n_t)$ is 
     \item<1-> The topological charge correlator for all of the ensembles except $D_1$. The $x$-axis contains the sink-source separation, as the source $q(0)$ is placed at $t_e=0$ fm, and the sink $q(t_e)$ is taken at $t_e$.
     \item<2-> We since the ensembles are of different lattice sizes, we plot th $D_1$ separately.
     \item<3-> The topological charge correlator for the $D_1$. The source $q(0)$ is placed at $t_e=0$ fm and the sink $q(t_e)$ is taken at $t_e$.
+    \item<4-> We would expect an \textbf{exponential dampening}.
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The effective glueball mass} \husk{TODO: mention what a glue ball mass is!}
-The ground state in the correlator is given as
+\begin{frame}{The effective glueball mass}
+A glueball is a bound state of gluons.\\
+\onslide<2->{The ground state in the correlator is given as
 \begin{align*}
     C(n_t) = A_0 \e^{-n_t E_0} + A_1 \e^{-n_t E_1} + \dots
-\end{align*}
-which can be extracted as
+\end{align*}}
+\onslide<3->{which can be extracted as
 \begin{align*}
     a m_\mathrm{eff} = \log \left(\frac{C(n_t)}{C(n_t + 1)}\right),
-\end{align*}
+\end{align*}}
+\note{
+In pure Yang-Mills gauge theory, the states are stable.\\
+We will be looking at the state involving topological charge.
+}
 \end{frame}
 
 \begin{frame}{The effective glueball mass}
@@ -1269,8 +1260,7 @@ which can be extracted as
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
 \end{figure}}
-% \husk{TODO: CLEAN UP COMMENT ON FRAME!}
-% The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.
+% \only<3->{The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
 \note{\begin{itemize}[<+->]
     \item The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.
     \item Low statistics and critical slowdown $\rightarrow$ poor signal.
@@ -1328,8 +1318,6 @@ which can be extracted as
 \end{frame}
 
 \begin{frame}
-\husk{TODO: FIX THIS!}
-\vline{5.0pt}
 \begin{center}
 Questions?
 \end{center}
@@ -1347,8 +1335,73 @@ Questions?
 % Extra slides
 
 \begin{frame}
-\husk{TODO: MAKE THIS SMALLER!}
+\tiny
 \bibliography{bibliography/lib.bib}
 \end{frame}
+
+\section{Extras}
+\begin{frame}{Scaling}
+We checked three types of scaling,
+\begin{block}{}
+\begin{itemize}
+    \item <1->{\textbf{Strong scaling:} \textit{fixed problem} and a \textit{variable} $N_p$ \textit{cores}}
+    \item <2->{\textbf{Weak scaling:} \textit{fixed problem per processor} and a \textit{variable} $N_p$ \textit{cores}.}
+    \item <3->{\textbf{Speedup:} defined as $S(p) = \frac{t_{N_{p}}}{t_{N_p,0}}$.}
+\end{itemize}
+\end{block}
+\only<1>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/strong_all}\end{center}}
+\only<2>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/weak/weak_all}\end{center}}
+\only<3>{\vspace{-10.0pt}\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 1.2cm},clip,scale=0.5]{../../LQCD/LatticeAnalyser/figures/scaling/strong/speedup_strong_all}\end{center}}
+\only<5>{We appear to have a plateau around 512 cores.}
+\note{\begin{itemize}
+    \item <1->Strong scaling
+    \item <2->Weak scaling
+    \item <3->The speedup of the configuration generation, flowing, and IO. The speedup is calculated by dividing the run time of each $N_p$ run, with the run time of the run with the least number of processors, $N_p=8$.
+    \item <4->The IO was optimized later to be a factor of ten or more faster.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Optimizing the gauge configuration generation}
+\only<1>{Generated 200 configurations for a lattice of size $N^3\times N_T = 16^3 \times 32$ and $\beta=6.0$, for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
+\only<2>{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_autocorr}\end{center}}
+\only<3->{\begin{center}\includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/lattice-updates/topc_total_runtime}\end{center}}
+\note{
+\begin{itemize}
+    \item <1->{We run for different values for $N_\mathrm{up}$ and $N_\mathrm{corr}$ to see what gives optimizes \textbf{computational cost} and \textbf{autocorrelation}.}
+    \item <1->{The integrated autocorrelation time for topological charge $\expect{Q}$ for a lattice of size $N=16$ and $N_T=32$ with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$, plotted against flow time $\sqrt{8t_f}$.}
+    \item <2->{The time taking to generate 200 configurations and flowing them $N_\mathrm{flow}=250$ flow steps for a lattice of size $N=16$ and $N_T=32$, with $\beta=6.0$ for combinations of $N_\mathrm{corr}\in[200,400,600]$ and $N_\mathrm{up}\in[10,20,30]$.}
+    \item <3->{What we see is that increasing $N_\mathrm{up}$ is a cheaper alternative compared to using $N_\mathrm{corr}$}
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Verifying the code}
+\begin{itemize}[<+->]
+    \item \textbf{Unit testing.} $\SU(3)$, $\SU(2)$ multiplications.
+    \item \textbf{Integration testing.} Random matrix generation, lattice objects, parallelization, ect.
+    \item \textbf{Validation testing.} Cross checking results with a configuration from Chroma.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Additional ensembles}
+\begin{table}
+    \centering
+    \resizebox{0.8\columnwidth}{!}{%
+    \begin{tabular}{l r r r r r r r}
+        \toprule
+        Ensemble & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $N_\mathrm{corr}$ & $N_\mathrm{up}$ & $a$ $[\fm]$ & $L$ $[\fm]$ \\ 
+        \midrule
+        $E$ & 8 & 16 & 8135 & 600 & 30 & 0.0931(4) & 0.745(3) \\
+        $F$ & 12 & 24 & 1341 & 200 & 20 & 0.0931(4) & 1.118(5) \\
+        $G$ & 16 & 32 & 2000 & 400 & 20 & 0.0790(3) & 1.265(6) \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
+\note{\begin{itemize}
+    \item Additional ensembles made in order to illuminate additional aspects of the topological charge.
+    \item Supporting ensembles made on Smaug. All ensembles were flown $N_\mathrm{flow}=1000$ steps with $\epsilon_\mathrm{flow}=0.01$.
+\end{itemize}}
+\end{frame}
+
 
 \end{document}

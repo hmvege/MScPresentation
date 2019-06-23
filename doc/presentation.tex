@@ -274,12 +274,16 @@ The simplest gauge invariant object,
 
 \begin{frame}{The Wilson gauge action}
 The Wilson gauge action is given as
-\begin{align}
+\begin{align*}
     S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - P_{\mu\nu}(n) \right],
-\end{align}
+\end{align*}
 with $\beta=6/g_S^2$.
 
-Continuum action recovered when $a \rightarrow 0$!
+Continuum gauge action,
+\begin{align*}
+    S_G[A] = \frac{1}{2g_S^2}\int \dd^4 x \tr F_{\mu\nu}^2,
+\end{align*}
+recovered when $a \rightarrow 0$.
 \note{
     \begin{itemize}
         \item Using the definition of the link we saw earlier, we can reproduce the continuum action up to an discretization error of $\mathcal{O}(a^2)$.
@@ -311,15 +315,15 @@ Continuum action recovered when $a \rightarrow 0$!
 }
 \end{frame}
 
-\begin{frame}{The path integral} \husk{TODO: mangler psi!!}
+\begin{frame}{The path integral}
 \only<1>{\begin{align*}
-    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U O[\psi,\bar{\psi},U] \e^{- S_G[U] - S_F[\psi,\bar{\psi},U]}.
+    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} O[\psi,\bar{\psi},U] \e^{- S_G[U] - S_F[\psi,\bar{\psi},U]}.
 \end{align*}}%
 \only<2>{\begin{align*}
-    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U O[U] \e^{- S_G[U]}.
+    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U  O[U] \e^{- S_G[U]}.
 \end{align*}}%
 \only<1>{\begin{align*}
-Z = \int \mathcal{D}U \mathcal{D}\bar{\psi} \mathcal{D}\psi e^{- S_G[U] - S_F[\psi,\bar{\psi}, U]}.
+Z = \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} e^{- S_G[U] - S_F[\psi,\bar{\psi}, U]}.
 \end{align*}}%
 \only<2>{\begin{align*}
 Z = \int \mathcal{D}U e^{- S_G[U]}.
@@ -451,7 +455,7 @@ The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 %  \____|_|  \__,_|\__,_|_|\___|_| |_|\__| |_| |_|\___/ \_/\_/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gradient flow}
-\husk{TODO: ANIMATIONS?!}
+% \husk{TODO: ANIMATIONS?!}
 \begin{frame}{The flow equation}
 % Bad approx.: diffusion equation
 % Topological charge preserved and is more pronounced 
@@ -459,10 +463,10 @@ The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
 % Certain quantities becomes renormalizable
 The flow of the $\SU(3)$ gauge fields are denoted by $B_\mu(x,t_f)$ which are Lie algebra valued gauge fields,
 \onslide<1->{\begin{align*}
-    \frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), \label{eq:flow-continuum-diff-eq}
+    \frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), %\label{eq:flow-continuum-diff-eq}
 \end{align*}}
 \onslide<2->{\begin{align*}
-    D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], \label{eq:flow-cont-covariant-derivative}
+    D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], %\label{eq:flow-cont-covariant-derivative}
 \end{align*}}
 \onslide<3->{\begin{align*}
     G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)], \label{eq:flow-field-strength-tensor}
@@ -536,40 +540,17 @@ with coefficients from \citet{luscher_properties_2010}.}
 \end{itemize}}
 \end{frame}
 
-\husk{TODO: animation here!!}
+% \husk{TODO: animation here!!}
 
-\begin{frame}{Verifying the integration} \husk{TODO: REMOVE THIS?!?!}
-\only<1>{Testing the integrator for different integration steps $\epsilon_f$.
-\begin{table}
-    \centering
-    \resizebox{0.8\columnwidth}{!}{%
-    \begin{tabular}{c c c c c c c c c c c}
-    \toprule
-    $\epsilon_f$ & $0.001$ & $0.005$ & $0.007$ & $0.009$ & $0.01$ & $0.02$ & $0.03$ & $0.05$ & $0.1$ & $0.5$ \\ \bottomrule
-    \end{tabular}
-    }
-\end{table}}
-\only<2>{Lattice size $N^3\times N_T = 24^3 \times 48$ with $\beta=6.0$.
-\vspace{-10.0pt}
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy}
-\end{figure}}
-\only<3->{The absolute difference between the smallest flow time $\epsilon_f=0.001$ and those shown previously.
-\vspace{-10.0pt}
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy_diff_absolute}
-\end{figure}}
-\note{
-\begin{itemize}
-    \item<1-> The values we will test the integrator against.
-    \item<2-> The energy flowed for different the different $\epsilon_f$ values.
-    \item<3-> The absolute difference between the smallest flow time $\epsilon_f=0.001$ and those listed in previous table.
-    \item<3-> The reason for \textbf{only having two points} is due to the fact that we are only \textbf{comparing points} that are \textbf{close to each other in flow time}. If we were to have more points, we would have to double the number of flow time steps for the smallest lattices.
-    \item<4-> An \textbf{example} of the flowing, can be seen by observing the \textbf{energy evolving over flow time}.
-\end{itemize}}
+\begin{frame}{Verifications, tests and code benchmarking}
+\begin{itemize}[<+->]
+    \item The Runge-Kutta 3 integrator has been tested for different step lengths $\epsilon_f$.
+    \item The code has been unit tested for matrix multiplications and parallelization.
+    \item Results match that of other code bases such as Chroma.
+    \item Performance testing has been done of different generation parameters.
+\end{itemize}
 \end{frame}
+
 
 % \begin{frame}{Smearing the lattice: topological charge I}
 % \begin{center}
@@ -620,11 +601,10 @@ with coefficients from \citet{luscher_properties_2010}.}
         \bottomrule
     \end{tabular}
 \end{table}
-\husk{TODO: Remove bit about updating frequency?}
-\begin{itemize}[<+->]
-    \item We use $N_\mathrm{corr}=1600$ for $\beta=6.45$ ensembles, $N_\mathrm{corr}=600$ for the rest.
-    \item $N_\mathrm{up}=30$.
-\end{itemize}
+% \begin{itemize}[<+->]
+%     \item We use $N_\mathrm{corr}=1600$ for $\beta=6.45$ ensembles, $N_\mathrm{corr}=600$ for the rest.
+%     \item $N_\mathrm{up}=30$.
+% \end{itemize}
 \note{
 \begin{itemize}
     \item The main ensembles made for this thesis. 
@@ -869,7 +849,7 @@ First presented by \citet{borsanyi_high-precision_2012}.
 % }
 % \end{frame}
 
-\husk{TODO: topological charge animation here!!}
+% \husk{TODO: topological charge animation here!!}
 
 \begin{frame}{Topological charge distribution}
 \vspace{-5.0pt}
@@ -965,7 +945,6 @@ Why is the charge not centered around zero for certain ensembles?
 \end{frame}
 
 \begin{frame}{Topological susceptibility}
-\husk{TODO: WHat is hadronic scales again?}
 \onslide<1->{
 The \textit{topological susceptibility} is given by
 \begin{align*}
@@ -973,7 +952,7 @@ The \textit{topological susceptibility} is given by
 \end{align*}
 with $V$ being the lattice volume and $\expect{Q^2}$ is the second momenta of the charge. \\}
 \onslide<2->{
-The \textit{Witten-Veneziano relation} is given by \husk{TODO: rearrange!?!}
+The \textit{Witten-Veneziano relation} is given by
 \begin{align*}
     m_{\eta'}^2 = \frac{2N_f}{f^2_\pi}\chi_\mathrm{top}
 \end{align*}}
@@ -1023,10 +1002,11 @@ The \textit{Witten-Veneziano relation} is given by \husk{TODO: rearrange!?!}
         \bottomrule
     \end{tabular}
 \end{table}
-Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$.
+Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$. \\
+Values taken at $\sqrt{8t_f}=0.6$ fm.
 \note{
 \begin{itemize}
-    \item Values extracted at a smearing radius of hadronic scales.
+    \item Values extracted at a smearing radius of \textbf{hadronic scales}. That is, we have plateaued and have no discretization effects.
     \item The topological susceptibility for the main ensembles together with the correction factor from the integrated autocorrelation time. The second column have not had its results corrected by $\sqrt{2\tau_\mathrm{int}}$. None of the results have been analyzed with bootstrapping.
 \end{itemize}
 }
@@ -1281,43 +1261,45 @@ We will be looking at the state involving topological charge.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion, future developments and final thoughts}
-\begin{frame}{Conclusion} \husk{TODO: remove scaling and parameter optimization!?!} \husk{TODO: mention when talking about the code that we have verified the code with other codes and unit tests}
+\begin{frame}{Conclusion}
 \begin{itemize}
-    \item <1->Scaling and parameter optimizations % SCALING RUNS, N_UP COULD BE INCREASED, COMPARABLE TO OTHER CODES 
+    \item <1->Created a code capable of generating and flowing gauge configurations.
+    % \item <1->Scaling and parameter optimizations % SCALING RUNS, N_UP COULD BE INCREASED, COMPARABLE TO OTHER CODES 
     \begin{itemize}
-        \item <2->Room for increased processors.
-        \item <3->$N_\mathrm{up} > N_\mathrm{corr}$
-        \item <4->Machine precision accuracy when comparing with Chroma.
+        \item <2->Verified to match other code bases down to machine precision.
+        % \item <2->Room for an increased number of processors.
+        % \item <3->$N_\mathrm{up} > N_\mathrm{corr}$
+        % \item <4->Machine precision accuracy when comparing with Chroma.
     \end{itemize}
-    \item <5->$t_0$ and $w_0$ match other papers, e.g. \citet{luscher_properties_2010} and \citet{ce_non-gaussianities_2015}.% REFERENCE SCALE T0 - close to what is found by Luscher, REFERENCE SCALE W0 - close to what is found in paper
-    \item <6->$\expect{Q} \neq 0$ for some ensembles. % CHARGE - not zero!
-    \item <7->The topological susceptibility $\expect{\chi^{1/4}_f}$ and $N_f$ % TOPSUS AND N_F - compare ts-bootstrap and bootstrap. Re-iterate main results.
-    \item <8->$\expect{Q^4}_C$ and $R$. Sensitive quantities - need large statistics.% 4th CUMULANT - quite off. Larger beta than article. Perhaps just poor statistics.
-    \item <9->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass. % CORRELATOR AND GLUEBALL MASS
-    \item <10->Statistics, autocorrelation and critical slowdown.% STATISTICS AND CRITICAL SLOWDOWN
+    \item <3->$t_0$ and $w_0$ match other papers, e.g. \citet{luscher_properties_2010} and \citet{ce_non-gaussianities_2015}.% REFERENCE SCALE T0 - close to what is found by Luscher, REFERENCE SCALE W0 - close to what is found in paper
+    \item <4->$\expect{Q} \neq 0$ for some ensembles. % CHARGE - not zero!
+    \item <5->The topological susceptibility $\expect{\chi^{1/4}_f}$ and $N_f$ % TOPSUS AND N_F - compare ts-bootstrap and bootstrap. Re-iterate main results.
+    \item <6->$\expect{Q^4}_C$ and $R$. Sensitive quantities - need large statistics.% 4th CUMULANT - quite off. Larger beta than article. Perhaps just poor statistics.
+    \item <7->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass. % CORRELATOR AND GLUEBALL MASS
+    \item <8->Statistics, autocorrelation and critical slowdown.% STATISTICS AND CRITICAL SLOWDOWN
 \end{itemize}
 \note{\begin{itemize}
     \item <1->Checked scaling and parameter optimization.
-    \item <2->We checked \textbf{strong}, \textbf{weak} and \textbf{speedup}, where we appeared to have a plateauing around 512 processors but with room for optimization.
-    \item <3->$N_\mathrm{up}$ could be increased, as it has a smaller impact than $N_\mathrm{corr}$.
-    \item <4->Same results as Chroma down to machine precision.
-    \item <4->We also checked the $\epsilon_\mathrm{rnd}$ for matrix generation parameter that it minimized the autocorrelation, and the integration step $\epsilon_f$ .
-    \item <5->$t_0$ and $w_0$ match other papers.
-    \item <6->$\expect{Q}$
-    \item <7->$\chi^{1/4}_f$. Matches well with other papers
-    \item <8->$\expect{Q^4}_C$ and $R$. Sensitive quantity, matches well of first and second moment.
-    \item <9->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass.
-    \item <10->Critical slowdown, which makes transitioning to a new, independent configuration difficult. This inhibits the gathering of statistics, and helps us explain why we for larger $\beta$ values have fewer independent gauge configurations.
+    % \item <2->We checked \textbf{strong}, \textbf{weak} and \textbf{speedup}, where we appeared to have a plateauing around 512 processors but with room for optimization.
+    % \item <3->$N_\mathrm{up}$ could be increased, as it has a smaller impact than $N_\mathrm{corr}$.
+    \item <2->Same results as Chroma down to machine precision.
+    % \item <4->We also checked the $\epsilon_\mathrm{rnd}$ for matrix generation parameter that it minimized the autocorrelation, and the integration step $\epsilon_f$ .
+    \item <3->$t_0$ and $w_0$ match other papers.
+    \item <4->$\expect{Q}$
+    \item <5->$\chi^{1/4}_f$. Matches well with other papers
+    \item <6->$\expect{Q^4}_C$ and $R$. Sensitive quantity, matches well of first and second moment.
+    \item <7->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass.
+    \item <8->Critical slowdown, which makes transitioning to a new, independent configuration difficult. This inhibits the gathering of statistics, and helps us explain why we for larger $\beta$ values have fewer independent gauge configurations.
 \end{itemize}
 }
 \end{frame}
 
 \begin{frame}{Future developments and final thoughts}
 \begin{itemize}[<+->]
-    \item Better statistics.
+    \item Better statistics - more gauge configurations.
     \item Better utilization of support ensembles $E$, $F$ and $G$.
-    \item Improve autocorrelation with larger $N_\mathrm{up}$.
-    \item Implement better actions with and operators containing errors.
+    \item Improve autocorrelation with more updates per single link(increase $N_\mathrm{up}$).
+    \item Implement better actions with operators that has smaller error contributions.
     \item Fermions and HMC(Hybrid Monte Carlo).
 \end{itemize}
 \end{frame}
@@ -1411,6 +1393,39 @@ We checked three types of scaling,
 \note{\begin{itemize}
     \item Additional ensembles made in order to illuminate additional aspects of the topological charge.
     \item Supporting ensembles made on Smaug. All ensembles were flown $N_\mathrm{flow}=1000$ steps with $\epsilon_\mathrm{flow}=0.01$.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Verifying the integration}
+\only<1>{Testing the integrator for different integration steps $\epsilon_f$.
+\begin{table}
+    \centering
+    \resizebox{0.8\columnwidth}{!}{%
+    \begin{tabular}{c c c c c c c c c c c}
+    \toprule
+    $\epsilon_f$ & $0.001$ & $0.005$ & $0.007$ & $0.009$ & $0.01$ & $0.02$ & $0.03$ & $0.05$ & $0.1$ & $0.5$ \\ \bottomrule
+    \end{tabular}
+    }
+\end{table}}
+\only<2>{Lattice size $N^3\times N_T = 24^3 \times 48$ with $\beta=6.0$.
+\vspace{-10.0pt}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy}
+\end{figure}}
+\only<3->{The absolute difference between the smallest flow time $\epsilon_f=0.001$ and those shown previously.
+\vspace{-10.0pt}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.4cm 0.0cm 0.4cm 0.0cm},clip,scale=0.6]{../figures/flow-epsilon/energy_diff_absolute}
+\end{figure}}
+\note{
+\begin{itemize}
+    \item<1-> The values we will test the integrator against.
+    \item<2-> The energy flowed for different the different $\epsilon_f$ values.
+    \item<3-> The absolute difference between the smallest flow time $\epsilon_f=0.001$ and those listed in previous table.
+    \item<3-> The reason for \textbf{only having two points} is due to the fact that we are only \textbf{comparing points} that are \textbf{close to each other in flow time}. If we were to have more points, we would have to double the number of flow time steps for the smallest lattices.
+    \item<4-> An \textbf{example} of the flowing, can be seen by observing the \textbf{energy evolving over flow time}.
 \end{itemize}}
 \end{frame}
 

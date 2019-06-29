@@ -53,6 +53,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 
+
 % \usetheme[progressbar=frametitle]{metropolis}
 \usetheme{metropolis}
 
@@ -65,7 +66,7 @@
 
 % Titles, date, ect.
 \title{Solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice: a calculation of selected gauge observables with gradient flow}
-\date{\today}
+\date{04.07.19}
 \author{Hans Mathias Mamen Vege}
 \institute{University of Oslo}
 
@@ -85,33 +86,268 @@
 %   \tableofcontents[hideallsubsections]
 % \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  ___       _                 _            _   _
-% |_ _|_ __ | |_ _ __ ___   __| |_   _  ___| |_(_) ___  _ __
-%  | || '_ \| __| '__/ _ \ / _` | | | |/ __| __| |/ _ \| '_ \
-%  | || | | | |_| | | (_) | (_| | |_| | (__| |_| | (_) | | | |
-% |___|_| |_|\__|_|  \___/ \__,_|\__,_|\___|\__|_|\___/|_| |_|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
+% \begin{frame}{Structure}
+%     \begin{itemize}[<+->]
+%         \item Quantum Chromodynamics(QCD).
+%         \item Lattice QCD.
+%         \item Gradient flow.
+%         \item Developing a code for solving $\SU(3)$ Yang-Mills theory.
+%         \item Results.
+%     \end{itemize}
+%     \note{
+%     \begin{itemize}[<+->]
+%         \item \textbf{QCD.} We will go through and explain what QCD as well as motivate its existence.
+%         \item \textbf{LQCD.} We will briefly show how one discretise the lattice and perform calculations on it.
+%         \item \textbf{Gradient flow.} We will quickly introduce gradient flow and explain its effects.
+%         \item \textbf{GLAC.} Will briefly present the code which we developed as well as some benchmarks. We will also present the Metropolis algorithm.
+%         \item \textbf{Results.} We will present the results obtained from pure gauge calculations.
+%     \end{itemize}
+%     }
+% \end{frame}
 
-\begin{frame}{Structure}
-    \begin{itemize}[<+->]
-        \item Quantum Chromodynamics(QCD).
-        \item Lattice QCD.
-        \item Gradient flow.
-        \item Developing a code for solving $\SU(3)$ Yang-Mills theory.
-        \item Results.
-    \end{itemize}
-    \note{
-    \begin{itemize}[<+->]
-        \item \textbf{QCD.} We will go through and explain what QCD as well as motivate its existence.
-        \item \textbf{LQCD.} We will briefly show how one discretise the lattice and perform calculations on it.
-        \item \textbf{Gradient flow.} We will quickly introduce gradient flow and explain its effects.
-        \item \textbf{GLAC.} Will briefly present the code which we developed as well as some benchmarks. We will also present the Metropolis algorithm.
-        \item \textbf{Results.} We will present the results obtained from pure gauge calculations.
-    \end{itemize}
-    }
+\begin{frame}{The four forces of nature}
+\begin{columns}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+        \centering
+        \onslide<1->{
+        \begin{figure}
+            \includegraphics[width=0.6\linewidth]{../figures/gravity.jpg}
+            \captionsetup{labelformat=empty}
+            \caption{Gravity}
+        \end{figure}}
+    \end{minipage}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+        \centering
+        \onslide<2->{
+        \begin{figure}
+            \includegraphics[width=0.6\linewidth]{../figures/lightning.jpg}
+            \captionsetup{labelformat=empty}
+            \caption{Electromagnetism}
+        \end{figure}}
+    \end{minipage}
+\end{columns}
+\begin{columns}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+        \centering
+        \onslide<3->{
+        \begin{figure}
+            \includegraphics[width=0.6\linewidth]{../figures/weakforce_pdf}
+            \captionsetup{labelformat=empty}
+            \caption{Weak nuclear force}
+        \end{figure}}
+    \end{minipage}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+        \centering
+        \onslide<4->{
+        \begin{figure}
+            \includegraphics[width=0.6\linewidth]{../figures/nucleon/nucleon.pdf}
+            \captionsetup{labelformat=empty}
+            \caption{Strong nuclear force}
+        \end{figure}}
+    \end{minipage}
+\end{columns}
 \end{frame}
+
+\begin{frame}{What is the strong force?}
+Consists of:
+\begin{itemize}
+    \item <1->{6 quark flavors: up, down, strange, charm, bottom and top}
+    \item <2->{8 gluons}
+\end{itemize}
+\begin{columns}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+        \onslide<4->{A \textbf{proton} consists of: up-, up- and down-quarks\\}
+        \onslide<5->{Mass discrepancy:
+        \begin{align*}
+            m_p &\neq m_u + m_u + m_d, \\
+            936 \text{ MeV} &\neq 3\text{ MeV} + 3\text{ MeV} + 6\text{ MeV}.
+        \end{align*}}
+    \end{minipage}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+        \onslide<4->{\begin{figure}
+            \centering
+            \includegraphics[width=0.8\textwidth]{../figures/Proton_quark_structure_pdf.pdf}
+        \end{figure}}
+    \end{minipage}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Why is the strong force strong?}
+\begin{columns}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\textwidth]{../figures/coupling_constant_strengths_pdf.pdf}
+    \end{figure}
+    \end{minipage}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+        \onslide<1->{Coupling constant $\alpha$ strength of the force in an interaction.}
+        \begin{itemize}
+            \item \onslide<2->{$\alpha_G \approx 1.75 \times 10^{-45}$}
+            \item \onslide<3->{$\alpha_W \approx 10^{-6} - 10^{-7}$}
+            \item \onslide<4->{$\alpha_{EM} \approx \frac{1}{137} \approx 0.0073$}
+            \item \onslide<5->{$\alpha_S \approx \frac{g_S^2}{4\pi} \approx 1$}
+        \end{itemize}
+        \onslide<6->{Can't use perturbation theory on strong force in low-energy regime!}
+    \end{minipage}
+\end{columns}
+\note{
+\begin{itemize}
+    \item <1->{In physics, \textbf{a coupling constant} or gauge coupling parameter (or, more simply, a coupling), is a number that determines the strength of the force exerted in an interaction.}
+    \item <6->{We cannot make \textbf{perturbative expansions} in the low-energy regime of the strong nuclear force.}
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Confinement: a low-energy phenomena}
+No free color charges in nature!
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
+\end{figure}
+\note{If we try to pull apart \textbf{two quarks in a meson}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
+\end{frame}
+
+\begin{frame}{QCD and nuclear physics}
+\begin{columns}
+    \column{0.5\textwidth}
+    \begin{minipage}[b][1.0\textheight][b]{\linewidth}
+        \begin{figure}
+            \includegraphics[width=0.8\linewidth]{../figures/scales_frib.pdf}
+            \captionsetup{labelformat=empty}
+            \caption{\tiny\textit{FRIB Users Organization for the NSAC Long Range Plan Implementation Subcommittee}}
+        \end{figure}
+    \end{minipage}
+    \column{0.5\textwidth}
+    % {Few parameters give rise to observed phenomena: $g_S, m_d, m_u, \dots e$} \\
+    \onslide<1->{Need to understand the low-energy regime in order to better understand nuclear physics!} \\
+    \onslide<2->{$\rightarrow$ numerical methods(e.g. lattice QCD)} \\
+\end{columns}
+\end{frame}
+
+\begin{frame}{How we measure: path integrals}
+\onslide<1->{\textit{Sum over all possible paths $\rightarrow$ the most likely path.} \\
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{../figures/path-integral-simplified/path-integral-simplified.pdf}
+\end{figure}}
+\onslide<2->{Principle of least action (or stationary condition): $\frac{\delta}{\delta x(t)} \left( S\left[ x(t) \right] \right) = 0$}
+\end{frame}
+
+\begin{frame}{Path integrals}
+Given a field $\phi^M$ in Minkowski space, the \textit{partition function $Z$} is given by
+\begin{align*}
+    Z &= \int \mathcal{D}[\phi^M] \e^{\frac{i}{\hbar}S^M[\phi^M]} \\
+    &\downarrow \quad \hbar=1, \quad \tau \rightarrow -it \qquad \text{imaginary time!} \\
+    &= \int \mathcal{D}[\phi] \e^{-S[\phi]}
+\end{align*}
+where $\mathcal{D}$ is an integration of all possible paths in space.
+\\
+An observable $O$ becomes,
+\begin{align*}
+    \expect{O} = \frac{1}{Z} \int\mathcal{D}[\phi] O[\phi] \e^{-S[\phi]}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Discretizing the path integral}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/lattice-discretized/lattice-discretized.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Discretizing the path integral}
+\onslide<1->{Path integral becomes
+\begin{align*}
+    \int \mathcal{D}\phi = \prod_{x_\mu} \dd\phi(x) = \prod_{x_\mu} \dd \phi_{x_\mu}
+\end{align*}}
+\onslide<2->{We integrate over each spacetime point.}
+\onslide<3->{For a lattice of size $32 \times 32 \times 32 \times 32 = 2^{20}$, total number of integration points becomes $n^{2^20}$, 
+which is not feasible in any of our lifetimes!\\}
+\onslide<4->{\rightarrow need to use a statistical method.}
+\onslide<5->{An expectation value becomes
+\begin{align*}
+    \expect{O} = \frac{1}{N_\mathrm{cfg}} \sum_{i=1}^{N_\mathrm{cfg}} O[\phi_i] + \mathcal{O}\left(\frac{1}{\sqrt{N_\mathrm{cfg}}}\right)
+\end{align*}}
+\note{\onslide<5->{A \textit{configuration} is a possible \textit{path}.}}
+\end{frame}
+
+\begin{frame}{QCD on the lattice}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/lattice_quarks_and_gluons.png}
+\end{figure}
+Quarks on points, gluons in between.
+\note{The lattice is a cube in 4D.}
+\end{frame}
+
+\begin{frame}{Links}
+\onslide<1->{The gluons is given by \textit{links}, $U_\mu(x) \in \SU(3)$. \\}
+\onslide<2->{Complex $3\times 3$ matrices with properties of,}
+\onslide<3->{\begin{align*}
+    U^\dagger_\mu(x) = U^{-1}_\mu (x), \qquad \det \left(U_\mu(x)\right) = 1.
+\end{align*}}
+\end{frame}
+
+\begin{frame}{Parallelization: distributing the problem}
+\only<1-3>{Too large to solve on any single computer.\\}
+\only<2-3>{Number of points in a lattice:
+\begin{align*}
+    \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
+\end{align*}}
+\only<3>{Too large to solve on any single computer.}
+\only<4->{
+    \begin{figure}
+        \centering
+        \includegraphics{../figures/parallelization-lattice/parallelization-lattice.pdf}
+    \end{figure}
+}
+\end{frame}
+
+\begin{frame}{Parallelization: splitting the hypercube}
+\begin{figure}
+    \centering
+    \includegraphics{../figures/parallelized-lattice/parallelized-lattice.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Parallelization: shifts}
+\onslide<1->{Communications between nodes set up with MPI.\\}
+\onslide<2->{Implemented \textit{shifts} for sharing data.\\}
+\onslide<3->{
+    \begin{figure}
+        \centering
+        \includegraphics{../figures/illustrations/shift/shift.pdf}
+    \end{figure}
+}
+\end{frame}
+
+\begin{frame}{Gradient flow}
+\end{frame}
+
+\begin{frame}{Gradient flow II}
+\end{frame}
+
+\begin{frame}{Smearing the lattice}
+% Animation!!
+\end{frame}
+
+% \begin{frame}{Topological charge evolution in flow time}
+%     \begin{center}
+%         % \includegraphics[width=0.7\textwidth]{figures/beta62_size1280x1280/topc/flowTime}
+%         \animategraphics[loop,controls,width=\linewidth,scale=0.7]{15}{../figures/latviz/topc_TE21/flowTime_TE21-}{0}{60}
+%         % \transduration<0-16>{0}
+%   %       \multiinclude[<+->][format=png, graphics={width=\textwidth}]{figures/beta62_size1280x1280/topc/flow_pngs/flowTimePngs}
+%     \end{center}
+% \end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   ___   ____ ____
@@ -156,7 +392,6 @@ with action
     S = \int \dd^4 x \mathcal{L}_\mathrm{QCD},
 \end{align}
 is invariant under a $\SU(3)$ symmetry.
-
 \begin{align*}
     \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
     \includegraphics[scale=0.9]{../figures/feynman-diagrams/three-gluon-vertex/three-gluon-vertex.pdf} \quad

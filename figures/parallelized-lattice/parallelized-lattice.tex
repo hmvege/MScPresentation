@@ -1,0 +1,60 @@
+\documentclass[12pt,border=2mm]{standalone}
+
+\usepackage[rgb]{xcolor}
+\usepackage{tikz}
+
+\definecolor{bg-gray}{HTML}{f0f0f0}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{math}
+\usetikzlibrary{calc}
+
+% Commands for writing shorthand lattice operators
+\newcommand{\MU}{\hat{\mu}}
+\newcommand{\NU}{\hat{\nu}}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Position settings
+\tikzmath{
+    \NX = 16;
+    \NY = 16;
+    \CenterPadding = 0.5;
+    \MinorShift = 0.2;
+}
+
+% Clips
+\clip (-1.2,-1.2) rectangle (0.2+\NX,0.2+\NY);
+
+% Upper left
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding-\MinorShift,-\CenterPadding+\NY+\MinorShift) rectangle (\NX/2+\CenterPadding - 1 - \MinorShift, \NY/2+\CenterPadding - 1 + \MinorShift);
+
+\foreach \x in {0,1,...,\NX/2-1}
+    \foreach \y in {0,1,...,\NY/2-1}
+        \fill[black] (\x-\MinorShift, \y+\NY/2+\MinorShift) circle (2pt);
+
+% Upper right
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding+\NX+\MinorShift,-\CenterPadding+\NY+\MinorShift) rectangle (\NX/2+\CenterPadding - 1+\MinorShift, \NY/2+\CenterPadding - 1+\MinorShift);
+
+\foreach \x in {0,1,...,\NX/2-1}
+    \foreach \y in {0,1,...,\NY/2-1}
+        \fill[black] (\x+\NX/2+\MinorShift, \y+\NY/2+\MinorShift) circle (2pt);
+
+% Lower left
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding-\MinorShift,-\CenterPadding-\MinorShift) rectangle (\NX/2+\CenterPadding - 1 - \MinorShift, \NY/2+\CenterPadding - 1 - \MinorShift);
+
+\foreach \x in {0,1,...,\NX/2-1}
+    \foreach \y in {0,1,...,\NY/2-1}
+        \fill[black] (\x-\MinorShift, \y-\MinorShift) circle (2pt);
+
+% Lower right
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding+\MinorShift+\NX/2,-\CenterPadding-\MinorShift) rectangle (\NX+\CenterPadding - 1 + \MinorShift, \NY/2+\CenterPadding - 1 - \MinorShift);
+
+\foreach \x in {0,1,...,\NX/2-1}
+    \foreach \y in {0,1,...,\NY/2-1}
+        \fill[black] (\NX/2+\x+\MinorShift, \y-\MinorShift) circle (2pt);
+
+
+\end{tikzpicture}
+\end{document}

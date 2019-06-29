@@ -26,5 +26,7 @@ doc/test
 # For compiling latex
 latexrun
 
+# Picture files not needed
+*.svg
 
 figures/latviz

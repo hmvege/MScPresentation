@@ -1,0 +1,73 @@
+\documentclass[12pt,border=2mm]{standalone}
+
+\usepackage[rgb]{xcolor}
+\usepackage{tikz}
+
+\definecolor{bg-gray}{HTML}{f0f0f0}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{math}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns,arrows,decorations.pathreplacing}
+
+% Commands for writing shorthand lattice operators
+\newcommand{\MU}{\hat{\mu}}
+\newcommand{\NU}{\hat{\nu}}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Position settings
+\tikzmath{
+    \NX = 6;
+    \NXLong = 12;
+    \NY = 6;
+    \CenterPadding = 0.5;
+}
+
+% Clips (creates the frame)
+\clip (-0.5,-1.0) rectangle (0.5+\NXLong, 0.5+\NY);
+
+% Fills left columns
+\foreach \x in {0,2,...,\NX-2}
+    \foreach \y in {0,4,\NY}
+        \fill[black] (\x, \y) circle (2pt);
+
+% Fills right columns
+\foreach \x in {\NX+2,\NX+4,\NX+6}
+    \foreach \y in {0,4,\NY}
+        \fill[black] (\x, \y) circle (2pt);
+
+% Fills dotted vertical column
+\foreach \x in {\NX-0.2,\NX,\NX+0.2}
+    \foreach \y in {0,4,\NY}
+        \fill[black] (\x, \y) circle (1pt);
+
+% Fills dotted horizontal column
+\foreach \x in {0, 2, 4, 8, 10, 12}
+    \foreach \y in {2-0.2,2,2+0.2}
+        \fill[black] (\x, \y) circle (1pt);
+
+% Draws the lattice spacing
+\draw[
+    thick,
+    decoration={
+        brace,
+        raise=8pt,
+    },
+    decorate,
+] (2,0) --node[above=8pt]{$a$} (4,0);
+
+% Draws the entire length
+\draw[
+    thick,
+    decoration={
+        brace,
+        mirror,
+        raise=8pt,
+    },
+    decorate,
+] (-0.1,0) --node[below=8pt]{$L=Na$} (\NXLong+0.1,0);
+
+\end{tikzpicture}
+\end{document}

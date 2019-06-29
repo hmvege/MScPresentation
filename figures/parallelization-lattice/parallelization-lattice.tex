@@ -1,0 +1,38 @@
+\documentclass[12pt,border=2mm]{standalone}
+
+\usepackage[rgb]{xcolor}
+\usepackage{tikz}
+
+\definecolor{bg-gray}{HTML}{f0f0f0}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{math}
+\usetikzlibrary{calc}
+
+% Commands for writing shorthand lattice operators
+\newcommand{\MU}{\hat{\mu}}
+\newcommand{\NU}{\hat{\nu}}
+
+\begin{document}
+\begin{tikzpicture}
+
+% Position settings
+\tikzmath{
+    \NX = 16;
+    \NY = 16;
+    \CenterPadding = 0.5;
+}
+
+% Clips
+\clip (-1.1,-1.1) rectangle (0.1+\NX,0.1+\NY);
+
+% Center lattice
+\draw [fill=bg-gray, rounded corners] (-\CenterPadding,-\CenterPadding) rectangle (\NX+\CenterPadding - 1, \NY+\CenterPadding - 1);
+
+% Fills general matrix
+\foreach \x in {0,1,...,\NX-1}
+    \foreach \y in {0,1,...,\NY-1}
+        \fill[black] (\x, \y) circle (2pt);
+
+\end{tikzpicture}
+\end{document}

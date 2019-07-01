@@ -30,12 +30,12 @@
 \makeatother
 
 % % For proper referencing
-\usepackage{varioref}
-\usepackage{hyperref}
-\hypersetup{
-    breaklinks={true},
-}
-\usepackage{cleveref}
+% \usepackage{varioref}
+% \usepackage{hyperref}
+% \hypersetup{
+%     breaklinks={true},
+% }
+% \usepackage{cleveref}
 
 % For writing C++ in listings
 \usepackage{listings}
@@ -70,7 +70,7 @@
 \usefonttheme[onlymath]{serif}
 
 % Titles, date, ect.
-\title{Solving \texorpdfstring{SU3}{$\SU(3)$} Yang-Mills theory on the lattice: a calculation of selected gauge observables with gradient flow}
+\title{Solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice: a calculation of selected gauge observables with gradient flow}
 \date{04.07.19}
 \author{Hans Mathias Mamen Vege}
 \institute{University of Oslo}
@@ -183,7 +183,6 @@ Consists of:
 \end{columns}
 \end{frame}
 
-% TODO: show action here?
 \begin{frame}{Comparing the strong force and QED}
 \onslide<1->{QED Quantum Electrodynamics(Electromagnetism), a U$(1)$ theory:
 \begin{align*}
@@ -207,10 +206,15 @@ F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A
 \begin{columns}
     \column{0.5\textwidth}
     \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+    % \begin{figure}
+    %     \centering
+    %     \includegraphics[width=0.9\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+    % \end{figure}
     \begin{figure}
         \centering
-        \includegraphics[width=0.9\textwidth]{../figures/coupling_constant_strengths_pdf.pdf}
+        \includegraphics[width=0.95\textwidth]{../figures/running_coupling_qed_qcd.pdf}
     \end{figure}
+    \tiny{\url{https://www-cdf.fnal.gov/~group/WORK/DISS_PAGE/diss_page.htm}}
     \end{minipage}
     \column{0.5\textwidth}
     \begin{minipage}[b][0.45\textheight][b]{\linewidth}
@@ -264,9 +268,11 @@ No free color charges in nature!
     \includegraphics[width=0.5\linewidth]{../figures/path-integral-simplified/path-integral-simplified.pdf}
 \end{figure}}
 \onslide<2->{Principle of least action (or stationary condition): $\frac{\delta}{\delta x(t)} \left( S\left[ x(t) \right] \right) = 0$}
+\onslide<3->{Action given in terms of spacetime integral of the Lagrangian $\mathcal{L}$ \begin{align*}
+S = \int \dd^4 x \mathcal{L}
+\end{align*}}
 \end{frame}
 
-% TODO: show action=int Lagrangian here?
 \begin{frame}{Path integrals}
 Given a field $\phi^M$ in Minkowski space, the \textit{partition function $Z$} is given by
 \begin{align*}
@@ -320,7 +326,7 @@ An observable $O$ becomes,
 }
 \end{frame}
 
-\begin{frame}{From QCD to pure \texorpdfstring{SU3}{$\SU(3)$} Yang-Mills}
+\begin{frame}{From QCD to pure \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills}
 We exclude fermions to only look at the gauge fields,
 \begin{align*}
 S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
@@ -337,6 +343,11 @@ S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
 \onslide<5->{\begin{align*}
     U^\dagger_\mu(x) = U^{-1}_\mu (x), \qquad \det \left(U_\mu(x)\right) = 1.
 \end{align*}}
+\onslide<6->{From this we can build a lattice action,
+\begin{align*}
+S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{\mu}(n+\hat{\nu})^\dagger U_{\nu} (n)^\dagger \right],
+\end{align*}
+with $\beta=6/g_S^2$}
 \end{frame}
 
 \begin{frame}{Parallelization: distributing the problem}
@@ -360,7 +371,6 @@ S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
 }
 \end{frame}
 
-% TODO: we usually only need values shifted by one in calculations
 \begin{frame}{Parallelization: shifts}
 \onslide<1->{Communications between nodes set up with MPI.\\}
 \onslide<2->{Implemented \textit{shifts} for sharing data.\\}
@@ -530,7 +540,7 @@ S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
 % }
 % \end{frame}
 
-% \begin{frame}{Gauge invariance on the lattice} %\husk{TODO: Don't need to show the gauge transformation!?}
+% \begin{frame}{Gauge invariance on the lattice}
 % \begin{block}
 %     \only<1->{Links constructed such that we maintain gauge invariance in the action,}
 %     \only<2->{\begin{align*}
@@ -687,7 +697,6 @@ S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
 % %  \____|_|  \__,_|\__,_|_|\___|_| |_|\__| |_| |_|\___/ \_/\_/
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \section{Gradient flow}
-% % \husk{TODO: ANIMATIONS?!}
 % \begin{frame}{The flow equation}
 % % Bad approx.: diffusion equation
 % % Topological charge preserved and is more pronounced 
@@ -797,13 +806,13 @@ Points in lattice given by $N^3 \times N_T$.
     \centering
     \begin{tabular}{l r r r r r r}
         \toprule
-        Ensemble & $\beta$ & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $\epsilon_\mathrm{flow}$ & Config. size$[$GB$]$ \\ 
+        Ensemble & $\beta=6/g_S^2$ & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $a$ $[\fm]$ & Config. size$[$GB$]$ \\ 
         \midrule
-        $A$   & 6.0  & 24 & 48 & 1000 & 0.01 & 0.356 \\
-        $B$   & 6.1  & 28 & 56 & 1000 & 0.01 & 0.659 \\
-        $C$   & 6.2  & 32 & 64 & 2000 & 0.01 & 1.125 \\
-        $D_1$ & 6.45 & 32 & 32 & 1000 & 0.02 & 0.563 \\
-        $D_2$ & 6.45 & 48 & 96 & 250  & 0.02 & 5.695 \\
+        $A$   & 6.0  & 24 & 48 & 1000 & $0.0931(4)$ & 0.356 \\
+        $B$   & 6.1  & 28 & 56 & 1000 & $0.0791(3)$ & 0.659 \\
+        $C$   & 6.2  & 32 & 64 & 2000 & $0.0679(3)$ & 1.125 \\
+        $D_1$ & 6.45 & 32 & 32 & 1000 & $0.0478(3)$ & 0.563 \\
+        $D_2$ & 6.45 & 48 & 96 & 250  & $0.0478(3)$ & 5.695 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -820,63 +829,57 @@ Points in lattice given by $N^3 \times N_T$.
 }
 \end{frame}
 
-% TODO: remove following slide?
-\begin{frame}{Lattice sizes}
-\begin{table}
-    \centering
-    \begin{tabular}{l r r r}
-        \toprule
-        Ensemble     & $N$             & $L=Na$ $[\fm]$  & $a$ $[\fm]$     \\ \midrule
-        $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
-        $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
-        $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
-        $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
-        $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
-        \bottomrule
-    \end{tabular}
-\end{table}
-Charge radius of a proton: $\sim 0.85$ fm.
-\note{The lattice sizes.}
-\end{frame}
+% \begin{frame}{Lattice sizes}
+% \begin{table}
+%     \centering
+%     \begin{tabular}{l r r r}
+%         \toprule
+%         Ensemble     & $N$             & $L=Na$ $[\fm]$  & $a$ $[\fm]$     \\ \midrule
+%         $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
+%         $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
+%         $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
+%         $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
+%         $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+% Charge radius of a proton: $\sim 0.85$ fm.
+% \note{The lattice sizes.}
+% \end{frame}
 
+
+\begin{frame}{Scale setting}
+\end{frame}
 
 \begin{frame}{Energy definition}
-\onslide<1->{\begin{align*}
-    E &= \frac{a^4}{2|\Lambda|} \sum_{n\in\Lambda}\sum_{\mu,\nu} \left(F^\mathrm{clov}_{\mu\nu}(n)\right)^2 \\
-\end{align*}}
-\onslide<2->{We can use this definition to set a scale $t_0$,
-\begin{align*}
-    \left\{t^2_f \expect{E(t)} \right\}_{t_f = t_{0}} = 0.3.
-\end{align*}
-}
-\note{
-\begin{itemize}
-    \item Defined as the field strength tensor squared averaged over all lattice points and directions.
-    \item We can use this definition to set a scale.
-\end{itemize}
-}
-\end{frame}
-
-% TODO: Unneeded to show this?!
-\begin{frame}{The clover field strength definition}
-$F_{\mu \nu}^\mathrm{clov}(n)$ is given by
+\only<1>{Some people use a banana for scale
 \begin{figure}
     \centering
-    \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover}
-\end{figure}
-\note{
-\begin{itemize}
-    \item We will use the clover field strength definition in gauge observables.
-    \item \textbf{Symmetries} will allow us to \textbf{reduce} the effective \textbf{number of clovers} need to \textbf{calculate from 24 to 6}.
-\end{itemize}
-}
+    \includegraphics[width=0.8\textwidth]{../figures/banana_for_scale.jpg}
+\end{figure}}
+\onslide<2->{We use $t_0$
+\begin{align*}
+    E = \frac{a^4}{2|\Lambda|} \sum_{n\in\Lambda}\sum_{\mu,\nu} \left(F^\mathrm{clov}_{\mu\nu}(n)\right)^2 \\
+\end{align*}}
+\onslide<3->{$F_{\mu\nu}^\mathrm{clov}(n)$ is given by \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{../figures/illustrations/lqcd/clover/clover}
+\end{figure}}
+\note{\begin{itemize}
+    \item \onslide<1->{Defined as the field strength tensor squared averaged over all lattice points and directions.}
+    \item \onslide<2->{We will use the clover field strength definition in gauge observables.}
+    \item \onslide<2->{\textbf{Symmetries} will allow us to \textbf{reduce} the effective \textbf{number of clovers} need to \textbf{calculate from 24 to 6}.}
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Energy}
-\vspace{-10.0pt}
+Using scale definition $t_0$ from \citet{luscher_properties_2010},
+\begin{align*}
+    \left\{t^2_f \expect{E(t)} \right\}_{t_f = t_{0}} = 0.3.
+\end{align*}
 \begin{figure}
     \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.5cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_zoomed.pdf}
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.5cm},clip,width=0.5\textwidth]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_zoomed.pdf}
 \end{figure}
 \end{frame}
 
@@ -917,43 +920,44 @@ $F_{\mu \nu}^\mathrm{clov}(n)$ is given by
 
 % TODO: Completely redundant - better to just show the extrapolated values?!
 \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-\onslide<1->{
-\vspace{-5.0pt}
+\onslide<1-2>{
 \begin{figure}
     \centering
-    \includegraphics[trim={0.2cm 0.25cm 0.2cm 1.2cm},clip,scale=0.6]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
-\end{figure}
-}
-\onslide<2->{\vspace{-5.0pt}Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
-\onslide<3->{This matches the values retrieved by \citet{luscher_properties_2010}.} % TODO: provide numerical values!!
+    \includegraphics[trim={0.2cm 0.25cm 0.2cm 1.2cm},clip,width=0.8\textwidth]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
+\end{figure}}
+\onslide<2-2>{Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
+\onslide<3->{This matches the values retrieved by \citet{luscher_properties_2010},
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{../figures/luscher_extrap_t0.png}
+\end{figure}}
 \note{
 \begin{itemize}
-    \item <1->The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.
-    \item <2->$r_0=0.5$ fm.
+    \item \only<1->{The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.}
+    \item \only<2->{$r_0=0.5$ fm.}
 \end{itemize}
 }
 \end{frame}
 
-% TODO: A bit much - takes unecessary time?!
-\begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-\onslide<1->{Extrapolations for different ensemble-combinations
-\begin{table}
-    \centering
-    \begin{tabular}{l r r}
-        \toprule
-        Ensembles               & $t_{0,\mathrm{cont}}/r_0^2$   & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
-        $A$, $B$, $C$, $D_2$    & $0.11087(50)$                         & $7.51$ \\
-        $B$, $C$, $D_2$         & $0.1115(3)$                           & $0.41$ \\
-        $A$, $B$, $C$, $D_1$    & $0.1119(6)$                           & $0.88$ \\
-        \bottomrule
-    \end{tabular}
-\end{table}}
-\note{
-    \begin{itemize}
-        \item Notice the $\chi^2/\text{d.o.f.}$ of the extrapolation versus the two other extrapolations.
-    \end{itemize}
-}
-\end{frame}
+% \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
+% \onslide<1->{Extrapolations for different ensemble-combinations
+% \begin{table}
+%     \centering
+%     \begin{tabular}{l r r}
+%         \toprule
+%         Ensembles               & $t_{0,\mathrm{cont}}/r_0^2$   & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+%         $A$, $B$, $C$, $D_2$    & $0.11087(50)$                         & $7.51$ \\
+%         $B$, $C$, $D_2$         & $0.1115(3)$                           & $0.41$ \\
+%         $A$, $B$, $C$, $D_1$    & $0.1119(6)$                           & $0.88$ \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}}
+% \note{
+%     \begin{itemize}
+%         \item Notice the $\chi^2/\text{d.o.f.}$ of the extrapolation versus the two other extrapolations.
+%     \end{itemize}
+% }
+% \end{frame}
 
 % TODO: too technical to have this slide?
 \begin{frame}{Scale setting \texorpdfstring{$w_0$}{w0}}
@@ -987,30 +991,6 @@ First presented by \citet{borsanyi_high-precision_2012}.
     \item <3->{\textbf{Instantons} are local minimums of the Yang-Mills action in Euclidean space.}
 \end{itemize}
 \end{block}
-% \only<1>{\begin{figure}
-%     \centering
-%     \begin{subfigure}{0.22\textwidth}
-%         \centering
-%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number1.pdf}
-%         \caption{$\nu=+1$}
-%     \end{subfigure}
-%     \begin{subfigure}{0.22\textwidth}
-%         \centering
-%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number-1.pdf}
-%         \caption{$\nu=-1$}
-%     \end{subfigure}
-%     \begin{subfigure}{0.22\textwidth}
-%         \centering
-%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number0.pdf}
-%         \caption{$\nu=0$}
-%     \end{subfigure}
-%     \begin{subfigure}{0.22\textwidth}
-%         \centering
-%         \includegraphics{../figures/illustrations/qcd/winding-number/winding-number+2.pdf}
-%         \caption{$\nu=+2$}
-%     \end{subfigure}
-%     \caption{The figure is taken from \citet[p. 32]{forkel_primer_2000}.}
-% \end{figure}}
 \onslide<4->{
     \begin{align*}
         Q = a^4 \sum_{n\in\Lambda} q(n),
@@ -1038,19 +1018,6 @@ First presented by \citet{borsanyi_high-precision_2012}.
 \end{itemize}
 }
 \end{frame}
-
-% \begin{frame}{Topological charge}
-% We will use the \textit{clover field strength definition} instead of the plaquette for the field strength.
-% \begin{figure}
-%     \includegraphics[scale=0.7]{../figures/illustrations/lqcd/clover/clover.pdf}
-% \end{figure}
-% \note{
-% \begin{itemize}
-%     \item We will use the clover field strength definition.
-%     \item Symmetries will allow us to reduce the effective number of clovers need to calculate from 24 to 6.
-% \end{itemize}
-% }
-% \end{frame}
 
 \begin{frame}{Topological charge distribution}
 \vspace{-5.0pt}
@@ -1195,43 +1162,41 @@ The \textit{Witten-Veneziano relation} is given by
 \end{itemize}}
 \end{frame}
 
-% TODO: also redundant?!
-\begin{frame}{Topological susceptibility continuum extrapolation}
-\begin{table}
-    \centering
-    \begin{tabular}{l r r r}
-        \toprule
-        Ensemble     & $\chi_{t_f}^{1/4}$ [GeV] & $\chi_{t_f}^{1/4}$ [GeV], corrected & $\sqrt{2\tau_\mathrm{int}}$\\
-        \midrule
-        $A$          & $0.1877(23)$ & $0.1877(24)$  & $1.028(46)$  \\
-        $B$          & $0.1880(21)$ & $0.1880(29)$  & $1.346(81)$  \\
-        $C$          & $0.1853(14)$ & $0.1853(24)$  & $1.762(104)$ \\
-        $D_1$        & $0.1971(22)$ & $0.1971(101)$ & $4.523(675)$ \\
-        $D_2$        & $0.1656(33)$ & $0.1656(86)$  & $2.624(441)$ \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$. \\
-Values taken at $\sqrt{8t_f}=0.6$ fm.
-\note{
-\begin{itemize}
-    \item Values extracted at a smearing radius of \textbf{hadronic scales}. That is, we have plateaued and have no discretization effects.
-    \item The topological susceptibility for the main ensembles together with the correction factor from the integrated autocorrelation time. The second column have not had its results corrected by $\sqrt{2\tau_\mathrm{int}}$. None of the results have been analyzed with bootstrapping.
-\end{itemize}
-}
-\end{frame}
+% \begin{frame}{Topological susceptibility continuum extrapolation}
+% \begin{table}
+%     \centering
+%     \begin{tabular}{l r r r}
+%         \toprule
+%         Ensemble     & $\chi_{t_f}^{1/4}$ [GeV] & $\chi_{t_f}^{1/4}$ [GeV], corrected & $\sqrt{2\tau_\mathrm{int}}$\\
+%         \midrule
+%         $A$          & $0.1877(23)$ & $0.1877(24)$  & $1.028(46)$  \\
+%         $B$          & $0.1880(21)$ & $0.1880(29)$  & $1.346(81)$  \\
+%         $C$          & $0.1853(14)$ & $0.1853(24)$  & $1.762(104)$ \\
+%         $D_1$        & $0.1971(22)$ & $0.1971(101)$ & $4.523(675)$ \\
+%         $D_2$        & $0.1656(33)$ & $0.1656(86)$  & $2.624(441)$ \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+% Error corrected for autocorrelations with $\sigma = \sqrt{2 \tau_\mathrm{int}} \sigma_0$. \\
+% Values taken at $\sqrt{8t_f}=0.6$ fm.
+% \note{
+% \begin{itemize}
+%     \item Values extracted at a smearing radius of \textbf{hadronic scales}. That is, we have plateaued and have no discretization effects.
+%     \item The topological susceptibility for the main ensembles together with the correction factor from the integrated autocorrelation time. The second column have not had its results corrected by $\sqrt{2\tau_\mathrm{int}}$. None of the results have been analyzed with bootstrapping.
+% \end{itemize}
+% }
+% \end{frame}
 
-% TODO: redundant!?
-\begin{frame}{Topological susceptibility continuum extrapolation}
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/topsus/post_analysis_extrapmethodbootstrap_topsus_continuum06_bootstrap.pdf}
-\end{figure}
-\note{\begin{itemize}
-    \item A continuum extrapolation of the topological susceptibility $\chi^{1/4}_{t_f}$ for the main ensembles excluding the $D_1$ ensemble.
-    \item The points for $\chi^{1/4}_{t_f}$ is taken at $\sqrt{8t_{f,0}}=0.6$ fm. 
-\end{itemize}}
-\end{frame}
+% \begin{frame}{Topological susceptibility continuum extrapolation}
+% \begin{figure}
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/topsus/post_analysis_extrapmethodbootstrap_topsus_continuum06_bootstrap.pdf}
+% \end{figure}
+% \note{\begin{itemize}
+%     \item A continuum extrapolation of the topological susceptibility $\chi^{1/4}_{t_f}$ for the main ensembles excluding the $D_1$ ensemble.
+%     \item The points for $\chi^{1/4}_{t_f}$ is taken at $\sqrt{8t_{f,0}}=0.6$ fm. 
+% \end{itemize}}
+% \end{frame}
 
 % \begin{frame}{The Witten-Veneziano relation}
 % A formula connecting pure gauge theory and full QCD.
@@ -1447,11 +1412,11 @@ We will be looking at the state involving topological charge.
 
 \begin{frame}{The effective glueball mass}
 \vspace{-0.5cm}
-\only<1>{\begin{figure} % TODO: REMOVE - only show at four different flow times
-    \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/slices/post_analysis_qtq0eff_bootstrap_tf0_6_ma_overlay.pdf}
-\end{figure}}
-\only<2->{\begin{figure}
+% \only<1>{\begin{figure} % TODO: REMOVE - only show at four different flow times
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/slices/post_analysis_qtq0eff_bootstrap_tf0_6_ma_overlay.pdf}
+% \end{figure}}
+\only<1->{\begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/beta6.2-6.0-6.1-6.45-6.45_N1246/post_analysis_qtq0eff_bootstrap_ma.pdf}
 \end{figure}}

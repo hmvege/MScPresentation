@@ -3,7 +3,7 @@
 
 
 \usepackage{appendixnumberbeamer}
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage[numbers,sort&compress,authoryear]{natbib}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mathtools}
@@ -181,12 +181,13 @@ Consists of:
         \end{figure}}
     \end{minipage}
 \end{columns}
+\note{The mass discrepancy is due to the interaction energy in which gluons are mediators.}
 \end{frame}
 
 \begin{frame}{Comparing the strong force and QED}
 \onslide<1->{QED Quantum Electrodynamics(Electromagnetism), a U$(1)$ theory:
 \begin{align*}
-\mathcal{L}_\mathrm{QED} = \sum_{f=\text{leptons}}\bar{\psi_f} (i\gamma^\mu(\partial_\mu + ieQ_f A_\mu) - m) \psi_f - \frac{1}{4}F_{\mu\nu} F^{\mu\nu}
+\mathcal{L}_\mathrm{QED} = \sum_{f=\text{fermions}}\bar{\psi_f} (i\gamma^\mu(\partial_\mu + ieQ_f A_\mu) - m_f) \psi_f - \frac{1}{4}F_{\mu\nu} F^{\mu\nu}
 \end{align*}
 Field strength tensor:
 \begin{align*}
@@ -200,6 +201,7 @@ Field strength tensor:
 \begin{align*}
 F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A_\nu^c
 \end{align*}}
+\note{$e$ is the coupling constant and $Q_f$ is the charge.}
 \end{frame}
 
 \begin{frame}{Why is the strong force strong?}
@@ -212,7 +214,7 @@ F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A
     % \end{figure}
     \begin{figure}
         \centering
-        \includegraphics[width=0.95\textwidth]{../figures/running_coupling_qed_qcd.pdf}
+        \includegraphics[width=0.95\textwidth]{../figures/running_coupling_qed_qcd_png.png}
     \end{figure}
     \tiny{\url{https://www-cdf.fnal.gov/~group/WORK/DISS_PAGE/diss_page.htm}}
     \end{minipage}
@@ -222,7 +224,7 @@ F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A
         \begin{itemize}
             \item \onslide<2->{$\alpha_G \approx 1.75 \times 10^{-45}$}
             \item \onslide<3->{$\alpha_W \approx 10^{-6} - 10^{-7}$}
-            \item \onslide<4->{$\alpha_{EM} \approx \frac{1}{137} \approx 0.0073$}
+            \item \onslide<4->{$\alpha_\mathrm{QED} \approx \frac{1}{137} \approx 0.0073$}
             \item \onslide<5->{$\alpha_S \approx \frac{g_S^2}{4\pi} \approx 1$}
         \end{itemize}
         \onslide<6->{Can't use perturbation theory on strong force in low-energy regime!}
@@ -231,7 +233,9 @@ F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A
 \note{
 \begin{itemize}
     \item <1->{In physics, \textbf{a coupling constant} or gauge coupling parameter (or, more simply, a coupling), is a number that determines the strength of the force exerted in an interaction.}
+    \item <5->{\textbf{Couplings at low energy.}}
     \item <6->{We cannot make \textbf{perturbative expansions} in the low-energy regime of the strong nuclear force.}
+    \item <6->{Which is really a shame, since many interesting phenomena such as \textbf{confinement} is a low-energy phenomena.}
 \end{itemize}}
 \end{frame}
 
@@ -259,33 +263,54 @@ No free color charges in nature!
     \onslide<1->{Need to understand the low-energy regime in order to better understand nuclear physics!} \\
     \onslide<2->{$\rightarrow$ numerical methods(e.g. lattice QCD)} \\
 \end{columns}
+\note{The most fundamental theory we currently have of nuclear physics is QCD. Understanding QCD will help us understand nuclear physics and more \textit{emergent} theories. But to bridge the gaps between these theories is difficult, as QCD contains a large number of degrees of freedom. Thus, a numerical approach is needed.}
 \end{frame}
 
-\begin{frame}{How we measure: path integrals}
-\onslide<1->{\textit{Sum over all possible paths $\rightarrow$ the most likely path.} \\
-\begin{figure}
+\begin{frame}[t]{How we measure: path integrals}
+\onslide<1->{Going from $t_0$ at $A$ to a time $t_1$ at $B$ can be given in terms of a path integral.}
+\only<2>{\begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{../figures/path-integral-simplified/path-integral-simplified.pdf}
+    \includegraphics[trim={0.0cm 0.5cm 0.0cm 1.0cm},width=0.5\linewidth]{../figures/path-integral-simplified-classic/path-integral-simplified.pdf}
 \end{figure}}
-\onslide<2->{Principle of least action (or stationary condition): $\frac{\delta}{\delta x(t)} \left( S\left[ x(t) \right] \right) = 0$}
-\onslide<3->{Action given in terms of spacetime integral of the Lagrangian $\mathcal{L}$ \begin{align*}
-S = \int \dd^4 x \mathcal{L}
-\end{align*}}
+\only<3->{\begin{figure}
+    \centering
+    \includegraphics[trim={0.0cm 0.5cm 0.0cm 1.0cm},width=0.5\linewidth]{../figures/path-integral-simplified/path-integral-simplified.pdf}
+\end{figure}}
+\only<2>{Classically, only one possible path obtained from the principle of least action.\\}
+\only<3->{In quantum mechanics, there is lots of possible paths.\\}
+\only<4->{Principle of least action (or stationary condition): $\frac{\delta}{\delta x(t)} \left( S\left[ x(t) \right] \right) = 0$}
+\only<5->{\textit{Sum over all possible paths $\rightarrow$ the most likely path.\\}}
+\note{
+\begin{itemize}
+    \item \onslide<2->{Classically we only have one available path given to us from the principle of least action.}
+    \item \onslide<3->{In quantum mechanics, we have several available paths, which are all weighted by some probability amplitude.}
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Path integrals}
-Given a field $\phi^M$ in Minkowski space, the \textit{partition function $Z$} is given by
+\onslide<1->{Given a field $\phi^M$ in Minkowski space, the \textit{partition function $Z$} is given by
 \begin{align*}
-    Z &= \int \mathcal{D}[\phi^M] \e^{\frac{i}{\hbar}S^M[\phi^M]} \\
-    &\downarrow \quad \hbar=1, \quad \tau \rightarrow -it \qquad \text{imaginary time!} \\
-    &= \int \mathcal{D}[\phi] \e^{-S[\phi]}
+    Z &= \int \mathcal{D}\phi^M \e^{\frac{i}{\hbar}S^M[\phi^M]} \\
+    &\downarrow \quad \hbar=1, \quad \tau \rightarrow -it \qquad \text{imaginary time(euclidean space)!} \\
+    &= \int \mathcal{D}\phi \e^{-S[\phi]}
 \end{align*}
-where $\mathcal{D}$ is an integration of all possible paths in space.
-\\
-An observable $O$ becomes,
+where $\mathcal{D}$ is an integration of all possible paths in space.\\}
+\onslide<2->{An observable $O$ becomes,
 \begin{align*}
-    \expect{O} = \frac{1}{Z} \int\mathcal{D}[\phi] O[\phi] \e^{-S[\phi]}
+    \expect{O} = \frac{1}{Z} \int\mathcal{D}\phi O[\phi] \e^{-S[\phi]}
 \end{align*}
+with action given in terms of spacetime integral of the Lagrangian $\mathcal{L}$ \begin{align*}
+S = \int \dd^4 x \mathcal{L}
+\end{align*}}
+\onslide<3->{Difficult to calculate the all possible paths $\rightarrow$ discretize spacetime}
+\note{\begin{itemize}
+    \item <1->{We go to imaginary time in order to avoid oscillations due to the complex phase.}
+    \item <1->{We must also change $S$ so it is in Euclidean space.}
+    \item <2->{Then, the expectation value given in terms to all possible paths with $Z$ as a weight.}
+    \item <3->{It is difficult to calculate all of the possible paths, so instead we discretize spacetime with the field value at every spacetime point instead.}
+\end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Discretizing the path integral}
@@ -298,7 +323,7 @@ An observable $O$ becomes,
 \begin{frame}{Discretizing the path integral}
 \onslide<1->{Path integral integration measure becomes
 \begin{align*}
-    \int \mathcal{D}\phi = \prod_{x_\mu} \dd\phi(x) = \prod_{x_\mu} \dd \phi_{x_\mu}
+    \int \mathcal{D}\phi = \prod_{x_\mu} \int \dd \phi_{x_\mu}
 \end{align*}}
 \onslide<2->{We integrate over each spacetime point.\\}
 \onslide<3->{$32 \times 32 \times 32 \times 32 = 2^{20} \rightarrow n^{2^{20}}$ integration points.\\}
@@ -307,7 +332,12 @@ An observable $O$ becomes,
 \begin{align*}
 \expect{O} = \frac{1}{N_\mathrm{cfg}} \sum_{i=1}^{N_\mathrm{cfg}} O[\phi_i] + \mathcal{O}\left(\frac{1}{\sqrt{N_\mathrm{cfg}}}\right)
 \end{align*}}
-\note{\onslide<5->{A \textit{configuration} is a possible \textit{path}.}}
+\note{\begin{itemize}
+    \item <1->We now have a integral over the field at every spacetime point.
+    \item <3->This poses another challenge, namely that we quickly have a large number of integrals. Say for a $32^4$ lattice, we will have $n^{2^{20}}$ integration points using conventional integration methods, i.e. the trapezoidal method.
+    \item <4->This require us to use statistical methods with some sort of importance sampling.
+    \item <5->Since we now are using a statistical method, the challenge is now to generate configurations of the spacetime that lie in the vicinity of the action minimum. The expectation value then becomes the average of such configurations, and the error of these scales with $1/\sqrt{N_\mathrm{cfg}}$.
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{QCD on the lattice}
@@ -317,11 +347,13 @@ An observable $O$ becomes,
 \end{figure}
 \note{
 \begin{itemize}
-    \item Quarks in points, gluons in-between (\textbf{links}).
     \item The lattice is a cube in 4D.
+    \item Quarks at lattice, gluons in-between (\textbf{links}).
     \item Maintains the $\SU(3)$ symmetry by introducing links.
-    \item Paths of links with fermions as end points are gauge invariant.
     \item Closed loops are gauge invariant.
+    \item Smallest possible object: the plaquette.
+    \item Paths of links with fermions as end points are gauge invariant.
+    \item However, from now on we will ignore any fermions.
 \end{itemize}
 }
 \end{frame}
@@ -335,27 +367,33 @@ S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
 
 \begin{frame}{Links}
 \begin{itemize}
-    \item \onslide<1->{The gluons is given by \textit{links}, $U_\mu(n) \in \SU(3)$, where $n$ is the lattice size.}
-    \item \onslide<2->{They have a direction given by the Lorentz index $\mu=1,2,3,4$.}
-    \item \onslide<3->{Four of them at each link(one for each Lorentz index). Opposite direction given by its inverse.}
-    \item \onslide<4->{Complex $3\times 3$ matrices with properties of,}
+    \item \onslide<1->{\textit{Links} $U_\mu(n)$ tell us how the gauge field at lattice location $n$ changes in a given direction $\hat{\mu}$}
+    \item \onslide<2->{Four links at every lattice size(one for each Lorentz index). Opposite direction given by its inverse.}
+    \item \onslide<3->{Links are complex $3\times 3$ matrices of the group $\SU(3)$ with properties of,}
 \end{itemize}
-\onslide<5->{\begin{align*}
+\onslide<4->{\begin{align*}
     U^\dagger_\mu(x) = U^{-1}_\mu (x), \qquad \det \left(U_\mu(x)\right) = 1.
 \end{align*}}
-\onslide<6->{From this we can build a lattice action,
+\onslide<5->{From this we can build a lattice action,
 \begin{align*}
 S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{\mu}(n+\hat{\nu})^\dagger U_{\nu} (n)^\dagger \right],
 \end{align*}
 with $\beta=6/g_S^2$}
+\note{
+\onslide<5->{
+    Notice that in this expression we have that the four links that forms a \textit{plaqeutte}, which is the smallest possible gauge invariant object, are dependent on the neighboring object at $\hat{\mu}$ and $\hat{\nu}$.\\
+}
+\onslide<6->{Since we are dealing with $\SU(3)$ matrices, we have that we in reality are performing pure matrix algebra. Due to the size of the lattice we would like to split this calculation.}
+}
 \end{frame}
 
 \begin{frame}{Parallelization: distributing the problem}
-\onslide<2-3>{Number of points in a lattice:
+\onslide<2->{Number of points in a lattice:
 \begin{align*}
     \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
 \end{align*}\\}
-\onslide<3>{Too large to solve on any single computer}
+\onslide<3->{Too large to solve on any single computer.}
+\note{\onslide<3->{Large number of d.o.f.'s $\rightarrow$ we want to split the calculation.}}
 \end{frame}
 
 \begin{frame}{Parallelization: splitting the hypercube}
@@ -372,7 +410,7 @@ with $\beta=6/g_S^2$}
 \end{frame}
 
 \begin{frame}{Parallelization: shifts}
-\onslide<1->{Communications between nodes set up with MPI.\\}
+\onslide<1->{We need a message passing interface for communication(MPI).\\}
 \onslide<2->{Implemented \textit{shifts} for sharing data.\\}
 \onslide<3->{
     \begin{figure}
@@ -380,6 +418,23 @@ with $\beta=6/g_S^2$}
         \includegraphics[width=0.6\textwidth]{../figures/illustrations/implementation/shift/shift.pdf}
     \end{figure}
 }
+\end{frame}
+
+\begin{frame}
+So far, we have ...
+\begin{itemize}[<+->]
+    \item a procedure for calculating the action using links.
+    \item a statistical Monte Carlo method for solving the path integral.
+    \item We have a method for parallelization for handling the computations.
+\end{itemize}
+\only<4->{However, some observable are problematic...}
+\note{
+\begin{itemize}[<+->]
+    \item We calculate the action using links.
+    \item We will use the Metropolis Monte Carlo method for solving the path integral and generating configurations.
+    \item We have a method for handling the computations.
+    \item However, some observables are problematic, and we need to apply some method of renormalization in order to retrieve sensible results..
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Gradient flow}
@@ -401,12 +456,11 @@ with $\beta=6/g_S^2$}
 
 \begin{frame}{Gradient flow II}
 \begin{itemize}
-    \item \onslide<1->{Range of smoothing given by $\sqrt{8t_f}$.}
-    \item \onslide<2->{Allows for a scale setting using the energy density: $t_f^2\expect{E}|_{t_f=t_0}=0.3$}
-    \item \onslide<3->{The gauge field at $t_f>0$ is a \textbf{smooth, renormalized field}.}
-    \item \onslide<4->{Allows us to measure certain quantities such as the \textbf{topological charge}, Q}
+    % \item \onslide<1->{Allows for a scale setting using the energy density: $t_f^2\expect{E}|_{t_f=t_0}=0.3$}
+    \item \onslide<1->{The gauge field at $t_f>0$ is a \textbf{smooth, renormalized field}.}
+    \item \onslide<2->{Allows us to measure certain quantities such as the \textbf{topological charge}, Q}
 \end{itemize}
-\onslide<5->{Solve on the lattice using the symplectic, structure preserving Runge-Kutta 3 solver\footnote{\citet{munthe-kaas_runge-kutta_1998}}}
+\note<3->{Solve on the lattice using the symplectic, structure preserving Runge-Kutta 3 solver\footnote{\citet{munthe-kaas_runge-kutta_1998}}}
 \end{frame}
 
 \begin{frame}{Gradient flow III: topological charge}
@@ -822,6 +876,7 @@ Points in lattice given by $N^3 \times N_T$.
 % \end{itemize}
 \note{
 \begin{itemize}
+    \item I implemented the methods discussed under a code I call GLAC, and will now present some of the results I generated using this code.
     \item The main ensembles made for this thesis. 
     \item Every configuration was flown with $N_\mathrm{flow}=1000$ flow steps.
     \item We should also mention that we generated a few additional ensembles for investigating other aspects of the topological charge.
@@ -920,13 +975,13 @@ Using scale definition $t_0$ from \citet{luscher_properties_2010},
 
 % TODO: Completely redundant - better to just show the extrapolated values?!
 \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-\onslide<1-2>{
+\only<1>{
 \begin{figure}
     \centering
     \includegraphics[trim={0.2cm 0.25cm 0.2cm 1.2cm},clip,width=0.8\textwidth]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
-\end{figure}}
-\onslide<2-2>{Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
-\onslide<3->{This matches the values retrieved by \citet{luscher_properties_2010},
+\end{figure}
+Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
+\only<2->{This matches the values retrieved by \citet{luscher_properties_2010},
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{../figures/luscher_extrap_t0.png}

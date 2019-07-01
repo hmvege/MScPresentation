@@ -1,4 +1,6 @@
 \documentclass[10pt,show notes on second screen]{beamer}
+% \documentclass[10pt]{beamer}
+
 
 \usepackage{appendixnumberbeamer}
 \usepackage[numbers,sort&compress]{natbib}
@@ -11,6 +13,8 @@
 
 % For LatViz animations
 \usepackage{animate}
+% \usepackage{multimedia}
+
 
 % For nice algoritms
 \usepackage{algorithm}
@@ -60,12 +64,13 @@
 % For notes
 \usepackage{pgfpages}
 \setbeamertemplate{note page}[plain]
-\setbeameroption{show notes on second screen=bottom}
+\setbeameroption{show notes on second screen=right}
+% \setbeameroption{hide notes}
 
 \usefonttheme[onlymath]{serif}
 
 % Titles, date, ect.
-\title{Solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice: a calculation of selected gauge observables with gradient flow}
+\title{Solving \texorpdfstring{SU3}{$\SU(3)$} Yang-Mills theory on the lattice: a calculation of selected gauge observables with gradient flow}
 \date{04.07.19}
 \author{Hans Mathias Mamen Vege}
 \institute{University of Oslo}
@@ -178,6 +183,26 @@ Consists of:
 \end{columns}
 \end{frame}
 
+% TODO: show action here?
+\begin{frame}{Comparing the strong force and QED}
+\onslide<1->{QED Quantum Electrodynamics(Electromagnetism), a U$(1)$ theory:
+\begin{align*}
+\mathcal{L}_\mathrm{QED} = \sum_{f=\text{leptons}}\bar{\psi_f} (i\gamma^\mu(\partial_\mu + ieQ_f A_\mu) - m) \psi_f - \frac{1}{4}F_{\mu\nu} F^{\mu\nu}
+\end{align*}
+Field strength tensor:
+\begin{align*}
+F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu
+\end{align*}}
+\onslide<2->{The strong nuclear force, QCD, a $\SU(3)$ theory:
+\begin{align*}
+\mathcal{L}_\mathrm{QCD} = \sum_{f=u, d, \dots} \bar{\psi_{f}} (i\gamma^\mu(\partial_\mu + ig_S A^a_\mu T^a) - m_{f}) \psi_{f} - \frac{1}{4}F^a_{\mu\nu} {F^a}^{\mu\nu} 
+\end{align*}
+Field strength tensor:
+\begin{align*}
+F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A_\nu^c
+\end{align*}}
+\end{frame}
+
 \begin{frame}{Why is the strong force strong?}
 \begin{columns}
     \column{0.5\textwidth}
@@ -241,6 +266,7 @@ No free color charges in nature!
 \onslide<2->{Principle of least action (or stationary condition): $\frac{\delta}{\delta x(t)} \left( S\left[ x(t) \right] \right) = 0$}
 \end{frame}
 
+% TODO: show action=int Lagrangian here?
 \begin{frame}{Path integrals}
 Given a field $\phi^M$ in Minkowski space, the \textit{partition function $Z$} is given by
 \begin{align*}
@@ -264,17 +290,16 @@ An observable $O$ becomes,
 \end{frame}
 
 \begin{frame}{Discretizing the path integral}
-\onslide<1->{Path integral becomes
+\onslide<1->{Path integral integration measure becomes
 \begin{align*}
     \int \mathcal{D}\phi = \prod_{x_\mu} \dd\phi(x) = \prod_{x_\mu} \dd \phi_{x_\mu}
 \end{align*}}
-\onslide<2->{We integrate over each spacetime point.}
-\onslide<3->{For a lattice of size $32 \times 32 \times 32 \times 32 = 2^{20}$, total number of integration points becomes $n^{2^20}$, 
-which is not feasible in any of our lifetimes!\\}
-\onslide<4->{\rightarrow need to use a statistical method.}
+\onslide<2->{We integrate over each spacetime point.\\}
+\onslide<3->{$32 \times 32 \times 32 \times 32 = 2^{20} \rightarrow n^{2^{20}}$ integration points.\\}
+\onslide<4->{A \textbf{statistical approach} using importance sampling is needed.\\}
 \onslide<5->{An expectation value becomes
 \begin{align*}
-    \expect{O} = \frac{1}{N_\mathrm{cfg}} \sum_{i=1}^{N_\mathrm{cfg}} O[\phi_i] + \mathcal{O}\left(\frac{1}{\sqrt{N_\mathrm{cfg}}}\right)
+\expect{O} = \frac{1}{N_\mathrm{cfg}} \sum_{i=1}^{N_\mathrm{cfg}} O[\phi_i] + \mathcal{O}\left(\frac{1}{\sqrt{N_\mathrm{cfg}}}\right)
 \end{align*}}
 \note{\onslide<5->{A \textit{configuration} is a possible \textit{path}.}}
 \end{frame}
@@ -282,534 +307,479 @@ which is not feasible in any of our lifetimes!\\}
 \begin{frame}{QCD on the lattice}
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{../figures/lattice_quarks_and_gluons.png}
+    \includegraphics[width=0.6\textwidth]{../figures/lattice_quarks_and_gluons.png}
 \end{figure}
-Quarks on points, gluons in between.
-\note{The lattice is a cube in 4D.}
+\note{
+\begin{itemize}
+    \item Quarks in points, gluons in-between (\textbf{links}).
+    \item The lattice is a cube in 4D.
+    \item Maintains the $\SU(3)$ symmetry by introducing links.
+    \item Paths of links with fermions as end points are gauge invariant.
+    \item Closed loops are gauge invariant.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{From QCD to pure \texorpdfstring{SU3}{$\SU(3)$} Yang-Mills}
+We exclude fermions to only look at the gauge fields,
+\begin{align*}
+S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
+\end{align*}
 \end{frame}
 
 \begin{frame}{Links}
-\onslide<1->{The gluons is given by \textit{links}, $U_\mu(x) \in \SU(3)$. \\}
-\onslide<2->{Complex $3\times 3$ matrices with properties of,}
-\onslide<3->{\begin{align*}
+\begin{itemize}
+    \item \onslide<1->{The gluons is given by \textit{links}, $U_\mu(n) \in \SU(3)$, where $n$ is the lattice size.}
+    \item \onslide<2->{They have a direction given by the Lorentz index $\mu=1,2,3,4$.}
+    \item \onslide<3->{Four of them at each link(one for each Lorentz index). Opposite direction given by its inverse.}
+    \item \onslide<4->{Complex $3\times 3$ matrices with properties of,}
+\end{itemize}
+\onslide<5->{\begin{align*}
     U^\dagger_\mu(x) = U^{-1}_\mu (x), \qquad \det \left(U_\mu(x)\right) = 1.
 \end{align*}}
 \end{frame}
 
 \begin{frame}{Parallelization: distributing the problem}
-\only<1-3>{Too large to solve on any single computer.\\}
-\only<2-3>{Number of points in a lattice:
+\onslide<2-3>{Number of points in a lattice:
 \begin{align*}
     \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
-\end{align*}}
-\only<3>{Too large to solve on any single computer.}
-\only<4->{
-    \begin{figure}
-        \centering
-        \includegraphics{../figures/parallelization-lattice/parallelization-lattice.pdf}
-    \end{figure}
-}
+\end{align*}\\}
+\onslide<3>{Too large to solve on any single computer}
 \end{frame}
 
 \begin{frame}{Parallelization: splitting the hypercube}
-\begin{figure}
+\only<1>{\begin{figure}
     \centering
-    \includegraphics{../figures/parallelized-lattice/parallelized-lattice.pdf}
+    \includegraphics[width=0.7\textwidth]{../figures/parallelization-lattice/parallelization-lattice.pdf}
 \end{figure}
+}
+\only<2>{\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{../figures/parallelized-lattice/parallelized-lattice.pdf}
+\end{figure}
+}
 \end{frame}
 
+% TODO: we usually only need values shifted by one in calculations
 \begin{frame}{Parallelization: shifts}
 \onslide<1->{Communications between nodes set up with MPI.\\}
 \onslide<2->{Implemented \textit{shifts} for sharing data.\\}
 \onslide<3->{
     \begin{figure}
         \centering
-        \includegraphics{../figures/illustrations/shift/shift.pdf}
+        \includegraphics[width=0.6\textwidth]{../figures/illustrations/implementation/shift/shift.pdf}
     \end{figure}
 }
 \end{frame}
 
 \begin{frame}{Gradient flow}
+\begin{align*}
+&\partial_{t_f} B_\mu(x, t_f) = D_{\nu} G_{\nu \mu}(x,t_f) \\
+&B_\mu(x, t_f)\big|_{t_f=0} = A_\mu(x)
+\end{align*}
+\begin{itemize}
+    \item \onslide<1->{Solves this by integrating along $t_f$ called \textit{flow time} \footnote{\citet{luscher_properties_2010}}}
+    \item \onslide<2->{$B_\mu(x,t_f)$ is the gauge field $A_\mu(x)$ at a flow time $t_f$.}
+    \item \onslide<3->{$D_\nu = \partial_{\nu} + [B_\mu(x,t_f), \cdot]$}
+    \item \onslide<4->{Field strength tensor: $G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)]$}
+\end{itemize}
+\onslide<5->{An analogy: the diffusion equation: 
+\begin{align*}
+    \frac{\partial}{\partial t_f} B_\mu(x,t_f) \approx \partial^2_x B_\mu(x,t_f)
+\end{align*}}
 \end{frame}
 
 \begin{frame}{Gradient flow II}
-\end{frame}
-
-\begin{frame}{Smearing the lattice}
-% Animation!!
-\end{frame}
-
-% \begin{frame}{Topological charge evolution in flow time}
-%     \begin{center}
-%         % \includegraphics[width=0.7\textwidth]{figures/beta62_size1280x1280/topc/flowTime}
-%         \animategraphics[loop,controls,width=\linewidth,scale=0.7]{15}{../figures/latviz/topc_TE21/flowTime_TE21-}{0}{60}
-%         % \transduration<0-16>{0}
-%   %       \multiinclude[<+->][format=png, graphics={width=\textwidth}]{figures/beta62_size1280x1280/topc/flow_pngs/flowTimePngs}
-%     \end{center}
-% \end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   ___   ____ ____
-%  / _ \ / ___|  _ \
-% | | | | |   | | | |
-% | |_| | |___| |_| |
-%  \__\_\\____|____/
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Quantum Chromodynamics(QCD)}
-
-% \begin{frame}{QCD}
-% \begin{itemize}[<+->]
-%     \item The standard model: Six quarks and eight gluons
-%     \item Asymptotic freedom
-%     \item Confinement
-%     \item Highly nonlinear due to gluon self-interactions
-% \end{itemize}
-% \note{
-% \begin{itemize}[<+->]
-%     \item \textbf{The standard model.} 
-%     \item \textbf{Asymptotic freedom.} 
-%     \item \textbf{Confinement.} 
-%     \item \textbf{Nonlinearity.} 
-% \end{itemize}
-% }
-% \end{frame}
-
-\begin{frame}{The Standard Model}
-    \begin{center}
-        \includegraphics[width=0.8\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}
-    \end{center}
-    \note{Consists of the innermost square of the \textbf{six quarks} and the \textit{eight gluons}.}
-\end{frame}
-
-\begin{frame}{The non-linearity of QCD}
-The QCD Lagrangian
-\begin{align*}
-    \mathcal{L}_\mathrm{QCD} = \sum^{N_f}_{f=1} \bar{\psi}^{(f)} \left(i\slashed{D} - m^{(f)}\right) \psi^{(f)} - \frac{1}{4}G^a_{\mu\nu}G^{a\mu\nu},
-\end{align*}
-with action
-\begin{align}
-    S = \int \dd^4 x \mathcal{L}_\mathrm{QCD},
-\end{align}
-is invariant under a $\SU(3)$ symmetry.
-\begin{align*}
-    \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
-    \includegraphics[scale=0.9]{../figures/feynman-diagrams/three-gluon-vertex/three-gluon-vertex.pdf} \quad
-    \includegraphics[scale=0.9]{../figures/feynman-diagrams/four-gluon-vertex/four-gluon-vertex.pdf}
-\end{align*}
-\note{
-    \begin{itemize}
-        \item \textit{Gluon self-interaction.}
-        \item This central aspect is mostly covered in the pure-gauge/Yang-Mills section of the theory.
-        \item \textbf{Two important features}: \textit{confinement} and \textit{asymptotic freedom}.
-    \end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Asymptotic freedom}
-    \begin{center}
-        \includegraphics[width=0.8\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
-    \end{center}
-    \note{
-        \begin{itemize}
-            \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy.
-            \item Also serves as an \textit{experimental proof} of QCD.
-            \item Other lines of \textit{evidence}: triple $\gamma$ decay and muon cross section ratio $R$.
-            \begin{itemize}
-                \item Triple $\gamma$ decay: the number of colors is included in the cross section, which can be measured experimentally.
-                \item Muon cross section ratio $R$: the ratio is dependent on having three colors.
-            \end{itemize}
-        \end{itemize}
-    }
-\end{frame}
-
-\begin{frame}{Confinement}
-    \begin{center}
-        \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
-    \end{center}
-    \note{If we try to pull apart \textbf{two quarks in a meson}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  _          _   _   _             ___   ____ ____
-% | |    __ _| |_| |_(_) ___ ___   / _ \ / ___|  _ \
-% | |   / _` | __| __| |/ __/ _ \ | | | | |   | | | |
-% | |__| (_| | |_| |_| | (_|  __/ | |_| | |___| |_| |
-% |_____\__,_|\__|\__|_|\___\___|  \__\_\\____|____/
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Lattice Quantum Chromodynamics(LQCD)}
-
-\begin{frame}{Discretizing spacetime}
-\begin{block}{}
-\begin{enumerate}
-    \item <1->Divide spacetime into a cube of size $N^3\times N_T$.
-    \item <2->Fermions live on the each \textit{point} in the cube.
-    \item <3->The gauge fields live on the sites \textit{in between} the points, and is called links.
-\end{enumerate}
-\end{block}
-\onslide<4->{Goal: \textit{maintain gauge invariance.}}
-\note{Make a quick drawing perhaps of a lattice?}
-\end{frame}
-
-\begin{frame}{Links}
-% \begin{align*}
-%     U_\mu(n) = \exp \left[ i a A_\mu (n) \right],
-% \end{align*}
-A link connects one lattice site to another and is a $\SU(3)$ matrix.
-\begin{figure}
-    \centering
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/lqcd/links/link}
-        \label{fig:lqcd:link}
-    \end{subfigure}
-    \begin{subfigure}{0.48\textwidth}
-        \centering
-        \includegraphics{../figures/illustrations/lqcd/links/link-inverse}
-        \label{fig:lqcd:link-inverse}
-    \end{subfigure}
-    \centering
-\end{figure}
-where $U_{-\mu}(n) = U_\mu(n - \hat{\mu})^\dagger$.
-\note{
-    \begin{itemize}
-        \item Defined from the gauge transporter.
-        \item A link in the positive $\MU$ direction is shown in the figure to the left.
-        \item A link in the negative $\MU$ direction is shown in the figure to the right.
-    \end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Gauge invariance on the lattice} %\husk{TODO: Don't need to show the gauge transformation!?}
-\begin{block}
-    \only<1->{Links constructed such that we maintain gauge invariance in the action,}
-    \only<2->{\begin{align*}
-            U_\mu(n) &\rightarrow U_\mu'(n) = \Omega(n) U_\mu(n) \Omega(n+\hat{\mu})^\dagger, \\
-            U_{-\mu}(n) &\rightarrow U_{-\mu}'(n) = \Omega(n) U_{\mu}(n-\hat{\mu})^\dagger \Omega(n-\hat{\mu})^\dagger.
-        \end{align*}}
-    \only<3->{Two main types of gauge invariant objects,}
-    \begin{itemize}
-        \item<4-> Objects with fermions $\psi$, $\bar{\psi}$ as end points.
-        \item<5-> Fully connected gauge invariant objects(i.e. ``loops'').
-    \end{itemize}
-\end{block}
-\end{frame}
-
-\begin{frame}{The plaquette}
-The simplest gauge invariant object,
-% \begin{align*}
-%     P_{\mu\nu}(n) &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{-\mu}(n+\hat{\mu}+\hat{\nu}) U_{-\nu} (n+\hat{\nu}) \nonumber \\
-%     &= U_\mu(n) U_{\nu}(n+\hat{\mu}) U_{\mu}(n+\hat{\nu})^\dagger U_{\nu} (n)^\dagger,
-% \end{align*}
-\begin{figure}
-    \centering
-    \includegraphics[scale=1]{../figures/illustrations/lqcd/plaquette/plaquette}
-\end{figure}
-\end{frame}
-
-\begin{frame}{The Wilson gauge action}
-The Wilson gauge action is given as
-\begin{align*}
-    S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - P_{\mu\nu}(n) \right],
-\end{align*}
-with $\beta=6/g_S^2$.
-
-Continuum gauge action,
-\begin{align*}
-    S_G[A] = \frac{1}{2g_S^2}\int \dd^4 x \tr F_{\mu\nu}^2,
-\end{align*}
-recovered when $a \rightarrow 0$.
-\note{
-    \begin{itemize}
-        \item Using the definition of the link we saw earlier, we can reproduce the continuum action up to an discretization error of $\mathcal{O}(a^2)$.
-    \end{itemize}
-}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  ____                 _             _                                     _
-% |  _ \  _____   _____| | ___  _ __ (_)_ __   __ _    __ _    ___ ___   __| | ___
-% | | | |/ _ \ \ / / _ \ |/ _ \| '_ \| | '_ \ / _` |  / _` |  / __/ _ \ / _` |/ _ \
-% | |_| |  __/\ V /  __/ | (_) | |_) | | | | | (_| | | (_| | | (_| (_) | (_| |  __/
-% |____/ \___| \_/ \___|_|\___/| .__/|_|_| |_|\__, |  \__,_|  \___\___/ \__,_|\___|
-%                              |_|            |___/
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Developing a code for solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice}
-\begin{frame}{The numerical challenge in lattice QCD}
-\onslide<1->{A lattice configuration consists of $3\times 3$ $\SU(3)$ matrices,}
-\onslide<2->{\begin{align*}
-    \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
-\end{align*}}
-\onslide<3->{$\rightarrow 8 \times 72N^3N_T$ bytes.}
-\note{
-    \begin{itemize}
-        \item The $\SU(3)$ matrices are $3\times 3$ matrices of nine complex numbers or 18 real numbers.
-        \item This leads to an absolute \textbf{requirement of efficiency}, both in \textbf{calculations} and in \textbf{input/output}.
-        \item When returning to what ensembles of configurations we generated this will be evident.
-    \end{itemize}
-}
-\end{frame}
-
-\begin{frame}{The path integral}
-\only<1>{\begin{align*}
-    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} O[\psi,\bar{\psi},U] \e^{- S_G[U] - S_F[\psi,\bar{\psi},U]}.
-\end{align*}}%
-\only<2>{\begin{align*}
-    \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U  O[U] \e^{- S_G[U]}.
-\end{align*}}%
-\only<1>{\begin{align*}
-Z = \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} e^{- S_G[U] - S_F[\psi,\bar{\psi}, U]}.
-\end{align*}}%
-\only<2>{\begin{align*}
-Z = \int \mathcal{D}U e^{- S_G[U]}.
-\end{align*}}%
-\end{frame}
-
-\begin{frame}{The path integral}
-\only<1>{
-\begin{figure}
-    \centering
-    \includegraphics[scale=1.0]{../figures/illustrations/lqcd/path-integral/path-integral-flattened}
-\end{figure}}
-\only<2->{\begin{align*}
-    \langle O \rangle = \mathcolor{red}{\frac{1}{Z}\int\mathcal{D}U} O[U] \mathcolor{red}{\e^{- S_G[U]}}.
-\end{align*}
-with 
-\begin{align*}
-Z = \int \mathcal{D}U e^{- S_G[U]}.
-\end{align*}}
-\onslide <3->{We will use the \textit{Metropolis algorithm} to create configurations of the lattice.}
-\note{
-    \begin{itemize}
-        \item<1->{An example of the discretized path integral, going from time $t_0$ to $t_{n}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
-        \item<2->{We will use the parts marked in red as a probability distribution which we will create configurations from.}
-        \item<3->{This can be used in the \textit{Metropolis algorithm.}}
-        \item<4->{Since a path integral integrates over all possible configurations, our job us to generate enough configurations to properly represent the statistics.}
-    \end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Measurements on the lattice}
-The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
-\begin{align*}
-    \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
-\end{align*}
-\onslide<1->We now need to generate configurations...
-\note{
 \begin{itemize}
-    \item We perform an average of the created configurations.
+    \item \onslide<1->{Range of smoothing given by $\sqrt{8t_f}$.}
+    \item \onslide<2->{Allows for a scale setting using the energy density: $t_f^2\expect{E}|_{t_f=t_0}=0.3$}
+    \item \onslide<3->{The gauge field at $t_f>0$ is a \textbf{smooth, renormalized field}.}
+    \item \onslide<4->{Allows us to measure certain quantities such as the \textbf{topological charge}, Q}
 \end{itemize}
-}
+\onslide<5->{Solve on the lattice using the symplectic, structure preserving Runge-Kutta 3 solver\footnote{\citet{munthe-kaas_runge-kutta_1998}}}
 \end{frame}
 
-% \begin{frame}{The Metropolis algorithm}
-% \begin{algorithmic}
-%     \Repeat
-%         \State Randomly generate a candidate state $j$ with probability $T_{i\rightarrow i}$.
-%         \State Calculate $A_{i\rightarrow j}$ which saw on previous slide.
-%         \State Generate random number $u\in[0,1]$.
-%         \If {$u \leq A_{i\rightarrow j}$}
-%             \State Accept new state $j$.
-%         \ElsIf {$u > A_{i\rightarrow j}$}
-%             \State Reject new state $j$ and retain the old state $i$.
-%         \EndIf
-%     \Until {$N_\mathrm{MC}$ samples are generated.}
-% \end{algorithmic}
-% \note{
-% \begin{itemize}
-%     \item Generated state $j$ is a gauge configuration.
-%     \item Algorithm of choice when sampling gauge configurations.
-%     \item For generating $N_\mathrm{MC}$ Monte Carlo samples.
-% \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{The Metropolis algorithm on the lattice}
-% A parameter $\epsilon_\mathrm{rnd}$ controls the spread of the candidate matrices.
-% \begin{enumerate}
-%     \item Initialize lattice with $\SU(3)$ matrices close to unity(\textit{hot start}) or at unity(\textit{cold start}).
-%     \item Thermalize with $N_\mathrm{therm}$ sweeps.
-%     \item Generate $N_\mathrm{MC}$ samples,
-%     \begin{enumerate}[i]
-%         \item Perform $N_\mathrm{corr}$ correlation updates.
-%         \item At each update, perform $N_\mathrm{up}$ single link update for every lattice link.
-%         \item Store configuration and/or apply gradient flow and sample observables on it.
-%     \end{enumerate}
-% \end{enumerate}
-% \note{
-% \begin{itemize}
-%     \item We use \textbf{periodic boundary conditions} for all calculations.
-%     \item $N_\mathrm{MC}$ is how many configurations we will generate.
-%     \item $N_\mathrm{up}$ is how many single link updates we will perform.
-%     \item $N_\mathrm{corr}$ is how many full sweeps we shall perform in between each sampling. Needed in order to reduce the autocorrelation between the configurations.
-%     \item We checked that our choice for the matrix generation parameter $\epsilon_\mathrm{rnd}$ minimizes the autocorrelation.
-% \end{itemize}
-% }
-% \end{frame}
-
-\begin{frame}{Parallelization}
-\onslide<1->{The lattice now is a 4D hypercube, with four links associated to each lattice site \rightarrow need to parallelize!
-
-
-}%
-\onslide<2->{Two methods used:}
-\begin{itemize}
-    \item<3->{ Single link sharing used in the Metropolis algorithm.}
-    \item<4->{ \textit{shifts} used in in gradient flow and observable sampling}
-\end{itemize}
-\note{
-\begin{itemize}[<+->]
-    \item Due to the size of the lattice, we need to parallelize!.
-    \item We parallelized using \textbf{MPI}.
-    \item Tested out \textbf{halos}, but turned out to be problematic when generating.
-\end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Shifts}
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.6]{../figures/illustrations/implementation/shift/shift}
-\end{figure}
-\note{
-\begin{itemize}
-    \item An illustration of the lattice shift. 
-    \item The links $U_\nu$ of the lattice are copied over to a temporary lattice shifted in direction $\hat{\mu}$. 
-    \item The face that is shifted over to an adjacent sub-lattice is shared through a non-blocking MPI call, while we copy the links to the temporary lattice.
-    \item Allows for a simplified syntax close to that of the equations we are working with.
-    \item Don't have to write out any loops over the lattice positions.
-\end{itemize}
-}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   ____               _ _            _      __ _
-%  / ___|_ __ __ _  __| (_) ___ _ __ | |_   / _| | _____      __
-% | |  _| '__/ _` |/ _` | |/ _ \ '_ \| __| | |_| |/ _ \ \ /\ / /
-% | |_| | | | (_| | (_| | |  __/ | | | |_  |  _| | (_) \ V  V /
-%  \____|_|  \__,_|\__,_|_|\___|_| |_|\__| |_| |_|\___/ \_/\_/
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Gradient flow}
-% \husk{TODO: ANIMATIONS?!}
-\begin{frame}{The flow equation}
-% Bad approx.: diffusion equation
-% Topological charge preserved and is more pronounced 
-% Why it is needed
-% Certain quantities becomes renormalizable
-The flow of the $\SU(3)$ gauge fields are denoted by $B_\mu(x,t_f)$ which are Lie algebra valued gauge fields,
-\onslide<1->{\begin{align*}
-    \frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), %\label{eq:flow-continuum-diff-eq}
-\end{align*}}
-\onslide<2->{\begin{align*}
-    D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], %\label{eq:flow-cont-covariant-derivative}
-\end{align*}}
-\onslide<3->{\begin{align*}
-    G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)], \label{eq:flow-field-strength-tensor}
-\end{align*}}
-\onslide<4->{with the initial conditions being the fundamental gauge field,
-\begin{align*}
-    B_\mu(x,t_f)|_{t_f=0} = A_\mu(x).
-\end{align*}}
-\onslide<5->{
-A bad approximation: \textit{the diffusion equation}, 
-\begin{align*}
-    \frac{\partial}{\partial t_f} B_\mu(x,t_f) \approx \partial^2 B_\mu(x,t_f)
-\end{align*}
-}
-\onslide<6->{
-    The smearing radius increases as $\sqrt{8t_f}$.
-}
-\note{
-\begin{itemize}
-    \item <1->The flow equation in the continuum is defined by this differential equation.
-    \item <2->With the covariant derivative given by following, with the $\cdot$ being the derivative with respect to flow time.
-    \item <3->The field strength tensor of the flown fields is given in the regular format.
-    \item <4->The initial condition is the un-flowed gauge field, $A_\mu$.
-    \item <5->Bad approx.: diffusion equation.
-    \item <6->Topological charge preserved and is more pronounced.
-    \item <6->Renormalizes the topological charge at non-zero flow time.
-\end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Gradient flow on the lattice}
-% RK3 classical and then on the lattice
-\onslide<1->{Lattice definition given by
-\begin{align*}
-    \dot{V}_{t_f}(x,\mu) = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f}(x,\mu),
-\end{align*}}
-\onslide<2->{with initial condition,
-\begin{align*}
-    V_{t_f}(x,\mu)|_{t_f=0} = U(x,\mu)
-\end{align*}}
-\onslide<3->{Note: need to find the action derivative $S_G[V_{t_f}]$.}
-\note{
-\begin{itemize}
-    \item <1->On the lattice, the flow equation takes the shape in terms of the link variables.
-    \item <2->Initial conditions similar to the continuum case.
-    \item <3->The action derivative is also needed, but that is a minor task we will not cover here.
-\end{itemize}
-}
-\end{frame}
-
-\begin{frame}{Solving gradient flow with Runge-Kutta 3}
-\onslide<1->{With
-\begin{align*}
-    \dot{V}_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f} = Z(V_{t_f}) V_{t_f},
-\end{align*}}
-\onslide<2->{and $Z_i=\epsilon_fZ(W_i)$ we get
-\begin{align*}
-    \begin{split}
-        &W_0 = V_{t_f}, \\
-        &W_1 = \exp\left[\frac{1}{4}Z_0\right]W_0, \\
-        &W_2 = \exp\left[\frac{8}{9}Z_1 - \frac{17}{36}Z_0\right]W_1, \\
-        &V_{t_f + \epsilon_f} = \exp\left[\frac{3}{4}Z_2 - \frac{8}{9}Z_1 + \frac{17}{36}Z_0\right]W_2, \\
-    \end{split}
-\end{align*}
-with coefficients from \citet{luscher_properties_2010}.}
-\note{
-\begin{itemize}
-    \item <1->{ We rewrite the equations slightly,}
-    \item <2->{ and use a structure preserving integrator with coefficients from \citet{luscher_properties_2010}.}
-    \item <3->{ We control the accuracy of this integrator by $\epsilon_f$.}
-\end{itemize}}
-\end{frame}
-
-% \husk{TODO: animation here!!}
-
-\begin{frame}{Verifications, tests and code benchmarking}
-\begin{itemize}[<+->]
-    \item The Runge-Kutta 3 integrator has been tested for different step lengths $\epsilon_f$.
-    \item The code has been unit tested for matrix multiplications and parallelization.
-    \item Results match that of other code bases such as Chroma.
-    \item Performance testing has been done of different generation parameters.
-\end{itemize}
-\end{frame}
-
-
-% \begin{frame}{Smearing the lattice: topological charge I}
+\begin{frame}{Gradient flow III: topological charge}
+\begin{center}
+    \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TE21_lowres/flowQ_TE21-}{00}{60}
+\end{center}
+% \movie[height=0.6\textwidth,width=1.0\textwidth]{}{../figures/latviz/flowTime_TE21.mpg}
 % \begin{center}
-%     \animategraphics[loop,controls,width=\linewidth,scale=0.6]{15}{../figures/latviz/topc_TE21/flowTime_TE21-}{0}{60}
+%     \movie{\includegraphics[width=0.7\textwidth]{../figures/latviz/topc_TE21/flowTime_TE21-0.png}}{../figures/latviz/flowTime_TE21.mp4}
+%     % \movie{\includegraphics[width=0.7\textwidth]{flowTime_TE21-0.png}}{flowTime_TE21_avi.avi}
 % \end{center}
+% \begin{minipage}[t]{\linewidth}
+%     \begin{center}
+%     \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TE21_lowres/flowQ_TE21-}{00}{60}
+%     \end{center}
+% \end{minipage}
+\note{Evolution of topological charge $Q$ in flow time.}
+\end{frame}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %   ___   ____ ____
+% %  / _ \ / ___|  _ \
+% % | | | | |   | | | |
+% % | |_| | |___| |_| |
+% %  \__\_\\____|____/
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Quantum Chromodynamics(QCD)}
+% \begin{frame}{The Standard Model}
+%     \begin{center}
+%         \includegraphics[width=0.8\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}
+%     \end{center}
+%     \note{Consists of the innermost square of the \textbf{six quarks} and the \textit{eight gluons}.}
+% \end{frame}
+
+% \begin{frame}{The non-linearity of QCD}
+% The QCD Lagrangian
+% \begin{align*}
+%     \mathcal{L}_\mathrm{QCD} = \sum^{N_f}_{f=1} \bar{\psi}^{(f)} \left(i\slashed{D} - m^{(f)}\right) \psi^{(f)} - \frac{1}{4}G^a_{\mu\nu}G^{a\mu\nu},
+% \end{align*}
+% with action
+% \begin{align}
+%     S = \int \dd^4 x \mathcal{L}_\mathrm{QCD},
+% \end{align}
+% is invariant under a $\SU(3)$ symmetry.
+% \begin{align*}
+%     \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
+%     \includegraphics[scale=0.9]{../figures/feynman-diagrams/three-gluon-vertex/three-gluon-vertex.pdf} \quad
+%     \includegraphics[scale=0.9]{../figures/feynman-diagrams/four-gluon-vertex/four-gluon-vertex.pdf}
+% \end{align*}
+% \note{
+%     \begin{itemize}
+%         \item \textit{Gluon self-interaction.}
+%         \item This central aspect is mostly covered in the pure-gauge/Yang-Mills section of the theory.
+%         \item \textbf{Two important features}: \textit{confinement} and \textit{asymptotic freedom}.
+%     \end{itemize}
+% }
+% \end{frame}
+
+% \begin{frame}{Asymptotic freedom}
+%     \begin{center}
+%         \includegraphics[width=0.8\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+%     \end{center}
+%     \note{
+%         \begin{itemize}
+%             \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy.
+%             \item Also serves as an \textit{experimental proof} of QCD.
+%             \item Other lines of \textit{evidence}: triple $\gamma$ decay and muon cross section ratio $R$.
+%             \begin{itemize}
+%                 \item Triple $\gamma$ decay: the number of colors is included in the cross section, which can be measured experimentally.
+%                 \item Muon cross section ratio $R$: the ratio is dependent on having three colors.
+%             \end{itemize}
+%         \end{itemize}
+%     }
+% \end{frame}
+
+% \begin{frame}{Confinement}
+%     \begin{center}
+%         \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
+%     \end{center}
+%     \note{If we try to pull apart \textbf{two quarks in a meson}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %  _          _   _   _             ___   ____ ____
+% % | |    __ _| |_| |_(_) ___ ___   / _ \ / ___|  _ \
+% % | |   / _` | __| __| |/ __/ _ \ | | | | |   | | | |
+% % | |__| (_| | |_| |_| | (_|  __/ | |_| | |___| |_| |
+% % |_____\__,_|\__|\__|_|\___\___|  \__\_\\____|____/
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Lattice Quantum Chromodynamics(LQCD)}
+
+% \begin{frame}{Discretizing spacetime}
+% \begin{block}{}
+% \begin{enumerate}
+%     \item <1->Divide spacetime into a cube of size $N^3\times N_T$.
+%     \item <2->Fermions live on the each \textit{point} in the cube.
+%     \item <3->The gauge fields live on the sites \textit{in between} the points, and is called links.
+% \end{enumerate}
+% \end{block}
+% \onslide<4->{Goal: \textit{maintain gauge invariance.}}
+% \note{Make a quick drawing perhaps of a lattice?}
+% \end{frame}
+
+% \begin{frame}{Links}
+% % \begin{align*}
+% %     U_\mu(n) = \exp \left[ i a A_\mu (n) \right],
+% % \end{align*}
+% A link connects one lattice site to another and is a $\SU(3)$ matrix.
+% \begin{figure}
+%     \centering
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics{../figures/illustrations/lqcd/links/link}
+%         \label{fig:lqcd:link}
+%     \end{subfigure}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics{../figures/illustrations/lqcd/links/link-inverse}
+%         \label{fig:lqcd:link-inverse}
+%     \end{subfigure}
+%     \centering
+% \end{figure}
+% where $U_{-\mu}(n) = U_\mu(n - \hat{\mu})^\dagger$.
+% \note{
+%     \begin{itemize}
+%         \item Defined from the gauge transporter.
+%         \item A link in the positive $\MU$ direction is shown in the figure to the left.
+%         \item A link in the negative $\MU$ direction is shown in the figure to the right.
+%     \end{itemize}
+% }
+% \end{frame}
+
+% \begin{frame}{Gauge invariance on the lattice} %\husk{TODO: Don't need to show the gauge transformation!?}
+% \begin{block}
+%     \only<1->{Links constructed such that we maintain gauge invariance in the action,}
+%     \only<2->{\begin{align*}
+%             U_\mu(n) &\rightarrow U_\mu'(n) = \Omega(n) U_\mu(n) \Omega(n+\hat{\mu})^\dagger, \\
+%             U_{-\mu}(n) &\rightarrow U_{-\mu}'(n) = \Omega(n) U_{\mu}(n-\hat{\mu})^\dagger \Omega(n-\hat{\mu})^\dagger.
+%         \end{align*}}
+%     \only<3->{Two main types of gauge invariant objects,}
+%     \begin{itemize}
+%         \item<4-> Objects with fermions $\psi$, $\bar{\psi}$ as end points.
+%         \item<5-> Fully connected gauge invariant objects(i.e. ``loops'').
+%     \end{itemize}
+% \end{block}
+% \end{frame}
+
+% \begin{frame}{The plaquette}
+% The simplest gauge invariant object,
+% \begin{figure}
+%     \centering
+%     \includegraphics[scale=1]{../figures/illustrations/lqcd/plaquette/plaquette}
+% \end{figure}
+% \end{frame}
+
+% \begin{frame}{The Wilson gauge action}
+% The Wilson gauge action is given as
+% \begin{align*}
+%     S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - P_{\mu\nu}(n) \right],
+% \end{align*}
+% with $\beta=6/g_S^2$.
+
+% Continuum gauge action,
+% \begin{align*}
+%     S_G[A] = \frac{1}{2g_S^2}\int \dd^4 x \tr F_{\mu\nu}^2,
+% \end{align*}
+% recovered when $a \rightarrow 0$.
+% \note{
+%     \begin{itemize}
+%         \item Using the definition of the link we saw earlier, we can reproduce the continuum action up to an discretization error of $\mathcal{O}(a^2)$.
+%     \end{itemize}
+% }
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %  ____                 _             _                                     _
+% % |  _ \  _____   _____| | ___  _ __ (_)_ __   __ _    __ _    ___ ___   __| | ___
+% % | | | |/ _ \ \ / / _ \ |/ _ \| '_ \| | '_ \ / _` |  / _` |  / __/ _ \ / _` |/ _ \
+% % | |_| |  __/\ V /  __/ | (_) | |_) | | | | | (_| | | (_| | | (_| (_) | (_| |  __/
+% % |____/ \___| \_/ \___|_|\___/| .__/|_|_| |_|\__, |  \__,_|  \___\___/ \__,_|\___|
+% %                              |_|            |___/
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Developing a code for solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice}
+% \begin{frame}{The numerical challenge in lattice QCD}
+% \onslide<1->{A lattice configuration consists of $3\times 3$ $\SU(3)$ matrices,}
+% \onslide<2->{\begin{align*}
+%     \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
+% \end{align*}}
+% \onslide<3->{$\rightarrow 8 \times 72N^3N_T$ bytes.}
+% \note{
+%     \begin{itemize}
+%         \item The $\SU(3)$ matrices are $3\times 3$ matrices of nine complex numbers or 18 real numbers.
+%         \item This leads to an absolute \textbf{requirement of efficiency}, both in \textbf{calculations} and in \textbf{input/output}.
+%         \item When returning to what ensembles of configurations we generated this will be evident.
+%     \end{itemize}
+% }
+% \end{frame}
+
+% \begin{frame}{The path integral}
+% \only<1>{\begin{align*}
+%     \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} O[\psi,\bar{\psi},U] \e^{- S_G[U] - S_F[\psi,\bar{\psi},U]}.
+% \end{align*}}%
+% \only<2>{\begin{align*}
+%     \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U  O[U] \e^{- S_G[U]}.
+% \end{align*}}%
+% \only<1>{\begin{align*}
+% Z = \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} e^{- S_G[U] - S_F[\psi,\bar{\psi}, U]}.
+% \end{align*}}%
+% \only<2>{\begin{align*}
+% Z = \int \mathcal{D}U e^{- S_G[U]}.
+% \end{align*}}%
+% \end{frame}
+
+% \begin{frame}{The path integral}
+% \only<1>{
+% \begin{figure}
+%     \centering
+%     \includegraphics[scale=1.0]{../figures/illustrations/lqcd/path-integral/path-integral-flattened}
+% \end{figure}}
+% \only<2->{\begin{align*}
+%     \langle O \rangle = \mathcolor{red}{\frac{1}{Z}\int\mathcal{D}U} O[U] \mathcolor{red}{\e^{- S_G[U]}}.
+% \end{align*}
+% with 
+% \begin{align*}
+% Z = \int \mathcal{D}U e^{- S_G[U]}.
+% \end{align*}}
+% \onslide <3->{We will use the \textit{Metropolis algorithm} to create configurations of the lattice.}
+% \note{
+%     \begin{itemize}
+%         \item<1->{An example of the discretized path integral, going from time $t_0$ to $t_{n}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
+%         \item<2->{We will use the parts marked in red as a probability distribution which we will create configurations from.}
+%         \item<3->{This can be used in the \textit{Metropolis algorithm.}}
+%         \item<4->{Since a path integral integrates over all possible configurations, our job us to generate enough configurations to properly represent the statistics.}
+%     \end{itemize}
+% }
+% \end{frame}
+
+% \begin{frame}{Measurements on the lattice}
+% The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
+% \begin{align*}
+%     \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
+% \end{align*}
+% \onslide<1->We now need to generate configurations...
 % \note{
 % \begin{itemize}
-%     \item Me and Giovanni Pederiva created a program for visualizing the gauge field.
-%     \item Shows how the flow "removes noise" from the lattice, and only leaves large scale structures intact.
+%     \item We perform an average of the created configurations.
+% \end{itemize}
+% }
+% \end{frame}
+
+% \begin{frame}{Parallelization}
+% \onslide<1->{The lattice now is a 4D hypercube, with four links associated to each lattice site $\rightarrow$ need to parallelize!\\}%
+% \onslide<2->{Two methods used:}
+% \begin{itemize}
+%     \item<3->{ Single link sharing used in the Metropolis algorithm.}
+%     \item<4->{ \textit{shifts} used in in gradient flow and observable sampling}
+% \end{itemize}
+% \note{
+% \begin{itemize}
+%     \item <1->{Due to the size of the lattice, we need to parallelize!.}
+%     \item <2->{We parallelized using \textbf{MPI}.}
+%     \item <3->{Tested out \textbf{halos}, but turned out to be problematic when generating.}
 % \end{itemize}}
 % \end{frame}
 
-% \begin{frame}{Smearing the lattice: topological charge II}
-% \begin{center}
-%     \animategraphics[loop,controls,width=\linewidth,scale=0.7]{15}{../figures/latviz/topc_TE27/flowTime_TE27-}{0}{60}
-% \end{center}
+% \begin{frame}{Shifts}
+% \begin{figure}
+%     \centering
+%     \includegraphics[scale=0.6]{../figures/illustrations/implementation/shift/shift}
+% \end{figure}
+% \note{
+% \begin{itemize}
+%     \item An illustration of the lattice shift. 
+%     \item The links $U_\nu$ of the lattice are copied over to a temporary lattice shifted in direction $\hat{\mu}$. 
+%     \item The face that is shifted over to an adjacent sub-lattice is shared through a non-blocking MPI call, while we copy the links to the temporary lattice.
+%     \item Allows for a simplified syntax close to that of the equations we are working with.
+%     \item Don't have to write out any loops over the lattice positions.
+% \end{itemize}
+% }
 % \end{frame}
 
-% \begin{frame}{Smearing the lattice: topological charge III}
-% \begin{center}
-%     \animategraphics[loop,controls,width=\linewidth,scale=0.7]{15}{../figures/latviz/topc_TF500/euclideanTime_tf500--}{0}{63}
-% \end{center}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %   ____               _ _            _      __ _
+% %  / ___|_ __ __ _  __| (_) ___ _ __ | |_   / _| | _____      __
+% % | |  _| '__/ _` |/ _` | |/ _ \ '_ \| __| | |_| |/ _ \ \ /\ / /
+% % | |_| | | | (_| | (_| | |  __/ | | | |_  |  _| | (_) \ V  V /
+% %  \____|_|  \__,_|\__,_|_|\___|_| |_|\__| |_| |_|\___/ \_/\_/
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Gradient flow}
+% % \husk{TODO: ANIMATIONS?!}
+% \begin{frame}{The flow equation}
+% % Bad approx.: diffusion equation
+% % Topological charge preserved and is more pronounced 
+% % Why it is needed
+% % Certain quantities becomes renormalizable
+% The flow of the $\SU(3)$ gauge fields are denoted by $B_\mu(x,t_f)$ which are Lie algebra valued gauge fields,
+% \onslide<1->{\begin{align*}
+%     \frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), %\label{eq:flow-continuum-diff-eq}
+% \end{align*}}
+% \onslide<2->{\begin{align*}
+%     D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], %\label{eq:flow-cont-covariant-derivative}
+% \end{align*}}
+% \onslide<3->{\begin{align*}
+%     G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)], \label{eq:flow-field-strength-tensor}
+% \end{align*}}
+% \onslide<4->{with the initial conditions being the fundamental gauge field,
+% \begin{align*}
+%     B_\mu(x,t_f)|_{t_f=0} = A_\mu(x).
+% \end{align*}}
+% \onslide<5->{
+% A bad approximation: \textit{the diffusion equation}, 
+% \begin{align*}
+%     \frac{\partial}{\partial t_f} B_\mu(x,t_f) \approx \partial^2 B_\mu(x,t_f)
+% \end{align*}
+% }
+% \onslide<6->{
+%     The smearing radius increases as $\sqrt{8t_f}$.
+% }
+% \note{
+% \begin{itemize}
+%     \item <1->The flow equation in the continuum is defined by this differential equation.
+%     \item <2->With the covariant derivative given by following, with the $\cdot$ being the derivative with respect to flow time.
+%     \item <3->The field strength tensor of the flown fields is given in the regular format.
+%     \item <4->The initial condition is the un-flowed gauge field, $A_\mu$.
+%     \item <5->Bad approx.: diffusion equation.
+%     \item <6->Topological charge preserved and is more pronounced.
+%     \item <6->Renormalizes the topological charge at non-zero flow time.
+% \end{itemize}
+% }
 % \end{frame}
 
+% \begin{frame}{Gradient flow on the lattice}
+% % RK3 classical and then on the lattice
+% \onslide<1->{Lattice definition given by
+% \begin{align*}
+%     \dot{V}_{t_f}(x,\mu) = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f}(x,\mu),
+% \end{align*}}
+% \onslide<2->{with initial condition,
+% \begin{align*}
+%     V_{t_f}(x,\mu)|_{t_f=0} = U(x,\mu)
+% \end{align*}}
+% \onslide<3->{Note: need to find the action derivative $S_G[V_{t_f}]$.}
+% \note{
+% \begin{itemize}
+%     \item <1->On the lattice, the flow equation takes the shape in terms of the link variables.
+%     \item <2->Initial conditions similar to the continuum case.
+%     \item <3->The action derivative is also needed, but that is a minor task we will not cover here.
+% \end{itemize}
+% }
+% \end{frame}
+
+% \begin{frame}{Solving gradient flow with Runge-Kutta 3}
+% \onslide<1->{With
+% \begin{align*}
+%     \dot{V}_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f} = Z(V_{t_f}) V_{t_f},
+% \end{align*}}
+% \onslide<2->{and $Z_i=\epsilon_fZ(W_i)$ we get
+% \begin{align*}
+%     \begin{split}
+%         &W_0 = V_{t_f}, \\
+%         &W_1 = \exp\left[\frac{1}{4}Z_0\right]W_0, \\
+%         &W_2 = \exp\left[\frac{8}{9}Z_1 - \frac{17}{36}Z_0\right]W_1, \\
+%         &V_{t_f + \epsilon_f} = \exp\left[\frac{3}{4}Z_2 - \frac{8}{9}Z_1 + \frac{17}{36}Z_0\right]W_2, \\
+%     \end{split}
+% \end{align*}
+% with coefficients from \citet{luscher_properties_2010}.}
+% \note{
+% \begin{itemize}
+%     \item <1->{ We rewrite the equations slightly,}
+%     \item <2->{ and use a structure preserving integrator with coefficients from \citet{luscher_properties_2010}.}
+%     \item <3->{ We control the accuracy of this integrator by $\epsilon_f$.}
+% \end{itemize}}
+% \end{frame}
+
+% \begin{frame}{Verifications, tests and code benchmarking}
+% \begin{itemize}[<+->]
+%     \item The Runge-Kutta 3 integrator has been tested for different step lengths $\epsilon_f$.
+%     \item The code has been unit tested for matrix multiplications and parallelization.
+%     \item Results match that of other code bases such as Chroma.
+%     \item Performance testing has been done of different generation parameters.
+% \end{itemize}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  ____                 _ _
@@ -822,6 +792,7 @@ with coefficients from \citet{luscher_properties_2010}.}
 
 \begin{frame}{Ensembles}
 % Include size and time
+Points in lattice given by $N^3 \times N_T$.
 \begin{table}
     \centering
     \begin{tabular}{l r r r r r r}
@@ -849,12 +820,13 @@ with coefficients from \citet{luscher_properties_2010}.}
 }
 \end{frame}
 
+% TODO: remove following slide?
 \begin{frame}{Lattice sizes}
 \begin{table}
     \centering
     \begin{tabular}{l r r r}
         \toprule
-        Ensemble     & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     \\ \midrule
+        Ensemble     & $N$             & $L=Na$ $[\fm]$  & $a$ $[\fm]$     \\ \midrule
         $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
         $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
         $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
@@ -885,6 +857,7 @@ Charge radius of a proton: $\sim 0.85$ fm.
 }
 \end{frame}
 
+% TODO: Unneeded to show this?!
 \begin{frame}{The clover field strength definition}
 $F_{\mu \nu}^\mathrm{clov}(n)$ is given by
 \begin{figure}
@@ -942,6 +915,7 @@ $F_{\mu \nu}^\mathrm{clov}(n)$ is given by
 % }
 % \end{frame}
 
+% TODO: Completely redundant - better to just show the extrapolated values?!
 \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
 \onslide<1->{
 \vspace{-5.0pt}
@@ -951,7 +925,7 @@ $F_{\mu \nu}^\mathrm{clov}(n)$ is given by
 \end{figure}
 }
 \onslide<2->{\vspace{-5.0pt}Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
-\onslide<3->{This matches the values retrieved by \citet{luscher_properties_2010}.}
+\onslide<3->{This matches the values retrieved by \citet{luscher_properties_2010}.} % TODO: provide numerical values!!
 \note{
 \begin{itemize}
     \item <1->The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.
@@ -960,6 +934,7 @@ $F_{\mu \nu}^\mathrm{clov}(n)$ is given by
 }
 \end{frame}
 
+% TODO: A bit much - takes unecessary time?!
 \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
 \onslide<1->{Extrapolations for different ensemble-combinations
 \begin{table}
@@ -980,6 +955,7 @@ $F_{\mu \nu}^\mathrm{clov}(n)$ is given by
 }
 \end{frame}
 
+% TODO: too technical to have this slide?
 \begin{frame}{Scale setting \texorpdfstring{$w_0$}{w0}}
 \only<1>{Can also set a scale using the derivative which offers more granularity for small flow times,
 \begin{align*}
@@ -1002,15 +978,7 @@ First presented by \citet{borsanyi_high-precision_2012}.
 \onslide<3->{Comparable to \citet{borsanyi_high-precision_2012} which included dynamical fermions, with $w_{0,\mathrm{cont}}=0.1755(18)(04)$ fm.}
 \end{frame}
 
-% \begin{frame}{HERE}
-% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< YOU ARE HERE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-% <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-% \end{frame}
-
-
+% TODO: determine how much detail I should explain topological charge in. Maybe just remove this section and show the animation instead?
 \begin{frame}{Topological charge}
 \begin{block}{}
 \begin{itemize}
@@ -1084,8 +1052,6 @@ First presented by \citet{borsanyi_high-precision_2012}.
 % }
 % \end{frame}
 
-% \husk{TODO: topological charge animation here!!}
-
 \begin{frame}{Topological charge distribution}
 \vspace{-5.0pt}
 \begin{figure}
@@ -1095,15 +1061,20 @@ First presented by \citet{borsanyi_high-precision_2012}.
 \note{Histograms for the $Q$ for ensemble $G$ with a lattice of size $N^3\times N_T=16^3\times 32$ with $\beta=6.1$, taken at different flow times $t_f/a^2=0.0$, $1.0$, $4.0$ fm.}
 \end{frame}
 
-\begin{frame}{Topological charge distribution in flow time}
-\vspace{-5.0pt}
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/topc_modes_analysis/topc_modes_tf250.pdf}
-\end{figure}
-\note{Histograms of topological charge for the supporting ensembles seen at $t_f/a^2=0.25$ fm.}
+\begin{frame}{Topological charge}
+\begin{center}
+    \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TF500_lowres/flowQ_TF500-}{00}{63}
+\end{center}
 \end{frame}
 
+% \begin{frame}{Topological charge distribution in flow time}
+% \vspace{-5.0pt}
+% \begin{figure}
+%     \centering
+%     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures/topc_modes_analysis/topc_modes_tf250.pdf}
+% \end{figure}
+% \note{Histograms of topological charge for the supporting ensembles seen at $t_f/a^2=0.25$ fm.}
+% \end{frame}
 
 \begin{frame}{Topological charge for our main ensembles}
 \vspace{-5.0pt} 
@@ -1123,8 +1094,10 @@ First presented by \citet{borsanyi_high-precision_2012}.
 \begin{frame}
 \vspace{5.0pt}
 \begin{center}
-Why is the charge not centered around zero for certain ensembles?
+\onslide<1->{Why is the charge not centered around zero for certain ensembles?}
+\onslide<2->{Let us look at the autocorrelation - the measure for correlations between gauge configurations in Monte Carlo time.}
 \end{center}
+\note{First of all, $Q$ is a far more correlated than other quantities such as the energy.}
 \end{frame}
 
 \begin{frame}{Autocorrelation in the energy}
@@ -1222,6 +1195,7 @@ The \textit{Witten-Veneziano relation} is given by
 \end{itemize}}
 \end{frame}
 
+% TODO: also redundant?!
 \begin{frame}{Topological susceptibility continuum extrapolation}
 \begin{table}
     \centering
@@ -1247,6 +1221,7 @@ Values taken at $\sqrt{8t_f}=0.6$ fm.
 }
 \end{frame}
 
+% TODO: redundant!?
 \begin{frame}{Topological susceptibility continuum extrapolation}
 \begin{figure}
     \centering
@@ -1472,7 +1447,7 @@ We will be looking at the state involving topological charge.
 
 \begin{frame}{The effective glueball mass}
 \vspace{-0.5cm}
-\only<1>{\begin{figure}
+\only<1>{\begin{figure} % TODO: REMOVE - only show at four different flow times
     \centering
     \includegraphics[trim={0.2cm 0.0cm 0.2cm 1.0cm},clip,scale=0.7]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/qtq0eff/slices/post_analysis_qtq0eff_bootstrap_tf0_6_ma_overlay.pdf}
 \end{figure}}
@@ -1532,8 +1507,8 @@ We will be looking at the state involving topological charge.
 \begin{frame}{Future developments and final thoughts}
 \begin{itemize}[<+->]
     \item Better statistics - more gauge configurations.
-    \item Better utilization of support ensembles $E$, $F$ and $G$.
-    \item Improve autocorrelation with more updates per single link(increase $N_\mathrm{up}$).
+    % \item Better utilization of support ensembles $E$, $F$ and $G$.
+    % \item Improve autocorrelation with more updates per single link(increase $N_\mathrm{up}$).
     \item Implement better actions with operators that has smaller error contributions.
     \item Fermions and HMC(Hybrid Monte Carlo).
 \end{itemize}

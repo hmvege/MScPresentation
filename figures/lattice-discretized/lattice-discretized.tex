@@ -26,7 +26,9 @@
 }
 
 % Clips (creates the frame)
-\clip (-0.5,-1.0) rectangle (0.5+\NXLong, 0.5+\NY);
+\clip (-0.5,-1.5) rectangle (0.5+\NXLong, 0.5+\NY);
+
+\draw [fill=bg-gray, rounded corners] (-0.5,-0.5) rectangle (0.5+\NXLong, 0.5+\NY);
 
 % Fills left columns
 \foreach \x in {0,2,...,\NX-2}
@@ -64,10 +66,10 @@
     decoration={
         brace,
         mirror,
-        raise=8pt,
+        raise=22pt,
     },
     decorate,
-] (-0.1,0) --node[below=8pt]{$L=Na$} (\NXLong+0.1,0);
+] (-0.2,0) --node[below=24pt]{$L=Na$} (\NXLong+0.2,0);
 
 \end{tikzpicture}
 \end{document}

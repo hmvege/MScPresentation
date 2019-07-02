@@ -467,382 +467,8 @@ So far, we have ...
 \begin{center}
     \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TE21_lowres/flowQ_TE21-}{00}{60}
 \end{center}
-% \movie[height=0.6\textwidth,width=1.0\textwidth]{}{../figures/latviz/flowTime_TE21.mpg}
-% \begin{center}
-%     \movie{\includegraphics[width=0.7\textwidth]{../figures/latviz/topc_TE21/flowTime_TE21-0.png}}{../figures/latviz/flowTime_TE21.mp4}
-%     % \movie{\includegraphics[width=0.7\textwidth]{flowTime_TE21-0.png}}{flowTime_TE21_avi.avi}
-% \end{center}
-% \begin{minipage}[t]{\linewidth}
-%     \begin{center}
-%     \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TE21_lowres/flowQ_TE21-}{00}{60}
-%     \end{center}
-% \end{minipage}
 \note{Evolution of topological charge $Q$ in flow time.}
 \end{frame}
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %   ___   ____ ____
-% %  / _ \ / ___|  _ \
-% % | | | | |   | | | |
-% % | |_| | |___| |_| |
-% %  \__\_\\____|____/
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Quantum Chromodynamics(QCD)}
-% \begin{frame}{The Standard Model}
-%     \begin{center}
-%         \includegraphics[width=0.8\textwidth]{../figures/illustrations/qcd/standard-model/sm.pdf}
-%     \end{center}
-%     \note{Consists of the innermost square of the \textbf{six quarks} and the \textit{eight gluons}.}
-% \end{frame}
-
-% \begin{frame}{The non-linearity of QCD}
-% The QCD Lagrangian
-% \begin{align*}
-%     \mathcal{L}_\mathrm{QCD} = \sum^{N_f}_{f=1} \bar{\psi}^{(f)} \left(i\slashed{D} - m^{(f)}\right) \psi^{(f)} - \frac{1}{4}G^a_{\mu\nu}G^{a\mu\nu},
-% \end{align*}
-% with action
-% \begin{align}
-%     S = \int \dd^4 x \mathcal{L}_\mathrm{QCD},
-% \end{align}
-% is invariant under a $\SU(3)$ symmetry.
-% \begin{align*}
-%     \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
-%     \includegraphics[scale=0.9]{../figures/feynman-diagrams/three-gluon-vertex/three-gluon-vertex.pdf} \quad
-%     \includegraphics[scale=0.9]{../figures/feynman-diagrams/four-gluon-vertex/four-gluon-vertex.pdf}
-% \end{align*}
-% \note{
-%     \begin{itemize}
-%         \item \textit{Gluon self-interaction.}
-%         \item This central aspect is mostly covered in the pure-gauge/Yang-Mills section of the theory.
-%         \item \textbf{Two important features}: \textit{confinement} and \textit{asymptotic freedom}.
-%     \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{Asymptotic freedom}
-%     \begin{center}
-%         \includegraphics[width=0.8\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
-%     \end{center}
-%     \note{
-%         \begin{itemize}
-%             \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy.
-%             \item Also serves as an \textit{experimental proof} of QCD.
-%             \item Other lines of \textit{evidence}: triple $\gamma$ decay and muon cross section ratio $R$.
-%             \begin{itemize}
-%                 \item Triple $\gamma$ decay: the number of colors is included in the cross section, which can be measured experimentally.
-%                 \item Muon cross section ratio $R$: the ratio is dependent on having three colors.
-%             \end{itemize}
-%         \end{itemize}
-%     }
-% \end{frame}
-
-% \begin{frame}{Confinement}
-%     \begin{center}
-%         \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
-%     \end{center}
-%     \note{If we try to pull apart \textbf{two quarks in a meson}, more and more energy is required until we have enough energy to spontaneously create a \textbf{quark-antiquark} pair, forming thus \textbf{two new mesons.}}
-% \end{frame}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %  _          _   _   _             ___   ____ ____
-% % | |    __ _| |_| |_(_) ___ ___   / _ \ / ___|  _ \
-% % | |   / _` | __| __| |/ __/ _ \ | | | | |   | | | |
-% % | |__| (_| | |_| |_| | (_|  __/ | |_| | |___| |_| |
-% % |_____\__,_|\__|\__|_|\___\___|  \__\_\\____|____/
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Lattice Quantum Chromodynamics(LQCD)}
-
-% \begin{frame}{Discretizing spacetime}
-% \begin{block}{}
-% \begin{enumerate}
-%     \item <1->Divide spacetime into a cube of size $N^3\times N_T$.
-%     \item <2->Fermions live on the each \textit{point} in the cube.
-%     \item <3->The gauge fields live on the sites \textit{in between} the points, and is called links.
-% \end{enumerate}
-% \end{block}
-% \onslide<4->{Goal: \textit{maintain gauge invariance.}}
-% \note{Make a quick drawing perhaps of a lattice?}
-% \end{frame}
-
-% \begin{frame}{Links}
-% % \begin{align*}
-% %     U_\mu(n) = \exp \left[ i a A_\mu (n) \right],
-% % \end{align*}
-% A link connects one lattice site to another and is a $\SU(3)$ matrix.
-% \begin{figure}
-%     \centering
-%     \begin{subfigure}{0.48\textwidth}
-%         \centering
-%         \includegraphics{../figures/illustrations/lqcd/links/link}
-%         \label{fig:lqcd:link}
-%     \end{subfigure}
-%     \begin{subfigure}{0.48\textwidth}
-%         \centering
-%         \includegraphics{../figures/illustrations/lqcd/links/link-inverse}
-%         \label{fig:lqcd:link-inverse}
-%     \end{subfigure}
-%     \centering
-% \end{figure}
-% where $U_{-\mu}(n) = U_\mu(n - \hat{\mu})^\dagger$.
-% \note{
-%     \begin{itemize}
-%         \item Defined from the gauge transporter.
-%         \item A link in the positive $\MU$ direction is shown in the figure to the left.
-%         \item A link in the negative $\MU$ direction is shown in the figure to the right.
-%     \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{Gauge invariance on the lattice}
-% \begin{block}
-%     \only<1->{Links constructed such that we maintain gauge invariance in the action,}
-%     \only<2->{\begin{align*}
-%             U_\mu(n) &\rightarrow U_\mu'(n) = \Omega(n) U_\mu(n) \Omega(n+\hat{\mu})^\dagger, \\
-%             U_{-\mu}(n) &\rightarrow U_{-\mu}'(n) = \Omega(n) U_{\mu}(n-\hat{\mu})^\dagger \Omega(n-\hat{\mu})^\dagger.
-%         \end{align*}}
-%     \only<3->{Two main types of gauge invariant objects,}
-%     \begin{itemize}
-%         \item<4-> Objects with fermions $\psi$, $\bar{\psi}$ as end points.
-%         \item<5-> Fully connected gauge invariant objects(i.e. ``loops'').
-%     \end{itemize}
-% \end{block}
-% \end{frame}
-
-% \begin{frame}{The plaquette}
-% The simplest gauge invariant object,
-% \begin{figure}
-%     \centering
-%     \includegraphics[scale=1]{../figures/illustrations/lqcd/plaquette/plaquette}
-% \end{figure}
-% \end{frame}
-
-% \begin{frame}{The Wilson gauge action}
-% The Wilson gauge action is given as
-% \begin{align*}
-%     S_G[U] = \frac{\beta}{3} \sum_{n\in\Lambda} \sum_{\mu<\nu} \Re \tr \left[ 1 - P_{\mu\nu}(n) \right],
-% \end{align*}
-% with $\beta=6/g_S^2$.
-
-% Continuum gauge action,
-% \begin{align*}
-%     S_G[A] = \frac{1}{2g_S^2}\int \dd^4 x \tr F_{\mu\nu}^2,
-% \end{align*}
-% recovered when $a \rightarrow 0$.
-% \note{
-%     \begin{itemize}
-%         \item Using the definition of the link we saw earlier, we can reproduce the continuum action up to an discretization error of $\mathcal{O}(a^2)$.
-%     \end{itemize}
-% }
-% \end{frame}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %  ____                 _             _                                     _
-% % |  _ \  _____   _____| | ___  _ __ (_)_ __   __ _    __ _    ___ ___   __| | ___
-% % | | | |/ _ \ \ / / _ \ |/ _ \| '_ \| | '_ \ / _` |  / _` |  / __/ _ \ / _` |/ _ \
-% % | |_| |  __/\ V /  __/ | (_) | |_) | | | | | (_| | | (_| | | (_| (_) | (_| |  __/
-% % |____/ \___| \_/ \___|_|\___/| .__/|_|_| |_|\__, |  \__,_|  \___\___/ \__,_|\___|
-% %                              |_|            |___/
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Developing a code for solving \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills theory on the lattice}
-% \begin{frame}{The numerical challenge in lattice QCD}
-% \onslide<1->{A lattice configuration consists of $3\times 3$ $\SU(3)$ matrices,}
-% \onslide<2->{\begin{align*}
-%     \stackunder{\underbrace{N^3}}{\text{Spatial}} \times \stackunder{\underbrace{N_T}}{\text{Temporal}} \times \stackunder{\underbrace{4}}{\text{Links}} \times \stackunder{\underbrace{9}}{\text{$\SU(3)$ matrix}} \times \stackunder{\underbrace{2}}{\text{$\mathbb{C}$-numbers}} = 72 N^3N_T,
-% \end{align*}}
-% \onslide<3->{$\rightarrow 8 \times 72N^3N_T$ bytes.}
-% \note{
-%     \begin{itemize}
-%         \item The $\SU(3)$ matrices are $3\times 3$ matrices of nine complex numbers or 18 real numbers.
-%         \item This leads to an absolute \textbf{requirement of efficiency}, both in \textbf{calculations} and in \textbf{input/output}.
-%         \item When returning to what ensembles of configurations we generated this will be evident.
-%     \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{The path integral}
-% \only<1>{\begin{align*}
-%     \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} O[\psi,\bar{\psi},U] \e^{- S_G[U] - S_F[\psi,\bar{\psi},U]}.
-% \end{align*}}%
-% \only<2>{\begin{align*}
-%     \langle O \rangle = \frac{1}{Z} \int \mathcal{D}U  O[U] \e^{- S_G[U]}.
-% \end{align*}}%
-% \only<1>{\begin{align*}
-% Z = \int \mathcal{D}U \mathcal{D}\psi \mathcal{D}\bar{\psi} e^{- S_G[U] - S_F[\psi,\bar{\psi}, U]}.
-% \end{align*}}%
-% \only<2>{\begin{align*}
-% Z = \int \mathcal{D}U e^{- S_G[U]}.
-% \end{align*}}%
-% \end{frame}
-
-% \begin{frame}{The path integral}
-% \only<1>{
-% \begin{figure}
-%     \centering
-%     \includegraphics[scale=1.0]{../figures/illustrations/lqcd/path-integral/path-integral-flattened}
-% \end{figure}}
-% \only<2->{\begin{align*}
-%     \langle O \rangle = \mathcolor{red}{\frac{1}{Z}\int\mathcal{D}U} O[U] \mathcolor{red}{\e^{- S_G[U]}}.
-% \end{align*}
-% with 
-% \begin{align*}
-% Z = \int \mathcal{D}U e^{- S_G[U]}.
-% \end{align*}}
-% \onslide <3->{We will use the \textit{Metropolis algorithm} to create configurations of the lattice.}
-% \note{
-%     \begin{itemize}
-%         \item<1->{An example of the discretized path integral, going from time $t_0$ to $t_{n}$, where the end points is taken to be equal, $x_0=x_{N_T}$. We integrate over all of space at each time $t_i$ finding the most likely position at a given time.}
-%         \item<2->{We will use the parts marked in red as a probability distribution which we will create configurations from.}
-%         \item<3->{This can be used in the \textit{Metropolis algorithm.}}
-%         \item<4->{Since a path integral integrates over all possible configurations, our job us to generate enough configurations to properly represent the statistics.}
-%     \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{Measurements on the lattice}
-% The observable becomes an average over the $N_\mathrm{MC}$ gauge configurations.
-% \begin{align*}
-%     \expect{O} = \underset{N_\mathrm{MC}\rightarrow\infty}{\lim} \frac{1}{N_\mathrm{MC}} \sum^{N_\mathrm{MC}}_i O[U_i]
-% \end{align*}
-% \onslide<1->We now need to generate configurations...
-% \note{
-% \begin{itemize}
-%     \item We perform an average of the created configurations.
-% \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{Parallelization}
-% \onslide<1->{The lattice now is a 4D hypercube, with four links associated to each lattice site $\rightarrow$ need to parallelize!\\}%
-% \onslide<2->{Two methods used:}
-% \begin{itemize}
-%     \item<3->{ Single link sharing used in the Metropolis algorithm.}
-%     \item<4->{ \textit{shifts} used in in gradient flow and observable sampling}
-% \end{itemize}
-% \note{
-% \begin{itemize}
-%     \item <1->{Due to the size of the lattice, we need to parallelize!.}
-%     \item <2->{We parallelized using \textbf{MPI}.}
-%     \item <3->{Tested out \textbf{halos}, but turned out to be problematic when generating.}
-% \end{itemize}}
-% \end{frame}
-
-% \begin{frame}{Shifts}
-% \begin{figure}
-%     \centering
-%     \includegraphics[scale=0.6]{../figures/illustrations/implementation/shift/shift}
-% \end{figure}
-% \note{
-% \begin{itemize}
-%     \item An illustration of the lattice shift. 
-%     \item The links $U_\nu$ of the lattice are copied over to a temporary lattice shifted in direction $\hat{\mu}$. 
-%     \item The face that is shifted over to an adjacent sub-lattice is shared through a non-blocking MPI call, while we copy the links to the temporary lattice.
-%     \item Allows for a simplified syntax close to that of the equations we are working with.
-%     \item Don't have to write out any loops over the lattice positions.
-% \end{itemize}
-% }
-% \end{frame}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %   ____               _ _            _      __ _
-% %  / ___|_ __ __ _  __| (_) ___ _ __ | |_   / _| | _____      __
-% % | |  _| '__/ _` |/ _` | |/ _ \ '_ \| __| | |_| |/ _ \ \ /\ / /
-% % | |_| | | | (_| | (_| | |  __/ | | | |_  |  _| | (_) \ V  V /
-% %  \____|_|  \__,_|\__,_|_|\___|_| |_|\__| |_| |_|\___/ \_/\_/
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{Gradient flow}
-% \begin{frame}{The flow equation}
-% % Bad approx.: diffusion equation
-% % Topological charge preserved and is more pronounced 
-% % Why it is needed
-% % Certain quantities becomes renormalizable
-% The flow of the $\SU(3)$ gauge fields are denoted by $B_\mu(x,t_f)$ which are Lie algebra valued gauge fields,
-% \onslide<1->{\begin{align*}
-%     \frac{\dd}{\dd t_f} B_\mu(x,t_f) = D_\nu G_{\nu\,\mu}(x,t_f), %\label{eq:flow-continuum-diff-eq}
-% \end{align*}}
-% \onslide<2->{\begin{align*}
-%     D_\mu = \partial_\mu + \left[B_\mu(x,t_f), \cdot \right], %\label{eq:flow-cont-covariant-derivative}
-% \end{align*}}
-% \onslide<3->{\begin{align*}
-%     G_{\mu\nu}(x,t_f) = \partial_\mu B_\nu(x,t_f) - \partial_\nu B_\mu(x,t_f) - i[B_\mu(x,t_f), B_\nu(x,t_f)], \label{eq:flow-field-strength-tensor}
-% \end{align*}}
-% \onslide<4->{with the initial conditions being the fundamental gauge field,
-% \begin{align*}
-%     B_\mu(x,t_f)|_{t_f=0} = A_\mu(x).
-% \end{align*}}
-% \onslide<5->{
-% A bad approximation: \textit{the diffusion equation}, 
-% \begin{align*}
-%     \frac{\partial}{\partial t_f} B_\mu(x,t_f) \approx \partial^2 B_\mu(x,t_f)
-% \end{align*}
-% }
-% \onslide<6->{
-%     The smearing radius increases as $\sqrt{8t_f}$.
-% }
-% \note{
-% \begin{itemize}
-%     \item <1->The flow equation in the continuum is defined by this differential equation.
-%     \item <2->With the covariant derivative given by following, with the $\cdot$ being the derivative with respect to flow time.
-%     \item <3->The field strength tensor of the flown fields is given in the regular format.
-%     \item <4->The initial condition is the un-flowed gauge field, $A_\mu$.
-%     \item <5->Bad approx.: diffusion equation.
-%     \item <6->Topological charge preserved and is more pronounced.
-%     \item <6->Renormalizes the topological charge at non-zero flow time.
-% \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{Gradient flow on the lattice}
-% % RK3 classical and then on the lattice
-% \onslide<1->{Lattice definition given by
-% \begin{align*}
-%     \dot{V}_{t_f}(x,\mu) = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f}(x,\mu),
-% \end{align*}}
-% \onslide<2->{with initial condition,
-% \begin{align*}
-%     V_{t_f}(x,\mu)|_{t_f=0} = U(x,\mu)
-% \end{align*}}
-% \onslide<3->{Note: need to find the action derivative $S_G[V_{t_f}]$.}
-% \note{
-% \begin{itemize}
-%     \item <1->On the lattice, the flow equation takes the shape in terms of the link variables.
-%     \item <2->Initial conditions similar to the continuum case.
-%     \item <3->The action derivative is also needed, but that is a minor task we will not cover here.
-% \end{itemize}
-% }
-% \end{frame}
-
-% \begin{frame}{Solving gradient flow with Runge-Kutta 3}
-% \onslide<1->{With
-% \begin{align*}
-%     \dot{V}_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f} = Z(V_{t_f}) V_{t_f},
-% \end{align*}}
-% \onslide<2->{and $Z_i=\epsilon_fZ(W_i)$ we get
-% \begin{align*}
-%     \begin{split}
-%         &W_0 = V_{t_f}, \\
-%         &W_1 = \exp\left[\frac{1}{4}Z_0\right]W_0, \\
-%         &W_2 = \exp\left[\frac{8}{9}Z_1 - \frac{17}{36}Z_0\right]W_1, \\
-%         &V_{t_f + \epsilon_f} = \exp\left[\frac{3}{4}Z_2 - \frac{8}{9}Z_1 + \frac{17}{36}Z_0\right]W_2, \\
-%     \end{split}
-% \end{align*}
-% with coefficients from \citet{luscher_properties_2010}.}
-% \note{
-% \begin{itemize}
-%     \item <1->{ We rewrite the equations slightly,}
-%     \item <2->{ and use a structure preserving integrator with coefficients from \citet{luscher_properties_2010}.}
-%     \item <3->{ We control the accuracy of this integrator by $\epsilon_f$.}
-% \end{itemize}}
-% \end{frame}
-
-% \begin{frame}{Verifications, tests and code benchmarking}
-% \begin{itemize}[<+->]
-%     \item The Runge-Kutta 3 integrator has been tested for different step lengths $\epsilon_f$.
-%     \item The code has been unit tested for matrix multiplications and parallelization.
-%     \item Results match that of other code bases such as Chroma.
-%     \item Performance testing has been done of different generation parameters.
-% \end{itemize}
-% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  ____                 _ _
@@ -902,140 +528,6 @@ Points in lattice given by $N^3 \times N_T$.
 % \note{The lattice sizes.}
 % \end{frame}
 
-
-\begin{frame}{Scale setting}
-\end{frame}
-
-\begin{frame}{Energy definition}
-\only<1>{Some people use a banana for scale
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{../figures/banana_for_scale.jpg}
-\end{figure}}
-\onslide<2->{We use $t_0$
-\begin{align*}
-    E = \frac{a^4}{2|\Lambda|} \sum_{n\in\Lambda}\sum_{\mu,\nu} \left(F^\mathrm{clov}_{\mu\nu}(n)\right)^2 \\
-\end{align*}}
-\onslide<3->{$F_{\mu\nu}^\mathrm{clov}(n)$ is given by \begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{../figures/illustrations/lqcd/clover/clover}
-\end{figure}}
-\note{\begin{itemize}
-    \item \onslide<1->{Defined as the field strength tensor squared averaged over all lattice points and directions.}
-    \item \onslide<2->{We will use the clover field strength definition in gauge observables.}
-    \item \onslide<2->{\textbf{Symmetries} will allow us to \textbf{reduce} the effective \textbf{number of clovers} need to \textbf{calculate from 24 to 6}.}
-\end{itemize}}
-\end{frame}
-
-\begin{frame}{Energy}
-Using scale definition $t_0$ from \citet{luscher_properties_2010},
-\begin{align*}
-    \left\{t^2_f \expect{E(t)} \right\}_{t_f = t_{0}} = 0.3.
-\end{align*}
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.5cm},clip,width=0.5\textwidth]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_zoomed.pdf}
-\end{figure}
-\end{frame}
-
-% \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-% \only<1>{\begin{table}
-%     \centering
-%     \begin{tabular}{l r r r}
-%         \toprule
-%         Ensemble     & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     \\ \midrule
-%         $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
-%         $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
-%         $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
-%         $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
-%         $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
-%         \bottomrule
-%     \end{tabular}
-% \end{table}
-% }
-% \only<2->{\begin{table} % Not needed since I present the continuum extrapolation in the next figure.
-%     \centering
-%     \begin{tabular}{l r r r}
-%         \toprule
-%         Ensemble     & $t_0$[fm$^2$]   & $t_0/a^2$       & $t_0/r_0^2$     \\ \midrule
-%         $A$          & $0.02780(2)$    & $3.20(3)$       & $0.11121(9)$    \\ 
-%         $B$          & $0.02769(2)$    & $4.43(4)$       & $0.11075(10)$   \\ 
-%         $C$          & $0.02775(2)$    & $6.01(6)$       & $0.11099(8)$    \\ 
-%         $D_1$        & $0.02779(5)$    & $12.2(1)$       & $0.1112(2)$     \\ 
-%         $D_2$        & $0.02794(9)$    & $12.2(1)$       & $0.1117(3)$     \\ 
-%         \bottomrule
-%     \end{tabular}
-% \end{table}}
-% \note{
-% \begin{itemize}
-%     \item <2->Extrapolation results for $t_0$, where we retrieved the exact point of intersection between $t_f^2 \expect{E}$ and $0.3$ using $N_\mathrm{bs}=500$ bootstrap fits. Extrapolating to the continuum gives us $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.
-% \end{itemize}
-% }
-% \end{frame}
-
-% TODO: Completely redundant - better to just show the extrapolated values?!
-\begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-\only<1>{
-\begin{figure}
-    \centering
-    \includegraphics[trim={0.2cm 0.25cm 0.2cm 1.2cm},clip,width=0.8\textwidth]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
-\end{figure}
-Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
-\only<2->{This matches the values retrieved by \citet{luscher_properties_2010},
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{../figures/luscher_extrap_t0.png}
-\end{figure}}
-\note{
-\begin{itemize}
-    \item \only<1->{The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.}
-    \item \only<2->{$r_0=0.5$ fm.}
-\end{itemize}
-}
-\end{frame}
-
-% \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
-% \onslide<1->{Extrapolations for different ensemble-combinations
-% \begin{table}
-%     \centering
-%     \begin{tabular}{l r r}
-%         \toprule
-%         Ensembles               & $t_{0,\mathrm{cont}}/r_0^2$   & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
-%         $A$, $B$, $C$, $D_2$    & $0.11087(50)$                         & $7.51$ \\
-%         $B$, $C$, $D_2$         & $0.1115(3)$                           & $0.41$ \\
-%         $A$, $B$, $C$, $D_1$    & $0.1119(6)$                           & $0.88$ \\
-%         \bottomrule
-%     \end{tabular}
-% \end{table}}
-% \note{
-%     \begin{itemize}
-%         \item Notice the $\chi^2/\text{d.o.f.}$ of the extrapolation versus the two other extrapolations.
-%     \end{itemize}
-% }
-% \end{frame}
-
-% TODO: too technical to have this slide?
-\begin{frame}{Scale setting \texorpdfstring{$w_0$}{w0}}
-\only<1>{Can also set a scale using the derivative which offers more granularity for small flow times,
-\begin{align*}
-    &W(t)|_{t=w_0^2} = 0.3, \\
-    &W(t) \equiv t_f \frac{\dd}{\dd t_f} \left\{t^2_f \expect{E}\right\}.
-\end{align*}
-First presented by \citet{borsanyi_high-precision_2012}.
-}
-\onslide<2->{\begin{table}
-    \centering
-    \begin{tabular}{l r r}
-        \toprule
-        Ensembles               & $w_{0,\mathrm{cont}}$[fm]  & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
-        $A$, $B$, $C$, $D_2$    & $0.1695(5)$               & $7.12$ \\
-        $B$, $C$, $D_2$         & $0.1702(3)$               & $0.53$ \\
-        $A$, $B$, $C$, $D_1$    & $0.1706(6)$               & $0.86$ \\
-        \bottomrule
-    \end{tabular}
-\end{table}}
-\onslide<3->{Comparable to \citet{borsanyi_high-precision_2012} which included dynamical fermions, with $w_{0,\mathrm{cont}}=0.1755(18)(04)$ fm.}
-\end{frame}
 
 % TODO: determine how much detail I should explain topological charge in. Maybe just remove this section and show the animation instead?
 \begin{frame}{Topological charge}
@@ -1489,7 +981,6 @@ We will be looking at the state involving topological charge.
 % | |__| (_) | | | | (__| | |_| \__ \ | (_) | | | |
 %  \____\___/|_| |_|\___|_|\__,_|___/_|\___/|_| |_|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Conclusion, future developments and final thoughts}
 \begin{frame}{Conclusion}
 \begin{itemize}
@@ -1534,11 +1025,11 @@ We will be looking at the state involving topological charge.
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\begin{center}
-Questions?
-\end{center}
-\end{frame}
+% \begin{frame}
+% \begin{center}
+% Questions?
+% \end{center}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%% Disposition %%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction/overview of presentation: motivation, goal of thesis
@@ -1552,17 +1043,31 @@ Questions?
 % Extra slides
 
 \begin{frame}
+\begin{center}
+Questions?
+\end{center}
 \tiny
 \bibliography{bibliography/lib.bib}
 \end{frame}
 
-%  _____      _
-% | ____|_  _| |_ _ __ __ _ ___
-% |  _| \ \/ / __| '__/ _` / __|
-% | |___ >  <| |_| | | (_| \__ \
-% |_____/_/\_\\__|_|  \__,_|___/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  _____      _                   _ _     _
+% | ____|_  _| |_ _ __ __ _   ___| (_) __| | ___  ___
+% |  _| \ \/ / __| '__/ _` | / __| | |/ _` |/ _ \/ __|
+% | |___ >  <| |_| | | (_| | \__ \ | | (_| |  __/\__ \
+% |_____/_/\_\\__|_|  \__,_| |___/_|_|\__,_|\___||___/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Extra slides}
 
-\section{Extras}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  ____            _ _                             _   _           _          _   _                               _                  _  __ _           _   _
+% / ___|  ___ __ _| (_)_ __   __ _      ___  _ __ | |_(_)_ __ ___ (_)______ _| |_(_) ___  _ __     __ _ _ __   __| | __   _____ _ __(_)/ _(_) ___ __ _| |_(_) ___  _ __
+% \___ \ / __/ _` | | | '_ \ / _` |    / _ \| '_ \| __| | '_ ` _ \| |_  / _` | __| |/ _ \| '_ \   / _` | '_ \ / _` | \ \ / / _ \ '__| | |_| |/ __/ _` | __| |/ _ \| '_ \
+%  ___) | (_| (_| | | | | | | (_| |_  | (_) | |_) | |_| | | | | | | |/ / (_| | |_| | (_) | | | | | (_| | | | | (_| |  \ V /  __/ |  | |  _| | (_| (_| | |_| | (_) | | | |
+% |____/ \___\__,_|_|_|_| |_|\__, ( )  \___/| .__/ \__|_|_| |_| |_|_/___\__,_|\__|_|\___/|_| |_|  \__,_|_| |_|\__,_|   \_/ \___|_|  |_|_| |_|\___\__,_|\__|_|\___/|_| |_|
+%                            |___/|/        |_|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Scaling, optimization and verification}
 \begin{frame}{Scaling}
 We checked three types of scaling,
 \begin{block}{}
@@ -1605,27 +1110,6 @@ We checked three types of scaling,
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Additional ensembles}
-\begin{table}
-    \centering
-    \resizebox{0.8\columnwidth}{!}{%
-    \begin{tabular}{l r r r r r r r}
-        \toprule
-        Ensemble & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $N_\mathrm{corr}$ & $N_\mathrm{up}$ & $a$ $[\fm]$ & $L$ $[\fm]$ \\ 
-        \midrule
-        $E$ & 8 & 16 & 8135 & 600 & 30 & 0.0931(4) & 0.745(3) \\
-        $F$ & 12 & 24 & 1341 & 200 & 20 & 0.0931(4) & 1.118(5) \\
-        $G$ & 16 & 32 & 2000 & 400 & 20 & 0.0790(3) & 1.265(6) \\
-        \bottomrule
-    \end{tabular}
-    }
-\end{table}
-\note{\begin{itemize}
-    \item Additional ensembles made in order to illuminate additional aspects of the topological charge.
-    \item Supporting ensembles made on Smaug. All ensembles were flown $N_\mathrm{flow}=1000$ steps with $\epsilon_\mathrm{flow}=0.01$.
-\end{itemize}}
-\end{frame}
-
 \begin{frame}{Verifying the integration}
 \only<1>{Testing the integrator for different integration steps $\epsilon_f$.
 \begin{table}
@@ -1657,6 +1141,240 @@ We checked three types of scaling,
     \item<3-> The reason for \textbf{only having two points} is due to the fact that we are only \textbf{comparing points} that are \textbf{close to each other in flow time}. If we were to have more points, we would have to double the number of flow time steps for the smallest lattices.
     \item<4-> An \textbf{example} of the flowing, can be seen by observing the \textbf{energy evolving over flow time}.
 \end{itemize}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   ___   ____ ____
+%  / _ \ / ___|  _ \
+% | | | | |   | | | |
+% | |_| | |___| |_| |
+%  \__\_\\____|____/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{QCD Extras}
+\begin{frame}{The non-linearity of QCD}
+The QCD Lagrangian
+\begin{align*}
+    \mathcal{L}_\mathrm{QCD} = \sum^{N_f}_{f=1} \bar{\psi}^{(f)} \left(i\slashed{D} - m^{(f)}\right) \psi^{(f)} - \frac{1}{4}G^a_{\mu\nu}G^{a\mu\nu},
+\end{align*}
+with action
+\begin{align}
+    S = \int \dd^4 x \mathcal{L}_\mathrm{QCD},
+\end{align}
+is invariant under a $\SU(3)$ symmetry.
+\begin{align*}
+    \includegraphics[scale=0.9]{../figures/feynman-diagrams/fermion-gluon-vertex/fermion-gluon-vertex.pdf} \quad
+    \includegraphics[scale=0.9]{../figures/feynman-diagrams/three-gluon-vertex/three-gluon-vertex.pdf} \quad
+    \includegraphics[scale=0.9]{../figures/feynman-diagrams/four-gluon-vertex/four-gluon-vertex.pdf}
+\end{align*}
+\note{
+    \begin{itemize}
+        \item \textit{Gluon self-interaction.}
+        \item This central aspect is mostly covered in the pure-gauge/Yang-Mills section of the theory.
+        \item \textbf{Two important features}: \textit{confinement} and \textit{asymptotic freedom}.
+    \end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Asymptotic freedom}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
+    \end{center}
+    \note{
+        \begin{itemize}
+            \item The coupling constant \textbf{decreases} as we \textbf{increase} the energy.
+            \item Also serves as an \textit{experimental proof} of QCD.
+            \item Other lines of \textit{evidence}: triple $\gamma$ decay and muon cross section ratio $R$.
+            \begin{itemize}
+                \item Triple $\gamma$ decay: the number of colors is included in the cross section, which can be measured experimentally.
+                \item Muon cross section ratio $R$: the ratio is dependent on having three colors.
+            \end{itemize}
+        \end{itemize}
+    }
+\end{frame}
+
+\subsection{Gradient flow extras}
+\begin{frame}{Solving gradient flow with Runge-Kutta 3}
+\onslide<1->{With
+\begin{align*}
+    \dot{V}_{t_f} = - g_S^2 \left\{\partial_{x,\mu} S_G[V_{t_f}] \right\} V_{t_f} = Z(V_{t_f}) V_{t_f},
+\end{align*}}
+\onslide<2->{and $Z_i=\epsilon_fZ(W_i)$ we get
+\begin{align*}
+    \begin{split}
+        &W_0 = V_{t_f}, \\
+        &W_1 = \exp\left[\frac{1}{4}Z_0\right]W_0, \\
+        &W_2 = \exp\left[\frac{8}{9}Z_1 - \frac{17}{36}Z_0\right]W_1, \\
+        &V_{t_f + \epsilon_f} = \exp\left[\frac{3}{4}Z_2 - \frac{8}{9}Z_1 + \frac{17}{36}Z_0\right]W_2,
+    \end{split}
+\end{align*}
+with coefficients from \citet{luscher_properties_2010}.}
+\note{
+\begin{itemize}
+    \item <1->{We rewrite the equations slightly,}
+    \item <2->{and use a structure preserving integrator with coefficients from \citet{luscher_properties_2010}.}
+    \item <3->{We control the accuracy of this integrator by $\epsilon_f$.}
+\end{itemize}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     _       _     _ _ _   _                   _                       _ _
+%    / \   __| | __| (_) |_(_) ___  _ __   __ _| |  _ __ ___  ___ _   _| | |_ ___
+%   / _ \ / _` |/ _` | | __| |/ _ \| '_ \ / _` | | | '__/ _ \/ __| | | | | __/ __|
+%  / ___ \ (_| | (_| | | |_| | (_) | | | | (_| | | | | |  __/\__ \ |_| | | |_\__ \
+% /_/   \_\__,_|\__,_|_|\__|_|\___/|_| |_|\__,_|_| |_|  \___||___/\__,_|_|\__|___/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Additional results}
+\begin{frame}{Additional ensembles}
+\begin{table}
+    \centering
+    \resizebox{0.8\columnwidth}{!}{%
+    \begin{tabular}{l r r r r r r r}
+        \toprule
+        Ensemble & $N$ & $N_T$ & $N_\mathrm{cfg}$ & $N_\mathrm{corr}$ & $N_\mathrm{up}$ & $a$ $[\fm]$ & $L$ $[\fm]$ \\ 
+        \midrule
+        $E$ & 8 & 16 & 8135 & 600 & 30 & 0.0931(4) & 0.745(3) \\
+        $F$ & 12 & 24 & 1341 & 200 & 20 & 0.0931(4) & 1.118(5) \\
+        $G$ & 16 & 32 & 2000 & 400 & 20 & 0.0790(3) & 1.265(6) \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
+\note{\begin{itemize}
+    \item Additional ensembles made in order to illuminate additional aspects of the topological charge.
+    \item Supporting ensembles made on Smaug. All ensembles were flown $N_\mathrm{flow}=1000$ steps with $\epsilon_\mathrm{flow}=0.01$.
+\end{itemize}}
+\end{frame}
+
+
+\subsubsection{Scale setting}
+\begin{frame}{Energy definition}
+\only<1>{Some people use a banana for scale
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../figures/banana_for_scale.jpg}
+\end{figure}}
+\onslide<2->{We use $t_0$
+\begin{align*}
+    E = \frac{a^4}{2|\Lambda|} \sum_{n\in\Lambda}\sum_{\mu,\nu} \left(F^\mathrm{clov}_{\mu\nu}(n)\right)^2 \\
+\end{align*}}
+\onslide<3->{$F_{\mu\nu}^\mathrm{clov}(n)$ is given by \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{../figures/illustrations/lqcd/clover/clover}
+\end{figure}}
+\note{\begin{itemize}
+    \item \onslide<1->{Defined as the field strength tensor squared averaged over all lattice points and directions.}
+    \item \onslide<2->{We will use the clover field strength definition in gauge observables.}
+    \item \onslide<2->{\textbf{Symmetries} will allow us to \textbf{reduce} the effective \textbf{number of clovers} need to \textbf{calculate from 24 to 6}.}
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Energy}
+Using scale definition $t_0$ from \citet{luscher_properties_2010},
+\begin{align*}
+    \left\{t^2_f \expect{E(t)} \right\}_{t_f = t_{0}} = 0.3.
+\end{align*}
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.0cm 0.2cm 0.5cm},clip,width=0.5\textwidth]{../../LQCD/LatticeAnalyser/figures_b645_32xx4_full/data11/post_analysis/energy/post_analysis_energy_bootstrap_zoomed.pdf}
+\end{figure}
+\end{frame}
+
+% \begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
+% \only<1>{\begin{table}
+%     \centering
+%     \begin{tabular}{l r r r}
+%         \toprule
+%         Ensemble     & $L/a$           & $L$ $[\fm]$     & $a$ $[\fm]$     \\ \midrule
+%         $A$          & $24$            & $2.235(9)$      & $0.0931(4)$     \\ 
+%         $B$          & $28$            & $2.214(10)$     & $0.0791(3)$     \\ 
+%         $C$          & $32$            & $2.17(1)$       & $0.0679(3)$     \\ 
+%         $D_1$        & $32$            & $1.530(9)$      & $0.0478(3)$     \\ 
+%         $D_2$        & $48$            & $2.29(1)$       & $0.0478(3)$     \\ 
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+% }
+% \only<2->{\begin{table} % Not needed since I present the continuum extrapolation in the next figure.
+%     \centering
+%     \begin{tabular}{l r r r}
+%         \toprule
+%         Ensemble     & $t_0$[fm$^2$]   & $t_0/a^2$       & $t_0/r_0^2$     \\ \midrule
+%         $A$          & $0.02780(2)$    & $3.20(3)$       & $0.11121(9)$    \\ 
+%         $B$          & $0.02769(2)$    & $4.43(4)$       & $0.11075(10)$   \\ 
+%         $C$          & $0.02775(2)$    & $6.01(6)$       & $0.11099(8)$    \\ 
+%         $D_1$        & $0.02779(5)$    & $12.2(1)$       & $0.1112(2)$     \\ 
+%         $D_2$        & $0.02794(9)$    & $12.2(1)$       & $0.1117(3)$     \\ 
+%         \bottomrule
+%     \end{tabular}
+% \end{table}}
+% \note{
+% \begin{itemize}
+%     \item <2->Extrapolation results for $t_0$, where we retrieved the exact point of intersection between $t_f^2 \expect{E}$ and $0.3$ using $N_\mathrm{bs}=500$ bootstrap fits. Extrapolating to the continuum gives us $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.
+% \end{itemize}
+% }
+% \end{frame}
+
+\begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
+\only<1>{
+\begin{figure}
+    \centering
+    \includegraphics[trim={0.2cm 0.25cm 0.2cm 1.2cm},clip,width=0.8\textwidth]{../../LQCD/LatticeAnalyser/figures/data11/post_analysis/energy/post_analysis_extrapmethodbootstrap_t0reference_continuum_bootstrap.pdf}
+\end{figure}
+Continuum extrapolation using ensembles $A$, $B$, $C$, and $D_2$ gives $t_{0,\mathrm{cont}}/r_0^2 = 0.11087(50)$.}
+\only<2->{This matches the values retrieved by \citet{luscher_properties_2010},
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{../figures/luscher_extrap_t0.png}
+\end{figure}}
+\note{
+\begin{itemize}
+    \item \only<1->{The continuum extrapolation $a\rightarrow 0$ for $t_0$ of the four ensembles $A$, $B$, $C$, and $D_2$.}
+    \item \only<2->{$r_0=0.5$ fm.}
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Scale setting \texorpdfstring{$t_0$}{t0}}
+\onslide<1->{Extrapolations for different ensemble-combinations
+\begin{table}
+    \centering
+    \begin{tabular}{l r r}
+        \toprule
+        Ensembles               & $t_{0,\mathrm{cont}}/r_0^2$   & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+        $A$, $B$, $C$, $D_2$    & $0.11087(50)$                         & $7.51$ \\
+        $B$, $C$, $D_2$         & $0.1115(3)$                           & $0.41$ \\
+        $A$, $B$, $C$, $D_1$    & $0.1119(6)$                           & $0.88$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}}
+\note{
+    \begin{itemize}
+        \item Notice the $\chi^2/\text{d.o.f.}$ of the extrapolation versus the two other extrapolations.
+    \end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Scale setting \texorpdfstring{$w_0$}{w0}}
+\only<1>{Can also set a scale using the derivative which offers more granularity for small flow times,
+\begin{align*}
+    &W(t)|_{t=w_0^2} = 0.3, \\
+    &W(t) \equiv t_f \frac{\dd}{\dd t_f} \left\{t^2_f \expect{E}\right\}.
+\end{align*}
+First presented by \citet{borsanyi_high-precision_2012}.
+}
+\onslide<2->{\begin{table}
+    \centering
+    \begin{tabular}{l r r}
+        \toprule
+        Ensembles               & $w_{0,\mathrm{cont}}$[fm]  & $\chi^2/\mathrm{d.o.f}$ \\ \midrule
+        $A$, $B$, $C$, $D_2$    & $0.1695(5)$               & $7.12$ \\
+        $B$, $C$, $D_2$         & $0.1702(3)$               & $0.53$ \\
+        $A$, $B$, $C$, $D_1$    & $0.1706(6)$               & $0.86$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}}
+\onslide<3->{Comparable to \citet{borsanyi_high-precision_2012} which included dynamical fermions, with $w_{0,\mathrm{cont}}=0.1755(18)(04)$ fm.}
 \end{frame}
 
 

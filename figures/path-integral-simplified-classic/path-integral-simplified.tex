@@ -1,0 +1,42 @@
+\documentclass[12pt]{standalone}
+
+% main document, called main.tex \usepackage{tikz}
+% \usetikzlibrary{external}
+% \tikzexternalize % activate!
+
+\usepackage{tikz}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{math}
+\usetikzlibrary{fadings}
+
+
+
+\begin{document}
+\begin{tikzpicture}
+
+\draw[white] (8.0, 6.0) rectangle (-0.5,-0.5);
+
+% Coordinates
+\coordinate (Start) at (1,1);
+\coordinate (Stop) at (5,5);
+
+% Draws lines
+\path[
+    draw,
+    red,
+    thick,
+    decoration={markings, mark=at position 0.5 with {\arrow[red]{latex}}},
+    postaction={decorate},
+    ]
+    (Start) to[out=40, in=265] (Stop);
+
+% Draws x-axis
+\draw [->,thick] (0,0) --  (5, 0) node [below] {$x$};
+\fill (Start) circle (1pt) node [below] {$A$};
+% Draws y-axis
+\draw [->,thick] (0,0) --  (0, 5) node [left] {$y$};
+\fill (Stop) circle (1pt) node [above] {$B$};
+
+\end{tikzpicture}
+\end{document}

@@ -1,5 +1,5 @@
+% \documentclass[10pt,handout,show notes on second screen]{beamer}
 \documentclass[10pt,show notes on second screen]{beamer}
-% \documentclass[10pt]{beamer}
 
 
 \usepackage{appendixnumberbeamer}
@@ -64,8 +64,8 @@
 % For notes
 \usepackage{pgfpages}
 \setbeamertemplate{note page}[plain]
-\setbeameroption{show notes on second screen=right}
-% \setbeameroption{hide notes}
+% \setbeameroption{show notes on second screen=right}
+\setbeameroption{hide notes}
 
 \usefonttheme[onlymath]{serif}
 
@@ -184,29 +184,43 @@ Consists of:
 \end{frame}
 
 \begin{frame}{Comparing the strong force and QED}
-\onslide<1->{QED Quantum Electrodynamics(Electromagnetism), a U$(1)$ theory:
+\onslide<1->{\textbf{Electromagnetism} or \textbf{Quantum Electrodynamics}(QED), a U$(1)$ symmetry theory:
 \begin{align*}
-\mathcal{L}_\mathrm{QED} = \sum_{f=\text{fermions}}\bar{\psi_f} (i\gamma^\mu(\partial_\mu + ieQ_f A_\mu) - m_f) \psi_f - \frac{1}{4}F_{\mu\nu} F^{\mu\nu}
+\mathcal{L}_\mathrm{QED} = \sum_{f=\text{fermions}}\bar{\psi}_f (i\gamma^\mu(\partial_\mu + ieQ_f A_\mu) - m_f) \psi_f - \frac{1}{4}F_{\mu\nu} F^{\mu\nu}
 \end{align*}%
 Field strength tensor:
 \begin{align*}
 F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu
 \end{align*}}%
-\onslide<2->{The strong nuclear force, QCD, a $\SU(3)$ theory:%
+\onslide<2->{The \textbf{strong nuclear force} or \textbf{Quantum Chromo Dynamics}(QCD), a $\SU(3)$ symmetry theory:%
 \begin{align*}
-\mathcal{L}_\mathrm{QCD} = \sum_{f=u, d, \dots} \bar{\psi_{f}} (i\gamma^\mu(\partial_\mu + ig_S A^a_\mu T^a) - m_{f}) \psi_{f} - \frac{1}{4}F^a_{\mu\nu} {F^a}^{\mu\nu} 
+\mathcal{L}_\mathrm{QCD} = \sum_{f=u, d, \dots} \bar{\psi}_f (i\gamma^\mu(\partial_\mu + ig_S A^a_\mu T^a) - m_{f}) \psi_{f} - \frac{1}{4}G^a_{\mu\nu} {G^a}^{\mu\nu} 
 \end{align*}%
 Field strength tensor:
 \begin{align*}
-F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A_\nu^c
+G_{\mu\nu}^a = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A_\nu^c
 \end{align*}}%
-\note{$e$ is the coupling constant and $Q_f$ is the charge.}
+\note{\begin{itemize}
+    \item <1->QED is U(1) theory, and the simply means that it contains a simple rotational symmetry.
+    \item <1->$e$ is the coupling constant and $Q_f$ is the charge.
+    \item <1->$\bar{\psi}_f$ and $\psi_f$ are is the fermion fields.
+    \item <1->$A_\mu$ is the gauge fields.
+    \item <1->$\gamma^\mu$ is the Dirac matrices.
+    \item <1->First part contains the dynamics of all the fermions such as electrons, muons ect.
+    \item <1->Second part contains the dynamics of the photon fields in terms of the field strength tensor.
+    \item <2->Instead of a sum over all fermions, it is a sum over all quarks.
+    \item <2->The coupling constant is now the strong coupling, $g_S$.
+    \item <2->$A_\mu^a$ is now the gluon fields, and $T^a$ is the matrices for the $\SU(3)$ gauge symmetry group.
+    \item <2->QCD contains more degrees of freedom due to this.
+    \item <2->The difference between U(1) and SU(2) is that the latter contains a more complex rotational symmetry.
+    \item <2->The field strength tensor becomes nonlinear due to the extra term.
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Why is the strong force strong?}
 \begin{columns}
     \column{0.5\textwidth}
-    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
+    \begin{minipage}[b][0.5\textheight][b]{\linewidth}
     % \begin{center}
     %     \includegraphics[width=0.9\textwidth]{../figures/pdg_asymptotic_freedom-eps-converted-to.pdf}
     % \end{center}
@@ -215,29 +229,33 @@ F_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - g_S f^{abc} A_\mu^b A
     \end{center}
     \tiny{\url{https://www-cdf.fnal.gov/~group/WORK/DISS_PAGE/diss_page.htm}}
     \end{minipage}
-    \column{0.5\textwidth}
-    \begin{minipage}[b][0.45\textheight][b]{\linewidth}
-        \onslide<1->{Coupling constant $\alpha$ strength of the force in an interaction.}
+    \column{0.5\textwidth}%
+    \begin{minipage}[b][0.75\textheight][b]{\linewidth}%
         \begin{itemize}
-            \item \onslide<2->{$\alpha_G \approx 1.75 \times 10^{-45}$}
-            \item \onslide<3->{$\alpha_W \approx 10^{-6} - 10^{-7}$}
-            \item \onslide<4->{$\alpha_\mathrm{QED} \approx \frac{1}{137} \approx 0.0073$}
-            \item \onslide<5->{$\alpha_S \approx \frac{g_S^2}{4\pi} \approx 1$}
+            \item \onslide<1->{Coupling constant $\alpha$ is the strength of the force in an interaction.}%
+        % \begin{itemize}
+        %     \item \onslide<2->{$\alpha_G \approx 1.75 \times 10^{-45}$}
+        %     \item \onslide<3->{$\alpha_W \approx 10^{-6} - 10^{-7}$}
+        %     \item \onslide<4->{$\alpha_\mathrm{QED} \approx \frac{1}{137} \approx 0.0073$}
+        %     \item \onslide<5->{$\alpha_S \approx \frac{g_S^2}{4\pi} \approx 1$}
+        % \end{itemize}
+            \item \onslide<2->{QED becomes stronger - QCD becomes weaker at higher energies.}%
+            \item \onslide<3->{Can't use perturbation theory on strong force in low-energy regime!}%
+            \item \onslide<4->{Need to understand the low-energy regime to understand phenomenas such as \textbf{confinement}.}%
         \end{itemize}
-        \onslide<6->{Can't use perturbation theory on strong force in low-energy regime!}
     \end{minipage}
 \end{columns}
 \note{
 \begin{itemize}
     \item <1->{In physics, \textbf{a coupling constant} or gauge coupling parameter (or, more simply, a coupling), is a number that determines the strength of the force exerted in an interaction.}
-    \item <5->{\textbf{Couplings at low energy.}}
-    \item <6->{We cannot make \textbf{perturbative expansions} in the low-energy regime of the strong nuclear force.}
-    \item <6->{Which is really a shame, since many interesting phenomena such as \textbf{confinement} is a low-energy phenomena.}
+    % \item <5->{\textbf{Couplings at low energy.}}
+    \item <2->{We cannot make \textbf{perturbative expansions} in the low-energy regime of the strong nuclear force.}
+    \item <4->{Which is really a shame, since many interesting phenomena such as \textbf{confinement} is a low-energy phenomena.}
 \end{itemize}}
 \end{frame}
 
 \begin{frame}{Confinement: a low-energy phenomena}
-No free color charges in nature!
+No free quarks in nature!
 \begin{center}
     \includegraphics[width=0.65\textwidth]{../figures/illustrations/qcd/confinement/string-breaking.pdf}
 \end{center}
@@ -257,10 +275,23 @@ No free color charges in nature!
     \end{minipage}
     \column{0.5\textwidth}
     % {Few parameters give rise to observed phenomena: $g_S, m_d, m_u, \dots e$} \\
-    \onslide<1->{Need to understand the low-energy regime in order to better understand nuclear physics!}\\%
-    \onslide<2->{$\rightarrow$ numerical methods(e.g. lattice QCD)}\\%
+    \begin{itemize}
+        \item \onslide<1->{Need to understand the low-energy regime in order to better understand nuclear physics!}\\%
+        \item \onslide<2->{Want to bridge the gap between theories that operate at different scales.}\\%
+        \item \onslide<3->{$\rightarrow$ numerical methods(e.g. lattice QCD)}\\%
+    \end{itemize}
 \end{columns}
 \note{The most fundamental theory we currently have of nuclear physics is QCD. Understanding QCD will help us understand nuclear physics and more \textit{emergent} theories. But to bridge the gaps between these theories is difficult, as QCD contains a large number of degrees of freedom. Thus, a numerical approach is needed.}
+\end{frame}
+
+\begin{frame}{We currently have...}
+\begin{itemize}[<+->]
+    \item A theory for QCD in the \textbf{continuum}.
+    \item Which we solve QCD by a Feynman \textbf{path integral}.
+    \item We want to solve this \textbf{numerically}.
+    \item $\rightarrow$ need to \textbf{discretize} the path integral.
+\end{itemize}
+\onslide<5->{But first, we need to know \textit{what} a path integral is.}
 \end{frame}
 
 \begin{frame}[t]{How we measure: path integrals}
@@ -284,10 +315,10 @@ No free color charges in nature!
 \end{frame}
 
 \begin{frame}{Path integrals}
-\onslide<1->{Given a field $\phi^M$ in Minkowski space, the \textit{partition function $Z$} is given by
+\onslide<1->{Given a field $\phi_M$ in Minkowski space, the \textit{partition function $Z$} is given by
 \begin{align*}
-    Z &= \int \mathcal{D}\phi^M \e^{\frac{i}{\hbar}S^M[\phi^M]} \\
-    &\downarrow \quad \hbar=1, \quad \tau \rightarrow -it \qquad \text{imaginary time(euclidean space)!} \\
+    Z &= \int \mathcal{D}\phi_M \e^{\frac{i}{\hbar}S_M[\phi_M]} \\
+    &\downarrow \quad \hbar=1, \quad \tau \rightarrow -it \qquad \text{imaginary time($\rightarrow$ Euclidean space)!} \\
     &= \int \mathcal{D}\phi \e^{-S[\phi]}
 \end{align*}%
 where $\mathcal{D}$ is an integration of all possible paths in space.\\}
@@ -301,7 +332,8 @@ with action given in terms of spacetime integral of the Lagrangian $\mathcal{L}$
 \onslide<3->{Difficult to calculate the all possible paths $\rightarrow$ discretize spacetime}%
 \note{\begin{itemize}
     \item <1->{We go to imaginary time in order to avoid oscillations due to the complex phase.}
-    \item <1->{We must also change $S$ so it is in Euclidean space.}
+    \item <1->{We must also change the action $S$, so it is expressed in Euclidean space.}
+    \item <1->{We will \textbf{remain in Euclidean space} for the rest of the presentation.}
     \item <2->{Then, the expectation value given in terms to all possible paths with $Z$ as a weight.}
     \item <3->{It is difficult to calculate all of the possible paths, so instead we discretize spacetime with the field value at every spacetime point instead.}
 \end{itemize}
@@ -312,6 +344,7 @@ with action given in terms of spacetime integral of the Lagrangian $\mathcal{L}$
 \begin{center}
     \includegraphics[width=0.8\textwidth]{../figures/lattice-discretized/lattice-discretized.pdf}
 \end{center}
+\note{$N$ is the number of points on the lattice.}
 \end{frame}
 
 \begin{frame}{Discretizing the path integral}
@@ -321,16 +354,66 @@ with action given in terms of spacetime integral of the Lagrangian $\mathcal{L}$
 \end{align*}}%
 \onslide<2->{\noindent We integrate over each spacetime point.\\}%
 \onslide<3->{$32 \times 32 \times 32 \times 32 = 2^{20} \rightarrow n^{2^{20}}$ integration points.\\}%
-\onslide<4->{A \textbf{statistical approach} using importance sampling is needed.\\}%
-\onslide<5->{An expectation value becomes%
-\begin{align*}
-\expect{O} = \frac{1}{N_\mathrm{cfg}} \sum_{i=1}^{N_\mathrm{cfg}} O[\phi_i] + \mathcal{O}\left(\frac{1}{\sqrt{N_\mathrm{cfg}}}\right)
-\end{align*}}
+\onslide<4->{A \textbf{statistical approach} using importance sampling is needed for generating gauge configurations.\\}%
+% \onslide<5->{An expectation value becomes%
+% \begin{align*}
+% \expect{O} = \frac{1}{N_\mathrm{cfg}} \sum_{i=1}^{N_\mathrm{cfg}} O[\phi_i] + \mathcal{O}\left(\frac{1}{\sqrt{N_\mathrm{cfg}}}\right)
+% \end{align*}
+% where $\phi_i$ is generated gauge configuration.}
 \note{\begin{itemize}
     \item <1->We now have a integral over the field at every spacetime point.
     \item <3->This poses another challenge, namely that we quickly have a large number of integrals. Say for a $32^4$ lattice, we will have $n^{2^{20}}$ integration points using conventional integration methods, i.e. the trapezoidal method.
     \item <4->This require us to use statistical methods with some sort of importance sampling.
-    \item <5->Since we now are using a statistical method, the challenge is now to generate configurations of the spacetime that lie in the vicinity of the action minimum. The expectation value then becomes the average of such configurations, and the error of these scales with $1/\sqrt{N_\mathrm{cfg}}$.
+    % \item <5->Since we now are using a statistical method, the challenge is now to generate configurations of the spacetime that lie in the vicinity of the action minimum. The expectation value then becomes the average of such configurations, and the error of these scales with $1/\sqrt{N_\mathrm{cfg}}$.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Configurations: comparing QCD and the Ising model}
+\onslide<1->{The 2D Ising model is given by:%
+\begin{align*}
+    H=-J\sum_{\expect{i,j}} S_i S_j - h\sum_i S_i
+\end{align*}}%
+\begin{itemize}
+    \item \onslide<2->{Ising model only has two possible values at a spin site $S_i$: $\uparrow$, $\downarrow$}
+    \item \onslide<3->{QCD many more degrees of freedom: quarks, gluons, color, charge, ...}    
+    \item \onslide<4->{With $N=10$, a lattice in the Ising model has the size $10 \times 10 = 100$.}
+    \item \onslide<5->{A lattice in LQCD is however $N^4 = 10000$.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Then what is a configuration?}
+\onslide<1->{Looking at a spin lattice of the Ising model,}%
+\onslide<1->{\begin{columns}
+    \column{0.5\textwidth}
+    \begin{minipage}[c][0.5\textheight][c]{\linewidth}
+    \begin{center}
+        \includegraphics[trim={1.5cm 0.5cm 1.5cm 0.5cm},width=0.85\textwidth]{../figures/ising_lattices/ising_t1_1.pdf}
+        % \includegraphics[width=0.8\textwidth]{../figures/ising_lattices/ising_t1_1.pdf}
+    \end{center}
+    \end{minipage}
+    \column{0.5\textwidth}
+    \begin{minipage}[c][0.5\textheight][c]{\linewidth}
+    \begin{center}
+        \includegraphics[trim={1.5cm 0.5cm 1.5cm 0.5cm},width=0.85\textwidth]{../figures/ising_lattices/ising_t2_1.pdf}
+        % \includegraphics[width=0.8\textwidth]{../figures/ising_lattices/ising_t2_1.pdf}
+    \end{center}
+    \end{minipage}
+\end{columns}}%
+\begin{itemize}
+    \item \onslide<2->{A \textbf{configuration} in the Ising model is a given \textit{arrangement of the spins}.}
+    \item \onslide<3->{A \textbf{configuration} in LQCD is a given \textit{arrangement of the gauge field}.}
+\end{itemize}%
+\note{\onslide<1->{Two possible values indicated by either black or white dots.}}
+\end{frame}
+
+\begin{frame}{Sampling configurations}
+\onslide<1->{An expectation value becomes%
+\begin{align*}
+\expect{O} = \frac{1}{N_\mathrm{cfg}} \sum_{i=1}^{N_\mathrm{cfg}} O[\phi_i] + \mathcal{O}\left(\frac{1}{\sqrt{N_\mathrm{cfg}}}\right)
+\end{align*}
+where $\phi_i$ is a generated gauge configuration(or just a general configuration).}
+\note{\begin{itemize}
+    \item <1->Since we now are using a statistical method, the challenge is now to generate configurations of the spacetime that lie in the vicinity of the action minimum. The expectation value then becomes the average of such configurations, and the error of these scales with $1/\sqrt{N_\mathrm{cfg}}$.
 \end{itemize}}
 \end{frame}
 
@@ -355,14 +438,14 @@ with action given in terms of spacetime integral of the Lagrangian $\mathcal{L}$
 \begin{frame}{From QCD to pure \texorpdfstring{$\SU(3)$}{SU3} Yang-Mills}
 We exclude fermions to only look at the gauge fields,
 \begin{align*}
-S_G = \frac{1}{2} \int \dd^4 x \tr \left(F_{\mu\nu}\right)^2
+S_G = \frac{1}{2} \int \dd^4 x \tr \left(G_{\mu\nu}\right)^2
 \end{align*}
 \end{frame}
 
 \begin{frame}{Links}
 \begin{itemize}
     \item \onslide<1->{\textit{Links} $U_\mu(n)$ tell us how the gauge field at lattice location $n$ changes in a given direction $\hat{\mu}$}
-    \item \onslide<2->{Four links at every lattice size(one for each Lorentz index). Opposite direction given by its inverse.}
+    \item \onslide<2->{Four links at every lattice site(one for each Lorentz index). Opposite direction given by its inverse.}
     \item \onslide<3->{Links are complex $3\times 3$ matrices of the group $\SU(3)$ with properties of,}
 \end{itemize}%
 \onslide<4->{\begin{align*}
@@ -421,11 +504,11 @@ Notice that in this expression we have that the four links that forms a \textit{
 \end{itemize}
 \onslide<4->{However, some observable are problematic...}
 \note{
-\begin{itemize}[<+->]
-    \item We calculate the action using links.
-    \item We will use the Metropolis Monte Carlo method for solving the path integral and generating configurations.
-    \item We have a method for handling the computations.
-    \item However, some observables are problematic, and we need to apply some method of renormalization in order to retrieve sensible results..
+\begin{itemize}
+    \item <1->We calculate the action using links.
+    \item <2->We will use the Metropolis Monte Carlo method for solving the path integral and generating configurations.
+    \item <3->We have a method for handling the computations.
+    \item <4->However, some observables are problematic, and we need to apply some method of renormalization in order to retrieve sensible results..
 \end{itemize}}
 \end{frame}
 
@@ -459,6 +542,7 @@ Notice that in this expression we have that the four links that forms a \textit{
 \begin{center}
     \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TE21_lowres/flowQ_TE21-}{00}{60}
 \end{center}
+\tiny{\textit{Animation created using LatViz.}}
 \note{Evolution of topological charge $Q$ in flow time.}
 \end{frame}
 
@@ -488,6 +572,7 @@ Points in lattice given by $N^3 \times N_T$.
         \bottomrule
     \end{tabular}
 \end{table}
+\onslide<2->{A scale $t_0$ was set using the energy and gradient flow.}
 % \begin{itemize}[<+->]
 %     \item We use $N_\mathrm{corr}=1600$ for $\beta=6.45$ ensembles, $N_\mathrm{corr}=600$ for the rest.
 %     \item $N_\mathrm{up}=30$.
@@ -496,9 +581,12 @@ Points in lattice given by $N^3 \times N_T$.
 \begin{itemize}
     \item I implemented the methods discussed under a code I call GLAC, and will now present some of the results I generated using this code.
     \item The main ensembles made for this thesis.
+    \item An ensemble is a collection of configurations using similar size and lattice spacing.
     \item Notice that the size of a lattice is 16 times larger when doubling the dimensions.
+    \item \textbf{Ensemble $D_2$ only has 250 configurations}.
     \item Every configuration was flown with $N_\mathrm{flow}=1000$ flow steps.
     \item Since there is are so few data configurations, resampling techniques such as bootstrapping were implemented.
+    \item <2->{A scale $t_0$ was set, in which more details exist in the backup slides.}
 \end{itemize}
 }
 \end{frame}
@@ -526,7 +614,7 @@ Points in lattice given by $N^3 \times N_T$.
 \begin{frame}{Topological charge}
 \begin{itemize}
     \item \onslide<1->{QCD vacua(i.e. gauge fields) can be classified by their topological properties.}
-    \item \onslide<2->{In this vacua, \textbf{Instantons} are local minimums of the Yang-Mills action in Euclidean space.}
+    \item \onslide<2->{In this vacua, \textbf{instantons} are local minima of the Yang-Mills action in Euclidean space, as they are solutions to the e.o.m. }
     \item \onslide<3->{\textbf{Topological charge} $Q$ can be viewed as a ``measure'' of instantons.}
 \end{itemize}
 \onslide<4->{\begin{align*}
@@ -537,17 +625,18 @@ with the charge density given by
     q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
 \end{align*}}%
 \onslide<5->{\noindent%
-Equally probably to have negative charge as positive,
+Integer valued and equally probably to have negative charge as positive,
 \begin{align*}
     \expect{Q} = 0
 \end{align*}}
 \note{\begin{itemize}
     % \item <2->Measuring \textbf{topological charge} is a measure of the \textit{Winding number} of the gauge field.
-    \item <2->\textbf{Instantons} are local minimums to the Yang-Mills action in Euclidean space.
-    \item <3->Instantons are significant in LQCD because of \textit{critical slowdown} which we will return to later.
+    \item <2->\textbf{Instantons} can be viewed as local minima to the Yang-Mills action in Euclidean space, as they are localized solutions to the classical finite action equations of motion in Euclidean space.
+    \item <3->Instantons are significant in LQCD because of \textit{critical slowing down} which we will return to later.
     \item <4->The charge is a \textbf{sum over the local charge} at every point in the gauge field. 
     \item <4->Can in a very crude manner be viewed as the ``curl'' of the gauge fields due to the Levi-Civita tensor.
-    \item <5->The \textbf{expectation value} of \textbf{$Q$ is zero} due to it being \textbf{parity odd}.
+    \item <4->The \textbf{expectation value} of \textbf{$Q$ is zero} due to it being \textbf{parity odd}.
+    \item <5->The charge is integer valued.
 \end{itemize}}
 \end{frame}
 
@@ -563,6 +652,7 @@ Equally probably to have negative charge as positive,
 \begin{center}
     \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TF500_lowres/flowQ_TF500-}{00}{63}
 \end{center}
+\tiny{\textit{Animation created using LatViz.}}
 \end{frame}
 
 % \begin{frame}{Topological charge distribution in flow time}
@@ -591,7 +681,7 @@ Equally probably to have negative charge as positive,
 \begin{itemize}
     \item \onslide<1->{Why is the charge not centered around zero for certain ensembles?\\}
     \item \onslide<2->{Let us look at the \textbf{autocorrelation} - the measure for correlations between gauge configurations in Monte Carlo time.\\}
-    \item \onslide<3->{The autocorrelation is given as $\Gamma(t) = \expect{(a_i - a)(a_{i+t} - a)}$ and $\tau_\mathrm{int} = \frac{1}{2} + \sum^{\infty}_{t=1}\frac{\Gamma(t)}{\Gamma(0)}$.\\}
+    \item \onslide<3->{The autocorrelation is given as $\Gamma(t) = \expect{(x_i - x)(x_{i+t} - x)}$ and $\tau_\mathrm{int} = \frac{1}{2} + \sum^{\infty}_{t=1}\frac{\Gamma(t)}{\Gamma(0)}$.\\}
     \item \onslide<4->{\textbf{Zero autocorrelation} corresponds to $\tau_\mathrm{int} = 0.5$\\}
 \end{itemize}
 \vfill
@@ -617,10 +707,10 @@ Equally probably to have negative charge as positive,
         \end{figure}
     \end{minipage}
 \end{columns}}
-% \note{\begin{itemize}
-%     % \item First of all, $Q$ is a far more correlated than other quantities such as the energy.
-%     \item 
-% \end{itemize}}
+\note{\begin{itemize}
+    \item Charge around zero for ensemble $C$, but not as evident for ensemble $D_2$.
+    \item Points clearly dependent on the previous point in $D_2$.
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Topological charge autocorrelation}
@@ -635,9 +725,12 @@ Equally probably to have negative charge as positive,
 }
 \end{frame}
 
-\begin{frame}{Critical slowdown}
-\onslide<1->{\textbf{Critical slowdown} is the phenomena where we as the lattice spacing $a$ \textit{decreases} the required energy to tunnel from one state to another \textit{increase}. \\}%
-\onslide<2->{$\rightarrow$ many more lattice updates are required in order to have independent gauge configurations.}%
+\begin{frame}{Critical slowing down}
+\begin{itemize}
+    \item<1->\onslide<1->{\textbf{Critical slowing down} is the phenomena where we as the lattice spacing $a$ \textit{decreases} the required energy to tunnel from one topological sector to another \textit{increase}. \\}%
+    \item<2->\onslide<2->{In the continuum, going from one topological sector, a region with similar topological charge, to another require infinite energy. As $a\rightarrow 0$, the amount of effort required to change the configuration increases.\\}%
+    \item<3->\onslide<3->{$\rightarrow$ many more lattice updates are required in order to have independent gauge configurations.}%
+\end{itemize}
 \note{
 \begin{itemize}
     \item <2->That is, going from one instanton sector to another requires many more updates and becomes an inherent problem in all LQCD calculations.
@@ -862,20 +955,23 @@ From this, we can also measure the ratio $R$,
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The topological charge correlator} 
-% % Equations, how to extract mass.
-% A general correlator is given as,
-% \begin{align*}
-%     C(n_t) = \expect{\hat{O}_2(\vec{0}, n_t) \hat{O}_1(\vec{0},0)} = \sum_k \bra{0}\hat{O}_2\ket{k}\bra{k}\hat{O}_1\ket{0}\e^{-n_t E_k}
-% \end{align*}
-% where $n_t$ is the Euclidean time in which the correlator is taken and $E_k$ is states of energy.
-The \textbf{topological charge correlator}%
+\begin{frame}{The topological charge correlator and the effective glueball mass} 
+\onslide<1->{The \textbf{topological charge correlator}%
 \begin{align*}
     C(n_t) = \expect{q(n_t)q(0)},
 \end{align*}%
-$q(0)$ is the \textit{source} placed at a fixed Euclidean time, and $q(n_t)$ is the \textit{sink} which at some Euclidean times $t$.%
+is the correlator between two topological charge densities in Euclidean time.\\}
+\onslide<2->{The ground state in the correlator is given as%
+\begin{align*}
+    C(n_t) = A_0 \e^{-n_t E_0} + A_1 \e^{-n_t E_1} + \dots
+\end{align*}}%
+\onslide<3->{from which the \textbf{effective glueball mass} can be extracted as%
+\begin{align*}
+    a m_\mathrm{eff} = \log \left(\frac{C(n_t)}{C(n_t + 1)}\right),
+\end{align*}}%
 \note{\begin{itemize}
-    \item $q(0)$ is not required to be at $n_t=0$.
+    \item In pure Yang-Mills gauge theory, the states are stable.
+    \item We will be looking at the state involving topological charge.
 \end{itemize}}
 \end{frame}
 
@@ -895,21 +991,21 @@ $q(0)$ is the \textit{source} placed at a fixed Euclidean time, and $q(n_t)$ is 
 \end{itemize}}
 \end{frame}
 
-\begin{frame}{The effective glueball mass}
-A glueball is a bound state of gluons.\\%
-\onslide<2->{The ground state in the correlator is given as%
-\begin{align*}
-    C(n_t) = A_0 \e^{-n_t E_0} + A_1 \e^{-n_t E_1} + \dots
-\end{align*}}%
-\onslide<3->{which can be extracted as%
-\begin{align*}
-    a m_\mathrm{eff} = \log \left(\frac{C(n_t)}{C(n_t + 1)}\right),
-\end{align*}}%
-\note{
-In pure Yang-Mills gauge theory, the states are stable.\\
-We will be looking at the state involving topological charge.
-}
-\end{frame}
+% \begin{frame}{The effective glueball mass}
+% A glueball is a bound state of gluons.\\%
+% \onslide<2->{The ground state in the correlator is given as%
+% \begin{align*}
+%     C(n_t) = A_0 \e^{-n_t E_0} + A_1 \e^{-n_t E_1} + \dots
+% \end{align*}}%
+% \onslide<3->{which can be extracted as%
+% \begin{align*}
+%     a m_\mathrm{eff} = \log \left(\frac{C(n_t)}{C(n_t + 1)}\right),
+% \end{align*}}%
+% \note{
+% In pure Yang-Mills gauge theory, the states are stable.\\
+% We will be looking at the state involving topological charge.
+% }
+% \end{frame}
 
 \begin{frame}{The effective glueball mass}
 \vspace{-0.5cm}
@@ -922,7 +1018,7 @@ We will be looking at the state involving topological charge.
 % \only<3->{The effective mass of the glueball seen at four different flow times, $\sqrt{8t_{f,0}}\in[0.1,0.2,0.3,0.4,0.6]$.}
 \note{\begin{itemize}[<+->]
     \item The effective mass of the glueball, as extracted from the topological charge correlator in Euclidean time.
-    \item Low statistics and critical slowdown $\rightarrow$ poor signal.
+    \item Low statistics and critical slowing down $\rightarrow$ poor signal.
 \end{itemize}}
 \end{frame}
 
@@ -936,7 +1032,7 @@ We will be looking at the state involving topological charge.
 \section{Conclusion, future developments and final thoughts}
 \begin{frame}{Conclusion}
 \begin{itemize}
-    \item <1->Created a code capable of generating and flowing gauge configurations.
+    \item <1->Created a code (GLAC) capable of generating and flowing gauge configurations.
     % \item <1->Scaling and parameter optimizations % SCALING RUNS, N_UP COULD BE INCREASED, COMPARABLE TO OTHER CODES 
     \begin{itemize}
         \item <2->Verified to match other code bases down to machine precision.
@@ -944,12 +1040,13 @@ We will be looking at the state involving topological charge.
         % \item <3->$N_\mathrm{up} > N_\mathrm{corr}$
         % \item <4->Machine precision accuracy when comparing with Chroma.
     \end{itemize}
+    \item <3->Created a code (LatViz) for visualizing gauge fields.
     % \item <3->$t_0$ and $w_0$ match other papers, e.g. \citet{luscher_properties_2010} and \citet{ce_non-gaussianities_2015}.% REFERENCE SCALE T0 - close to what is found by Luscher, REFERENCE SCALE W0 - close to what is found in paper
-    \item <3->$\expect{Q} \neq 0$ for some ensembles. % CHARGE - not zero!
-    \item <4->The topological susceptibility $\expect{\chi^{1/4}_f}$ and $N_f$ % TOPSUS AND N_F - compare ts-bootstrap and bootstrap. Re-iterate main results.
-    \item <5->$\expect{Q^4}_C$ and $R$. Sensitive quantities - need large statistics.% 4th CUMULANT - quite off. Larger beta than article. Perhaps just poor statistics.
-    \item <6->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass. % CORRELATOR AND GLUEBALL MASS
-    \item <7->Statistics, autocorrelation and critical slowdown.% STATISTICS AND CRITICAL SLOWDOWN
+    \item <4->$\expect{Q} \neq 0$ for some ensembles. % CHARGE - not zero!
+    \item <5->The topological susceptibility $\expect{\chi^{1/4}_f}$ and $N_f$ % TOPSUS AND N_F - compare ts-bootstrap and bootstrap. Re-iterate main results.
+    \item <6->$\expect{Q^4}_C$ and $R$. Sensitive quantities - need large statistics.% 4th CUMULANT - quite off. Larger beta than article. Perhaps just poor statistics.
+    \item <7->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass. % CORRELATOR AND GLUEBALL MASS
+    \item <8->Statistics, autocorrelation and critical slowing down.% STATISTICS AND CRITICAL SLOWing down
 \end{itemize}
 \note{\begin{itemize}
     \item <1->Checked scaling and parameter optimization.
@@ -958,11 +1055,11 @@ We will be looking at the state involving topological charge.
     \item <2->Same results as Chroma down to machine precision.
     % \item <4->We also checked the $\epsilon_\mathrm{rnd}$ for matrix generation parameter that it minimized the autocorrelation, and the integration step $\epsilon_f$ .
     % \item <3->$t_0$ and $w_0$ match other papers.
-    \item <3->$\expect{Q}$
-    \item <4->$\chi^{1/4}_f$. Matches well with other papers
-    \item <5->$\expect{Q^4}_C$ and $R$. Sensitive quantity, matches well of first and second moment.
-    \item <6->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass.
-    \item <7->Critical slowdown, which makes transitioning to a new, independent configuration difficult. This inhibits the gathering of statistics, and helps us explain why we for larger $\beta$ values have fewer independent gauge configurations.
+    \item <4->$\expect{Q}$
+    \item <5->$\chi^{1/4}_f$. Matches well with other papers
+    \item <6->$\expect{Q^4}_C$ and $R$. Sensitive quantity, matches well of first and second moment.
+    \item <7->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass.
+    \item <8->Critical slowing down, which makes transitioning to a new, independent configuration difficult. This inhibits the gathering of statistics, and helps us explain why we for larger $\beta$ values have fewer independent gauge configurations.
 \end{itemize}
 }
 \end{frame}
@@ -972,7 +1069,7 @@ We will be looking at the state involving topological charge.
     \item Better statistics - more gauge configurations.
     % \item Better utilization of support ensembles $E$, $F$ and $G$.
     % \item Improve autocorrelation with more updates per single link(increase $N_\mathrm{up}$).
-    \item Implement better actions with operators that has smaller error contributions.
+    \item Implement better actions with operators that have smaller error contributions.
     \item Fermions and HMC(Hybrid Monte Carlo).
 \end{itemize}
 \end{frame}

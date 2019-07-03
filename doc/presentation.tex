@@ -540,8 +540,8 @@ Notice that in this expression we have that the four links that forms a \textit{
 
 \begin{frame}{Gradient flow III: topological charge}
 \begin{center}
-    \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TE21_lowres/flowQ_TE21-}{00}{60}
-\end{center}
+    \animategraphics[loop,controls,width=0.6\linewidth,scale=1]{10}{../figures/latviz/topc_TE21_lowres/flowQ_TE21-}{00}{60}
+\end{center}%
 \tiny{\textit{Animation created using LatViz.}}
 \note{Evolution of topological charge $Q$ in flow time.}
 \end{frame}
@@ -622,7 +622,7 @@ Points in lattice given by $N^3 \times N_T$.
 \end{align*}%
 with the charge density given by
 \begin{align*}
-    q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[F_{\mu\nu}(n)F_{\rho\sigma}(n)\right].
+    q(n) = \frac{1}{32\pi^2} \epsilon_{\mu\nu\rho\sigma} \tr\left[G_{\mu\nu}(n)G_{\rho\sigma}(n)\right].
 \end{align*}}%
 \onslide<5->{\noindent%
 Integer valued and equally probably to have negative charge as positive,
@@ -650,8 +650,8 @@ Integer valued and equally probably to have negative charge as positive,
 
 \begin{frame}{Topological charge}
 \begin{center}
-    \animategraphics[loop,controls,width=0.7\linewidth,scale=1]{10}{../figures/latviz/topc_TF500_lowres/flowQ_TF500-}{00}{63}
-\end{center}
+    \animategraphics[loop,controls,width=0.6\linewidth,scale=1]{10}{../figures/latviz/topc_TF500_lowres/flowQ_TF500-}{00}{63}
+\end{center}%
 \tiny{\textit{Animation created using LatViz.}}
 \end{frame}
 
@@ -1041,12 +1041,12 @@ is the correlator between two topological charge densities in Euclidean time.\\}
         % \item <4->Machine precision accuracy when comparing with Chroma.
     \end{itemize}
     \item <3->Created a code (LatViz) for visualizing gauge fields.
-    % \item <3->$t_0$ and $w_0$ match other papers, e.g. \citet{luscher_properties_2010} and \citet{ce_non-gaussianities_2015}.% REFERENCE SCALE T0 - close to what is found by Luscher, REFERENCE SCALE W0 - close to what is found in paper
-    \item <4->$\expect{Q} \neq 0$ for some ensembles. % CHARGE - not zero!
-    \item <5->The topological susceptibility $\expect{\chi^{1/4}_f}$ and $N_f$ % TOPSUS AND N_F - compare ts-bootstrap and bootstrap. Re-iterate main results.
+    \item <4->$\expect{Q} \neq 0$ for some ensembles $\rightarrow$ understood with autocorrelation. % CHARGE - not zero!
+    \item <5->The topological susceptibility $\chi^{1/4}_f$ and $N_f$ % TOPSUS AND N_F - compare ts-bootstrap and bootstrap. Re-iterate main results.
     \item <6->$\expect{Q^4}_C$ and $R$. Sensitive quantities - need large statistics.% 4th CUMULANT - quite off. Larger beta than article. Perhaps just poor statistics.
     \item <7->Topological charge correlator $\expect{q(n_t)q(0)}$ and glueball mass. % CORRELATOR AND GLUEBALL MASS
     \item <8->Statistics, autocorrelation and critical slowing down.% STATISTICS AND CRITICAL SLOWing down
+    \item <9->The energy, the scale $t_0$ and $w_0$ were also calculated match what is found in the literature, i.e. \citet{luscher_properties_2010} and \citet{ce_non-gaussianities_2015}.% REFERENCE SCALE T0 - close to what is found by Luscher, REFERENCE SCALE W0 - close to what is found in paper
 \end{itemize}
 \note{\begin{itemize}
     \item <1->Checked scaling and parameter optimization.
